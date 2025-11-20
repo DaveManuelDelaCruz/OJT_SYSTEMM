@@ -4,6 +4,9 @@
         'test
         '123
         '456
+        'merge
+
+        'arcie
         'test
     End Sub
 End Class
