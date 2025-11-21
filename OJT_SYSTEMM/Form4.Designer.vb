@@ -50,8 +50,9 @@ Partial Class Form4
         lblTitle.Margin = New Padding(4, 0, 4, 0)
         lblTitle.Name = "lblTitle"
         lblTitle.Size = New Size(199, 62)
+        lblTitle.Size = New Size(214, 62)
         lblTitle.TabIndex = 0
-        lblTitle.Text = "Sign Up"
+        lblTitle.Text = "SIGN UP"
         ' 
         ' lblSubtitle
         ' 
