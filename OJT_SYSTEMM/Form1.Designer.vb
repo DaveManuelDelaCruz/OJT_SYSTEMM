@@ -41,7 +41,7 @@ Partial Class Form1
         ClientSize = New Size(800, 450)
         Controls.Add(Button1)
         Name = "Form1"
-        Text = "Form1"
+        Text = "Front"
         ResumeLayout(False)
     End Sub
 
