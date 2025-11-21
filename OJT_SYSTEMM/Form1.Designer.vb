@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class frmOpening
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,29 +22,18 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Button1 = New Button()
         SuspendLayout()
         ' 
-        ' Button1
-        ' 
-        Button1.Location = New Point(176, 176)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(415, 117)
-        Button1.TabIndex = 0
-        Button1.Text = "ENTER"
-        Button1.UseVisualStyleBackColor = True
-        ' 
-        ' Form1
+        ' frmOpening
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
-        Controls.Add(Button1)
-        Name = "Form1"
-        Text = "Form1"
+        BackColor = Color.Green
+        ClientSize = New Size(1262, 673)
+        Name = "frmOpening"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Welcome"
         ResumeLayout(False)
     End Sub
-
-    Friend WithEvents Button1 As Button
 
 End Class
