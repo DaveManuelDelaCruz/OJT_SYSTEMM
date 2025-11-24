@@ -1,0 +1,825 @@
+﻿Imports MySql.Data.MySqlClient
+Imports System.IO
+
+Public Class frmStudentDashboard
+
+    ' Path to final evaluation report (from internship.EvaluationReportPath)
+    Private FinalReportPath As String = ""
+
+    ' ==========================
+    ' FORM LOAD
+    ' ==========================
+    Private Sub FrmStudentDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' PREVENT dashboard loading without login
+        If CurrentUser.StudentID Is Nothing OrElse CurrentUser.StudentID <= 0 Then
+            MessageBox.Show("You must log in first.")
+            Me.Close()
+            frmStart.Show()
+            Return
+        End If
+        ' These come from your login (CurrentUser is in shared module)
+        lblStudentName.Text = CurrentUser.Name
+        lblStudentRole.Text = "Student"
+
+        InitializeUI()
+        ShowPanel(pnlStudentProfile)
+        HighlightActive(btnStudentProfile)
+
+        LoadStudentProfile()
+        LoadInternshipDetails()
+        LoadVisitLogs()
+        LoadFinalGrade()
+    End Sub
+
+    Private HasShownNoInternshipMessage As Boolean = False
+    Private HasShownNoVisitLogsMessage As Boolean = False
+
+
+    Private Function IsValidPhoneNumber(phone As String) As Boolean
+        If String.IsNullOrWhiteSpace(phone) Then Return False
+
+        ' Allow only digits (10–12 digits recommended for PH numbers)
+        Dim pattern As String = "^\d{10,12}$"
+        Return System.Text.RegularExpressions.Regex.IsMatch(phone, pattern)
+    End Function
+    Private Sub txtContactNumber_TextChanged(sender As Object, e As EventArgs) Handles txtContactNumber.TextChanged
+        Dim cursor As Integer = txtContactNumber.SelectionStart
+        txtContactNumber.Text = New String(txtContactNumber.Text.Where(AddressOf Char.IsDigit).ToArray())
+        txtContactNumber.SelectionStart = cursor
+    End Sub
+
+
+    ' ==========================
+    ' UI & NAVIGATION
+    ' ==========================
+
+    Private Sub InitializeUI()
+        btnSaveProfile.Enabled = False
+        SetEditMode(False)
+        SetupVisitLogsGrid()
+    End Sub
+
+    Private Sub SetupVisitLogsGrid()
+        dgvVisitLogs.Columns.Clear()
+
+        Dim colDate As New DataGridViewTextBoxColumn With {
+            .Name = "colVisitDate",
+            .HeaderText = "Visit Date",
+            .Width = 110
+        }
+
+        Dim colType As New DataGridViewTextBoxColumn With {
+            .Name = "colVisitType",
+            .HeaderText = "Visit Type",
+            .Width = 120
+        }
+
+        Dim colScore As New DataGridViewTextBoxColumn With {
+            .Name = "colScore",
+            .HeaderText = "Score",
+            .Width = 80
+        }
+
+        Dim colMax As New DataGridViewTextBoxColumn With {
+            .Name = "colMaxScore",
+            .HeaderText = "Max Score",
+            .Width = 90
+        }
+
+        Dim colRemarks As New DataGridViewTextBoxColumn With {
+            .Name = "colRemarks",
+            .HeaderText = "Remarks",
+            .Width = 380
+        }
+
+        Dim colAttachment As New DataGridViewTextBoxColumn With {
+            .Name = "colAttachmentPath",
+            .HeaderText = "AttachmentPath",
+            .Visible = False
+        }
+
+        Dim colDownload As New DataGridViewButtonColumn With {
+            .Name = "colDownload",
+            .HeaderText = "DL",
+            .Text = "🔽",
+            .UseColumnTextForButtonValue = True,
+            .Width = 60
+        }
+
+        dgvVisitLogs.Columns.AddRange(New DataGridViewColumn() {
+            colDate, colType, colScore, colMax, colRemarks, colAttachment, colDownload
+        })
+
+        dgvVisitLogs.EnableHeadersVisualStyles = False
+        dgvVisitLogs.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(76, 175, 80)
+        dgvVisitLogs.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        dgvVisitLogs.ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI Semibold", 10, FontStyle.Bold)
+        dgvVisitLogs.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        dgvVisitLogs.ColumnHeadersDefaultCellStyle.Padding = New Padding(6)
+
+        dgvVisitLogs.DefaultCellStyle.BackColor = Color.White
+        dgvVisitLogs.DefaultCellStyle.ForeColor = Color.FromArgb(33, 33, 33)
+        dgvVisitLogs.DefaultCellStyle.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular)
+        dgvVisitLogs.DefaultCellStyle.SelectionBackColor = Color.FromArgb(232, 245, 233)
+        dgvVisitLogs.DefaultCellStyle.SelectionForeColor = Color.FromArgb(27, 94, 32)
+        dgvVisitLogs.DefaultCellStyle.Padding = New Padding(4)
+
+        dgvVisitLogs.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 250, 250)
+
+        dgvVisitLogs.ReadOnly = True
+        dgvVisitLogs.AllowUserToAddRows = False
+        dgvVisitLogs.AllowUserToDeleteRows = False
+        dgvVisitLogs.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvVisitLogs.RowHeadersVisible = False
+    End Sub
+
+    Private Sub ShowPanel(panelToShow As Panel)
+        pnlStudentProfile.Visible = False
+        pnlInternshipDetails.Visible = False
+        pnlVisitLogs.Visible = False
+        pnlFinalGrade.Visible = False
+
+        panelToShow.Visible = True
+        panelToShow.BringToFront()
+    End Sub
+
+    Private Sub HighlightActive(activeButton As Button)
+        Dim buttons() As Button = {
+            btnStudentProfile,
+            btnInternshipDetails,
+            btnVisitLogs,
+            btnFinalGrade
+        }
+
+        For Each btn In buttons
+            btn.BackColor = Color.FromArgb(34, 51, 34)
+            btn.ForeColor = Color.White
+            btn.Font = New Font("Segoe UI", 10.0!, FontStyle.Regular)
+        Next
+
+        activeButton.BackColor = Color.FromArgb(76, 175, 80)
+        activeButton.ForeColor = Color.White
+        activeButton.Font = New Font("Segoe UI Semibold", 10.0!, FontStyle.Bold)
+    End Sub
+
+
+    ' Sidebar button events (PascalCase method names)
+    Private Sub BtnStudentProfile_Click(sender As Object, e As EventArgs) Handles btnStudentProfile.Click
+        HighlightActive(btnStudentProfile)
+        ShowPanel(pnlStudentProfile)
+        LoadStudentProfile()
+    End Sub
+
+    Private Sub BtnInternshipDetails_Click(sender As Object, e As EventArgs) Handles btnInternshipDetails.Click
+        HighlightActive(btnInternshipDetails)
+        ShowPanel(pnlInternshipDetails)
+        LoadInternshipDetails()
+    End Sub
+
+    Private Sub BtnVisitLogs_Click(sender As Object, e As EventArgs) Handles btnVisitLogs.Click
+        HighlightActive(btnVisitLogs)
+        ShowPanel(pnlVisitLogs)
+        LoadVisitLogs()
+    End Sub
+
+    Private Sub BtnFinalGrade_Click(sender As Object, e As EventArgs) Handles btnFinalGrade.Click
+        HighlightActive(btnFinalGrade)
+        ShowPanel(pnlFinalGrade)
+        LoadFinalGrade()
+    End Sub
+
+    Private Sub BtnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        Dim result = MessageBox.Show(
+            "Are you sure you want to logout?",
+            "Confirm Logout",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+        )
+
+        If result = DialogResult.Yes Then
+            Try
+                frmLoginStudent.Show()
+            Catch
+                ' ignore if login form not available
+            End Try
+
+            Me.Close()
+        End If
+    End Sub
+
+
+    ' =====================================
+    ' PART 1 – STUDENT PROFILE (VIEW/UPDATE)
+    ' =====================================
+
+    Private Sub SetEditMode(isEdit As Boolean)
+        txtEmail.ReadOnly = Not isEdit
+        txtContactNumber.ReadOnly = Not isEdit
+        txtAddress.ReadOnly = Not isEdit
+        txtCity.ReadOnly = Not isEdit
+
+        Dim editBack = Color.White
+        Dim readBack = Color.FromArgb(250, 250, 250)
+
+        txtEmail.BackColor = If(isEdit, editBack, readBack)
+        txtContactNumber.BackColor = If(isEdit, editBack, readBack)
+        txtAddress.BackColor = If(isEdit, editBack, readBack)
+        txtCity.BackColor = If(isEdit, editBack, readBack)
+    End Sub
+
+    Private Sub BtnEditProfile_Click(sender As Object, e As EventArgs) Handles btnEditProfile.Click
+        SetProfileEditingEnabled(True)
+
+        btnEditProfile.Visible = False
+        btnSaveProfile.Visible = True
+        btnCancelEditProfile.Visible = True
+    End Sub
+
+    Private Sub BtnSaveProfile_Click(sender As Object, e As EventArgs) Handles btnSaveProfile.Click
+        If Not ValidateProfileInputs() Then
+            Return
+        End If
+
+        SaveProfileChanges()
+        SetEditMode(False)
+        btnSaveProfile.Enabled = False
+
+        MessageBox.Show("Profile updated successfully.",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information)
+    End Sub
+
+    Private Function ValidateProfileInputs() As Boolean
+        If String.IsNullOrWhiteSpace(txtEmail.Text) Then
+            MessageBox.Show("Email is required.",
+                            "Validation Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning)
+            txtEmail.Focus()
+            Return False
+        End If
+
+        If Not IsValidEmail(txtEmail.Text.Trim()) Then
+            MessageBox.Show("Please enter a valid email address.",
+                            "Validation Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning)
+            txtEmail.Focus()
+            Return False
+        End If
+
+        If String.IsNullOrWhiteSpace(txtContactNumber.Text) Then
+            MessageBox.Show("Contact number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtContactNumber.Focus()
+            Return False
+        End If
+
+        If Not IsValidPhoneNumber(txtContactNumber.Text.Trim()) Then
+            MessageBox.Show("Please enter a valid contact number (digits only, 10–12 characters).",
+                    "Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning)
+            txtContactNumber.Focus()
+            Return False
+        End If
+
+        If String.IsNullOrWhiteSpace(txtAddress.Text) Then
+            MessageBox.Show("Address is required.",
+                            "Validation Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning)
+            txtAddress.Focus()
+            Return False
+        End If
+
+        If String.IsNullOrWhiteSpace(txtCity.Text) Then
+            MessageBox.Show("City is required.",
+                            "Validation Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning)
+            txtCity.Focus()
+            Return False
+        End If
+
+        Return True
+    End Function
+
+    Private Function IsValidEmail(email As String) As Boolean
+        Try
+            Dim addr = New System.Net.Mail.MailAddress(email)
+            Return addr.Address = email
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Private Sub SaveProfileChanges()
+        Dim sql As String =
+            "UPDATE student
+             SET Email = @Email,
+                 ContactNumber = @ContactNumber,
+                 Address = @Address,
+                 City = @City
+             WHERE StudentID = @sid;"
+
+        Try
+            Using conn = GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim())
+                    cmd.Parameters.AddWithValue("@ContactNumber", txtContactNumber.Text.Trim())
+                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim())
+                    cmd.Parameters.AddWithValue("@City", txtCity.Text.Trim())
+                    cmd.Parameters.AddWithValue("@sid", CurrentUser.StudentID)
+
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error saving profile: " & ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub LoadStudentProfile()
+        Dim sql As String =
+            "SELECT s.StudentNumber,
+                    s.FirstName, s.LastName, s.MiddleName,
+                    s.Gender, s.BirthDate, s.Status,
+                    s.Email, s.ContactNumber, s.Address, s.City,
+                    sec.SectionName,
+                    c.CourseName,
+                    d.DepartmentName
+             FROM student s
+             LEFT JOIN section sec ON s.SectionID = sec.SectionID
+             LEFT JOIN course c ON sec.CourseID = c.CourseID
+             LEFT JOIN department d ON c.DepartmentID = d.DepartmentID
+             WHERE s.StudentID = @sid
+             LIMIT 1;"
+
+        Try
+            Using conn = GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@sid", CurrentUser.StudentID)
+
+                    conn.Open()
+                    Using dr As MySqlDataReader = cmd.ExecuteReader()
+                        If dr.Read() Then
+                            txtStudentNumber.Text = SafeStr(dr("StudentNumber"))
+
+                            Dim fullName As String =
+                                String.Join(" ",
+                                    New String() {
+                                        SafeStr(dr("FirstName")),
+                                        SafeStr(dr("MiddleName")),
+                                        SafeStr(dr("LastName"))
+                                    }).Replace("  ", " ").Trim()
+                            txtFullName.Text = fullName
+
+                            txtGender.Text = FormatGender(SafeStr(dr("Gender")))
+                            txtBirthDate.Text = SafeDate(dr("BirthDate"))
+                            txtStatus.Text = SafeStr(dr("Status"))
+
+                            txtEmail.Text = SafeStr(dr("Email"))
+                            txtContactNumber.Text = SafeStr(dr("ContactNumber"))
+                            txtAddress.Text = SafeStr(dr("Address"))
+                            txtCity.Text = SafeStr(dr("City"))
+
+                            txtSectionName.Text = SafeStr(dr("SectionName"))
+                            txtCourseName.Text = SafeStr(dr("CourseName"))
+                            txtDepartmentName.Text = SafeStr(dr("DepartmentName"))
+                        Else
+                            MessageBox.Show("Student record not found.",
+                                            "Error",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Error)
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading student profile: " & ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Function FormatGender(g As String) As String
+        Select Case g.Trim().ToUpperInvariant()
+            Case "M", "MALE"
+                Return "Male"
+            Case "F", "FEMALE"
+                Return "Female"
+            Case "OTHER"
+                Return "Other"
+            Case Else
+                Return ""
+        End Select
+    End Function
+
+
+    ' =====================================
+    ' PART 2–4 – INTERNSHIP DETAILS & HOURS
+    ' =====================================
+
+    Private Function GetStudentInternshipID() As Integer
+        Dim sql As String =
+            "SELECT InternshipID
+             FROM internship
+             WHERE StudentID = @sid
+             ORDER BY StartDate DESC
+             LIMIT 1;"
+
+        Try
+            Using conn = GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@sid", CurrentUser.StudentID)
+
+                    conn.Open()
+                    Dim result = cmd.ExecuteScalar()
+                    If result IsNot Nothing AndAlso result IsNot DBNull.Value Then
+                        Return CInt(result)
+                    End If
+                End Using
+            End Using
+        Catch
+            ' ignore, return 0
+        End Try
+
+        Return 0
+    End Function
+
+    Private Sub LoadInternshipDetails()
+        Dim sql As String =
+            "SELECT i.InternshipID,
+                    i.Status,
+                    i.WorkDays,
+                    i.DailyStartTime,
+                    i.DailyEndTime,
+                    i.HoursCompleted,
+                    c.CompanyName,
+                    c.Address AS CompanyAddress,
+                    c.City AS CompanyCity,
+                    c.Industry,
+                    cc.FirstName AS SupFN,
+                    cc.LastName AS SupLN,
+                    cc.PositionTitle,
+                    cc.ContactNumber AS SupContact,
+                    crs.RequiredOJTHours
+             FROM internship i
+             LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
+             LEFT JOIN company c ON cc.CompanyID = c.CompanyID
+             LEFT JOIN student s ON i.StudentID = s.StudentID
+             LEFT JOIN section sec ON s.SectionID = sec.SectionID
+             LEFT JOIN course crs ON sec.CourseID = crs.CourseID
+             WHERE i.StudentID = @sid
+             ORDER BY i.StartDate DESC
+             LIMIT 1;"
+
+        Try
+            Using conn = GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@sid", CurrentUser.StudentID)
+
+                    conn.Open()
+                    Using dr As MySqlDataReader = cmd.ExecuteReader()
+                        If dr.Read() Then
+                            txtInternshipStatus.Text = SafeStr(dr("Status"))
+
+                            txtCompanyName.Text = SafeStr(dr("CompanyName"))
+                            txtCompanyAddress.Text = SafeStr(dr("CompanyAddress"))
+                            txtCompanyCity.Text = SafeStr(dr("CompanyCity"))
+                            txtIndustry.Text = SafeStr(dr("Industry"))
+
+                            Dim supName As String =
+                                (SafeStr(dr("SupFN")) & " " & SafeStr(dr("SupLN"))).Trim()
+                            txtSupervisorName.Text = supName
+                            txtSupervisorPosition.Text = SafeStr(dr("PositionTitle"))
+                            txtSupervisorContact.Text = SafeStr(dr("SupContact"))
+
+                            txtWorkDays.Text = SafeStr(dr("WorkDays"))
+                            txtStartTime.Text = SafeTime(dr("DailyStartTime"))
+                            txtEndTime.Text = SafeTime(dr("DailyEndTime"))
+
+                            Dim required As Integer = SafeInt(dr("RequiredOJTHours"))
+                            Dim completed As Integer = SafeInt(dr("HoursCompleted"))
+
+                            txtRequiredHours.Text = If(required > 0, required.ToString(), "")
+                            txtCompletedHours.Text = If(completed > 0, completed.ToString(), "")
+
+                            Dim percent As Integer = 0
+                            If required > 0 Then
+                                percent = CInt((completed / required) * 100)
+                            End If
+
+                            percent = Math.Min(Math.Max(percent, 0), 100)
+                            progressHours.Value = percent
+                        Else
+                            ' No internship yet
+                            txtInternshipStatus.Text = "Not Assigned"
+                            txtCompanyName.Text = ""
+                            txtCompanyAddress.Text = ""
+                            txtCompanyCity.Text = ""
+                            txtIndustry.Text = ""
+                            txtSupervisorName.Text = ""
+                            txtSupervisorPosition.Text = ""
+                            txtSupervisorContact.Text = ""
+                            txtWorkDays.Text = ""
+                            txtStartTime.Text = ""
+                            txtEndTime.Text = ""
+                            txtRequiredHours.Text = ""
+                            txtCompletedHours.Text = ""
+                            progressHours.Value = 0
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading internship details: " & ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+    ' =====================================
+    ' PART 5 – VISIT LOGS (READ-ONLY)
+    ' =====================================
+
+    Private Sub LoadVisitLogs()
+        Try
+            Dim internshipID As Integer = GetStudentInternshipID()
+            txtVisitInternshipID.Text = If(internshipID = 0, "N/A", internshipID.ToString())
+
+            dgvVisitLogs.Rows.Clear()
+
+            ' NO INTERNSHIP YET
+            If internshipID = 0 Then
+                dgvVisitLogs.Visible = False
+
+                If Not HasShownNoInternshipMessage Then
+                    MessageBox.Show("You have no internship assigned yet.",
+                                "Information",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information)
+                    HasShownNoInternshipMessage = True
+                End If
+
+                Return
+            End If
+
+            dgvVisitLogs.Visible = True
+
+            Dim sql As String =
+            "SELECT VisitDate, VisitType, Score, MaxScore, Remarks, AttachmentPath
+             FROM visitlog
+             WHERE InternshipID = @iid
+             ORDER BY VisitDate ASC;"
+
+            Using conn = GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@iid", internshipID)
+
+                    conn.Open()
+                    Using dr As MySqlDataReader = cmd.ExecuteReader()
+                        If Not dr.HasRows Then
+                            dgvVisitLogs.Visible = False
+
+                            If Not HasShownNoVisitLogsMessage Then
+                                MessageBox.Show("No visit logs available.",
+                                            "Information",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information)
+                                HasShownNoVisitLogsMessage = True
+                            End If
+
+                            Return
+                        End If
+
+                        ' We have rows
+                        dgvVisitLogs.Visible = True
+
+                        While dr.Read()
+                            dgvVisitLogs.Rows.Add(
+                            SafeDate(dr("VisitDate")),
+                            SafeStr(dr("VisitType")),
+                            SafeStr(dr("Score")),
+                            SafeStr(dr("MaxScore")),
+                            SafeStr(dr("Remarks")),
+                            SafeStr(dr("AttachmentPath")),
+                            "🔽"
+                        )
+                        End While
+
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error loading visit logs: " & ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub DgvVisitLogs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) _
+        Handles dgvVisitLogs.CellContentClick
+
+        If e.RowIndex < 0 Then Return
+
+        If dgvVisitLogs.Columns(e.ColumnIndex).Name = "colDownload" Then
+            Dim attachmentPath As String =
+                SafeStr(dgvVisitLogs.Rows(e.RowIndex).Cells("colAttachmentPath").Value)
+
+            If String.IsNullOrWhiteSpace(attachmentPath) Then
+                MessageBox.Show("No attachment available for this visit.",
+                                "Information",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information)
+                Return
+            End If
+
+            Try
+                If File.Exists(attachmentPath) Then
+                    Process.Start(New ProcessStartInfo(attachmentPath) With {
+                        .UseShellExecute = True
+                    })
+                Else
+                    MessageBox.Show("Attachment file not found.",
+                                    "Error",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Error opening file: " & ex.Message,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+
+    ' =====================================
+    ' PART 6 – FINAL GRADE (READ-ONLY)
+    ' =====================================
+
+    Private Sub LoadFinalGrade()
+        Try
+            Dim internshipID As Integer = GetStudentInternshipID()
+            If internshipID = 0 Then
+                txtFinalInternshipStatus.Text = "Not Assigned"
+                lblFinalGradeValue.Text = "--"
+                txtEvaluatedBy.Text = ""
+                txtGradedAt.Text = ""
+                FinalReportPath = ""
+                Return
+            End If
+
+            Dim sql As String =
+                "SELECT i.Status,
+                        i.FinalGrade,
+                        i.GradeDate,
+                        i.EvaluationReportPath,
+                        f.FirstName AS EvalFN,
+                        f.LastName AS EvalLN
+                 FROM internship i
+                 LEFT JOIN faculty f ON i.GradedByFacultyID = f.FacultyID
+                 WHERE i.InternshipID = @iid
+                 LIMIT 1;"
+
+            Using conn = GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@iid", internshipID)
+
+                    conn.Open()
+                    Using dr As MySqlDataReader = cmd.ExecuteReader()
+                        If dr.Read() Then
+                            txtFinalInternshipStatus.Text = SafeStr(dr("Status"))
+
+                            Dim gradeText As String = SafeStr(dr("FinalGrade"))
+                            lblFinalGradeValue.Text = If(String.IsNullOrWhiteSpace(gradeText), "--", gradeText)
+
+                            Dim evaluator As String =
+                                (SafeStr(dr("EvalFN")) & " " & SafeStr(dr("EvalLN"))).Trim()
+                            txtEvaluatedBy.Text = evaluator
+
+                            txtGradedAt.Text = SafeDate(dr("GradeDate"))
+                            FinalReportPath = SafeStr(dr("EvaluationReportPath"))
+                        Else
+                            txtFinalInternshipStatus.Text = "In Progress"
+                            lblFinalGradeValue.Text = "--"
+                            txtEvaluatedBy.Text = ""
+                            txtGradedAt.Text = ""
+                            FinalReportPath = ""
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading final grade: " & ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub BtnDownloadReport_Click(sender As Object, e As EventArgs) Handles btnDownloadReport.Click
+        If String.IsNullOrWhiteSpace(FinalReportPath) Then
+            MessageBox.Show("No final evaluation report is available.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information)
+            Return
+        End If
+
+        Try
+            If File.Exists(FinalReportPath) Then
+                Process.Start(New ProcessStartInfo(FinalReportPath) With {
+                    .UseShellExecute = True
+                })
+            Else
+                MessageBox.Show("Report file not found.",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Unable to open report: " & ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+    ' =====================================
+    ' NULL-SAFE HELPERS
+    ' =====================================
+
+    Private Function SafeInt(value As Object) As Integer
+        If value Is Nothing OrElse value Is DBNull.Value Then
+            Return 0
+        End If
+
+        Dim i As Integer
+        If Integer.TryParse(value.ToString(), i) Then
+            Return i
+        End If
+        Return 0
+    End Function
+
+    Private Function SafeTime(value As Object) As String
+        If value Is Nothing OrElse value Is DBNull.Value Then
+            Return ""
+        End If
+
+        Dim t As Date
+        If Date.TryParse(value.ToString(), t) Then
+            Return t.ToString("hh:mm tt")
+        End If
+        Return value.ToString()
+    End Function
+
+    Private Sub btnCancelEditProfile_Click(sender As Object, e As EventArgs) Handles btnCancelEditProfile.Click
+        ' Disable editing again
+        SetProfileEditingEnabled(False)
+
+        ' Reload original data from database
+        LoadStudentProfile()
+
+        ' Show Edit button, hide Save + Cancel buttons
+        btnEditProfile.Visible = True
+        btnSaveProfile.Visible = False
+        btnCancelEditProfile.Visible = False
+    End Sub
+
+    Private Sub SetProfileEditingEnabled(enabled As Boolean)
+        txtEmail.ReadOnly = Not enabled
+        txtContactNumber.ReadOnly = Not enabled
+        txtAddress.ReadOnly = Not enabled
+        txtCity.ReadOnly = Not enabled
+
+        ' Academic fields remain read-only
+        txtSectionName.ReadOnly = True
+        txtCourseName.ReadOnly = True
+        txtDepartmentName.ReadOnly = True
+
+        ' Personal info read-only
+        txtStudentNumber.ReadOnly = True
+        txtFullName.ReadOnly = True
+        txtGender.ReadOnly = True
+        txtBirthDate.ReadOnly = True
+        txtStatus.ReadOnly = True
+    End Sub
+
+    Private Sub txtFinalInternshipStatus_TextChanged(sender As Object, e As EventArgs) Handles txtFinalInternshipStatus.TextChanged
+
+    End Sub
+End Class

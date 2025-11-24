@@ -17,7 +17,6 @@ Partial Class frmOpening
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOpening))
         pnlSidebar = New Panel()
         btnLogout = New Button()
         pnlSidebarBottom = New Panel()
@@ -159,9 +158,9 @@ Partial Class frmOpening
         btnLogout.Dock = DockStyle.Bottom
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
-        btnLogout.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        btnLogout.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         btnLogout.ForeColor = Color.White
-        btnLogout.Location = New Point(0, 712)
+        btnLogout.Location = New Point(0, 688)
         btnLogout.Name = "btnLogout"
         btnLogout.Padding = New Padding(16, 0, 0, 0)
         btnLogout.Size = New Size(280, 56)
@@ -173,7 +172,7 @@ Partial Class frmOpening
         ' pnlSidebarBottom
         ' 
         pnlSidebarBottom.Dock = DockStyle.Bottom
-        pnlSidebarBottom.Location = New Point(0, 688)
+        pnlSidebarBottom.Location = New Point(0, 744)
         pnlSidebarBottom.Name = "pnlSidebarBottom"
         pnlSidebarBottom.Size = New Size(280, 24)
         pnlSidebarBottom.TabIndex = 5
@@ -265,7 +264,7 @@ Partial Class frmOpening
         ' 
         ' lblUserRole
         ' 
-        lblUserRole.Font = New Font("Segoe UI", 9.0F)
+        lblUserRole.Font = New Font("Segoe UI", 9F)
         lblUserRole.ForeColor = Color.FromArgb(CByte(189), CByte(189), CByte(189))
         lblUserRole.Location = New Point(16, 216)
         lblUserRole.Name = "lblUserRole"
@@ -276,7 +275,7 @@ Partial Class frmOpening
         ' 
         ' lblUsername
         ' 
-        lblUsername.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        lblUsername.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         lblUsername.ForeColor = Color.White
         lblUsername.Location = New Point(16, 192)
         lblUsername.Name = "lblUsername"
@@ -297,7 +296,7 @@ Partial Class frmOpening
         ' 
         ' lblSystemTitle
         ' 
-        lblSystemTitle.Font = New Font("Segoe UI", 13.0F, FontStyle.Bold)
+        lblSystemTitle.Font = New Font("Segoe UI", 13F, FontStyle.Bold)
         lblSystemTitle.ForeColor = Color.FromArgb(CByte(255), CByte(235), CByte(59))
         lblSystemTitle.Location = New Point(16, 16)
         lblSystemTitle.Name = "lblSystemTitle"
@@ -344,7 +343,7 @@ Partial Class frmOpening
         pnlProfileActions.Location = New Point(40, 836)
         pnlProfileActions.Name = "pnlProfileActions"
         pnlProfileActions.Padding = New Padding(0, 24, 0, 0)
-        pnlProfileActions.Size = New Size(960, 80)
+        pnlProfileActions.Size = New Size(939, 80)
         pnlProfileActions.TabIndex = 3
         ' 
         ' btnSaveProfile
@@ -354,7 +353,7 @@ Partial Class frmOpening
         btnSaveProfile.Enabled = False
         btnSaveProfile.FlatAppearance.BorderSize = 0
         btnSaveProfile.FlatStyle = FlatStyle.Flat
-        btnSaveProfile.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        btnSaveProfile.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnSaveProfile.ForeColor = Color.White
         btnSaveProfile.Location = New Point(168, 24)
         btnSaveProfile.Name = "btnSaveProfile"
@@ -369,7 +368,7 @@ Partial Class frmOpening
         btnEditProfile.Cursor = Cursors.Hand
         btnEditProfile.FlatAppearance.BorderSize = 0
         btnEditProfile.FlatStyle = FlatStyle.Flat
-        btnEditProfile.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        btnEditProfile.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnEditProfile.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnEditProfile.Location = New Point(0, 24)
         btnEditProfile.Name = "btnEditProfile"
@@ -387,12 +386,12 @@ Partial Class frmOpening
         grpAcademicInfo.Controls.Add(txtSectionName)
         grpAcademicInfo.Controls.Add(lblSection)
         grpAcademicInfo.Dock = DockStyle.Top
-        grpAcademicInfo.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        grpAcademicInfo.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         grpAcademicInfo.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         grpAcademicInfo.Location = New Point(40, 652)
         grpAcademicInfo.Name = "grpAcademicInfo"
         grpAcademicInfo.Padding = New Padding(24, 16, 24, 24)
-        grpAcademicInfo.Size = New Size(960, 184)
+        grpAcademicInfo.Size = New Size(939, 184)
         grpAcademicInfo.TabIndex = 2
         grpAcademicInfo.TabStop = False
         grpAcademicInfo.Text = "ACADEMIC INFORMATION"
@@ -401,7 +400,7 @@ Partial Class frmOpening
         ' 
         txtDepartmentName.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtDepartmentName.BorderStyle = BorderStyle.FixedSingle
-        txtDepartmentName.Font = New Font("Segoe UI", 10.0F)
+        txtDepartmentName.Font = New Font("Segoe UI", 10F)
         txtDepartmentName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtDepartmentName.Location = New Point(504, 128)
         txtDepartmentName.Name = "txtDepartmentName"
@@ -416,7 +415,7 @@ Partial Class frmOpening
         lblDepartment.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblDepartment.Location = New Point(504, 104)
         lblDepartment.Name = "lblDepartment"
-        lblDepartment.Size = New Size(97, 21)
+        lblDepartment.Size = New Size(93, 21)
         lblDepartment.TabIndex = 4
         lblDepartment.Text = "Department"
         ' 
@@ -424,7 +423,7 @@ Partial Class frmOpening
         ' 
         txtCourseName.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtCourseName.BorderStyle = BorderStyle.FixedSingle
-        txtCourseName.Font = New Font("Segoe UI", 10.0F)
+        txtCourseName.Font = New Font("Segoe UI", 10F)
         txtCourseName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtCourseName.Location = New Point(504, 64)
         txtCourseName.Name = "txtCourseName"
@@ -439,7 +438,7 @@ Partial Class frmOpening
         lblCourse.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblCourse.Location = New Point(504, 40)
         lblCourse.Name = "lblCourse"
-        lblCourse.Size = New Size(61, 21)
+        lblCourse.Size = New Size(59, 21)
         lblCourse.TabIndex = 2
         lblCourse.Text = "Course"
         ' 
@@ -447,7 +446,7 @@ Partial Class frmOpening
         ' 
         txtSectionName.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtSectionName.BorderStyle = BorderStyle.FixedSingle
-        txtSectionName.Font = New Font("Segoe UI", 10.0F)
+        txtSectionName.Font = New Font("Segoe UI", 10F)
         txtSectionName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtSectionName.Location = New Point(24, 64)
         txtSectionName.Name = "txtSectionName"
@@ -462,7 +461,7 @@ Partial Class frmOpening
         lblSection.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblSection.Location = New Point(24, 40)
         lblSection.Name = "lblSection"
-        lblSection.Size = New Size(64, 21)
+        lblSection.Size = New Size(61, 21)
         lblSection.TabIndex = 0
         lblSection.Text = "Section"
         ' 
@@ -487,12 +486,12 @@ Partial Class frmOpening
         grpPersonalInfo.Controls.Add(txtStudentNumber)
         grpPersonalInfo.Controls.Add(lblStudentNumber)
         grpPersonalInfo.Dock = DockStyle.Top
-        grpPersonalInfo.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        grpPersonalInfo.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         grpPersonalInfo.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         grpPersonalInfo.Location = New Point(40, 88)
         grpPersonalInfo.Name = "grpPersonalInfo"
         grpPersonalInfo.Padding = New Padding(24, 16, 24, 24)
-        grpPersonalInfo.Size = New Size(960, 564)
+        grpPersonalInfo.Size = New Size(939, 564)
         grpPersonalInfo.TabIndex = 1
         grpPersonalInfo.TabStop = False
         grpPersonalInfo.Text = "PERSONAL INFORMATION"
@@ -501,7 +500,7 @@ Partial Class frmOpening
         ' 
         txtCity.BackColor = Color.White
         txtCity.BorderStyle = BorderStyle.FixedSingle
-        txtCity.Font = New Font("Segoe UI", 10.0F)
+        txtCity.Font = New Font("Segoe UI", 10F)
         txtCity.ForeColor = Color.FromArgb(CByte(33), CByte(33), CByte(33))
         txtCity.Location = New Point(504, 512)
         txtCity.Name = "txtCity"
@@ -523,7 +522,7 @@ Partial Class frmOpening
         ' 
         txtAddress.BackColor = Color.White
         txtAddress.BorderStyle = BorderStyle.FixedSingle
-        txtAddress.Font = New Font("Segoe UI", 10.0F)
+        txtAddress.Font = New Font("Segoe UI", 10F)
         txtAddress.ForeColor = Color.FromArgb(CByte(33), CByte(33), CByte(33))
         txtAddress.Location = New Point(24, 512)
         txtAddress.Name = "txtAddress"
@@ -537,7 +536,7 @@ Partial Class frmOpening
         lblAddress.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblAddress.Location = New Point(24, 488)
         lblAddress.Name = "lblAddress"
-        lblAddress.Size = New Size(70, 21)
+        lblAddress.Size = New Size(66, 21)
         lblAddress.TabIndex = 14
         lblAddress.Text = "Address"
         ' 
@@ -545,7 +544,7 @@ Partial Class frmOpening
         ' 
         txtContactNumber.BackColor = Color.White
         txtContactNumber.BorderStyle = BorderStyle.FixedSingle
-        txtContactNumber.Font = New Font("Segoe UI", 10.0F)
+        txtContactNumber.Font = New Font("Segoe UI", 10F)
         txtContactNumber.ForeColor = Color.FromArgb(CByte(33), CByte(33), CByte(33))
         txtContactNumber.Location = New Point(504, 432)
         txtContactNumber.Name = "txtContactNumber"
@@ -559,7 +558,7 @@ Partial Class frmOpening
         lblContactNumber.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblContactNumber.Location = New Point(504, 408)
         lblContactNumber.Name = "lblContactNumber"
-        lblContactNumber.Size = New Size(133, 21)
+        lblContactNumber.Size = New Size(125, 21)
         lblContactNumber.TabIndex = 12
         lblContactNumber.Text = "Contact Number"
         ' 
@@ -567,7 +566,7 @@ Partial Class frmOpening
         ' 
         txtEmail.BackColor = Color.White
         txtEmail.BorderStyle = BorderStyle.FixedSingle
-        txtEmail.Font = New Font("Segoe UI", 10.0F)
+        txtEmail.Font = New Font("Segoe UI", 10F)
         txtEmail.ForeColor = Color.FromArgb(CByte(33), CByte(33), CByte(33))
         txtEmail.Location = New Point(24, 432)
         txtEmail.Name = "txtEmail"
@@ -581,7 +580,7 @@ Partial Class frmOpening
         lblEmail.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblEmail.Location = New Point(24, 408)
         lblEmail.Name = "lblEmail"
-        lblEmail.Size = New Size(51, 21)
+        lblEmail.Size = New Size(48, 21)
         lblEmail.TabIndex = 10
         lblEmail.Text = "Email"
         ' 
@@ -589,7 +588,7 @@ Partial Class frmOpening
         ' 
         txtStatus.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtStatus.BorderStyle = BorderStyle.FixedSingle
-        txtStatus.Font = New Font("Segoe UI", 10.0F)
+        txtStatus.Font = New Font("Segoe UI", 10F)
         txtStatus.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtStatus.Location = New Point(24, 352)
         txtStatus.Name = "txtStatus"
@@ -604,7 +603,7 @@ Partial Class frmOpening
         lblStatus.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblStatus.Location = New Point(24, 328)
         lblStatus.Name = "lblStatus"
-        lblStatus.Size = New Size(56, 21)
+        lblStatus.Size = New Size(52, 21)
         lblStatus.TabIndex = 8
         lblStatus.Text = "Status"
         ' 
@@ -612,7 +611,7 @@ Partial Class frmOpening
         ' 
         txtBirthDate.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtBirthDate.BorderStyle = BorderStyle.FixedSingle
-        txtBirthDate.Font = New Font("Segoe UI", 10.0F)
+        txtBirthDate.Font = New Font("Segoe UI", 10F)
         txtBirthDate.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtBirthDate.Location = New Point(504, 272)
         txtBirthDate.Name = "txtBirthDate"
@@ -627,7 +626,7 @@ Partial Class frmOpening
         lblBirthDate.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblBirthDate.Location = New Point(504, 248)
         lblBirthDate.Name = "lblBirthDate"
-        lblBirthDate.Size = New Size(85, 21)
+        lblBirthDate.Size = New Size(79, 21)
         lblBirthDate.TabIndex = 6
         lblBirthDate.Text = "Birth Date"
         ' 
@@ -635,7 +634,7 @@ Partial Class frmOpening
         ' 
         txtGender.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtGender.BorderStyle = BorderStyle.FixedSingle
-        txtGender.Font = New Font("Segoe UI", 10.0F)
+        txtGender.Font = New Font("Segoe UI", 10F)
         txtGender.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtGender.Location = New Point(24, 272)
         txtGender.Name = "txtGender"
@@ -650,7 +649,7 @@ Partial Class frmOpening
         lblGender.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblGender.Location = New Point(24, 248)
         lblGender.Name = "lblGender"
-        lblGender.Size = New Size(65, 21)
+        lblGender.Size = New Size(61, 21)
         lblGender.TabIndex = 4
         lblGender.Text = "Gender"
         ' 
@@ -658,7 +657,7 @@ Partial Class frmOpening
         ' 
         txtFullName.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtFullName.BorderStyle = BorderStyle.FixedSingle
-        txtFullName.Font = New Font("Segoe UI", 10.0F)
+        txtFullName.Font = New Font("Segoe UI", 10F)
         txtFullName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtFullName.Location = New Point(24, 192)
         txtFullName.Name = "txtFullName"
@@ -673,7 +672,7 @@ Partial Class frmOpening
         lblFullName.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblFullName.Location = New Point(24, 168)
         lblFullName.Name = "lblFullName"
-        lblFullName.Size = New Size(84, 21)
+        lblFullName.Size = New Size(81, 21)
         lblFullName.TabIndex = 2
         lblFullName.Text = "Full Name"
         ' 
@@ -681,7 +680,7 @@ Partial Class frmOpening
         ' 
         txtStudentNumber.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtStudentNumber.BorderStyle = BorderStyle.FixedSingle
-        txtStudentNumber.Font = New Font("Segoe UI", 10.0F)
+        txtStudentNumber.Font = New Font("Segoe UI", 10F)
         txtStudentNumber.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtStudentNumber.Location = New Point(24, 64)
         txtStudentNumber.Name = "txtStudentNumber"
@@ -696,18 +695,18 @@ Partial Class frmOpening
         lblStudentNumber.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblStudentNumber.Location = New Point(24, 40)
         lblStudentNumber.Name = "lblStudentNumber"
-        lblStudentNumber.Size = New Size(135, 21)
+        lblStudentNumber.Size = New Size(125, 21)
         lblStudentNumber.TabIndex = 0
         lblStudentNumber.Text = "Student Number"
         ' 
         ' lblProfileTitle
         ' 
         lblProfileTitle.Dock = DockStyle.Top
-        lblProfileTitle.Font = New Font("Segoe UI", 20.0F, FontStyle.Bold)
+        lblProfileTitle.Font = New Font("Segoe UI", 20F, FontStyle.Bold)
         lblProfileTitle.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         lblProfileTitle.Location = New Point(40, 40)
         lblProfileTitle.Name = "lblProfileTitle"
-        lblProfileTitle.Size = New Size(960, 48)
+        lblProfileTitle.Size = New Size(939, 48)
         lblProfileTitle.TabIndex = 0
         lblProfileTitle.Text = "STUDENT PROFILE"
         ' 
@@ -739,19 +738,19 @@ Partial Class frmOpening
         grpOJTProgress.Controls.Add(txtRequiredHours)
         grpOJTProgress.Controls.Add(lblRequiredHours)
         grpOJTProgress.Dock = DockStyle.Top
-        grpOJTProgress.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        grpOJTProgress.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         grpOJTProgress.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
-        grpOJTProgress.Location = New Point(40, 896)
+        grpOJTProgress.Location = New Point(40, 776)
         grpOJTProgress.Name = "grpOJTProgress"
         grpOJTProgress.Padding = New Padding(24, 16, 24, 24)
-        grpOJTProgress.Size = New Size(960, 264)
+        grpOJTProgress.Size = New Size(939, 264)
         grpOJTProgress.TabIndex = 6
         grpOJTProgress.TabStop = False
         grpOJTProgress.Text = "OJT HOURS PROGRESS"
         ' 
         ' lblProgressPercentage
         ' 
-        lblProgressPercentage.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        lblProgressPercentage.Font = New Font("Segoe UI", 11F, FontStyle.Bold)
         lblProgressPercentage.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         lblProgressPercentage.Location = New Point(24, 216)
         lblProgressPercentage.Name = "lblProgressPercentage"
@@ -774,7 +773,7 @@ Partial Class frmOpening
         ' 
         txtCompletedHours.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtCompletedHours.BorderStyle = BorderStyle.FixedSingle
-        txtCompletedHours.Font = New Font("Segoe UI", 10.0F)
+        txtCompletedHours.Font = New Font("Segoe UI", 10F)
         txtCompletedHours.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtCompletedHours.Location = New Point(504, 64)
         txtCompletedHours.Name = "txtCompletedHours"
@@ -789,7 +788,7 @@ Partial Class frmOpening
         lblCompletedHours.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblCompletedHours.Location = New Point(504, 40)
         lblCompletedHours.Name = "lblCompletedHours"
-        lblCompletedHours.Size = New Size(142, 21)
+        lblCompletedHours.Size = New Size(132, 21)
         lblCompletedHours.TabIndex = 2
         lblCompletedHours.Text = "Completed Hours"
         ' 
@@ -797,7 +796,7 @@ Partial Class frmOpening
         ' 
         txtRequiredHours.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtRequiredHours.BorderStyle = BorderStyle.FixedSingle
-        txtRequiredHours.Font = New Font("Segoe UI", 10.0F)
+        txtRequiredHours.Font = New Font("Segoe UI", 10F)
         txtRequiredHours.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtRequiredHours.Location = New Point(24, 64)
         txtRequiredHours.Name = "txtRequiredHours"
@@ -812,7 +811,7 @@ Partial Class frmOpening
         lblRequiredHours.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblRequiredHours.Location = New Point(24, 40)
         lblRequiredHours.Name = "lblRequiredHours"
-        lblRequiredHours.Size = New Size(127, 21)
+        lblRequiredHours.Size = New Size(119, 21)
         lblRequiredHours.TabIndex = 0
         lblRequiredHours.Text = "Required Hours"
         ' 
@@ -825,12 +824,12 @@ Partial Class frmOpening
         grpWorkSchedule.Controls.Add(txtWorkDays)
         grpWorkSchedule.Controls.Add(lblWorkDays)
         grpWorkSchedule.Dock = DockStyle.Top
-        grpWorkSchedule.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        grpWorkSchedule.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         grpWorkSchedule.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
-        grpWorkSchedule.Location = New Point(40, 688)
+        grpWorkSchedule.Location = New Point(40, 568)
         grpWorkSchedule.Name = "grpWorkSchedule"
         grpWorkSchedule.Padding = New Padding(24, 16, 24, 24)
-        grpWorkSchedule.Size = New Size(960, 208)
+        grpWorkSchedule.Size = New Size(939, 208)
         grpWorkSchedule.TabIndex = 5
         grpWorkSchedule.TabStop = False
         grpWorkSchedule.Text = "WORK SCHEDULE INFORMATION"
@@ -839,7 +838,7 @@ Partial Class frmOpening
         ' 
         txtEndTime.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtEndTime.BorderStyle = BorderStyle.FixedSingle
-        txtEndTime.Font = New Font("Segoe UI", 10.0F)
+        txtEndTime.Font = New Font("Segoe UI", 10F)
         txtEndTime.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtEndTime.Location = New Point(504, 144)
         txtEndTime.Name = "txtEndTime"
@@ -854,7 +853,7 @@ Partial Class frmOpening
         lblEndTime.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblEndTime.Location = New Point(504, 120)
         lblEndTime.Name = "lblEndTime"
-        lblEndTime.Size = New Size(126, 21)
+        lblEndTime.Size = New Size(113, 21)
         lblEndTime.TabIndex = 4
         lblEndTime.Text = "Daily End Time"
         ' 
@@ -862,7 +861,7 @@ Partial Class frmOpening
         ' 
         txtStartTime.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtStartTime.BorderStyle = BorderStyle.FixedSingle
-        txtStartTime.Font = New Font("Segoe UI", 10.0F)
+        txtStartTime.Font = New Font("Segoe UI", 10F)
         txtStartTime.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtStartTime.Location = New Point(24, 144)
         txtStartTime.Name = "txtStartTime"
@@ -877,7 +876,7 @@ Partial Class frmOpening
         lblStartTime.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblStartTime.Location = New Point(24, 120)
         lblStartTime.Name = "lblStartTime"
-        lblStartTime.Size = New Size(133, 21)
+        lblStartTime.Size = New Size(119, 21)
         lblStartTime.TabIndex = 2
         lblStartTime.Text = "Daily Start Time"
         ' 
@@ -885,7 +884,7 @@ Partial Class frmOpening
         ' 
         txtWorkDays.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtWorkDays.BorderStyle = BorderStyle.FixedSingle
-        txtWorkDays.Font = New Font("Segoe UI", 10.0F)
+        txtWorkDays.Font = New Font("Segoe UI", 10F)
         txtWorkDays.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtWorkDays.Location = New Point(24, 64)
         txtWorkDays.Name = "txtWorkDays"
@@ -900,7 +899,7 @@ Partial Class frmOpening
         lblWorkDays.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblWorkDays.Location = New Point(24, 40)
         lblWorkDays.Name = "lblWorkDays"
-        lblWorkDays.Size = New Size(90, 21)
+        lblWorkDays.Size = New Size(85, 21)
         lblWorkDays.TabIndex = 0
         lblWorkDays.Text = "Work Days"
         ' 
@@ -913,12 +912,12 @@ Partial Class frmOpening
         grpSupervisorInfo.Controls.Add(txtSupervisorName)
         grpSupervisorInfo.Controls.Add(lblSupervisorName)
         grpSupervisorInfo.Dock = DockStyle.Top
-        grpSupervisorInfo.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        grpSupervisorInfo.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         grpSupervisorInfo.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
-        grpSupervisorInfo.Location = New Point(40, 480)
+        grpSupervisorInfo.Location = New Point(40, 360)
         grpSupervisorInfo.Name = "grpSupervisorInfo"
         grpSupervisorInfo.Padding = New Padding(24, 16, 24, 24)
-        grpSupervisorInfo.Size = New Size(960, 208)
+        grpSupervisorInfo.Size = New Size(939, 208)
         grpSupervisorInfo.TabIndex = 4
         grpSupervisorInfo.TabStop = False
         grpSupervisorInfo.Text = "SUPERVISOR INFORMATION"
@@ -927,7 +926,7 @@ Partial Class frmOpening
         ' 
         txtSupervisorContact.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtSupervisorContact.BorderStyle = BorderStyle.FixedSingle
-        txtSupervisorContact.Font = New Font("Segoe UI", 10.0F)
+        txtSupervisorContact.Font = New Font("Segoe UI", 10F)
         txtSupervisorContact.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtSupervisorContact.Location = New Point(24, 144)
         txtSupervisorContact.Name = "txtSupervisorContact"
@@ -942,7 +941,7 @@ Partial Class frmOpening
         lblSupervisorContact.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblSupervisorContact.Location = New Point(24, 120)
         lblSupervisorContact.Name = "lblSupervisorContact"
-        lblSupervisorContact.Size = New Size(133, 21)
+        lblSupervisorContact.Size = New Size(125, 21)
         lblSupervisorContact.TabIndex = 4
         lblSupervisorContact.Text = "Contact Number"
         ' 
@@ -950,7 +949,7 @@ Partial Class frmOpening
         ' 
         txtSupervisorPosition.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtSupervisorPosition.BorderStyle = BorderStyle.FixedSingle
-        txtSupervisorPosition.Font = New Font("Segoe UI", 10.0F)
+        txtSupervisorPosition.Font = New Font("Segoe UI", 10F)
         txtSupervisorPosition.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtSupervisorPosition.Location = New Point(504, 64)
         txtSupervisorPosition.Name = "txtSupervisorPosition"
@@ -965,7 +964,7 @@ Partial Class frmOpening
         lblSupervisorPosition.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblSupervisorPosition.Location = New Point(504, 40)
         lblSupervisorPosition.Name = "lblSupervisorPosition"
-        lblSupervisorPosition.Size = New Size(105, 21)
+        lblSupervisorPosition.Size = New Size(98, 21)
         lblSupervisorPosition.TabIndex = 2
         lblSupervisorPosition.Text = "Position Title"
         ' 
@@ -973,7 +972,7 @@ Partial Class frmOpening
         ' 
         txtSupervisorName.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtSupervisorName.BorderStyle = BorderStyle.FixedSingle
-        txtSupervisorName.Font = New Font("Segoe UI", 10.0F)
+        txtSupervisorName.Font = New Font("Segoe UI", 10F)
         txtSupervisorName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtSupervisorName.Location = New Point(24, 64)
         txtSupervisorName.Name = "txtSupervisorName"
@@ -988,7 +987,7 @@ Partial Class frmOpening
         lblSupervisorName.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblSupervisorName.Location = New Point(24, 40)
         lblSupervisorName.Name = "lblSupervisorName"
-        lblSupervisorName.Size = New Size(137, 21)
+        lblSupervisorName.Size = New Size(131, 21)
         lblSupervisorName.TabIndex = 0
         lblSupervisorName.Text = "Supervisor Name"
         ' 
@@ -1003,12 +1002,12 @@ Partial Class frmOpening
         grpCompanyInfo.Controls.Add(txtCompanyName)
         grpCompanyInfo.Controls.Add(lblCompanyName)
         grpCompanyInfo.Dock = DockStyle.Top
-        grpCompanyInfo.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
+        grpCompanyInfo.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
         grpCompanyInfo.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
-        grpCompanyInfo.Location = New Point(40, 208)
+        grpCompanyInfo.Location = New Point(40, 88)
         grpCompanyInfo.Name = "grpCompanyInfo"
         grpCompanyInfo.Padding = New Padding(24, 16, 24, 24)
-        grpCompanyInfo.Size = New Size(960, 272)
+        grpCompanyInfo.Size = New Size(939, 272)
         grpCompanyInfo.TabIndex = 3
         grpCompanyInfo.TabStop = False
         grpCompanyInfo.Text = "COMPANY INFORMATION"
@@ -1017,7 +1016,7 @@ Partial Class frmOpening
         ' 
         txtIndustry.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtIndustry.BorderStyle = BorderStyle.FixedSingle
-        txtIndustry.Font = New Font("Segoe UI", 10.0F)
+        txtIndustry.Font = New Font("Segoe UI", 10F)
         txtIndustry.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtIndustry.Location = New Point(24, 208)
         txtIndustry.Name = "txtIndustry"
@@ -1032,7 +1031,7 @@ Partial Class frmOpening
         lblIndustry.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblIndustry.Location = New Point(24, 184)
         lblIndustry.Name = "lblIndustry"
-        lblIndustry.Size = New Size(71, 21)
+        lblIndustry.Size = New Size(67, 21)
         lblIndustry.TabIndex = 6
         lblIndustry.Text = "Industry"
         ' 
@@ -1040,7 +1039,7 @@ Partial Class frmOpening
         ' 
         txtCompanyCity.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtCompanyCity.BorderStyle = BorderStyle.FixedSingle
-        txtCompanyCity.Font = New Font("Segoe UI", 10.0F)
+        txtCompanyCity.Font = New Font("Segoe UI", 10F)
         txtCompanyCity.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtCompanyCity.Location = New Point(504, 128)
         txtCompanyCity.Name = "txtCompanyCity"
@@ -1063,7 +1062,7 @@ Partial Class frmOpening
         ' 
         txtCompanyAddress.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtCompanyAddress.BorderStyle = BorderStyle.FixedSingle
-        txtCompanyAddress.Font = New Font("Segoe UI", 10.0F)
+        txtCompanyAddress.Font = New Font("Segoe UI", 10F)
         txtCompanyAddress.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtCompanyAddress.Location = New Point(24, 128)
         txtCompanyAddress.Name = "txtCompanyAddress"
@@ -1078,7 +1077,7 @@ Partial Class frmOpening
         lblCompanyAddress.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblCompanyAddress.Location = New Point(24, 104)
         lblCompanyAddress.Name = "lblCompanyAddress"
-        lblCompanyAddress.Size = New Size(70, 21)
+        lblCompanyAddress.Size = New Size(66, 21)
         lblCompanyAddress.TabIndex = 2
         lblCompanyAddress.Text = "Address"
         ' 
@@ -1086,7 +1085,7 @@ Partial Class frmOpening
         ' 
         txtCompanyName.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtCompanyName.BorderStyle = BorderStyle.FixedSingle
-        txtCompanyName.Font = New Font("Segoe UI", 10.0F)
+        txtCompanyName.Font = New Font("Segoe UI", 10F)
         txtCompanyName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtCompanyName.Location = New Point(24, 64)
         txtCompanyName.Name = "txtCompanyName"
@@ -1101,7 +1100,7 @@ Partial Class frmOpening
         lblCompanyName.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblCompanyName.Location = New Point(24, 40)
         lblCompanyName.Name = "lblCompanyName"
-        lblCompanyName.Size = New Size(128, 21)
+        lblCompanyName.Size = New Size(123, 21)
         lblCompanyName.TabIndex = 0
         lblCompanyName.Text = "Company Name"
         ' 
@@ -1109,7 +1108,7 @@ Partial Class frmOpening
         ' 
         txtInternshipStatus.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtInternshipStatus.BorderStyle = BorderStyle.FixedSingle
-        txtInternshipStatus.Font = New Font("Segoe UI", 10.0F)
+        txtInternshipStatus.Font = New Font("Segoe UI", 10F)
         txtInternshipStatus.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtInternshipStatus.Location = New Point(40, 144)
         txtInternshipStatus.Name = "txtInternshipStatus"
@@ -1124,18 +1123,18 @@ Partial Class frmOpening
         lblInternshipStatus.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblInternshipStatus.Location = New Point(40, 120)
         lblInternshipStatus.Name = "lblInternshipStatus"
-        lblInternshipStatus.Size = New Size(138, 21)
+        lblInternshipStatus.Size = New Size(126, 21)
         lblInternshipStatus.TabIndex = 1
         lblInternshipStatus.Text = "Internship Status"
         ' 
         ' lblInternshipTitle
         ' 
         lblInternshipTitle.Dock = DockStyle.Top
-        lblInternshipTitle.Font = New Font("Segoe UI", 20.0F, FontStyle.Bold)
+        lblInternshipTitle.Font = New Font("Segoe UI", 20F, FontStyle.Bold)
         lblInternshipTitle.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         lblInternshipTitle.Location = New Point(40, 40)
         lblInternshipTitle.Name = "lblInternshipTitle"
-        lblInternshipTitle.Size = New Size(960, 48)
+        lblInternshipTitle.Size = New Size(939, 48)
         lblInternshipTitle.TabIndex = 0
         lblInternshipTitle.Text = "INTERNSHIP DETAILS"
         ' 
@@ -1167,7 +1166,7 @@ Partial Class frmOpening
         dgvVisitLogs.Columns.AddRange(New DataGridViewColumn() {colVisitDate, colVisitType, colScore, colMaxScore, colRemarks, colDownload})
         dgvVisitLogs.Dock = DockStyle.Top
         dgvVisitLogs.GridColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        dgvVisitLogs.Location = New Point(40, 208)
+        dgvVisitLogs.Location = New Point(40, 88)
         dgvVisitLogs.Name = "dgvVisitLogs"
         dgvVisitLogs.ReadOnly = True
         dgvVisitLogs.RowHeadersVisible = False
@@ -1225,7 +1224,7 @@ Partial Class frmOpening
         ' 
         txtVisitInternshipID.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtVisitInternshipID.BorderStyle = BorderStyle.FixedSingle
-        txtVisitInternshipID.Font = New Font("Segoe UI", 10.0F)
+        txtVisitInternshipID.Font = New Font("Segoe UI", 10F)
         txtVisitInternshipID.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtVisitInternshipID.Location = New Point(40, 144)
         txtVisitInternshipID.Name = "txtVisitInternshipID"
@@ -1240,14 +1239,14 @@ Partial Class frmOpening
         lblVisitInternshipID.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblVisitInternshipID.Location = New Point(40, 120)
         lblVisitInternshipID.Name = "lblVisitInternshipID"
-        lblVisitInternshipID.Size = New Size(108, 21)
+        lblVisitInternshipID.Size = New Size(99, 21)
         lblVisitInternshipID.TabIndex = 1
         lblVisitInternshipID.Text = "Internship ID"
         ' 
         ' lblVisitLogsTitle
         ' 
         lblVisitLogsTitle.Dock = DockStyle.Top
-        lblVisitLogsTitle.Font = New Font("Segoe UI", 20.0F, FontStyle.Bold)
+        lblVisitLogsTitle.Font = New Font("Segoe UI", 20F, FontStyle.Bold)
         lblVisitLogsTitle.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         lblVisitLogsTitle.Location = New Point(40, 40)
         lblVisitLogsTitle.Name = "lblVisitLogsTitle"
@@ -1283,7 +1282,7 @@ Partial Class frmOpening
         btnDownloadReport.Cursor = Cursors.Hand
         btnDownloadReport.FlatAppearance.BorderSize = 0
         btnDownloadReport.FlatStyle = FlatStyle.Flat
-        btnDownloadReport.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        btnDownloadReport.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnDownloadReport.ForeColor = Color.White
         btnDownloadReport.Location = New Point(40, 544)
         btnDownloadReport.Name = "btnDownloadReport"
@@ -1296,7 +1295,7 @@ Partial Class frmOpening
         ' 
         txtGradedAt.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtGradedAt.BorderStyle = BorderStyle.FixedSingle
-        txtGradedAt.Font = New Font("Segoe UI", 10.0F)
+        txtGradedAt.Font = New Font("Segoe UI", 10F)
         txtGradedAt.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtGradedAt.Location = New Point(544, 456)
         txtGradedAt.Name = "txtGradedAt"
@@ -1311,7 +1310,7 @@ Partial Class frmOpening
         lblGradedAt.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblGradedAt.Location = New Point(544, 432)
         lblGradedAt.Name = "lblGradedAt"
-        lblGradedAt.Size = New Size(83, 21)
+        lblGradedAt.Size = New Size(80, 21)
         lblGradedAt.TabIndex = 7
         lblGradedAt.Text = "Graded At"
         ' 
@@ -1319,7 +1318,7 @@ Partial Class frmOpening
         ' 
         txtEvaluatedBy.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtEvaluatedBy.BorderStyle = BorderStyle.FixedSingle
-        txtEvaluatedBy.Font = New Font("Segoe UI", 10.0F)
+        txtEvaluatedBy.Font = New Font("Segoe UI", 10F)
         txtEvaluatedBy.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtEvaluatedBy.Location = New Point(40, 456)
         txtEvaluatedBy.Name = "txtEvaluatedBy"
@@ -1334,13 +1333,13 @@ Partial Class frmOpening
         lblEvaluatedBy.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblEvaluatedBy.Location = New Point(40, 432)
         lblEvaluatedBy.Name = "lblEvaluatedBy"
-        lblEvaluatedBy.Size = New Size(105, 21)
+        lblEvaluatedBy.Size = New Size(98, 21)
         lblEvaluatedBy.TabIndex = 5
         lblEvaluatedBy.Text = "Evaluated By"
         ' 
         ' lblFinalGradeValue
         ' 
-        lblFinalGradeValue.Font = New Font("Segoe UI", 72.0F, FontStyle.Bold)
+        lblFinalGradeValue.Font = New Font("Segoe UI", 72F, FontStyle.Bold)
         lblFinalGradeValue.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         lblFinalGradeValue.Location = New Point(40, 232)
         lblFinalGradeValue.Name = "lblFinalGradeValue"
@@ -1351,7 +1350,7 @@ Partial Class frmOpening
         ' 
         ' lblFinalGradeLabel
         ' 
-        lblFinalGradeLabel.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
+        lblFinalGradeLabel.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
         lblFinalGradeLabel.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblFinalGradeLabel.Location = New Point(40, 192)
         lblFinalGradeLabel.Name = "lblFinalGradeLabel"
@@ -1364,7 +1363,7 @@ Partial Class frmOpening
         ' 
         txtFinalInternshipStatus.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
         txtFinalInternshipStatus.BorderStyle = BorderStyle.FixedSingle
-        txtFinalInternshipStatus.Font = New Font("Segoe UI", 10.0F)
+        txtFinalInternshipStatus.Font = New Font("Segoe UI", 10F)
         txtFinalInternshipStatus.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         txtFinalInternshipStatus.Location = New Point(40, 144)
         txtFinalInternshipStatus.Name = "txtFinalInternshipStatus"
@@ -1379,14 +1378,14 @@ Partial Class frmOpening
         lblFinalInternshipStatus.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblFinalInternshipStatus.Location = New Point(40, 120)
         lblFinalInternshipStatus.Name = "lblFinalInternshipStatus"
-        lblFinalInternshipStatus.Size = New Size(138, 21)
+        lblFinalInternshipStatus.Size = New Size(126, 21)
         lblFinalInternshipStatus.TabIndex = 1
         lblFinalInternshipStatus.Text = "Internship Status"
         ' 
         ' lblFinalGradeTitle
         ' 
         lblFinalGradeTitle.Dock = DockStyle.Top
-        lblFinalGradeTitle.Font = New Font("Segoe UI", 20.0F, FontStyle.Bold)
+        lblFinalGradeTitle.Font = New Font("Segoe UI", 20F, FontStyle.Bold)
         lblFinalGradeTitle.ForeColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         lblFinalGradeTitle.Location = New Point(40, 40)
         lblFinalGradeTitle.Name = "lblFinalGradeTitle"
@@ -1396,13 +1395,13 @@ Partial Class frmOpening
         ' 
         ' frmOpening
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(245), CByte(245), CByte(245))
         ClientSize = New Size(1384, 768)
         Controls.Add(pnlMain)
         Controls.Add(pnlSidebar)
-        Font = New Font("Segoe UI", 9.0F)
+        Font = New Font("Segoe UI", 9F)
         MinimumSize = New Size(1400, 815)
         Name = "frmOpening"
         StartPosition = FormStartPosition.CenterScreen
