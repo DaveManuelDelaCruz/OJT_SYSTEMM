@@ -11,6 +11,7 @@ Partial Class frmFacultyDashboard
         End Try
     End Sub
 
+    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
     <System.Diagnostics.DebuggerStepThrough()>
@@ -210,7 +211,7 @@ Partial Class frmFacultyDashboard
         ' lblHeaderTitle
         ' 
         lblHeaderTitle.Dock = DockStyle.Fill
-        lblHeaderTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
+        lblHeaderTitle.Font = New Font("Segoe UI Semibold", 16.0F, FontStyle.Bold)
         lblHeaderTitle.ForeColor = Color.White
         lblHeaderTitle.Location = New Point(0, 0)
         lblHeaderTitle.Name = "lblHeaderTitle"
@@ -243,7 +244,7 @@ Partial Class frmFacultyDashboard
         btnDashboardHome.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnDashboardHome.FlatAppearance.BorderSize = 0
         btnDashboardHome.FlatStyle = FlatStyle.Flat
-        btnDashboardHome.Font = New Font("Segoe UI", 11F)
+        btnDashboardHome.Font = New Font("Segoe UI", 11.0F)
         btnDashboardHome.ForeColor = Color.White
         btnDashboardHome.Location = New Point(17, 27)
         btnDashboardHome.Margin = New Padding(3, 4, 3, 4)
@@ -258,7 +259,7 @@ Partial Class frmFacultyDashboard
         btnManageStudents.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnManageStudents.FlatAppearance.BorderSize = 0
         btnManageStudents.FlatStyle = FlatStyle.Flat
-        btnManageStudents.Font = New Font("Segoe UI", 11F)
+        btnManageStudents.Font = New Font("Segoe UI", 11.0F)
         btnManageStudents.ForeColor = Color.White
         btnManageStudents.Location = New Point(17, 80)
         btnManageStudents.Margin = New Padding(3, 4, 3, 4)
@@ -273,7 +274,7 @@ Partial Class frmFacultyDashboard
         btnInternshipAssignment.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnInternshipAssignment.FlatAppearance.BorderSize = 0
         btnInternshipAssignment.FlatStyle = FlatStyle.Flat
-        btnInternshipAssignment.Font = New Font("Segoe UI", 11F)
+        btnInternshipAssignment.Font = New Font("Segoe UI", 11.0F)
         btnInternshipAssignment.ForeColor = Color.White
         btnInternshipAssignment.Location = New Point(17, 133)
         btnInternshipAssignment.Margin = New Padding(3, 4, 3, 4)
@@ -288,7 +289,7 @@ Partial Class frmFacultyDashboard
         btnVisitLogs.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnVisitLogs.FlatAppearance.BorderSize = 0
         btnVisitLogs.FlatStyle = FlatStyle.Flat
-        btnVisitLogs.Font = New Font("Segoe UI", 11F)
+        btnVisitLogs.Font = New Font("Segoe UI", 11.0F)
         btnVisitLogs.ForeColor = Color.White
         btnVisitLogs.Location = New Point(17, 187)
         btnVisitLogs.Margin = New Padding(3, 4, 3, 4)
@@ -303,7 +304,7 @@ Partial Class frmFacultyDashboard
         btnGrading.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnGrading.FlatAppearance.BorderSize = 0
         btnGrading.FlatStyle = FlatStyle.Flat
-        btnGrading.Font = New Font("Segoe UI", 11F)
+        btnGrading.Font = New Font("Segoe UI", 11.0F)
         btnGrading.ForeColor = Color.White
         btnGrading.Location = New Point(17, 240)
         btnGrading.Margin = New Padding(3, 4, 3, 4)
@@ -318,7 +319,7 @@ Partial Class frmFacultyDashboard
         btnCompanies.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnCompanies.FlatAppearance.BorderSize = 0
         btnCompanies.FlatStyle = FlatStyle.Flat
-        btnCompanies.Font = New Font("Segoe UI", 11F)
+        btnCompanies.Font = New Font("Segoe UI", 11.0F)
         btnCompanies.ForeColor = Color.White
         btnCompanies.Location = New Point(17, 293)
         btnCompanies.Margin = New Padding(3, 4, 3, 4)
@@ -333,7 +334,7 @@ Partial Class frmFacultyDashboard
         btnCompanyContacts.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnCompanyContacts.FlatAppearance.BorderSize = 0
         btnCompanyContacts.FlatStyle = FlatStyle.Flat
-        btnCompanyContacts.Font = New Font("Segoe UI", 11F)
+        btnCompanyContacts.Font = New Font("Segoe UI", 11.0F)
         btnCompanyContacts.ForeColor = Color.White
         btnCompanyContacts.Location = New Point(17, 347)
         btnCompanyContacts.Margin = New Padding(3, 4, 3, 4)
@@ -348,7 +349,7 @@ Partial Class frmFacultyDashboard
         btnFacultyProfile.BackColor = Color.FromArgb(CByte(34), CByte(51), CByte(34))
         btnFacultyProfile.FlatAppearance.BorderSize = 0
         btnFacultyProfile.FlatStyle = FlatStyle.Flat
-        btnFacultyProfile.Font = New Font("Segoe UI", 11F)
+        btnFacultyProfile.Font = New Font("Segoe UI", 11.0F)
         btnFacultyProfile.ForeColor = Color.White
         btnFacultyProfile.Location = New Point(17, 400)
         btnFacultyProfile.Margin = New Padding(3, 4, 3, 4)
@@ -363,7 +364,7 @@ Partial Class frmFacultyDashboard
         btnLogout.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
-        btnLogout.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        btnLogout.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         btnLogout.ForeColor = Color.White
         btnLogout.Location = New Point(17, 747)
         btnLogout.Margin = New Padding(3, 4, 3, 4)
@@ -429,7 +430,7 @@ Partial Class frmFacultyDashboard
         ' lblLatestActivityTitle
         ' 
         lblLatestActivityTitle.AutoSize = True
-        lblLatestActivityTitle.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        lblLatestActivityTitle.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         lblLatestActivityTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblLatestActivityTitle.Location = New Point(32, 293)
         lblLatestActivityTitle.Name = "lblLatestActivityTitle"
@@ -465,7 +466,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblTotalStudentsValue
         ' 
-        lblTotalStudentsValue.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold)
+        lblTotalStudentsValue.Font = New Font("Segoe UI Semibold", 18.0F, FontStyle.Bold)
         lblTotalStudentsValue.ForeColor = Color.FromArgb(CByte(46), CByte(125), CByte(50))
         lblTotalStudentsValue.Location = New Point(9, 69)
         lblTotalStudentsValue.Name = "lblTotalStudentsValue"
@@ -477,7 +478,7 @@ Partial Class frmFacultyDashboard
         ' lblTotalStudentsTitle
         ' 
         lblTotalStudentsTitle.AutoSize = True
-        lblTotalStudentsTitle.Font = New Font("Segoe UI", 10F)
+        lblTotalStudentsTitle.Font = New Font("Segoe UI", 10.0F)
         lblTotalStudentsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblTotalStudentsTitle.Location = New Point(9, 21)
         lblTotalStudentsTitle.Name = "lblTotalStudentsTitle"
@@ -499,7 +500,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblActiveInternshipsValue
         ' 
-        lblActiveInternshipsValue.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold)
+        lblActiveInternshipsValue.Font = New Font("Segoe UI Semibold", 18.0F, FontStyle.Bold)
         lblActiveInternshipsValue.ForeColor = Color.FromArgb(CByte(51), CByte(105), CByte(30))
         lblActiveInternshipsValue.Location = New Point(9, 69)
         lblActiveInternshipsValue.Name = "lblActiveInternshipsValue"
@@ -511,7 +512,7 @@ Partial Class frmFacultyDashboard
         ' lblActiveInternshipsTitle
         ' 
         lblActiveInternshipsTitle.AutoSize = True
-        lblActiveInternshipsTitle.Font = New Font("Segoe UI", 10F)
+        lblActiveInternshipsTitle.Font = New Font("Segoe UI", 10.0F)
         lblActiveInternshipsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblActiveInternshipsTitle.Location = New Point(9, 21)
         lblActiveInternshipsTitle.Name = "lblActiveInternshipsTitle"
@@ -532,7 +533,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblCompaniesValue
         ' 
-        lblCompaniesValue.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold)
+        lblCompaniesValue.Font = New Font("Segoe UI Semibold", 18.0F, FontStyle.Bold)
         lblCompaniesValue.ForeColor = Color.FromArgb(CByte(30), CByte(136), CByte(229))
         lblCompaniesValue.Location = New Point(9, 69)
         lblCompaniesValue.Name = "lblCompaniesValue"
@@ -544,7 +545,7 @@ Partial Class frmFacultyDashboard
         ' lblCompaniesTitle
         ' 
         lblCompaniesTitle.AutoSize = True
-        lblCompaniesTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblCompaniesTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
         lblCompaniesTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblCompaniesTitle.Location = New Point(32, 27)
         lblCompaniesTitle.Name = "lblCompaniesTitle"
@@ -566,7 +567,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblPendingVisitLogsValue
         ' 
-        lblPendingVisitLogsValue.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold)
+        lblPendingVisitLogsValue.Font = New Font("Segoe UI Semibold", 18.0F, FontStyle.Bold)
         lblPendingVisitLogsValue.ForeColor = Color.FromArgb(CByte(249), CByte(168), CByte(37))
         lblPendingVisitLogsValue.Location = New Point(9, 69)
         lblPendingVisitLogsValue.Name = "lblPendingVisitLogsValue"
@@ -578,7 +579,7 @@ Partial Class frmFacultyDashboard
         ' lblPendingVisitLogsTitle
         ' 
         lblPendingVisitLogsTitle.AutoSize = True
-        lblPendingVisitLogsTitle.Font = New Font("Segoe UI", 10F)
+        lblPendingVisitLogsTitle.Font = New Font("Segoe UI", 10.0F)
         lblPendingVisitLogsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblPendingVisitLogsTitle.Location = New Point(9, 21)
         lblPendingVisitLogsTitle.Name = "lblPendingVisitLogsTitle"
@@ -589,7 +590,7 @@ Partial Class frmFacultyDashboard
         ' lblDashboardTitle
         ' 
         lblDashboardTitle.AutoSize = True
-        lblDashboardTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblDashboardTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
         lblDashboardTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblDashboardTitle.Location = New Point(27, 27)
         lblDashboardTitle.Name = "lblDashboardTitle"
@@ -639,7 +640,7 @@ Partial Class frmFacultyDashboard
         btnSearchStudent.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         btnSearchStudent.FlatAppearance.BorderSize = 0
         btnSearchStudent.FlatStyle = FlatStyle.Flat
-        btnSearchStudent.Font = New Font("Segoe UI Semibold", 10F)
+        btnSearchStudent.Font = New Font("Segoe UI Semibold", 10.0F)
         btnSearchStudent.ForeColor = Color.White
         btnSearchStudent.Location = New Point(448, 128)
         btnSearchStudent.Margin = New Padding(3, 4, 3, 4)
@@ -651,7 +652,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' txtSearchStudent
         ' 
-        txtSearchStudent.Font = New Font("Segoe UI", 10F)
+        txtSearchStudent.Font = New Font("Segoe UI", 10.0F)
         txtSearchStudent.Location = New Point(128, 132)
         txtSearchStudent.Margin = New Padding(3, 4, 3, 4)
         txtSearchStudent.Name = "txtSearchStudent"
@@ -661,7 +662,7 @@ Partial Class frmFacultyDashboard
         ' lblSearchStudent
         ' 
         lblSearchStudent.AutoSize = True
-        lblSearchStudent.Font = New Font("Segoe UI", 10F)
+        lblSearchStudent.Font = New Font("Segoe UI", 10.0F)
         lblSearchStudent.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblSearchStudent.Location = New Point(37, 136)
         lblSearchStudent.Name = "lblSearchStudent"
@@ -672,7 +673,7 @@ Partial Class frmFacultyDashboard
         ' lblManageStudentsTitle
         ' 
         lblManageStudentsTitle.AutoSize = True
-        lblManageStudentsTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblManageStudentsTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
         lblManageStudentsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblManageStudentsTitle.Location = New Point(32, 32)
         lblManageStudentsTitle.Name = "lblManageStudentsTitle"
@@ -707,7 +708,7 @@ Partial Class frmFacultyDashboard
         btnRemoveInternship.BackColor = Color.FromArgb(CByte(211), CByte(47), CByte(47))
         btnRemoveInternship.FlatAppearance.BorderSize = 0
         btnRemoveInternship.FlatStyle = FlatStyle.Flat
-        btnRemoveInternship.Font = New Font("Segoe UI Semibold", 10F)
+        btnRemoveInternship.Font = New Font("Segoe UI Semibold", 10.0F)
         btnRemoveInternship.ForeColor = Color.White
         btnRemoveInternship.Location = New Point(366, 768)
         btnRemoveInternship.Margin = New Padding(3, 4, 3, 4)
@@ -723,7 +724,7 @@ Partial Class frmFacultyDashboard
         btnClearInternship.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         btnClearInternship.FlatAppearance.BorderSize = 0
         btnClearInternship.FlatStyle = FlatStyle.Flat
-        btnClearInternship.Font = New Font("Segoe UI", 10F)
+        btnClearInternship.Font = New Font("Segoe UI", 10.0F)
         btnClearInternship.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         btnClearInternship.Location = New Point(210, 768)
         btnClearInternship.Margin = New Padding(3, 4, 3, 4)
@@ -739,7 +740,7 @@ Partial Class frmFacultyDashboard
         btnAssignInternship.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         btnAssignInternship.FlatAppearance.BorderSize = 0
         btnAssignInternship.FlatStyle = FlatStyle.Flat
-        btnAssignInternship.Font = New Font("Segoe UI Semibold", 10F)
+        btnAssignInternship.Font = New Font("Segoe UI Semibold", 10.0F)
         btnAssignInternship.ForeColor = Color.White
         btnAssignInternship.Location = New Point(37, 768)
         btnAssignInternship.Margin = New Padding(3, 4, 3, 4)
@@ -878,7 +879,7 @@ Partial Class frmFacultyDashboard
         ' lblWorkScheduleTitle
         ' 
         lblWorkScheduleTitle.AutoSize = True
-        lblWorkScheduleTitle.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        lblWorkScheduleTitle.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         lblWorkScheduleTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblWorkScheduleTitle.Location = New Point(18, 21)
         lblWorkScheduleTitle.Name = "lblWorkScheduleTitle"
@@ -971,7 +972,7 @@ Partial Class frmFacultyDashboard
         ' lblCompanySectionTitle
         ' 
         lblCompanySectionTitle.AutoSize = True
-        lblCompanySectionTitle.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        lblCompanySectionTitle.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         lblCompanySectionTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblCompanySectionTitle.Location = New Point(18, 21)
         lblCompanySectionTitle.Name = "lblCompanySectionTitle"
@@ -1115,7 +1116,7 @@ Partial Class frmFacultyDashboard
         ' lblStudentInfoTitle
         ' 
         lblStudentInfoTitle.AutoSize = True
-        lblStudentInfoTitle.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        lblStudentInfoTitle.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         lblStudentInfoTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblStudentInfoTitle.Location = New Point(18, 21)
         lblStudentInfoTitle.Name = "lblStudentInfoTitle"
@@ -1128,7 +1129,7 @@ Partial Class frmFacultyDashboard
         btnSearchStudentIA.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         btnSearchStudentIA.FlatAppearance.BorderSize = 0
         btnSearchStudentIA.FlatStyle = FlatStyle.Flat
-        btnSearchStudentIA.Font = New Font("Segoe UI Semibold", 10F)
+        btnSearchStudentIA.Font = New Font("Segoe UI Semibold", 10.0F)
         btnSearchStudentIA.ForeColor = Color.White
         btnSearchStudentIA.Location = New Point(448, 75)
         btnSearchStudentIA.Margin = New Padding(3, 4, 3, 4)
@@ -1140,7 +1141,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' txtSearchStudentIA
         ' 
-        txtSearchStudentIA.Font = New Font("Segoe UI", 10F)
+        txtSearchStudentIA.Font = New Font("Segoe UI", 10.0F)
         txtSearchStudentIA.Location = New Point(183, 76)
         txtSearchStudentIA.Margin = New Padding(3, 4, 3, 4)
         txtSearchStudentIA.Name = "txtSearchStudentIA"
@@ -1150,7 +1151,7 @@ Partial Class frmFacultyDashboard
         ' lblSearchStudentIA
         ' 
         lblSearchStudentIA.AutoSize = True
-        lblSearchStudentIA.Font = New Font("Segoe UI", 10F)
+        lblSearchStudentIA.Font = New Font("Segoe UI", 10.0F)
         lblSearchStudentIA.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblSearchStudentIA.Location = New Point(37, 80)
         lblSearchStudentIA.Name = "lblSearchStudentIA"
@@ -1161,7 +1162,7 @@ Partial Class frmFacultyDashboard
         ' lblInternshipTitle
         ' 
         lblInternshipTitle.AutoSize = True
-        lblInternshipTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblInternshipTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
         lblInternshipTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblInternshipTitle.Location = New Point(32, 27)
         lblInternshipTitle.Name = "lblInternshipTitle"
@@ -1218,7 +1219,7 @@ Partial Class frmFacultyDashboard
         ' lblVLFormTitle
         ' 
         lblVLFormTitle.AutoSize = True
-        lblVLFormTitle.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        lblVLFormTitle.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         lblVLFormTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblVLFormTitle.Location = New Point(18, 21)
         lblVLFormTitle.Name = "lblVLFormTitle"
@@ -1371,7 +1372,7 @@ Partial Class frmFacultyDashboard
         btnVLBrowse.BackColor = Color.FromArgb(CByte(255), CByte(235), CByte(59))
         btnVLBrowse.FlatAppearance.BorderSize = 0
         btnVLBrowse.FlatStyle = FlatStyle.Flat
-        btnVLBrowse.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnVLBrowse.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
         btnVLBrowse.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         btnVLBrowse.Location = New Point(894, 155)
         btnVLBrowse.Margin = New Padding(3, 4, 3, 4)
@@ -1386,7 +1387,7 @@ Partial Class frmFacultyDashboard
         btnVLSave.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         btnVLSave.FlatAppearance.BorderSize = 0
         btnVLSave.FlatStyle = FlatStyle.Flat
-        btnVLSave.Font = New Font("Segoe UI Semibold", 10F)
+        btnVLSave.Font = New Font("Segoe UI Semibold", 10.0F)
         btnVLSave.ForeColor = Color.White
         btnVLSave.Location = New Point(137, 256)
         btnVLSave.Margin = New Padding(3, 4, 3, 4)
@@ -1401,7 +1402,7 @@ Partial Class frmFacultyDashboard
         btnVLCancel.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         btnVLCancel.FlatAppearance.BorderSize = 0
         btnVLCancel.FlatStyle = FlatStyle.Flat
-        btnVLCancel.Font = New Font("Segoe UI", 10F)
+        btnVLCancel.Font = New Font("Segoe UI", 10.0F)
         btnVLCancel.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         btnVLCancel.Location = New Point(261, 256)
         btnVLCancel.Margin = New Padding(3, 4, 3, 4)
@@ -1435,7 +1436,7 @@ Partial Class frmFacultyDashboard
         ' cboVLInternship
         ' 
         cboVLInternship.DropDownStyle = ComboBoxStyle.DropDownList
-        cboVLInternship.Font = New Font("Segoe UI", 10F)
+        cboVLInternship.Font = New Font("Segoe UI", 10.0F)
         cboVLInternship.Location = New Point(183, 81)
         cboVLInternship.Margin = New Padding(3, 4, 3, 4)
         cboVLInternship.Name = "cboVLInternship"
@@ -1445,7 +1446,7 @@ Partial Class frmFacultyDashboard
         ' lblVLSelectInternship
         ' 
         lblVLSelectInternship.AutoSize = True
-        lblVLSelectInternship.Font = New Font("Segoe UI", 10F)
+        lblVLSelectInternship.Font = New Font("Segoe UI", 10.0F)
         lblVLSelectInternship.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblVLSelectInternship.Location = New Point(37, 85)
         lblVLSelectInternship.Name = "lblVLSelectInternship"
@@ -1456,7 +1457,7 @@ Partial Class frmFacultyDashboard
         ' lblVisitLogsTitle
         ' 
         lblVisitLogsTitle.AutoSize = True
-        lblVisitLogsTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblVisitLogsTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
         lblVisitLogsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblVisitLogsTitle.Location = New Point(32, 27)
         lblVisitLogsTitle.Name = "lblVisitLogsTitle"
@@ -1501,7 +1502,7 @@ Partial Class frmFacultyDashboard
         ' lblGradeFormTitle
         ' 
         lblGradeFormTitle.AutoSize = True
-        lblGradeFormTitle.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        lblGradeFormTitle.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         lblGradeFormTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblGradeFormTitle.Location = New Point(18, 21)
         lblGradeFormTitle.Name = "lblGradeFormTitle"
@@ -1522,7 +1523,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' txtFinalGrade
         ' 
-        txtFinalGrade.Font = New Font("Segoe UI", 10F)
+        txtFinalGrade.Font = New Font("Segoe UI", 10.0F)
         txtFinalGrade.Location = New Point(146, 71)
         txtFinalGrade.Margin = New Padding(3, 4, 3, 4)
         txtFinalGrade.Name = "txtFinalGrade"
@@ -1532,7 +1533,7 @@ Partial Class frmFacultyDashboard
         ' lblGradeHint
         ' 
         lblGradeHint.AutoSize = True
-        lblGradeHint.Font = New Font("Segoe UI", 9F, FontStyle.Italic)
+        lblGradeHint.Font = New Font("Segoe UI", 9.0F, FontStyle.Italic)
         lblGradeHint.ForeColor = Color.FromArgb(CByte(120), CByte(120), CByte(120))
         lblGradeHint.Location = New Point(256, 76)
         lblGradeHint.Name = "lblGradeHint"
@@ -1545,7 +1546,7 @@ Partial Class frmFacultyDashboard
         btnSaveGrade.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         btnSaveGrade.FlatAppearance.BorderSize = 0
         btnSaveGrade.FlatStyle = FlatStyle.Flat
-        btnSaveGrade.Font = New Font("Segoe UI Semibold", 10F)
+        btnSaveGrade.Font = New Font("Segoe UI Semibold", 10.0F)
         btnSaveGrade.ForeColor = Color.White
         btnSaveGrade.Location = New Point(146, 128)
         btnSaveGrade.Margin = New Padding(3, 4, 3, 4)
@@ -1560,7 +1561,7 @@ Partial Class frmFacultyDashboard
         btnClearGrade.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         btnClearGrade.FlatAppearance.BorderSize = 0
         btnClearGrade.FlatStyle = FlatStyle.Flat
-        btnClearGrade.Font = New Font("Segoe UI", 10F)
+        btnClearGrade.Font = New Font("Segoe UI", 10.0F)
         btnClearGrade.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         btnClearGrade.Location = New Point(283, 128)
         btnClearGrade.Margin = New Padding(3, 4, 3, 4)
@@ -1598,7 +1599,7 @@ Partial Class frmFacultyDashboard
         ' lblGradeStudentInfoTitle
         ' 
         lblGradeStudentInfoTitle.AutoSize = True
-        lblGradeStudentInfoTitle.Font = New Font("Segoe UI Semibold", 11F, FontStyle.Bold)
+        lblGradeStudentInfoTitle.Font = New Font("Segoe UI Semibold", 11.0F, FontStyle.Bold)
         lblGradeStudentInfoTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblGradeStudentInfoTitle.Location = New Point(18, 21)
         lblGradeStudentInfoTitle.Name = "lblGradeStudentInfoTitle"
@@ -1741,7 +1742,7 @@ Partial Class frmFacultyDashboard
         ' cboGradeStudent
         ' 
         cboGradeStudent.DropDownStyle = ComboBoxStyle.DropDownList
-        cboGradeStudent.Font = New Font("Segoe UI", 10F)
+        cboGradeStudent.Font = New Font("Segoe UI", 10.0F)
         cboGradeStudent.Location = New Point(174, 81)
         cboGradeStudent.Margin = New Padding(3, 4, 3, 4)
         cboGradeStudent.Name = "cboGradeStudent"
@@ -1751,7 +1752,7 @@ Partial Class frmFacultyDashboard
         ' lblGradeSelectStudent
         ' 
         lblGradeSelectStudent.AutoSize = True
-        lblGradeSelectStudent.Font = New Font("Segoe UI", 10F)
+        lblGradeSelectStudent.Font = New Font("Segoe UI", 10.0F)
         lblGradeSelectStudent.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblGradeSelectStudent.Location = New Point(37, 85)
         lblGradeSelectStudent.Name = "lblGradeSelectStudent"
@@ -1762,7 +1763,7 @@ Partial Class frmFacultyDashboard
         ' lblGradingTitle
         ' 
         lblGradingTitle.AutoSize = True
-        lblGradingTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblGradingTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
         lblGradingTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblGradingTitle.Location = New Point(32, 27)
         lblGradingTitle.Name = "lblGradingTitle"
@@ -1813,7 +1814,7 @@ Partial Class frmFacultyDashboard
         btnAddCompany.BackColor = Color.FromArgb(CByte(255), CByte(235), CByte(59))
         btnAddCompany.FlatAppearance.BorderSize = 0
         btnAddCompany.FlatStyle = FlatStyle.Flat
-        btnAddCompany.Font = New Font("Segoe UI Semibold", 10F)
+        btnAddCompany.Font = New Font("Segoe UI Semibold", 10.0F)
         btnAddCompany.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         btnAddCompany.Location = New Point(558, 79)
         btnAddCompany.Margin = New Padding(3, 4, 3, 4)
@@ -1828,7 +1829,7 @@ Partial Class frmFacultyDashboard
         btnSearchCompany.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         btnSearchCompany.FlatAppearance.BorderSize = 0
         btnSearchCompany.FlatStyle = FlatStyle.Flat
-        btnSearchCompany.Font = New Font("Segoe UI Semibold", 10F)
+        btnSearchCompany.Font = New Font("Segoe UI Semibold", 10.0F)
         btnSearchCompany.ForeColor = Color.White
         btnSearchCompany.Location = New Point(434, 79)
         btnSearchCompany.Margin = New Padding(3, 4, 3, 4)
@@ -1840,7 +1841,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' txtSearchCompany
         ' 
-        txtSearchCompany.Font = New Font("Segoe UI", 10F)
+        txtSearchCompany.Font = New Font("Segoe UI", 10.0F)
         txtSearchCompany.Location = New Point(105, 81)
         txtSearchCompany.Margin = New Padding(3, 4, 3, 4)
         txtSearchCompany.Name = "txtSearchCompany"
@@ -1850,7 +1851,7 @@ Partial Class frmFacultyDashboard
         ' lblSearchCompany
         ' 
         lblSearchCompany.AutoSize = True
-        lblSearchCompany.Font = New Font("Segoe UI", 10F)
+        lblSearchCompany.Font = New Font("Segoe UI", 10.0F)
         lblSearchCompany.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblSearchCompany.Location = New Point(37, 85)
         lblSearchCompany.Name = "lblSearchCompany"
@@ -1896,7 +1897,7 @@ Partial Class frmFacultyDashboard
         ' lblContactCompany
         ' 
         lblContactCompany.AutoSize = True
-        lblContactCompany.Font = New Font("Segoe UI", 10F)
+        lblContactCompany.Font = New Font("Segoe UI", 10.0F)
         lblContactCompany.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblContactCompany.Location = New Point(37, 85)
         lblContactCompany.Name = "lblContactCompany"
@@ -1907,7 +1908,7 @@ Partial Class frmFacultyDashboard
         ' lblCompanyContactsTitle
         ' 
         lblCompanyContactsTitle.AutoSize = True
-        lblCompanyContactsTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblCompanyContactsTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
         lblCompanyContactsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblCompanyContactsTitle.Location = New Point(32, 27)
         lblCompanyContactsTitle.Name = "lblCompanyContactsTitle"
@@ -1945,7 +1946,7 @@ Partial Class frmFacultyDashboard
         ' lblProfileTitle
         ' 
         lblProfileTitle.AutoSize = True
-        lblProfileTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
+        lblProfileTitle.Font = New Font("Segoe UI Semibold", 16.0F, FontStyle.Bold)
         lblProfileTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblProfileTitle.Location = New Point(37, 32)
         lblProfileTitle.Name = "lblProfileTitle"
@@ -1955,7 +1956,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblNameCaption
         ' 
-        lblNameCaption.Font = New Font("Segoe UI", 10F)
+        lblNameCaption.Font = New Font("Segoe UI", 10.0F)
         lblNameCaption.Location = New Point(46, 107)
         lblNameCaption.Name = "lblNameCaption"
         lblNameCaption.Size = New Size(114, 31)
@@ -1964,7 +1965,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblFacultyName
         ' 
-        lblFacultyName.Font = New Font("Segoe UI Semibold", 10F)
+        lblFacultyName.Font = New Font("Segoe UI Semibold", 10.0F)
         lblFacultyName.Location = New Point(183, 107)
         lblFacultyName.Name = "lblFacultyName"
         lblFacultyName.Size = New Size(343, 29)
@@ -1972,7 +1973,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblPositionCaption
         ' 
-        lblPositionCaption.Font = New Font("Segoe UI", 10F)
+        lblPositionCaption.Font = New Font("Segoe UI", 10.0F)
         lblPositionCaption.Location = New Point(46, 160)
         lblPositionCaption.Name = "lblPositionCaption"
         lblPositionCaption.Size = New Size(114, 31)
@@ -1981,7 +1982,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblFacultyPosition
         ' 
-        lblFacultyPosition.Font = New Font("Segoe UI Semibold", 10F)
+        lblFacultyPosition.Font = New Font("Segoe UI Semibold", 10.0F)
         lblFacultyPosition.Location = New Point(183, 160)
         lblFacultyPosition.Name = "lblFacultyPosition"
         lblFacultyPosition.Size = New Size(343, 29)
@@ -1989,7 +1990,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblEmployeeNoCaption
         ' 
-        lblEmployeeNoCaption.Font = New Font("Segoe UI", 10F)
+        lblEmployeeNoCaption.Font = New Font("Segoe UI", 10.0F)
         lblEmployeeNoCaption.Location = New Point(46, 213)
         lblEmployeeNoCaption.Name = "lblEmployeeNoCaption"
         lblEmployeeNoCaption.Size = New Size(114, 31)
@@ -1998,7 +1999,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblEmployeeNumber
         ' 
-        lblEmployeeNumber.Font = New Font("Segoe UI Semibold", 10F)
+        lblEmployeeNumber.Font = New Font("Segoe UI Semibold", 10.0F)
         lblEmployeeNumber.Location = New Point(183, 213)
         lblEmployeeNumber.Name = "lblEmployeeNumber"
         lblEmployeeNumber.Size = New Size(343, 29)
@@ -2006,7 +2007,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblDepartmentCaption
         ' 
-        lblDepartmentCaption.Font = New Font("Segoe UI", 10F)
+        lblDepartmentCaption.Font = New Font("Segoe UI", 10.0F)
         lblDepartmentCaption.Location = New Point(46, 267)
         lblDepartmentCaption.Name = "lblDepartmentCaption"
         lblDepartmentCaption.Size = New Size(114, 31)
@@ -2015,7 +2016,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblDepartment
         ' 
-        lblDepartment.Font = New Font("Segoe UI Semibold", 10F)
+        lblDepartment.Font = New Font("Segoe UI Semibold", 10.0F)
         lblDepartment.Location = New Point(183, 267)
         lblDepartment.Name = "lblDepartment"
         lblDepartment.Size = New Size(343, 29)
@@ -2023,7 +2024,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblEditableHeader
         ' 
-        lblEditableHeader.Font = New Font("Segoe UI Semibold", 12F)
+        lblEditableHeader.Font = New Font("Segoe UI Semibold", 12.0F)
         lblEditableHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
         lblEditableHeader.Location = New Point(46, 347)
         lblEditableHeader.Name = "lblEditableHeader"
@@ -2033,7 +2034,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblEmailCaption
         ' 
-        lblEmailCaption.Font = New Font("Segoe UI", 10F)
+        lblEmailCaption.Font = New Font("Segoe UI", 10.0F)
         lblEmailCaption.Location = New Point(46, 413)
         lblEmailCaption.Name = "lblEmailCaption"
         lblEmailCaption.Size = New Size(114, 31)
@@ -2042,7 +2043,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' txtFacultyEmail
         ' 
-        txtFacultyEmail.Font = New Font("Segoe UI", 10F)
+        txtFacultyEmail.Font = New Font("Segoe UI", 10.0F)
         txtFacultyEmail.Location = New Point(183, 408)
         txtFacultyEmail.Margin = New Padding(3, 4, 3, 4)
         txtFacultyEmail.Name = "txtFacultyEmail"
@@ -2052,7 +2053,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' lblContactCaption
         ' 
-        lblContactCaption.Font = New Font("Segoe UI", 10F)
+        lblContactCaption.Font = New Font("Segoe UI", 10.0F)
         lblContactCaption.Location = New Point(46, 467)
         lblContactCaption.Name = "lblContactCaption"
         lblContactCaption.Size = New Size(114, 31)
@@ -2061,7 +2062,7 @@ Partial Class frmFacultyDashboard
         ' 
         ' txtFacultyContact
         ' 
-        txtFacultyContact.Font = New Font("Segoe UI", 10F)
+        txtFacultyContact.Font = New Font("Segoe UI", 10.0F)
         txtFacultyContact.Location = New Point(183, 461)
         txtFacultyContact.Margin = New Padding(3, 4, 3, 4)
         txtFacultyContact.Name = "txtFacultyContact"
@@ -2099,13 +2100,13 @@ Partial Class frmFacultyDashboard
         ' 
         ' frmFacultyDashboard
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1371, 933)
         Controls.Add(pnlContent)
         Controls.Add(pnlLeft)
         Controls.Add(pnlHeader)
-        Font = New Font("Segoe UI", 9F)
+        Font = New Font("Segoe UI", 9.0F)
         Margin = New Padding(3, 4, 3, 4)
         Name = "frmFacultyDashboard"
         StartPosition = FormStartPosition.CenterScreen
@@ -2160,164 +2161,164 @@ Partial Class frmFacultyDashboard
     End Sub
 
     Friend WithEvents pnlHeader As Panel
-    Friend WithEvents lblHeaderTitle As Label
-    Friend WithEvents pnlLeft As Panel
-    Friend WithEvents btnDashboardHome As Button
-    Friend WithEvents btnManageStudents As Button
-    Friend WithEvents btnInternshipAssignment As Button
-    Friend WithEvents btnVisitLogs As Button
-    Friend WithEvents btnGrading As Button
-    Friend WithEvents btnCompanies As Button
-    Friend WithEvents btnCompanyContacts As Button
-    Friend WithEvents btnFacultyProfile As Button
-    Friend WithEvents btnLogout As Button
-    Friend WithEvents pnlContent As Panel
-    Friend WithEvents pnlDashboardHome As Panel
-    Friend WithEvents pnlManageStudents As Panel
-    Friend WithEvents pnlInternshipAssignment As Panel
-    Friend WithEvents pnlVisitLogs As Panel
-    Friend WithEvents pnlGrading As Panel
-    Friend WithEvents pnlCompanies As Panel
-    Friend WithEvents pnlCompanyContacts As Panel
-    Friend WithEvents pnlFacultyProfile As Panel
-    Friend WithEvents lblDashboardTitle As Label
-    Friend WithEvents flpCards As FlowLayoutPanel
-    Friend WithEvents pnlCardTotalStudents As Panel
-    Friend WithEvents lblTotalStudentsValue As Label
-    Friend WithEvents lblTotalStudentsTitle As Label
-    Friend WithEvents pnlCardActiveInternships As Panel
-    Friend WithEvents lblActiveInternshipsValue As Label
-    Friend WithEvents lblActiveInternshipsTitle As Label
-    Friend WithEvents pnlCardCompanies As Panel
-    Friend WithEvents lblCompaniesValue As Label
-    Friend WithEvents lblCompaniesTitle As Label
-    Friend WithEvents pnlCardPendingVisitLogs As Panel
-    Friend WithEvents lblPendingVisitLogsValue As Label
-    Friend WithEvents lblPendingVisitLogsTitle As Label
-    Friend WithEvents lblLatestActivityTitle As Label
-    Friend WithEvents dgvLatestActivity As DataGridView
-    Friend WithEvents lblManageStudentsTitle As Label
-    Friend WithEvents lblSearchStudent As Label
-    Friend WithEvents txtSearchStudent As TextBox
-    Friend WithEvents btnSearchStudent As Button
-    Friend WithEvents dgvStudents As DataGridView
+Friend WithEvents lblHeaderTitle As Label
+Friend WithEvents pnlLeft As Panel
+Friend WithEvents btnDashboardHome As Button
+Friend WithEvents btnManageStudents As Button
+Friend WithEvents btnInternshipAssignment As Button
+Friend WithEvents btnVisitLogs As Button
+Friend WithEvents btnGrading As Button
+Friend WithEvents btnCompanies As Button
+Friend WithEvents btnCompanyContacts As Button
+Friend WithEvents btnFacultyProfile As Button
+Friend WithEvents btnLogout As Button
+Friend WithEvents pnlContent As Panel
+Friend WithEvents pnlDashboardHome As Panel
+Friend WithEvents pnlManageStudents As Panel
+Friend WithEvents pnlInternshipAssignment As Panel
+Friend WithEvents pnlVisitLogs As Panel
+Friend WithEvents pnlGrading As Panel
+Friend WithEvents pnlCompanies As Panel
+Friend WithEvents pnlCompanyContacts As Panel
+Friend WithEvents pnlFacultyProfile As Panel
+Friend WithEvents lblDashboardTitle As Label
+Friend WithEvents flpCards As FlowLayoutPanel
+Friend WithEvents pnlCardTotalStudents As Panel
+Friend WithEvents lblTotalStudentsValue As Label
+Friend WithEvents lblTotalStudentsTitle As Label
+Friend WithEvents pnlCardActiveInternships As Panel
+Friend WithEvents lblActiveInternshipsValue As Label
+Friend WithEvents lblActiveInternshipsTitle As Label
+Friend WithEvents pnlCardCompanies As Panel
+Friend WithEvents lblCompaniesValue As Label
+Friend WithEvents lblCompaniesTitle As Label
+Friend WithEvents pnlCardPendingVisitLogs As Panel
+Friend WithEvents lblPendingVisitLogsValue As Label
+Friend WithEvents lblPendingVisitLogsTitle As Label
+Friend WithEvents lblLatestActivityTitle As Label
+Friend WithEvents dgvLatestActivity As DataGridView
+Friend WithEvents lblManageStudentsTitle As Label
+Friend WithEvents lblSearchStudent As Label
+Friend WithEvents txtSearchStudent As TextBox
+Friend WithEvents btnSearchStudent As Button
+Friend WithEvents dgvStudents As DataGridView
 
-    ' Internship Assignment controls
-    Friend WithEvents lblInternshipTitle As Label
-    Friend WithEvents lblSearchStudentIA As Label
-    Friend WithEvents txtSearchStudentIA As TextBox
-    Friend WithEvents btnSearchStudentIA As Button
-    Friend WithEvents grpStudentBorder As Panel
-    Friend WithEvents lblStudentInfoTitle As Label
-    Friend WithEvents lblStudentNoIA As Label
-    Friend WithEvents lblStudentNoValueIA As Label
-    Friend WithEvents lblStudentNameIA As Label
-    Friend WithEvents lblStudentNameValueIA As Label
-    Friend WithEvents lblCourseIA As Label
-    Friend WithEvents lblCourseValueIA As Label
-    Friend WithEvents lblRequiredHours As Label
-    Friend WithEvents lblRequiredHoursValue As Label
-    Friend WithEvents lblCurrentInternshipStatus As Label
-    Friend WithEvents lblCurrentInternshipStatusValue As Label
-    Friend WithEvents grpCompanyBorder As Panel
-    Friend WithEvents lblCompanySectionTitle As Label
-    Friend WithEvents lblCompany As Label
-    Friend WithEvents cboCompany As ComboBox
-    Friend WithEvents lblSupervisor As Label
-    Friend WithEvents cboSupervisor As ComboBox
-    Friend WithEvents lblEvaluator As Label
-    Friend WithEvents cboEvaluator As ComboBox
-    Friend WithEvents grpWorkScheduleBorder As Panel
-    Friend WithEvents lblWorkScheduleTitle As Label
-    Friend WithEvents lblWorkDays As Label
-    Friend WithEvents txtWorkDays As TextBox
-    Friend WithEvents lblStartDate As Label
-    Friend WithEvents dtpStartDate As DateTimePicker
-    Friend WithEvents lblEndDate As Label
-    Friend WithEvents dtpEndDate As DateTimePicker
-    Friend WithEvents lblStartTime As Label
-    Friend WithEvents dtpStartTime As DateTimePicker
-    Friend WithEvents lblEndTime As Label
-    Friend WithEvents dtpEndTime As DateTimePicker
-    Friend WithEvents btnAssignInternship As Button
-    Friend WithEvents btnClearInternship As Button
-    Friend WithEvents btnRemoveInternship As Button
-    ' Visit Logs controls
-    Friend WithEvents lblVisitLogsTitle As Label
-    Friend WithEvents lblVLSelectInternship As Label
-    Friend WithEvents cboVLInternship As ComboBox
-    Friend WithEvents dgvVisitLogs As DataGridView
-    Friend WithEvents grpVLForm As Panel
-    Friend WithEvents lblVLFormTitle As Label
-    Friend WithEvents lblVLVisitType As Label
-    Friend WithEvents cboVLVisitType As ComboBox
-    Friend WithEvents lblVLVisitDate As Label
-    Friend WithEvents dtpVLVisitDate As DateTimePicker
-    Friend WithEvents lblVLScore As Label
-    Friend WithEvents txtVLScore As TextBox
-    Friend WithEvents lblVLMaxScore As Label
-    Friend WithEvents txtVLMaxScore As TextBox
-    Friend WithEvents lblVLNextVisitDate As Label
-    Friend WithEvents dtpVLNextVisitDate As DateTimePicker
-    Friend WithEvents lblVLRemarks As Label
-    Friend WithEvents txtVLRemarks As TextBox
-    Friend WithEvents lblVLAttachment As Label
-    Friend WithEvents txtVLAttachment As TextBox
-    Friend WithEvents btnVLBrowse As Button
-    Friend WithEvents btnVLSave As Button
-    Friend WithEvents btnVLCancel As Button
-    ' Grading panel controls
-    Friend WithEvents lblGradingTitle As Label
-    Friend WithEvents lblGradeSelectStudent As Label
-    Friend WithEvents cboGradeStudent As ComboBox
-    Friend WithEvents grpGradeStudentInfo As Panel
-    Friend WithEvents lblGradeStudentInfoTitle As Label
-    Friend WithEvents lblGradeStudentNoLabel As Label
-    Friend WithEvents lblGradeStudentNoValue As Label
-    Friend WithEvents lblGradeNameLabel As Label
-    Friend WithEvents lblGradeNameValue As Label
-    Friend WithEvents lblGradeCourseLabel As Label
-    Friend WithEvents lblGradeCourseValue As Label
-    Friend WithEvents lblGradeRequiredHoursLabel As Label
-    Friend WithEvents lblGradeRequiredHoursValue As Label
-    Friend WithEvents lblGradeCompletedHoursLabel As Label
-    Friend WithEvents lblGradeCompletedHoursValue As Label
-    Friend WithEvents lblGradeStatusLabel As Label
-    Friend WithEvents lblGradeStatusValue As Label
-    Friend WithEvents grpGradeForm As Panel
-    Friend WithEvents lblGradeFormTitle As Label
-    Friend WithEvents lblFinalGradeLabel As Label
-    Friend WithEvents txtFinalGrade As TextBox
-    Friend WithEvents lblGradeHint As Label
-    Friend WithEvents btnSaveGrade As Button
-    Friend WithEvents btnClearGrade As Button
-    ' Companies panel controls
+' Internship Assignment controls
+Friend WithEvents lblInternshipTitle As Label
+Friend WithEvents lblSearchStudentIA As Label
+Friend WithEvents txtSearchStudentIA As TextBox
+Friend WithEvents btnSearchStudentIA As Button
+Friend WithEvents grpStudentBorder As Panel
+Friend WithEvents lblStudentInfoTitle As Label
+Friend WithEvents lblStudentNoIA As Label
+Friend WithEvents lblStudentNoValueIA As Label
+Friend WithEvents lblStudentNameIA As Label
+Friend WithEvents lblStudentNameValueIA As Label
+Friend WithEvents lblCourseIA As Label
+Friend WithEvents lblCourseValueIA As Label
+Friend WithEvents lblRequiredHours As Label
+Friend WithEvents lblRequiredHoursValue As Label
+Friend WithEvents lblCurrentInternshipStatus As Label
+Friend WithEvents lblCurrentInternshipStatusValue As Label
+Friend WithEvents grpCompanyBorder As Panel
+Friend WithEvents lblCompanySectionTitle As Label
+Friend WithEvents lblCompany As Label
+Friend WithEvents cboCompany As ComboBox
+Friend WithEvents lblSupervisor As Label
+Friend WithEvents cboSupervisor As ComboBox
+Friend WithEvents lblEvaluator As Label
+Friend WithEvents cboEvaluator As ComboBox
+Friend WithEvents grpWorkScheduleBorder As Panel
+Friend WithEvents lblWorkScheduleTitle As Label
+Friend WithEvents lblWorkDays As Label
+Friend WithEvents txtWorkDays As TextBox
+Friend WithEvents lblStartDate As Label
+Friend WithEvents dtpStartDate As DateTimePicker
+Friend WithEvents lblEndDate As Label
+Friend WithEvents dtpEndDate As DateTimePicker
+Friend WithEvents lblStartTime As Label
+Friend WithEvents dtpStartTime As DateTimePicker
+Friend WithEvents lblEndTime As Label
+Friend WithEvents dtpEndTime As DateTimePicker
+Friend WithEvents btnAssignInternship As Button
+Friend WithEvents btnClearInternship As Button
+Friend WithEvents btnRemoveInternship As Button
+' Visit Logs controls
+Friend WithEvents lblVisitLogsTitle As Label
+Friend WithEvents lblVLSelectInternship As Label
+Friend WithEvents cboVLInternship As ComboBox
+Friend WithEvents dgvVisitLogs As DataGridView
+Friend WithEvents grpVLForm As Panel
+Friend WithEvents lblVLFormTitle As Label
+Friend WithEvents lblVLVisitType As Label
+Friend WithEvents cboVLVisitType As ComboBox
+Friend WithEvents lblVLVisitDate As Label
+Friend WithEvents dtpVLVisitDate As DateTimePicker
+Friend WithEvents lblVLScore As Label
+Friend WithEvents txtVLScore As TextBox
+Friend WithEvents lblVLMaxScore As Label
+Friend WithEvents txtVLMaxScore As TextBox
+Friend WithEvents lblVLNextVisitDate As Label
+Friend WithEvents dtpVLNextVisitDate As DateTimePicker
+Friend WithEvents lblVLRemarks As Label
+Friend WithEvents txtVLRemarks As TextBox
+Friend WithEvents lblVLAttachment As Label
+Friend WithEvents txtVLAttachment As TextBox
+Friend WithEvents btnVLBrowse As Button
+Friend WithEvents btnVLSave As Button
+Friend WithEvents btnVLCancel As Button
+' Grading panel controls
+Friend WithEvents lblGradingTitle As Label
+Friend WithEvents lblGradeSelectStudent As Label
+Friend WithEvents cboGradeStudent As ComboBox
+Friend WithEvents grpGradeStudentInfo As Panel
+Friend WithEvents lblGradeStudentInfoTitle As Label
+Friend WithEvents lblGradeStudentNoLabel As Label
+Friend WithEvents lblGradeStudentNoValue As Label
+Friend WithEvents lblGradeNameLabel As Label
+Friend WithEvents lblGradeNameValue As Label
+Friend WithEvents lblGradeCourseLabel As Label
+Friend WithEvents lblGradeCourseValue As Label
+Friend WithEvents lblGradeRequiredHoursLabel As Label
+Friend WithEvents lblGradeRequiredHoursValue As Label
+Friend WithEvents lblGradeCompletedHoursLabel As Label
+Friend WithEvents lblGradeCompletedHoursValue As Label
+Friend WithEvents lblGradeStatusLabel As Label
+Friend WithEvents lblGradeStatusValue As Label
+Friend WithEvents grpGradeForm As Panel
+Friend WithEvents lblGradeFormTitle As Label
+Friend WithEvents lblFinalGradeLabel As Label
+Friend WithEvents txtFinalGrade As TextBox
+Friend WithEvents lblGradeHint As Label
+Friend WithEvents btnSaveGrade As Button
+Friend WithEvents btnClearGrade As Button
+' Companies panel controls
 
-    Friend WithEvents lblSearchCompany As Label
-    Friend WithEvents txtSearchCompany As TextBox
-    Friend WithEvents btnSearchCompany As Button
-    Friend WithEvents btnAddCompany As Button
-    Friend WithEvents dgvCompanies As DataGridView
-    Friend WithEvents lblCompanyContactsTitle As Label
-    Friend WithEvents lblContactCompany As Label
-    Friend WithEvents cboContactCompany As ComboBox
-    Friend WithEvents btnAddContact As Button
-    Friend WithEvents dgvContacts As DataGridView
-    Friend WithEvents lblProfileTitle As Label
-    Friend WithEvents lblFacultyName As Label
-    Friend WithEvents lblFacultyPosition As Label
-    Friend WithEvents lblEmployeeNumber As Label
-    Friend WithEvents lblDepartment As Label
-    Friend WithEvents txtFacultyEmail As TextBox
-    Friend WithEvents txtFacultyContact As TextBox
-    Friend WithEvents btnEditFaculty As Button
-    Friend WithEvents btnSaveFaculty As Button
-    Friend WithEvents lblNameCaption As Label
-    Friend WithEvents lblPositionCaption As Label
-    Friend WithEvents lblEmployeeNoCaption As Label
-    Friend WithEvents lblDepartmentCaption As Label
-    Friend WithEvents lblEditableHeader As Label
-    Friend WithEvents lblEmailCaption As Label
-    Friend WithEvents lblContactCaption As Label
+Friend WithEvents lblSearchCompany As Label
+Friend WithEvents txtSearchCompany As TextBox
+Friend WithEvents btnSearchCompany As Button
+Friend WithEvents btnAddCompany As Button
+Friend WithEvents dgvCompanies As DataGridView
+Friend WithEvents lblCompanyContactsTitle As Label
+Friend WithEvents lblContactCompany As Label
+Friend WithEvents cboContactCompany As ComboBox
+Friend WithEvents btnAddContact As Button
+Friend WithEvents dgvContacts As DataGridView
+Friend WithEvents lblProfileTitle As Label
+Friend WithEvents lblFacultyName As Label
+Friend WithEvents lblFacultyPosition As Label
+Friend WithEvents lblEmployeeNumber As Label
+Friend WithEvents lblDepartment As Label
+Friend WithEvents txtFacultyEmail As TextBox
+Friend WithEvents txtFacultyContact As TextBox
+Friend WithEvents btnEditFaculty As Button
+Friend WithEvents btnSaveFaculty As Button
+Friend WithEvents lblNameCaption As Label
+Friend WithEvents lblPositionCaption As Label
+Friend WithEvents lblEmployeeNoCaption As Label
+Friend WithEvents lblDepartmentCaption As Label
+Friend WithEvents lblEditableHeader As Label
+Friend WithEvents lblEmailCaption As Label
+Friend WithEvents lblContactCaption As Label
 
 End Class
