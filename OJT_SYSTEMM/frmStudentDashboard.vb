@@ -5,6 +5,14 @@ Public Class frmStudentDashboard
 
     ' Path to final evaluation report (from internship.EvaluationReportPath)
     Private FinalReportPath As String = ""
+    ' =====================================
+    '  FIELDS FOR INTERNSHIP SELECTION
+    ' =====================================
+    Private InternshipsTable As DataTable
+    Private SelectedInternshipID As Integer = 0
+    Private HasShownNoInternshipMessage As Boolean = False
+    Private HasShownNoVisitLogsMessage As Boolean = False
+
 
     ' ==========================
     ' FORM LOAD
@@ -17,35 +25,53 @@ Public Class frmStudentDashboard
             frmStart.Show()
             Return
         End If
-        ' These come from your login (CurrentUser is in shared module)
+
+        ' Login info
         lblStudentName.Text = CurrentUser.Name
         lblStudentRole.Text = "Student"
+        txtPassword.UseSystemPasswordChar = True
+        txtConfirmPassword.UseSystemPasswordChar = True
 
         InitializeUI()
         ShowPanel(pnlStudentProfile)
         HighlightActive(btnStudentProfile)
 
         LoadStudentProfile()
-        LoadInternshipDetails()
-        LoadVisitLogs()
-        LoadFinalGrade()
-    End Sub
 
-    Private HasShownNoInternshipMessage As Boolean = False
-    Private HasShownNoVisitLogsMessage As Boolean = False
+        ' 🔥 Only this — because this will load all internship details automatically
+        LoadStudentInternshipList()
+    End Sub
 
 
     Private Function IsValidPhoneNumber(phone As String) As Boolean
-        If String.IsNullOrWhiteSpace(phone) Then Return False
-
-        ' Allow only digits (10–12 digits recommended for PH numbers)
-        Dim pattern As String = "^\d{10,12}$"
-        Return System.Text.RegularExpressions.Regex.IsMatch(phone, pattern)
+        Dim digits As String = New String(phone.Where(AddressOf Char.IsDigit).ToArray())
+        Return (digits.Length = 11 AndAlso digits.StartsWith("09"))
     End Function
     Private Sub txtContactNumber_TextChanged(sender As Object, e As EventArgs) Handles txtContactNumber.TextChanged
         Dim cursor As Integer = txtContactNumber.SelectionStart
-        txtContactNumber.Text = New String(txtContactNumber.Text.Where(AddressOf Char.IsDigit).ToArray())
-        txtContactNumber.SelectionStart = cursor
+
+        ' Keep digits only
+        Dim digits As String = New String(txtContactNumber.Text.Where(AddressOf Char.IsDigit).ToArray())
+
+        ' Ensure it starts with 09
+        If digits.Length >= 1 AndAlso digits(0) <> "0"c Then
+            digits = "0"
+        End If
+
+        If digits.Length >= 2 AndAlso digits.Substring(0, 2) <> "09" Then
+            digits = "09"
+        End If
+
+        ' Limit to 11 digits
+        If digits.Length > 11 Then
+            digits = digits.Substring(0, 11)
+        End If
+
+        ' Update textbox safely
+        If txtContactNumber.Text <> digits Then
+            txtContactNumber.Text = digits
+            txtContactNumber.SelectionStart = Math.Min(cursor, digits.Length)
+        End If
     End Sub
 
 
@@ -54,8 +80,6 @@ Public Class frmStudentDashboard
     ' ==========================
 
     Private Sub InitializeUI()
-        btnSaveProfile.Enabled = False
-        SetEditMode(False)
         SetupVisitLogsGrid()
     End Sub
 
@@ -173,20 +197,23 @@ Public Class frmStudentDashboard
     Private Sub BtnInternshipDetails_Click(sender As Object, e As EventArgs) Handles btnInternshipDetails.Click
         HighlightActive(btnInternshipDetails)
         ShowPanel(pnlInternshipDetails)
-        LoadInternshipDetails()
+        LoadInternshipDetails(SelectedInternshipID)
     End Sub
+
 
     Private Sub BtnVisitLogs_Click(sender As Object, e As EventArgs) Handles btnVisitLogs.Click
         HighlightActive(btnVisitLogs)
         ShowPanel(pnlVisitLogs)
-        LoadVisitLogs()
+        LoadVisitLogs(SelectedInternshipID)
     End Sub
+
 
     Private Sub BtnFinalGrade_Click(sender As Object, e As EventArgs) Handles btnFinalGrade.Click
         HighlightActive(btnFinalGrade)
         ShowPanel(pnlFinalGrade)
-        LoadFinalGrade()
+        LoadFinalGrade(SelectedInternshipID)
     End Sub
+
 
     Private Sub BtnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         Dim result = MessageBox.Show(
@@ -211,43 +238,30 @@ Public Class frmStudentDashboard
     ' =====================================
     ' PART 1 – STUDENT PROFILE (VIEW/UPDATE)
     ' =====================================
-
-    Private Sub SetEditMode(isEdit As Boolean)
-        txtEmail.ReadOnly = Not isEdit
-        txtContactNumber.ReadOnly = Not isEdit
-        txtAddress.ReadOnly = Not isEdit
-        txtCity.ReadOnly = Not isEdit
-
-        Dim editBack = Color.White
-        Dim readBack = Color.FromArgb(250, 250, 250)
-
-        txtEmail.BackColor = If(isEdit, editBack, readBack)
-        txtContactNumber.BackColor = If(isEdit, editBack, readBack)
-        txtAddress.BackColor = If(isEdit, editBack, readBack)
-        txtCity.BackColor = If(isEdit, editBack, readBack)
+    Private Sub chkShowPassword_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPassword.CheckedChanged
+        If chkShowPassword.Checked Then
+            txtPassword.UseSystemPasswordChar = False
+            txtConfirmPassword.UseSystemPasswordChar = False
+        Else
+            txtPassword.UseSystemPasswordChar = True
+            txtConfirmPassword.UseSystemPasswordChar = True
+        End If
     End Sub
 
     Private Sub BtnEditProfile_Click(sender As Object, e As EventArgs) Handles btnEditProfile.Click
         SetProfileEditingEnabled(True)
-
-        btnEditProfile.Visible = False
-        btnSaveProfile.Visible = True
-        btnCancelEditProfile.Visible = True
     End Sub
 
     Private Sub BtnSaveProfile_Click(sender As Object, e As EventArgs) Handles btnSaveProfile.Click
-        If Not ValidateProfileInputs() Then
-            Return
-        End If
+        If Not ValidateProfileInputs() Then Exit Sub
 
         SaveProfileChanges()
-        SetEditMode(False)
-        btnSaveProfile.Enabled = False
 
         MessageBox.Show("Profile updated successfully.",
-                        "Success",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information)
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        SetProfileEditingEnabled(False)
+        LoadStudentProfile()
     End Sub
 
     Private Function ValidateProfileInputs() As Boolean
@@ -315,14 +329,68 @@ Public Class frmStudentDashboard
     End Function
 
     Private Sub SaveProfileChanges()
-        Dim sql As String =
+        Dim updatePassword As Boolean = False
+
+        ' Determine if user wants to update password
+        If Not String.IsNullOrWhiteSpace(txtPassword.Text) OrElse
+       Not String.IsNullOrWhiteSpace(txtConfirmPassword.Text) Then
+
+            ' Require both fields
+            If txtPassword.Text.Trim() = "" OrElse txtConfirmPassword.Text.Trim() = "" Then
+                MessageBox.Show("Please fill both Password and Confirm Password.",
+                            "Validation Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning)
+                Return
+            End If
+
+            ' Must match
+            If txtPassword.Text.Trim() <> txtConfirmPassword.Text.Trim() Then
+                MessageBox.Show("Passwords do not match.",
+                            "Validation Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning)
+                txtConfirmPassword.Focus()
+                Return
+            End If
+
+            ' Length validation
+            If txtPassword.Text.Trim().Length < 6 Then
+                MessageBox.Show("Password must be at least 6 characters long.",
+                            "Validation Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning)
+                txtPassword.Focus()
+                Return
+            End If
+
+            updatePassword = True
+        End If
+
+
+        ' Build SQL
+        Dim sql As String
+        If updatePassword Then
+            sql =
+            "UPDATE student
+             SET Email = @Email,
+                 ContactNumber = @ContactNumber,
+                 Address = @Address,
+                 City = @City,
+                 Password = @Password
+             WHERE StudentID = @sid;"
+        Else
+            sql =
             "UPDATE student
              SET Email = @Email,
                  ContactNumber = @ContactNumber,
                  Address = @Address,
                  City = @City
              WHERE StudentID = @sid;"
+        End If
 
+
+        ' Execute update
         Try
             Using conn = GetConnection()
                 Using cmd As New MySqlCommand(sql, conn)
@@ -332,17 +400,28 @@ Public Class frmStudentDashboard
                     cmd.Parameters.AddWithValue("@City", txtCity.Text.Trim())
                     cmd.Parameters.AddWithValue("@sid", CurrentUser.StudentID)
 
+                    If updatePassword Then
+                        cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim())
+                    End If
+
                     conn.Open()
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
+
+            MessageBox.Show("Profile updated successfully.",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information)
+
         Catch ex As Exception
             MessageBox.Show("Error saving profile: " & ex.Message,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error)
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error)
         End Try
     End Sub
+
 
     Private Sub LoadStudentProfile()
         Dim sql As String =
@@ -426,64 +505,152 @@ Public Class frmStudentDashboard
     ' PART 2–4 – INTERNSHIP DETAILS & HOURS
     ' =====================================
 
-    Private Function GetStudentInternshipID() As Integer
+    ' =====================================
+    '  MAIN INTERNSHIP LIST (ONE COMBOBOX)
+    ' =====================================
+
+    Private Sub LoadStudentInternshipList()
+        InternshipsTable = New DataTable()
         Dim sql As String =
-            "SELECT InternshipID
-             FROM internship
-             WHERE StudentID = @sid
-             ORDER BY StartDate DESC
-             LIMIT 1;"
+"SELECT 
+    i.InternshipID,
+    CONCAT(
+        DATE_FORMAT(i.StartDate, '%b %Y'), ' • ',
+        COALESCE(c.CompanyName, 'No Company'), ' • ',
+        i.Status
+    ) AS DisplayText
+ FROM internship i
+ LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
+ LEFT JOIN company c        ON cc.CompanyID = c.CompanyID
+ WHERE i.StudentID = @sid
+ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
 
         Try
             Using conn = GetConnection()
                 Using cmd As New MySqlCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@sid", CurrentUser.StudentID)
 
-                    conn.Open()
-                    Dim result = cmd.ExecuteScalar()
-                    If result IsNot Nothing AndAlso result IsNot DBNull.Value Then
-                        Return CInt(result)
-                    End If
+                    Using da As New MySqlDataAdapter(cmd)
+                        da.Fill(InternshipsTable)
+                    End Using
                 End Using
             End Using
-        Catch
-            ' ignore, return 0
+
+            If InternshipsTable Is Nothing OrElse InternshipsTable.Rows.Count = 0 Then
+                ' No internships yet
+                cboSelectInternship.DataSource = Nothing
+                cboSelectInternship.Items.Clear()
+                cboSelectInternship.Text = "No internship yet"
+
+                SelectedInternshipID = 0
+                ClearInternshipPanels()
+            Else
+                cboSelectInternship.DataSource = InternshipsTable
+                cboSelectInternship.DisplayMember = "DisplayText"
+                cboSelectInternship.ValueMember = "InternshipID"
+                cboSelectInternship.SelectedIndex = 0   ' triggers SelectedIndexChanged
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error loading internship list: " & ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            cboSelectInternship.DataSource = Nothing
+            ClearInternshipPanels()
         End Try
+    End Sub
 
-        Return 0
-    End Function
+    Private Sub cboSelectInternship_SelectedIndexChanged(sender As Object, e As EventArgs) _
+    Handles cboSelectInternship.SelectedIndexChanged
 
-    Private Sub LoadInternshipDetails()
+        If cboSelectInternship.SelectedValue Is Nothing Then
+            SelectedInternshipID = 0
+            ClearInternshipPanels()
+            Return
+        End If
+
+        Dim iid As Integer
+        If Not Integer.TryParse(cboSelectInternship.SelectedValue.ToString(), iid) Then
+            SelectedInternshipID = 0
+            ClearInternshipPanels()
+            Return
+        End If
+
+        SelectedInternshipID = iid
+
+        ' Update all 3 panels using the selected internship
+        LoadInternshipDetails(SelectedInternshipID)
+        LoadVisitLogs(SelectedInternshipID)
+        LoadFinalGrade(SelectedInternshipID)
+    End Sub
+
+    Private Sub ClearInternshipPanels()
+        ' Internship Details
+        txtInternshipStatus.Text = "Not Assigned"
+        txtCompanyName.Text = ""
+        txtCompanyAddress.Text = ""
+        txtCompanyCity.Text = ""
+        txtIndustry.Text = ""
+        txtSupervisorName.Text = ""
+        txtSupervisorPosition.Text = ""
+        txtSupervisorContact.Text = ""
+        txtWorkDays.Text = ""
+        txtStartTime.Text = ""
+        txtEndTime.Text = ""
+        txtRequiredHours.Text = ""
+        txtCompletedHours.Text = ""
+        progressHours.Value = 0
+
+        ' Visit Logs
+        dgvVisitLogs.Rows.Clear()
+        dgvVisitLogs.Visible = False
+
+        ' Final Grade
+        txtFinalInternshipStatus.Text = "Not Assigned"
+        lblFinalGradeValue.Text = "--"
+        txtEvaluatedBy.Text = ""
+        txtGradedAt.Text = ""
+        FinalReportPath = ""
+    End Sub
+
+    ' =====================================
+    '  INTERNSHIP DETAILS (BY INTERNSHIP ID)
+    ' =====================================
+
+    Private Sub LoadInternshipDetails(internshipID As Integer)
+        If internshipID <= 0 Then
+            ClearInternshipPanels()
+            Return
+        End If
+
         Dim sql As String =
-            "SELECT i.InternshipID,
-                    i.Status,
-                    i.WorkDays,
-                    i.DailyStartTime,
-                    i.DailyEndTime,
-                    i.HoursCompleted,
-                    c.CompanyName,
-                    c.Address AS CompanyAddress,
-                    c.City AS CompanyCity,
-                    c.Industry,
-                    cc.FirstName AS SupFN,
-                    cc.LastName AS SupLN,
-                    cc.PositionTitle,
-                    cc.ContactNumber AS SupContact,
-                    crs.RequiredOJTHours
-             FROM internship i
-             LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
-             LEFT JOIN company c ON cc.CompanyID = c.CompanyID
-             LEFT JOIN student s ON i.StudentID = s.StudentID
-             LEFT JOIN section sec ON s.SectionID = sec.SectionID
-             LEFT JOIN course crs ON sec.CourseID = crs.CourseID
-             WHERE i.StudentID = @sid
-             ORDER BY i.StartDate DESC
-             LIMIT 1;"
+        "SELECT i.InternshipID,
+                i.Status,
+                i.WorkDays,
+                i.DailyStartTime,
+                i.DailyEndTime,
+                i.HoursCompleted,
+                c.CompanyName,
+                c.Address AS CompanyAddress,
+                c.City    AS CompanyCity,
+                c.Industry,
+                cc.FirstName   AS SupFN,
+                cc.LastName    AS SupLN,
+                cc.PositionTitle,
+                cc.ContactNumber AS SupContact,
+                crs.RequiredOJTHours
+         FROM internship i
+         LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
+         LEFT JOIN company c        ON cc.CompanyID = c.CompanyID
+         LEFT JOIN student s        ON i.StudentID = s.StudentID
+         LEFT JOIN section sec      ON s.SectionID = sec.SectionID
+         LEFT JOIN course crs       ON sec.CourseID = crs.CourseID
+         WHERE i.InternshipID = @iid
+         LIMIT 1;"
 
         Try
             Using conn = GetConnection()
                 Using cmd As New MySqlCommand(sql, conn)
-                    cmd.Parameters.AddWithValue("@sid", CurrentUser.StudentID)
+                    cmd.Parameters.AddWithValue("@iid", internshipID)
 
                     conn.Open()
                     Using dr As MySqlDataReader = cmd.ExecuteReader()
@@ -496,7 +663,7 @@ Public Class frmStudentDashboard
                             txtIndustry.Text = SafeStr(dr("Industry"))
 
                             Dim supName As String =
-                                (SafeStr(dr("SupFN")) & " " & SafeStr(dr("SupLN"))).Trim()
+                            (SafeStr(dr("SupFN")) & " " & SafeStr(dr("SupLN"))).Trim()
                             txtSupervisorName.Text = supName
                             txtSupervisorPosition.Text = SafeStr(dr("PositionTitle"))
                             txtSupervisorContact.Text = SafeStr(dr("SupContact"))
@@ -513,74 +680,52 @@ Public Class frmStudentDashboard
 
                             Dim percent As Integer = 0
                             If required > 0 Then
-                                percent = CInt((completed / required) * 100)
+                                percent = CInt(Math.Round((completed / CDbl(required)) * 100))
                             End If
-
-                            percent = Math.Min(Math.Max(percent, 0), 100)
+                            percent = Math.Max(0, Math.Min(100, percent))
                             progressHours.Value = percent
                         Else
-                            ' No internship yet
-                            txtInternshipStatus.Text = "Not Assigned"
-                            txtCompanyName.Text = ""
-                            txtCompanyAddress.Text = ""
-                            txtCompanyCity.Text = ""
-                            txtIndustry.Text = ""
-                            txtSupervisorName.Text = ""
-                            txtSupervisorPosition.Text = ""
-                            txtSupervisorContact.Text = ""
-                            txtWorkDays.Text = ""
-                            txtStartTime.Text = ""
-                            txtEndTime.Text = ""
-                            txtRequiredHours.Text = ""
-                            txtCompletedHours.Text = ""
-                            progressHours.Value = 0
+                            ClearInternshipPanels()
                         End If
                     End Using
                 End Using
             End Using
+
         Catch ex As Exception
             MessageBox.Show("Error loading internship details: " & ex.Message,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error)
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ClearInternshipPanels()
         End Try
     End Sub
 
-
     ' =====================================
-    ' PART 5 – VISIT LOGS (READ-ONLY)
+    '  VISIT LOGS (BY INTERNSHIP ID)
     ' =====================================
 
-    Private Sub LoadVisitLogs()
-        Try
-            Dim internshipID As Integer = GetStudentInternshipID()
-            txtVisitInternshipID.Text = If(internshipID = 0, "N/A", internshipID.ToString())
+    Private Sub LoadVisitLogs(internshipID As Integer)
+        dgvVisitLogs.Rows.Clear()
 
-            dgvVisitLogs.Rows.Clear()
+        If internshipID <= 0 Then
+            dgvVisitLogs.Visible = False
 
-            ' NO INTERNSHIP YET
-            If internshipID = 0 Then
-                dgvVisitLogs.Visible = False
-
-                If Not HasShownNoInternshipMessage Then
-                    MessageBox.Show("You have no internship assigned yet.",
-                                "Information",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information)
-                    HasShownNoInternshipMessage = True
-                End If
-
-                Return
+            If Not HasShownNoInternshipMessage Then
+                MessageBox.Show("You have no internship assigned yet.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information)
+                HasShownNoInternshipMessage = True
             End If
 
-            dgvVisitLogs.Visible = True
+            Return
+        End If
 
-            Dim sql As String =
-            "SELECT VisitDate, VisitType, Score, MaxScore, Remarks, AttachmentPath
-             FROM visitlog
-             WHERE InternshipID = @iid
-             ORDER BY VisitDate ASC;"
+        Dim sql As String =
+        "SELECT VisitDate, VisitType, Score, MaxScore, Remarks, AttachmentPath
+         FROM visitlog
+         WHERE InternshipID = @iid
+         ORDER BY VisitDate ASC;"
 
+        Try
             Using conn = GetConnection()
                 Using cmd As New MySqlCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@iid", internshipID)
@@ -591,7 +736,7 @@ Public Class frmStudentDashboard
                             dgvVisitLogs.Visible = False
 
                             If Not HasShownNoVisitLogsMessage Then
-                                MessageBox.Show("No visit logs available.",
+                                MessageBox.Show("No visit logs available for this internship.",
                                             "Information",
                                             MessageBoxButtons.OK,
                                             MessageBoxIcon.Information)
@@ -601,7 +746,6 @@ Public Class frmStudentDashboard
                             Return
                         End If
 
-                        ' We have rows
                         dgvVisitLogs.Visible = True
 
                         While dr.Read()
@@ -615,7 +759,6 @@ Public Class frmStudentDashboard
                             "🔽"
                         )
                         End While
-
                     End Using
                 End Using
             End Using
@@ -628,72 +771,70 @@ Public Class frmStudentDashboard
         End Try
     End Sub
 
-    Private Sub DgvVisitLogs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) _
-        Handles dgvVisitLogs.CellContentClick
+    Private Sub dgvVisitLogs_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) _
+    Handles dgvVisitLogs.CellContentClick
 
         If e.RowIndex < 0 Then Return
 
         If dgvVisitLogs.Columns(e.ColumnIndex).Name = "colDownload" Then
             Dim attachmentPath As String =
-                SafeStr(dgvVisitLogs.Rows(e.RowIndex).Cells("colAttachmentPath").Value)
+            SafeStr(dgvVisitLogs.Rows(e.RowIndex).Cells("colAttachmentPath").Value)
 
             If String.IsNullOrWhiteSpace(attachmentPath) Then
                 MessageBox.Show("No attachment available for this visit.",
-                                "Information",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information)
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information)
                 Return
             End If
 
             Try
                 If File.Exists(attachmentPath) Then
                     Process.Start(New ProcessStartInfo(attachmentPath) With {
-                        .UseShellExecute = True
-                    })
+                    .UseShellExecute = True
+                })
                 Else
                     MessageBox.Show("Attachment file not found.",
-                                    "Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error)
-                End If
-            Catch ex As Exception
-                MessageBox.Show("Error opening file: " & ex.Message,
                                 "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Error opening file: " & ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
             End Try
         End If
     End Sub
 
-
     ' =====================================
-    ' PART 6 – FINAL GRADE (READ-ONLY)
+    '  FINAL GRADE (BY INTERNSHIP ID)
     ' =====================================
 
-    Private Sub LoadFinalGrade()
+    Private Sub LoadFinalGrade(internshipID As Integer)
+        If internshipID <= 0 Then
+            txtFinalInternshipStatus.Text = "Not Assigned"
+            lblFinalGradeValue.Text = "--"
+            txtEvaluatedBy.Text = ""
+            txtGradedAt.Text = ""
+            FinalReportPath = ""
+            Return
+        End If
+
+        Dim sql As String =
+        "SELECT i.Status,
+                i.FinalGrade,
+                i.GradeDate,
+                i.EvaluationReportPath,
+                f.FirstName AS EvalFN,
+                f.LastName  AS EvalLN
+         FROM internship i
+         LEFT JOIN faculty f ON i.GradedByFacultyID = f.FacultyID
+         WHERE i.InternshipID = @iid
+         LIMIT 1;"
+
         Try
-            Dim internshipID As Integer = GetStudentInternshipID()
-            If internshipID = 0 Then
-                txtFinalInternshipStatus.Text = "Not Assigned"
-                lblFinalGradeValue.Text = "--"
-                txtEvaluatedBy.Text = ""
-                txtGradedAt.Text = ""
-                FinalReportPath = ""
-                Return
-            End If
-
-            Dim sql As String =
-                "SELECT i.Status,
-                        i.FinalGrade,
-                        i.GradeDate,
-                        i.EvaluationReportPath,
-                        f.FirstName AS EvalFN,
-                        f.LastName AS EvalLN
-                 FROM internship i
-                 LEFT JOIN faculty f ON i.GradedByFacultyID = f.FacultyID
-                 WHERE i.InternshipID = @iid
-                 LIMIT 1;"
-
             Using conn = GetConnection()
                 Using cmd As New MySqlCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@iid", internshipID)
@@ -707,7 +848,7 @@ Public Class frmStudentDashboard
                             lblFinalGradeValue.Text = If(String.IsNullOrWhiteSpace(gradeText), "--", gradeText)
 
                             Dim evaluator As String =
-                                (SafeStr(dr("EvalFN")) & " " & SafeStr(dr("EvalLN"))).Trim()
+                            (SafeStr(dr("EvalFN")) & " " & SafeStr(dr("EvalLN"))).Trim()
                             txtEvaluatedBy.Text = evaluator
 
                             txtGradedAt.Text = SafeDate(dr("GradeDate"))
@@ -722,41 +863,45 @@ Public Class frmStudentDashboard
                     End Using
                 End Using
             End Using
+
         Catch ex As Exception
             MessageBox.Show("Error loading final grade: " & ex.Message,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error)
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Private Sub BtnDownloadReport_Click(sender As Object, e As EventArgs) Handles btnDownloadReport.Click
+    Private Sub btnDownloadReport_Click(sender As Object, e As EventArgs) _
+    Handles btnDownloadReport.Click
+
         If String.IsNullOrWhiteSpace(FinalReportPath) Then
             MessageBox.Show("No final evaluation report is available.",
-                            "Information",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information)
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information)
             Return
         End If
 
         Try
             If File.Exists(FinalReportPath) Then
                 Process.Start(New ProcessStartInfo(FinalReportPath) With {
-                    .UseShellExecute = True
-                })
+                .UseShellExecute = True
+            })
             Else
                 MessageBox.Show("Report file not found.",
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error)
-            End If
-        Catch ex As Exception
-            MessageBox.Show("Unable to open report: " & ex.Message,
                             "Error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Unable to open report: " & ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error)
         End Try
     End Sub
+
 
 
     ' =====================================
@@ -788,38 +933,51 @@ Public Class frmStudentDashboard
     End Function
 
     Private Sub btnCancelEditProfile_Click(sender As Object, e As EventArgs) Handles btnCancelEditProfile.Click
-        ' Disable editing again
         SetProfileEditingEnabled(False)
-
-        ' Reload original data from database
-        LoadStudentProfile()
-
-        ' Show Edit button, hide Save + Cancel buttons
-        btnEditProfile.Visible = True
-        btnSaveProfile.Visible = False
-        btnCancelEditProfile.Visible = False
+        LoadStudentProfile()  ' Restore original values
     End Sub
 
+    ' ============================================
+    ' UNIFIED EDIT MODE CONTROLLER
+    ' ============================================
     Private Sub SetProfileEditingEnabled(enabled As Boolean)
+
+        ' Editable fields
         txtEmail.ReadOnly = Not enabled
         txtContactNumber.ReadOnly = Not enabled
         txtAddress.ReadOnly = Not enabled
         txtCity.ReadOnly = Not enabled
 
-        ' Academic fields remain read-only
-        txtSectionName.ReadOnly = True
-        txtCourseName.ReadOnly = True
-        txtDepartmentName.ReadOnly = True
+        ' Optional password fields (future use)
+        txtPassword.ReadOnly = Not enabled
+        txtConfirmPassword.ReadOnly = Not enabled
 
-        ' Personal info read-only
+        ' Highlight editable fields
+        Dim editBack = Color.White
+        Dim readBack = Color.FromArgb(245, 245, 245)
+
+        Dim editableBoxes = {
+            txtEmail, txtContactNumber, txtAddress,
+            txtCity, txtPassword, txtConfirmPassword
+        }
+
+        For Each box In editableBoxes
+            box.BackColor = If(enabled, editBack, readBack)
+        Next
+
+        ' Buttons visibility
+        btnEditProfile.Visible = Not enabled
+        btnSaveProfile.Visible = enabled
+        btnCancelEditProfile.Visible = enabled
+
+        ' NON-editable fields stay read-only
         txtStudentNumber.ReadOnly = True
         txtFullName.ReadOnly = True
         txtGender.ReadOnly = True
         txtBirthDate.ReadOnly = True
         txtStatus.ReadOnly = True
-    End Sub
-
-    Private Sub txtFinalInternshipStatus_TextChanged(sender As Object, e As EventArgs) Handles txtFinalInternshipStatus.TextChanged
-
+        txtSectionName.ReadOnly = True
+        txtCourseName.ReadOnly = True
+        txtDepartmentName.ReadOnly = True
     End Sub
 End Class

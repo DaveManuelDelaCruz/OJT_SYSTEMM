@@ -94,4 +94,8 @@ Public Class frmStudentDetailsPopup
     Private Sub pnlBody_Paint(sender As Object, e As PaintEventArgs) Handles pnlBody.Paint
 
     End Sub
+
+    Private Sub lblTitle_Click(sender As Object, e As EventArgs) Handles lblTitle.Click
+
+    End Sub
 End Class

@@ -29,29 +29,22 @@ Module DbModule
     Public Class UserSession
         Public Property StudentID As Integer?
         Public Property FacultyID As Integer?
+        Public Property RegistrarID As Integer?   ' <<< ADD THIS
         Public Property Name As String = ""
         Public Property Username As String = ""
+
         Public Sub Clear()
             StudentID = Nothing
             FacultyID = Nothing
+            RegistrarID = Nothing      ' <<< reset
             Name = ""
             Username = ""
         End Sub
     End Class
 
+
     Public CurrentUser As New UserSession()
 
-
-    ' -----------------------------------------
-    ' 3) SECURE PASSWORD HASHING (SHA-256)
-    ' -----------------------------------------
-    Public Function HashPassword(password As String) As String
-        If password Is Nothing Then Return ""
-
-        Dim bytes = Encoding.UTF8.GetBytes(password)
-        Dim hashBytes = SHA256.HashData(bytes)
-        Return BitConverter.ToString(hashBytes).Replace("-", "").ToLower()
-    End Function
 
 
     ' -----------------------------------------
@@ -129,5 +122,23 @@ Module DbModule
         Public Const Active As String = "Active"
         Public Const Inactive As String = "Inactive"
     End Class
+
+    Public Sub AddProfessorLog(facultyId As Integer, actionType As String, actionDesc As String)
+        Using conn As MySqlConnection = GetConnection()
+            conn.Open()
+
+            Dim sql As String =
+                "INSERT INTO system_logs (UserID, ActionType, ActionDesc, LogDate)
+             VALUES (@uid, @type, @desc, NOW());"
+
+            Using cmd As New MySqlCommand(sql, conn)
+                cmd.Parameters.AddWithValue("@uid", facultyId)
+                cmd.Parameters.AddWithValue("@type", actionType)
+                cmd.Parameters.AddWithValue("@desc", actionDesc)
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
+
 
 End Module

@@ -26,6 +26,10 @@ Partial Class frmStudentDashboard
         lblStudentRole = New Label()
         lblStudentName = New Label()
         lblAppTitle = New Label()
+        pnlVisitLogs = New Panel()
+        lblVisitLogsListHeader = New Label()
+        lblVisitLogsTitle = New Label()
+        dgvVisitLogs = New DataGridView()
         pnlSidebar = New Panel()
         btnLogout = New Button()
         btnFinalGrade = New Button()
@@ -34,25 +38,9 @@ Partial Class frmStudentDashboard
         btnStudentProfile = New Button()
         lblSidebarTitle = New Label()
         pnlContent = New Panel()
-        pnlFinalGrade = New Panel()
-        lblFinalReportCaption = New Label()
-        lblGradedAtCaption = New Label()
-        lblEvaluatedByCaption = New Label()
-        lblFinalGradeCaption = New Label()
-        lblFinalInternshipStatusCaption = New Label()
-        txtGradedAt = New TextBox()
-        txtEvaluatedBy = New TextBox()
-        btnDownloadReport = New Button()
-        lblFinalGradeValue = New Label()
-        txtFinalInternshipStatus = New TextBox()
-        lblFinalGradeTitle = New Label()
-        pnlVisitLogs = New Panel()
-        lblVisitLogsListHeader = New Label()
-        lblVisitInternshipIDCaption = New Label()
-        dgvVisitLogs = New DataGridView()
-        txtVisitInternshipID = New TextBox()
-        lblVisitLogsTitle = New Label()
         pnlInternshipDetails = New Panel()
+        cboSelectInternship = New ComboBox()
+        lblSelectInternship = New Label()
         lblHoursProgress = New Label()
         lblCompletedHoursCaption = New Label()
         lblRequiredHoursCaption = New Label()
@@ -86,7 +74,24 @@ Partial Class frmStudentDashboard
         txtCompanyName = New TextBox()
         txtInternshipStatus = New TextBox()
         lblInternshipTitle = New Label()
+        pnlFinalGrade = New Panel()
+        lblFinalGradeTitle = New Label()
+        txtFinalInternshipStatus = New TextBox()
+        lblFinalInternshipStatusCaption = New Label()
+        lblFinalGradeCaption = New Label()
+        lblFinalGradeValue = New Label()
+        lblEvaluatedByCaption = New Label()
+        lblGradedAtCaption = New Label()
+        txtEvaluatedBy = New TextBox()
+        txtGradedAt = New TextBox()
+        btnDownloadReport = New Button()
+        lblFinalReportCaption = New Label()
         pnlStudentProfile = New Panel()
+        chkShowPassword = New CheckBox()
+        Label1 = New Label()
+        txtConfirmPassword = New TextBox()
+        lblPassword = New Label()
+        txtPassword = New TextBox()
         lblAcademicInfoHeader = New Label()
         lblContactInfoHeader = New Label()
         lblDepartmentCaption = New Label()
@@ -118,12 +123,12 @@ Partial Class frmStudentDashboard
         txtStudentNumber = New TextBox()
         lblProfileTitle = New Label()
         pnlHeader.SuspendLayout()
-        pnlSidebar.SuspendLayout()
-        pnlContent.SuspendLayout()
-        pnlFinalGrade.SuspendLayout()
         pnlVisitLogs.SuspendLayout()
         CType(dgvVisitLogs, ComponentModel.ISupportInitialize).BeginInit()
+        pnlSidebar.SuspendLayout()
+        pnlContent.SuspendLayout()
         pnlInternshipDetails.SuspendLayout()
+        pnlFinalGrade.SuspendLayout()
         pnlStudentProfile.SuspendLayout()
         SuspendLayout()
         ' 
@@ -174,6 +179,58 @@ Partial Class frmStudentDashboard
         lblAppTitle.Size = New Size(370, 37)
         lblAppTitle.TabIndex = 0
         lblAppTitle.Text = "OJT Management — Student"
+        ' 
+        ' pnlVisitLogs
+        ' 
+        pnlVisitLogs.BackColor = Color.White
+        pnlVisitLogs.Controls.Add(lblVisitLogsListHeader)
+        pnlVisitLogs.Controls.Add(lblVisitLogsTitle)
+        pnlVisitLogs.Controls.Add(dgvVisitLogs)
+        pnlVisitLogs.Dock = DockStyle.Fill
+        pnlVisitLogs.Location = New Point(0, 0)
+        pnlVisitLogs.Margin = New Padding(3, 4, 3, 4)
+        pnlVisitLogs.Name = "pnlVisitLogs"
+        pnlVisitLogs.Size = New Size(1120, 867)
+        pnlVisitLogs.TabIndex = 2
+        pnlVisitLogs.Visible = False
+        ' 
+        ' lblVisitLogsListHeader
+        ' 
+        lblVisitLogsListHeader.AutoSize = True
+        lblVisitLogsListHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        lblVisitLogsListHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblVisitLogsListHeader.Location = New Point(46, 148)
+        lblVisitLogsListHeader.Name = "lblVisitLogsListHeader"
+        lblVisitLogsListHeader.Size = New Size(112, 23)
+        lblVisitLogsListHeader.TabIndex = 4
+        lblVisitLogsListHeader.Text = "Visit Logs List"
+        ' 
+        ' lblVisitLogsTitle
+        ' 
+        lblVisitLogsTitle.AutoSize = True
+        lblVisitLogsTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
+        lblVisitLogsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblVisitLogsTitle.Location = New Point(37, 32)
+        lblVisitLogsTitle.Name = "lblVisitLogsTitle"
+        lblVisitLogsTitle.Size = New Size(153, 37)
+        lblVisitLogsTitle.TabIndex = 0
+        lblVisitLogsTitle.Text = "VISIT LOGS"
+        ' 
+        ' dgvVisitLogs
+        ' 
+        dgvVisitLogs.AllowUserToAddRows = False
+        dgvVisitLogs.AllowUserToDeleteRows = False
+        dgvVisitLogs.BackgroundColor = Color.White
+        dgvVisitLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvVisitLogs.Location = New Point(46, 176)
+        dgvVisitLogs.Margin = New Padding(3, 4, 3, 4)
+        dgvVisitLogs.Name = "dgvVisitLogs"
+        dgvVisitLogs.RowHeadersVisible = False
+        dgvVisitLogs.RowHeadersWidth = 51
+        dgvVisitLogs.RowTemplate.Height = 25
+        dgvVisitLogs.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvVisitLogs.Size = New Size(1006, 600)
+        dgvVisitLogs.TabIndex = 2
         ' 
         ' pnlSidebar
         ' 
@@ -272,7 +329,7 @@ Partial Class frmStudentDashboard
         lblSidebarTitle.AutoSize = True
         lblSidebarTitle.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         lblSidebarTitle.ForeColor = Color.FromArgb(CByte(255), CByte(235), CByte(59))
-        lblSidebarTitle.Location = New Point(18, 27)
+        lblSidebarTitle.Location = New Point(27, 26)
         lblSidebarTitle.Name = "lblSidebarTitle"
         lblSidebarTitle.Size = New Size(187, 28)
         lblSidebarTitle.TabIndex = 0
@@ -282,9 +339,9 @@ Partial Class frmStudentDashboard
         ' 
         pnlContent.BackColor = Color.FromArgb(CByte(245), CByte(245), CByte(245))
         pnlContent.Controls.Add(pnlFinalGrade)
-        pnlContent.Controls.Add(pnlVisitLogs)
-        pnlContent.Controls.Add(pnlInternshipDetails)
         pnlContent.Controls.Add(pnlStudentProfile)
+        pnlContent.Controls.Add(pnlInternshipDetails)
+        pnlContent.Controls.Add(pnlVisitLogs)
         pnlContent.Dock = DockStyle.Fill
         pnlContent.Location = New Point(251, 93)
         pnlContent.Margin = New Padding(3, 4, 3, 4)
@@ -292,222 +349,11 @@ Partial Class frmStudentDashboard
         pnlContent.Size = New Size(1120, 867)
         pnlContent.TabIndex = 2
         ' 
-        ' pnlFinalGrade
-        ' 
-        pnlFinalGrade.BackColor = Color.White
-        pnlFinalGrade.Controls.Add(lblFinalReportCaption)
-        pnlFinalGrade.Controls.Add(lblGradedAtCaption)
-        pnlFinalGrade.Controls.Add(lblEvaluatedByCaption)
-        pnlFinalGrade.Controls.Add(lblFinalGradeCaption)
-        pnlFinalGrade.Controls.Add(lblFinalInternshipStatusCaption)
-        pnlFinalGrade.Controls.Add(txtGradedAt)
-        pnlFinalGrade.Controls.Add(txtEvaluatedBy)
-        pnlFinalGrade.Controls.Add(btnDownloadReport)
-        pnlFinalGrade.Controls.Add(lblFinalGradeValue)
-        pnlFinalGrade.Controls.Add(txtFinalInternshipStatus)
-        pnlFinalGrade.Controls.Add(lblFinalGradeTitle)
-        pnlFinalGrade.Location = New Point(18, 21)
-        pnlFinalGrade.Margin = New Padding(3, 4, 3, 4)
-        pnlFinalGrade.Name = "pnlFinalGrade"
-        pnlFinalGrade.Size = New Size(1083, 824)
-        pnlFinalGrade.TabIndex = 3
-        pnlFinalGrade.Visible = False
-        ' 
-        ' lblFinalReportCaption
-        ' 
-        lblFinalReportCaption.AutoSize = True
-        lblFinalReportCaption.Font = New Font("Segoe UI", 9F)
-        lblFinalReportCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblFinalReportCaption.Location = New Point(46, 441)
-        lblFinalReportCaption.Name = "lblFinalReportCaption"
-        lblFinalReportCaption.Size = New Size(165, 20)
-        lblFinalReportCaption.TabIndex = 10
-        lblFinalReportCaption.Text = "Final Evaluation Report:"
-        ' 
-        ' lblGradedAtCaption
-        ' 
-        lblGradedAtCaption.AutoSize = True
-        lblGradedAtCaption.Font = New Font("Segoe UI", 9F)
-        lblGradedAtCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblGradedAtCaption.Location = New Point(46, 388)
-        lblGradedAtCaption.Name = "lblGradedAtCaption"
-        lblGradedAtCaption.Size = New Size(80, 20)
-        lblGradedAtCaption.TabIndex = 9
-        lblGradedAtCaption.Text = "Graded At:"
-        ' 
-        ' lblEvaluatedByCaption
-        ' 
-        lblEvaluatedByCaption.AutoSize = True
-        lblEvaluatedByCaption.Font = New Font("Segoe UI", 9F)
-        lblEvaluatedByCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblEvaluatedByCaption.Location = New Point(46, 335)
-        lblEvaluatedByCaption.Name = "lblEvaluatedByCaption"
-        lblEvaluatedByCaption.Size = New Size(97, 20)
-        lblEvaluatedByCaption.TabIndex = 8
-        lblEvaluatedByCaption.Text = "Evaluated By:"
-        ' 
-        ' lblFinalGradeCaption
-        ' 
-        lblFinalGradeCaption.AutoSize = True
-        lblFinalGradeCaption.Font = New Font("Segoe UI", 9F)
-        lblFinalGradeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblFinalGradeCaption.Location = New Point(46, 168)
-        lblFinalGradeCaption.Name = "lblFinalGradeCaption"
-        lblFinalGradeCaption.Size = New Size(87, 20)
-        lblFinalGradeCaption.TabIndex = 7
-        lblFinalGradeCaption.Text = "Final Grade:"
-        ' 
-        ' lblFinalInternshipStatusCaption
-        ' 
-        lblFinalInternshipStatusCaption.AutoSize = True
-        lblFinalInternshipStatusCaption.Font = New Font("Segoe UI", 9F)
-        lblFinalInternshipStatusCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblFinalInternshipStatusCaption.Location = New Point(46, 121)
-        lblFinalInternshipStatusCaption.Name = "lblFinalInternshipStatusCaption"
-        lblFinalInternshipStatusCaption.Size = New Size(121, 20)
-        lblFinalInternshipStatusCaption.TabIndex = 6
-        lblFinalInternshipStatusCaption.Text = "Internship Status:"
-        ' 
-        ' txtGradedAt
-        ' 
-        txtGradedAt.Location = New Point(208, 384)
-        txtGradedAt.Margin = New Padding(3, 4, 3, 4)
-        txtGradedAt.Name = "txtGradedAt"
-        txtGradedAt.ReadOnly = True
-        txtGradedAt.Size = New Size(251, 27)
-        txtGradedAt.TabIndex = 5
-        ' 
-        ' txtEvaluatedBy
-        ' 
-        txtEvaluatedBy.Location = New Point(208, 331)
-        txtEvaluatedBy.Margin = New Padding(3, 4, 3, 4)
-        txtEvaluatedBy.Name = "txtEvaluatedBy"
-        txtEvaluatedBy.ReadOnly = True
-        txtEvaluatedBy.Size = New Size(365, 27)
-        txtEvaluatedBy.TabIndex = 4
-        ' 
-        ' btnDownloadReport
-        ' 
-        btnDownloadReport.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
-        btnDownloadReport.FlatAppearance.BorderSize = 0
-        btnDownloadReport.FlatStyle = FlatStyle.Flat
-        btnDownloadReport.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        btnDownloadReport.ForeColor = Color.White
-        btnDownloadReport.Location = New Point(46, 467)
-        btnDownloadReport.Margin = New Padding(3, 4, 3, 4)
-        btnDownloadReport.Name = "btnDownloadReport"
-        btnDownloadReport.Size = New Size(206, 53)
-        btnDownloadReport.TabIndex = 3
-        btnDownloadReport.Text = "Download Report"
-        btnDownloadReport.UseVisualStyleBackColor = False
-        ' 
-        ' lblFinalGradeValue
-        ' 
-        lblFinalGradeValue.AutoSize = True
-        lblFinalGradeValue.Font = New Font("Segoe UI Semibold", 28F, FontStyle.Bold)
-        lblFinalGradeValue.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
-        lblFinalGradeValue.Location = New Point(46, 200)
-        lblFinalGradeValue.Name = "lblFinalGradeValue"
-        lblFinalGradeValue.Size = New Size(65, 62)
-        lblFinalGradeValue.TabIndex = 2
-        lblFinalGradeValue.Text = "--"
-        ' 
-        ' txtFinalInternshipStatus
-        ' 
-        txtFinalInternshipStatus.Location = New Point(208, 117)
-        txtFinalInternshipStatus.Margin = New Padding(3, 4, 3, 4)
-        txtFinalInternshipStatus.Name = "txtFinalInternshipStatus"
-        txtFinalInternshipStatus.ReadOnly = True
-        txtFinalInternshipStatus.Size = New Size(251, 27)
-        txtFinalInternshipStatus.TabIndex = 1
-        ' 
-        ' lblFinalGradeTitle
-        ' 
-        lblFinalGradeTitle.AutoSize = True
-        lblFinalGradeTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
-        lblFinalGradeTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblFinalGradeTitle.Location = New Point(37, 32)
-        lblFinalGradeTitle.Name = "lblFinalGradeTitle"
-        lblFinalGradeTitle.Size = New Size(185, 37)
-        lblFinalGradeTitle.TabIndex = 0
-        lblFinalGradeTitle.Text = "FINAL GRADE"
-        ' 
-        ' pnlVisitLogs
-        ' 
-        pnlVisitLogs.BackColor = Color.White
-        pnlVisitLogs.Controls.Add(lblVisitLogsListHeader)
-        pnlVisitLogs.Controls.Add(lblVisitInternshipIDCaption)
-        pnlVisitLogs.Controls.Add(dgvVisitLogs)
-        pnlVisitLogs.Controls.Add(txtVisitInternshipID)
-        pnlVisitLogs.Controls.Add(lblVisitLogsTitle)
-        pnlVisitLogs.Location = New Point(18, 21)
-        pnlVisitLogs.Margin = New Padding(3, 4, 3, 4)
-        pnlVisitLogs.Name = "pnlVisitLogs"
-        pnlVisitLogs.Size = New Size(1083, 824)
-        pnlVisitLogs.TabIndex = 2
-        pnlVisitLogs.Visible = False
-        ' 
-        ' lblVisitLogsListHeader
-        ' 
-        lblVisitLogsListHeader.AutoSize = True
-        lblVisitLogsListHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        lblVisitLogsListHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblVisitLogsListHeader.Location = New Point(46, 148)
-        lblVisitLogsListHeader.Name = "lblVisitLogsListHeader"
-        lblVisitLogsListHeader.Size = New Size(112, 23)
-        lblVisitLogsListHeader.TabIndex = 4
-        lblVisitLogsListHeader.Text = "Visit Logs List"
-        ' 
-        ' lblVisitInternshipIDCaption
-        ' 
-        lblVisitInternshipIDCaption.AutoSize = True
-        lblVisitInternshipIDCaption.Font = New Font("Segoe UI", 9F)
-        lblVisitInternshipIDCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblVisitInternshipIDCaption.Location = New Point(46, 121)
-        lblVisitInternshipIDCaption.Name = "lblVisitInternshipIDCaption"
-        lblVisitInternshipIDCaption.Size = New Size(96, 20)
-        lblVisitInternshipIDCaption.TabIndex = 3
-        lblVisitInternshipIDCaption.Text = "Internship ID:"
-        ' 
-        ' dgvVisitLogs
-        ' 
-        dgvVisitLogs.AllowUserToAddRows = False
-        dgvVisitLogs.AllowUserToDeleteRows = False
-        dgvVisitLogs.BackgroundColor = Color.White
-        dgvVisitLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvVisitLogs.Location = New Point(46, 176)
-        dgvVisitLogs.Margin = New Padding(3, 4, 3, 4)
-        dgvVisitLogs.Name = "dgvVisitLogs"
-        dgvVisitLogs.RowHeadersVisible = False
-        dgvVisitLogs.RowHeadersWidth = 51
-        dgvVisitLogs.RowTemplate.Height = 25
-        dgvVisitLogs.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvVisitLogs.Size = New Size(1006, 600)
-        dgvVisitLogs.TabIndex = 2
-        ' 
-        ' txtVisitInternshipID
-        ' 
-        txtVisitInternshipID.Location = New Point(185, 117)
-        txtVisitInternshipID.Margin = New Padding(3, 4, 3, 4)
-        txtVisitInternshipID.Name = "txtVisitInternshipID"
-        txtVisitInternshipID.ReadOnly = True
-        txtVisitInternshipID.Size = New Size(228, 27)
-        txtVisitInternshipID.TabIndex = 1
-        ' 
-        ' lblVisitLogsTitle
-        ' 
-        lblVisitLogsTitle.AutoSize = True
-        lblVisitLogsTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
-        lblVisitLogsTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblVisitLogsTitle.Location = New Point(37, 32)
-        lblVisitLogsTitle.Name = "lblVisitLogsTitle"
-        lblVisitLogsTitle.Size = New Size(153, 37)
-        lblVisitLogsTitle.TabIndex = 0
-        lblVisitLogsTitle.Text = "VISIT LOGS"
-        ' 
         ' pnlInternshipDetails
         ' 
         pnlInternshipDetails.BackColor = Color.White
+        pnlInternshipDetails.Controls.Add(cboSelectInternship)
+        pnlInternshipDetails.Controls.Add(lblSelectInternship)
         pnlInternshipDetails.Controls.Add(lblHoursProgress)
         pnlInternshipDetails.Controls.Add(lblCompletedHoursCaption)
         pnlInternshipDetails.Controls.Add(lblRequiredHoursCaption)
@@ -541,19 +387,40 @@ Partial Class frmStudentDashboard
         pnlInternshipDetails.Controls.Add(txtCompanyName)
         pnlInternshipDetails.Controls.Add(txtInternshipStatus)
         pnlInternshipDetails.Controls.Add(lblInternshipTitle)
-        pnlInternshipDetails.Location = New Point(18, 21)
+        pnlInternshipDetails.Dock = DockStyle.Fill
+        pnlInternshipDetails.Location = New Point(0, 0)
         pnlInternshipDetails.Margin = New Padding(3, 4, 3, 4)
         pnlInternshipDetails.Name = "pnlInternshipDetails"
-        pnlInternshipDetails.Size = New Size(1083, 824)
+        pnlInternshipDetails.Size = New Size(1120, 867)
         pnlInternshipDetails.TabIndex = 1
         pnlInternshipDetails.Visible = False
+        ' 
+        ' cboSelectInternship
+        ' 
+        cboSelectInternship.DropDownStyle = ComboBoxStyle.DropDownList
+        cboSelectInternship.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cboSelectInternship.FormattingEnabled = True
+        cboSelectInternship.Location = New Point(208, 79)
+        cboSelectInternship.Name = "cboSelectInternship"
+        cboSelectInternship.Size = New Size(350, 31)
+        cboSelectInternship.TabIndex = 35
+        ' 
+        ' lblSelectInternship
+        ' 
+        lblSelectInternship.AutoSize = True
+        lblSelectInternship.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblSelectInternship.Location = New Point(38, 80)
+        lblSelectInternship.Name = "lblSelectInternship"
+        lblSelectInternship.Size = New Size(146, 25)
+        lblSelectInternship.TabIndex = 34
+        lblSelectInternship.Text = "Select Internship:"
         ' 
         ' lblHoursProgress
         ' 
         lblHoursProgress.AutoSize = True
         lblHoursProgress.Font = New Font("Segoe UI", 9F)
         lblHoursProgress.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblHoursProgress.Location = New Point(743, 243)
+        lblHoursProgress.Location = New Point(737, 266)
         lblHoursProgress.Name = "lblHoursProgress"
         lblHoursProgress.Size = New Size(68, 20)
         lblHoursProgress.TabIndex = 33
@@ -564,7 +431,7 @@ Partial Class frmStudentDashboard
         lblCompletedHoursCaption.AutoSize = True
         lblCompletedHoursCaption.Font = New Font("Segoe UI", 9F)
         lblCompletedHoursCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompletedHoursCaption.Location = New Point(743, 215)
+        lblCompletedHoursCaption.Location = New Point(737, 238)
         lblCompletedHoursCaption.Name = "lblCompletedHoursCaption"
         lblCompletedHoursCaption.Size = New Size(129, 20)
         lblCompletedHoursCaption.TabIndex = 32
@@ -575,7 +442,7 @@ Partial Class frmStudentDashboard
         lblRequiredHoursCaption.AutoSize = True
         lblRequiredHoursCaption.Font = New Font("Segoe UI", 9F)
         lblRequiredHoursCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblRequiredHoursCaption.Location = New Point(743, 161)
+        lblRequiredHoursCaption.Location = New Point(737, 184)
         lblRequiredHoursCaption.Name = "lblRequiredHoursCaption"
         lblRequiredHoursCaption.Size = New Size(115, 20)
         lblRequiredHoursCaption.TabIndex = 31
@@ -586,7 +453,7 @@ Partial Class frmStudentDashboard
         lblOjtHoursHeader.AutoSize = True
         lblOjtHoursHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblOjtHoursHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblOjtHoursHeader.Location = New Point(743, 123)
+        lblOjtHoursHeader.Location = New Point(737, 146)
         lblOjtHoursHeader.Name = "lblOjtHoursHeader"
         lblOjtHoursHeader.Size = New Size(126, 23)
         lblOjtHoursHeader.TabIndex = 30
@@ -597,7 +464,7 @@ Partial Class frmStudentDashboard
         lblEndTimeCaption.AutoSize = True
         lblEndTimeCaption.Font = New Font("Segoe UI", 9F)
         lblEndTimeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblEndTimeCaption.Location = New Point(412, 775)
+        lblEndTimeCaption.Location = New Point(412, 798)
         lblEndTimeCaption.Name = "lblEndTimeCaption"
         lblEndTimeCaption.Size = New Size(74, 20)
         lblEndTimeCaption.TabIndex = 29
@@ -608,7 +475,7 @@ Partial Class frmStudentDashboard
         lblStartTimeCaption.AutoSize = True
         lblStartTimeCaption.Font = New Font("Segoe UI", 9F)
         lblStartTimeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblStartTimeCaption.Location = New Point(46, 775)
+        lblStartTimeCaption.Location = New Point(46, 798)
         lblStartTimeCaption.Name = "lblStartTimeCaption"
         lblStartTimeCaption.Size = New Size(80, 20)
         lblStartTimeCaption.TabIndex = 28
@@ -619,7 +486,7 @@ Partial Class frmStudentDashboard
         lblWorkDaysCaption.AutoSize = True
         lblWorkDaysCaption.Font = New Font("Segoe UI", 9F)
         lblWorkDaysCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblWorkDaysCaption.Location = New Point(46, 721)
+        lblWorkDaysCaption.Location = New Point(46, 744)
         lblWorkDaysCaption.Name = "lblWorkDaysCaption"
         lblWorkDaysCaption.Size = New Size(82, 20)
         lblWorkDaysCaption.TabIndex = 27
@@ -630,7 +497,7 @@ Partial Class frmStudentDashboard
         lblWorkScheduleHeader.AutoSize = True
         lblWorkScheduleHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblWorkScheduleHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblWorkScheduleHeader.Location = New Point(37, 683)
+        lblWorkScheduleHeader.Location = New Point(37, 706)
         lblWorkScheduleHeader.Name = "lblWorkScheduleHeader"
         lblWorkScheduleHeader.Size = New Size(125, 23)
         lblWorkScheduleHeader.TabIndex = 26
@@ -641,7 +508,7 @@ Partial Class frmStudentDashboard
         lblSupervisorContactCaption.AutoSize = True
         lblSupervisorContactCaption.Font = New Font("Segoe UI", 9F)
         lblSupervisorContactCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorContactCaption.Location = New Point(46, 601)
+        lblSupervisorContactCaption.Location = New Point(46, 624)
         lblSupervisorContactCaption.Name = "lblSupervisorContactCaption"
         lblSupervisorContactCaption.Size = New Size(121, 20)
         lblSupervisorContactCaption.TabIndex = 25
@@ -652,7 +519,7 @@ Partial Class frmStudentDashboard
         lblSupervisorPositionCaption.AutoSize = True
         lblSupervisorPositionCaption.Font = New Font("Segoe UI", 9F)
         lblSupervisorPositionCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorPositionCaption.Location = New Point(46, 548)
+        lblSupervisorPositionCaption.Location = New Point(46, 571)
         lblSupervisorPositionCaption.Name = "lblSupervisorPositionCaption"
         lblSupervisorPositionCaption.Size = New Size(97, 20)
         lblSupervisorPositionCaption.TabIndex = 24
@@ -663,7 +530,7 @@ Partial Class frmStudentDashboard
         lblSupervisorNameCaption.AutoSize = True
         lblSupervisorNameCaption.Font = New Font("Segoe UI", 9F)
         lblSupervisorNameCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorNameCaption.Location = New Point(46, 495)
+        lblSupervisorNameCaption.Location = New Point(46, 518)
         lblSupervisorNameCaption.Name = "lblSupervisorNameCaption"
         lblSupervisorNameCaption.Size = New Size(125, 20)
         lblSupervisorNameCaption.TabIndex = 23
@@ -674,7 +541,7 @@ Partial Class frmStudentDashboard
         lblSupervisorInfoHeader.AutoSize = True
         lblSupervisorInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblSupervisorInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorInfoHeader.Location = New Point(37, 457)
+        lblSupervisorInfoHeader.Location = New Point(37, 467)
         lblSupervisorInfoHeader.Name = "lblSupervisorInfoHeader"
         lblSupervisorInfoHeader.Size = New Size(187, 23)
         lblSupervisorInfoHeader.TabIndex = 22
@@ -685,7 +552,7 @@ Partial Class frmStudentDashboard
         lblIndustryCaption.AutoSize = True
         lblIndustryCaption.Font = New Font("Segoe UI", 9F)
         lblIndustryCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblIndustryCaption.Location = New Point(46, 375)
+        lblIndustryCaption.Location = New Point(46, 398)
         lblIndustryCaption.Name = "lblIndustryCaption"
         lblIndustryCaption.Size = New Size(64, 20)
         lblIndustryCaption.TabIndex = 21
@@ -696,7 +563,7 @@ Partial Class frmStudentDashboard
         lblCompanyCityCaption.AutoSize = True
         lblCompanyCityCaption.Font = New Font("Segoe UI", 9F)
         lblCompanyCityCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyCityCaption.Location = New Point(46, 321)
+        lblCompanyCityCaption.Location = New Point(46, 344)
         lblCompanyCityCaption.Name = "lblCompanyCityCaption"
         lblCompanyCityCaption.Size = New Size(37, 20)
         lblCompanyCityCaption.TabIndex = 20
@@ -707,7 +574,7 @@ Partial Class frmStudentDashboard
         lblCompanyAddressCaption.AutoSize = True
         lblCompanyAddressCaption.Font = New Font("Segoe UI", 9F)
         lblCompanyAddressCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyAddressCaption.Location = New Point(46, 268)
+        lblCompanyAddressCaption.Location = New Point(46, 291)
         lblCompanyAddressCaption.Name = "lblCompanyAddressCaption"
         lblCompanyAddressCaption.Size = New Size(65, 20)
         lblCompanyAddressCaption.TabIndex = 19
@@ -718,7 +585,7 @@ Partial Class frmStudentDashboard
         lblCompanyNameCaption.AutoSize = True
         lblCompanyNameCaption.Font = New Font("Segoe UI", 9F)
         lblCompanyNameCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyNameCaption.Location = New Point(46, 215)
+        lblCompanyNameCaption.Location = New Point(46, 238)
         lblCompanyNameCaption.Name = "lblCompanyNameCaption"
         lblCompanyNameCaption.Size = New Size(119, 20)
         lblCompanyNameCaption.TabIndex = 18
@@ -729,7 +596,7 @@ Partial Class frmStudentDashboard
         lblCompanyInfoHeader.AutoSize = True
         lblCompanyInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblCompanyInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyInfoHeader.Location = New Point(37, 177)
+        lblCompanyInfoHeader.Location = New Point(37, 200)
         lblCompanyInfoHeader.Name = "lblCompanyInfoHeader"
         lblCompanyInfoHeader.Size = New Size(180, 23)
         lblCompanyInfoHeader.TabIndex = 17
@@ -738,17 +605,17 @@ Partial Class frmStudentDashboard
         ' lblInternshipStatusCaption
         ' 
         lblInternshipStatusCaption.AutoSize = True
-        lblInternshipStatusCaption.Font = New Font("Segoe UI", 9F)
+        lblInternshipStatusCaption.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblInternshipStatusCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblInternshipStatusCaption.Location = New Point(46, 121)
+        lblInternshipStatusCaption.Location = New Point(37, 137)
         lblInternshipStatusCaption.Name = "lblInternshipStatusCaption"
-        lblInternshipStatusCaption.Size = New Size(121, 20)
+        lblInternshipStatusCaption.Size = New Size(143, 23)
         lblInternshipStatusCaption.TabIndex = 16
         lblInternshipStatusCaption.Text = "Internship Status:"
         ' 
         ' progressHours
         ' 
-        progressHours.Location = New Point(743, 267)
+        progressHours.Location = New Point(737, 290)
         progressHours.Margin = New Padding(3, 4, 3, 4)
         progressHours.Name = "progressHours"
         progressHours.Size = New Size(331, 31)
@@ -756,7 +623,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtCompletedHours
         ' 
-        txtCompletedHours.Location = New Point(894, 211)
+        txtCompletedHours.Location = New Point(888, 234)
         txtCompletedHours.Margin = New Padding(3, 4, 3, 4)
         txtCompletedHours.Name = "txtCompletedHours"
         txtCompletedHours.ReadOnly = True
@@ -765,7 +632,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtRequiredHours
         ' 
-        txtRequiredHours.Location = New Point(894, 157)
+        txtRequiredHours.Location = New Point(888, 180)
         txtRequiredHours.Margin = New Padding(3, 4, 3, 4)
         txtRequiredHours.Name = "txtRequiredHours"
         txtRequiredHours.ReadOnly = True
@@ -774,16 +641,16 @@ Partial Class frmStudentDashboard
         ' 
         ' txtEndTime
         ' 
-        txtEndTime.Location = New Point(494, 771)
+        txtEndTime.Location = New Point(494, 794)
         txtEndTime.Margin = New Padding(3, 4, 3, 4)
         txtEndTime.Name = "txtEndTime"
         txtEndTime.ReadOnly = True
-        txtEndTime.Size = New Size(191, 27)
+        txtEndTime.Size = New Size(166, 27)
         txtEndTime.TabIndex = 11
         ' 
         ' txtStartTime
         ' 
-        txtStartTime.Location = New Point(208, 771)
+        txtStartTime.Location = New Point(208, 794)
         txtStartTime.Margin = New Padding(3, 4, 3, 4)
         txtStartTime.Name = "txtStartTime"
         txtStartTime.ReadOnly = True
@@ -792,7 +659,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtWorkDays
         ' 
-        txtWorkDays.Location = New Point(208, 717)
+        txtWorkDays.Location = New Point(208, 740)
         txtWorkDays.Margin = New Padding(3, 4, 3, 4)
         txtWorkDays.Name = "txtWorkDays"
         txtWorkDays.ReadOnly = True
@@ -801,7 +668,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtSupervisorContact
         ' 
-        txtSupervisorContact.Location = New Point(208, 597)
+        txtSupervisorContact.Location = New Point(208, 620)
         txtSupervisorContact.Margin = New Padding(3, 4, 3, 4)
         txtSupervisorContact.Name = "txtSupervisorContact"
         txtSupervisorContact.ReadOnly = True
@@ -810,7 +677,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtSupervisorPosition
         ' 
-        txtSupervisorPosition.Location = New Point(208, 544)
+        txtSupervisorPosition.Location = New Point(208, 567)
         txtSupervisorPosition.Margin = New Padding(3, 4, 3, 4)
         txtSupervisorPosition.Name = "txtSupervisorPosition"
         txtSupervisorPosition.ReadOnly = True
@@ -819,7 +686,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtSupervisorName
         ' 
-        txtSupervisorName.Location = New Point(208, 491)
+        txtSupervisorName.Location = New Point(208, 514)
         txtSupervisorName.Margin = New Padding(3, 4, 3, 4)
         txtSupervisorName.Name = "txtSupervisorName"
         txtSupervisorName.ReadOnly = True
@@ -828,16 +695,16 @@ Partial Class frmStudentDashboard
         ' 
         ' txtIndustry
         ' 
-        txtIndustry.Location = New Point(208, 371)
+        txtIndustry.Location = New Point(208, 394)
         txtIndustry.Margin = New Padding(3, 4, 3, 4)
         txtIndustry.Name = "txtIndustry"
         txtIndustry.ReadOnly = True
-        txtIndustry.Size = New Size(479, 27)
+        txtIndustry.Size = New Size(454, 27)
         txtIndustry.TabIndex = 5
         ' 
         ' txtCompanyCity
         ' 
-        txtCompanyCity.Location = New Point(208, 317)
+        txtCompanyCity.Location = New Point(208, 340)
         txtCompanyCity.Margin = New Padding(3, 4, 3, 4)
         txtCompanyCity.Name = "txtCompanyCity"
         txtCompanyCity.ReadOnly = True
@@ -846,25 +713,25 @@ Partial Class frmStudentDashboard
         ' 
         ' txtCompanyAddress
         ' 
-        txtCompanyAddress.Location = New Point(208, 264)
+        txtCompanyAddress.Location = New Point(208, 287)
         txtCompanyAddress.Margin = New Padding(3, 4, 3, 4)
         txtCompanyAddress.Name = "txtCompanyAddress"
         txtCompanyAddress.ReadOnly = True
-        txtCompanyAddress.Size = New Size(479, 27)
+        txtCompanyAddress.Size = New Size(454, 27)
         txtCompanyAddress.TabIndex = 3
         ' 
         ' txtCompanyName
         ' 
-        txtCompanyName.Location = New Point(208, 211)
+        txtCompanyName.Location = New Point(208, 234)
         txtCompanyName.Margin = New Padding(3, 4, 3, 4)
         txtCompanyName.Name = "txtCompanyName"
         txtCompanyName.ReadOnly = True
-        txtCompanyName.Size = New Size(479, 27)
+        txtCompanyName.Size = New Size(454, 27)
         txtCompanyName.TabIndex = 2
         ' 
         ' txtInternshipStatus
         ' 
-        txtInternshipStatus.Location = New Point(208, 117)
+        txtInternshipStatus.Location = New Point(208, 134)
         txtInternshipStatus.Margin = New Padding(3, 4, 3, 4)
         txtInternshipStatus.Name = "txtInternshipStatus"
         txtInternshipStatus.ReadOnly = True
@@ -882,9 +749,155 @@ Partial Class frmStudentDashboard
         lblInternshipTitle.TabIndex = 0
         lblInternshipTitle.Text = "INTERNSHIP DETAILS"
         ' 
+        ' pnlFinalGrade
+        ' 
+        pnlFinalGrade.BackColor = Color.White
+        pnlFinalGrade.Controls.Add(lblFinalGradeTitle)
+        pnlFinalGrade.Controls.Add(txtFinalInternshipStatus)
+        pnlFinalGrade.Controls.Add(lblFinalInternshipStatusCaption)
+        pnlFinalGrade.Controls.Add(lblFinalGradeCaption)
+        pnlFinalGrade.Controls.Add(lblFinalGradeValue)
+        pnlFinalGrade.Controls.Add(lblEvaluatedByCaption)
+        pnlFinalGrade.Controls.Add(lblGradedAtCaption)
+        pnlFinalGrade.Controls.Add(txtEvaluatedBy)
+        pnlFinalGrade.Controls.Add(txtGradedAt)
+        pnlFinalGrade.Controls.Add(btnDownloadReport)
+        pnlFinalGrade.Controls.Add(lblFinalReportCaption)
+        pnlFinalGrade.Dock = DockStyle.Fill
+        pnlFinalGrade.Location = New Point(0, 0)
+        pnlFinalGrade.Margin = New Padding(3, 4, 3, 4)
+        pnlFinalGrade.Name = "pnlFinalGrade"
+        pnlFinalGrade.Size = New Size(1120, 867)
+        pnlFinalGrade.TabIndex = 3
+        pnlFinalGrade.Visible = False
+        ' 
+        ' lblFinalGradeTitle
+        ' 
+        lblFinalGradeTitle.AutoSize = True
+        lblFinalGradeTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
+        lblFinalGradeTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblFinalGradeTitle.Location = New Point(37, 32)
+        lblFinalGradeTitle.Name = "lblFinalGradeTitle"
+        lblFinalGradeTitle.Size = New Size(185, 37)
+        lblFinalGradeTitle.TabIndex = 0
+        lblFinalGradeTitle.Text = "FINAL GRADE"
+        ' 
+        ' txtFinalInternshipStatus
+        ' 
+        txtFinalInternshipStatus.Location = New Point(208, 117)
+        txtFinalInternshipStatus.Margin = New Padding(3, 4, 3, 4)
+        txtFinalInternshipStatus.Name = "txtFinalInternshipStatus"
+        txtFinalInternshipStatus.ReadOnly = True
+        txtFinalInternshipStatus.Size = New Size(251, 27)
+        txtFinalInternshipStatus.TabIndex = 1
+        ' 
+        ' lblFinalInternshipStatusCaption
+        ' 
+        lblFinalInternshipStatusCaption.AutoSize = True
+        lblFinalInternshipStatusCaption.Font = New Font("Segoe UI", 9F)
+        lblFinalInternshipStatusCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblFinalInternshipStatusCaption.Location = New Point(46, 121)
+        lblFinalInternshipStatusCaption.Name = "lblFinalInternshipStatusCaption"
+        lblFinalInternshipStatusCaption.Size = New Size(121, 20)
+        lblFinalInternshipStatusCaption.TabIndex = 6
+        lblFinalInternshipStatusCaption.Text = "Internship Status:"
+        ' 
+        ' lblFinalGradeCaption
+        ' 
+        lblFinalGradeCaption.AutoSize = True
+        lblFinalGradeCaption.Font = New Font("Segoe UI", 9F)
+        lblFinalGradeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblFinalGradeCaption.Location = New Point(46, 168)
+        lblFinalGradeCaption.Name = "lblFinalGradeCaption"
+        lblFinalGradeCaption.Size = New Size(87, 20)
+        lblFinalGradeCaption.TabIndex = 7
+        lblFinalGradeCaption.Text = "Final Grade:"
+        ' 
+        ' lblFinalGradeValue
+        ' 
+        lblFinalGradeValue.AutoSize = True
+        lblFinalGradeValue.Font = New Font("Segoe UI Semibold", 28F, FontStyle.Bold)
+        lblFinalGradeValue.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
+        lblFinalGradeValue.Location = New Point(46, 200)
+        lblFinalGradeValue.Name = "lblFinalGradeValue"
+        lblFinalGradeValue.Size = New Size(65, 62)
+        lblFinalGradeValue.TabIndex = 2
+        lblFinalGradeValue.Text = "--"
+        ' 
+        ' lblEvaluatedByCaption
+        ' 
+        lblEvaluatedByCaption.AutoSize = True
+        lblEvaluatedByCaption.Font = New Font("Segoe UI", 9F)
+        lblEvaluatedByCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblEvaluatedByCaption.Location = New Point(46, 335)
+        lblEvaluatedByCaption.Name = "lblEvaluatedByCaption"
+        lblEvaluatedByCaption.Size = New Size(97, 20)
+        lblEvaluatedByCaption.TabIndex = 8
+        lblEvaluatedByCaption.Text = "Evaluated By:"
+        ' 
+        ' lblGradedAtCaption
+        ' 
+        lblGradedAtCaption.AutoSize = True
+        lblGradedAtCaption.Font = New Font("Segoe UI", 9F)
+        lblGradedAtCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblGradedAtCaption.Location = New Point(46, 388)
+        lblGradedAtCaption.Name = "lblGradedAtCaption"
+        lblGradedAtCaption.Size = New Size(80, 20)
+        lblGradedAtCaption.TabIndex = 9
+        lblGradedAtCaption.Text = "Graded At:"
+        ' 
+        ' txtEvaluatedBy
+        ' 
+        txtEvaluatedBy.Location = New Point(208, 331)
+        txtEvaluatedBy.Margin = New Padding(3, 4, 3, 4)
+        txtEvaluatedBy.Name = "txtEvaluatedBy"
+        txtEvaluatedBy.ReadOnly = True
+        txtEvaluatedBy.Size = New Size(365, 27)
+        txtEvaluatedBy.TabIndex = 4
+        ' 
+        ' txtGradedAt
+        ' 
+        txtGradedAt.Location = New Point(208, 384)
+        txtGradedAt.Margin = New Padding(3, 4, 3, 4)
+        txtGradedAt.Name = "txtGradedAt"
+        txtGradedAt.ReadOnly = True
+        txtGradedAt.Size = New Size(251, 27)
+        txtGradedAt.TabIndex = 5
+        ' 
+        ' btnDownloadReport
+        ' 
+        btnDownloadReport.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
+        btnDownloadReport.FlatAppearance.BorderSize = 0
+        btnDownloadReport.FlatStyle = FlatStyle.Flat
+        btnDownloadReport.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        btnDownloadReport.ForeColor = Color.White
+        btnDownloadReport.Location = New Point(46, 467)
+        btnDownloadReport.Margin = New Padding(3, 4, 3, 4)
+        btnDownloadReport.Name = "btnDownloadReport"
+        btnDownloadReport.Size = New Size(206, 53)
+        btnDownloadReport.TabIndex = 3
+        btnDownloadReport.Text = "Download Report"
+        btnDownloadReport.UseVisualStyleBackColor = False
+        ' 
+        ' lblFinalReportCaption
+        ' 
+        lblFinalReportCaption.AutoSize = True
+        lblFinalReportCaption.Font = New Font("Segoe UI", 9F)
+        lblFinalReportCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblFinalReportCaption.Location = New Point(46, 441)
+        lblFinalReportCaption.Name = "lblFinalReportCaption"
+        lblFinalReportCaption.Size = New Size(165, 20)
+        lblFinalReportCaption.TabIndex = 10
+        lblFinalReportCaption.Text = "Final Evaluation Report:"
+        ' 
         ' pnlStudentProfile
         ' 
         pnlStudentProfile.BackColor = Color.White
+        pnlStudentProfile.Controls.Add(chkShowPassword)
+        pnlStudentProfile.Controls.Add(Label1)
+        pnlStudentProfile.Controls.Add(txtConfirmPassword)
+        pnlStudentProfile.Controls.Add(lblPassword)
+        pnlStudentProfile.Controls.Add(txtPassword)
         pnlStudentProfile.Controls.Add(lblAcademicInfoHeader)
         pnlStudentProfile.Controls.Add(lblContactInfoHeader)
         pnlStudentProfile.Controls.Add(lblDepartmentCaption)
@@ -915,18 +928,69 @@ Partial Class frmStudentDashboard
         pnlStudentProfile.Controls.Add(txtFullName)
         pnlStudentProfile.Controls.Add(txtStudentNumber)
         pnlStudentProfile.Controls.Add(lblProfileTitle)
-        pnlStudentProfile.Location = New Point(18, 21)
+        pnlStudentProfile.Dock = DockStyle.Fill
+        pnlStudentProfile.Location = New Point(0, 0)
         pnlStudentProfile.Margin = New Padding(3, 4, 3, 4)
         pnlStudentProfile.Name = "pnlStudentProfile"
-        pnlStudentProfile.Size = New Size(1083, 824)
+        pnlStudentProfile.Size = New Size(1120, 867)
         pnlStudentProfile.TabIndex = 0
+        ' 
+        ' chkShowPassword
+        ' 
+        chkShowPassword.AutoSize = True
+        chkShowPassword.Location = New Point(866, 218)
+        chkShowPassword.Name = "chkShowPassword"
+        chkShowPassword.Size = New Size(132, 24)
+        chkShowPassword.TabIndex = 34
+        chkShowPassword.Text = "Show Password"
+        chkShowPassword.UseVisualStyleBackColor = True
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 9F)
+        Label1.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        Label1.Location = New Point(669, 188)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(130, 20)
+        Label1.TabIndex = 33
+        Label1.Text = "Confirm Password:"
+        ' 
+        ' txtConfirmPassword
+        ' 
+        txtConfirmPassword.Location = New Point(816, 184)
+        txtConfirmPassword.Margin = New Padding(3, 4, 3, 4)
+        txtConfirmPassword.Name = "txtConfirmPassword"
+        txtConfirmPassword.ReadOnly = True
+        txtConfirmPassword.Size = New Size(182, 27)
+        txtConfirmPassword.TabIndex = 32
+        ' 
+        ' lblPassword
+        ' 
+        lblPassword.AutoSize = True
+        lblPassword.Font = New Font("Segoe UI", 9F)
+        lblPassword.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblPassword.Location = New Point(669, 134)
+        lblPassword.Name = "lblPassword"
+        lblPassword.Size = New Size(73, 20)
+        lblPassword.TabIndex = 31
+        lblPassword.Text = "Password:"
+        ' 
+        ' txtPassword
+        ' 
+        txtPassword.Location = New Point(816, 130)
+        txtPassword.Margin = New Padding(3, 4, 3, 4)
+        txtPassword.Name = "txtPassword"
+        txtPassword.ReadOnly = True
+        txtPassword.Size = New Size(182, 27)
+        txtPassword.TabIndex = 30
         ' 
         ' lblAcademicInfoHeader
         ' 
         lblAcademicInfoHeader.AutoSize = True
         lblAcademicInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblAcademicInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblAcademicInfoHeader.Location = New Point(37, 477)
+        lblAcademicInfoHeader.Location = New Point(37, 527)
         lblAcademicInfoHeader.Name = "lblAcademicInfoHeader"
         lblAcademicInfoHeader.Size = New Size(180, 23)
         lblAcademicInfoHeader.TabIndex = 29
@@ -937,7 +1001,7 @@ Partial Class frmStudentDashboard
         lblContactInfoHeader.AutoSize = True
         lblContactInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblContactInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblContactInfoHeader.Location = New Point(37, 265)
+        lblContactInfoHeader.Location = New Point(37, 294)
         lblContactInfoHeader.Name = "lblContactInfoHeader"
         lblContactInfoHeader.Size = New Size(166, 23)
         lblContactInfoHeader.TabIndex = 28
@@ -948,7 +1012,7 @@ Partial Class frmStudentDashboard
         lblDepartmentCaption.AutoSize = True
         lblDepartmentCaption.Font = New Font("Segoe UI", 9F)
         lblDepartmentCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblDepartmentCaption.Location = New Point(37, 617)
+        lblDepartmentCaption.Location = New Point(37, 667)
         lblDepartmentCaption.Name = "lblDepartmentCaption"
         lblDepartmentCaption.Size = New Size(92, 20)
         lblDepartmentCaption.TabIndex = 27
@@ -959,7 +1023,7 @@ Partial Class frmStudentDashboard
         lblCourseCaption.AutoSize = True
         lblCourseCaption.Font = New Font("Segoe UI", 9F)
         lblCourseCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCourseCaption.Location = New Point(37, 564)
+        lblCourseCaption.Location = New Point(37, 614)
         lblCourseCaption.Name = "lblCourseCaption"
         lblCourseCaption.Size = New Size(57, 20)
         lblCourseCaption.TabIndex = 26
@@ -970,7 +1034,7 @@ Partial Class frmStudentDashboard
         lblSectionCaption.AutoSize = True
         lblSectionCaption.Font = New Font("Segoe UI", 9F)
         lblSectionCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSectionCaption.Location = New Point(37, 511)
+        lblSectionCaption.Location = New Point(37, 561)
         lblSectionCaption.Name = "lblSectionCaption"
         lblSectionCaption.Size = New Size(61, 20)
         lblSectionCaption.TabIndex = 25
@@ -981,7 +1045,7 @@ Partial Class frmStudentDashboard
         lblCityCaption.AutoSize = True
         lblCityCaption.Font = New Font("Segoe UI", 9F)
         lblCityCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCityCaption.Location = New Point(37, 457)
+        lblCityCaption.Location = New Point(37, 486)
         lblCityCaption.Name = "lblCityCaption"
         lblCityCaption.Size = New Size(37, 20)
         lblCityCaption.TabIndex = 24
@@ -992,7 +1056,7 @@ Partial Class frmStudentDashboard
         lblAddressCaption.AutoSize = True
         lblAddressCaption.Font = New Font("Segoe UI", 9F)
         lblAddressCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblAddressCaption.Location = New Point(37, 404)
+        lblAddressCaption.Location = New Point(37, 433)
         lblAddressCaption.Name = "lblAddressCaption"
         lblAddressCaption.Size = New Size(65, 20)
         lblAddressCaption.TabIndex = 23
@@ -1003,7 +1067,7 @@ Partial Class frmStudentDashboard
         lblContactCaption.AutoSize = True
         lblContactCaption.Font = New Font("Segoe UI", 9F)
         lblContactCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblContactCaption.Location = New Point(37, 351)
+        lblContactCaption.Location = New Point(37, 380)
         lblContactCaption.Name = "lblContactCaption"
         lblContactCaption.Size = New Size(90, 20)
         lblContactCaption.TabIndex = 22
@@ -1014,7 +1078,7 @@ Partial Class frmStudentDashboard
         lblEmailCaption.AutoSize = True
         lblEmailCaption.Font = New Font("Segoe UI", 9F)
         lblEmailCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblEmailCaption.Location = New Point(37, 297)
+        lblEmailCaption.Location = New Point(37, 326)
         lblEmailCaption.Name = "lblEmailCaption"
         lblEmailCaption.Size = New Size(49, 20)
         lblEmailCaption.TabIndex = 21
@@ -1036,7 +1100,7 @@ Partial Class frmStudentDashboard
         lblBirthDateCaption.AutoSize = True
         lblBirthDateCaption.Font = New Font("Segoe UI", 9F)
         lblBirthDateCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblBirthDateCaption.Location = New Point(361, 191)
+        lblBirthDateCaption.Location = New Point(669, 84)
         lblBirthDateCaption.Name = "lblBirthDateCaption"
         lblBirthDateCaption.Size = New Size(79, 20)
         lblBirthDateCaption.TabIndex = 19
@@ -1082,7 +1146,7 @@ Partial Class frmStudentDashboard
         btnCancelEditProfile.FlatStyle = FlatStyle.Flat
         btnCancelEditProfile.Font = New Font("Segoe UI", 10F)
         btnCancelEditProfile.ForeColor = Color.Black
-        btnCancelEditProfile.Location = New Point(336, 693)
+        btnCancelEditProfile.Location = New Point(336, 743)
         btnCancelEditProfile.Margin = New Padding(3, 4, 3, 4)
         btnCancelEditProfile.Name = "btnCancelEditProfile"
         btnCancelEditProfile.Size = New Size(137, 51)
@@ -1097,7 +1161,7 @@ Partial Class frmStudentDashboard
         btnSaveProfile.FlatStyle = FlatStyle.Flat
         btnSaveProfile.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnSaveProfile.ForeColor = Color.White
-        btnSaveProfile.Location = New Point(183, 693)
+        btnSaveProfile.Location = New Point(183, 743)
         btnSaveProfile.Margin = New Padding(3, 4, 3, 4)
         btnSaveProfile.Name = "btnSaveProfile"
         btnSaveProfile.Size = New Size(137, 51)
@@ -1112,7 +1176,7 @@ Partial Class frmStudentDashboard
         btnEditProfile.FlatStyle = FlatStyle.Flat
         btnEditProfile.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnEditProfile.ForeColor = Color.Black
-        btnEditProfile.Location = New Point(37, 693)
+        btnEditProfile.Location = New Point(37, 743)
         btnEditProfile.Margin = New Padding(3, 4, 3, 4)
         btnEditProfile.Name = "btnEditProfile"
         btnEditProfile.Size = New Size(137, 51)
@@ -1122,7 +1186,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtDepartmentName
         ' 
-        txtDepartmentName.Location = New Point(183, 613)
+        txtDepartmentName.Location = New Point(183, 663)
         txtDepartmentName.Margin = New Padding(3, 4, 3, 4)
         txtDepartmentName.Name = "txtDepartmentName"
         txtDepartmentName.ReadOnly = True
@@ -1131,7 +1195,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtCourseName
         ' 
-        txtCourseName.Location = New Point(183, 560)
+        txtCourseName.Location = New Point(183, 610)
         txtCourseName.Margin = New Padding(3, 4, 3, 4)
         txtCourseName.Name = "txtCourseName"
         txtCourseName.ReadOnly = True
@@ -1140,7 +1204,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtSectionName
         ' 
-        txtSectionName.Location = New Point(183, 507)
+        txtSectionName.Location = New Point(183, 557)
         txtSectionName.Margin = New Padding(3, 4, 3, 4)
         txtSectionName.Name = "txtSectionName"
         txtSectionName.ReadOnly = True
@@ -1149,7 +1213,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtCity
         ' 
-        txtCity.Location = New Point(183, 453)
+        txtCity.Location = New Point(183, 482)
         txtCity.Margin = New Padding(3, 4, 3, 4)
         txtCity.Name = "txtCity"
         txtCity.ReadOnly = True
@@ -1158,7 +1222,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtAddress
         ' 
-        txtAddress.Location = New Point(183, 400)
+        txtAddress.Location = New Point(183, 429)
         txtAddress.Margin = New Padding(3, 4, 3, 4)
         txtAddress.Name = "txtAddress"
         txtAddress.ReadOnly = True
@@ -1167,7 +1231,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtContactNumber
         ' 
-        txtContactNumber.Location = New Point(183, 347)
+        txtContactNumber.Location = New Point(183, 376)
         txtContactNumber.Margin = New Padding(3, 4, 3, 4)
         txtContactNumber.Name = "txtContactNumber"
         txtContactNumber.ReadOnly = True
@@ -1176,7 +1240,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtEmail
         ' 
-        txtEmail.Location = New Point(183, 293)
+        txtEmail.Location = New Point(183, 322)
         txtEmail.Margin = New Padding(3, 4, 3, 4)
         txtEmail.Name = "txtEmail"
         txtEmail.ReadOnly = True
@@ -1194,7 +1258,7 @@ Partial Class frmStudentDashboard
         ' 
         ' txtBirthDate
         ' 
-        txtBirthDate.Location = New Point(455, 187)
+        txtBirthDate.Location = New Point(816, 80)
         txtBirthDate.Margin = New Padding(3, 4, 3, 4)
         txtBirthDate.Name = "txtBirthDate"
         txtBirthDate.ReadOnly = True
@@ -1233,7 +1297,7 @@ Partial Class frmStudentDashboard
         lblProfileTitle.AutoSize = True
         lblProfileTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
         lblProfileTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblProfileTitle.Location = New Point(37, 32)
+        lblProfileTitle.Location = New Point(37, 26)
         lblProfileTitle.Name = "lblProfileTitle"
         lblProfileTitle.Size = New Size(244, 37)
         lblProfileTitle.TabIndex = 0
@@ -1251,18 +1315,19 @@ Partial Class frmStudentDashboard
         Name = "frmStudentDashboard"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Student Dashboard"
+        WindowState = FormWindowState.Maximized
         pnlHeader.ResumeLayout(False)
         pnlHeader.PerformLayout()
-        pnlSidebar.ResumeLayout(False)
-        pnlSidebar.PerformLayout()
-        pnlContent.ResumeLayout(False)
-        pnlFinalGrade.ResumeLayout(False)
-        pnlFinalGrade.PerformLayout()
         pnlVisitLogs.ResumeLayout(False)
         pnlVisitLogs.PerformLayout()
         CType(dgvVisitLogs, ComponentModel.ISupportInitialize).EndInit()
+        pnlSidebar.ResumeLayout(False)
+        pnlSidebar.PerformLayout()
+        pnlContent.ResumeLayout(False)
         pnlInternshipDetails.ResumeLayout(False)
         pnlInternshipDetails.PerformLayout()
+        pnlFinalGrade.ResumeLayout(False)
+        pnlFinalGrade.PerformLayout()
         pnlStudentProfile.ResumeLayout(False)
         pnlStudentProfile.PerformLayout()
         ResumeLayout(False)
@@ -1351,9 +1416,7 @@ Partial Class frmStudentDashboard
 
     Friend WithEvents pnlVisitLogs As Panel
     Friend WithEvents lblVisitLogsTitle As Label
-    Friend WithEvents txtVisitInternshipID As TextBox
     Friend WithEvents dgvVisitLogs As DataGridView
-    Friend WithEvents lblVisitInternshipIDCaption As Label
     Friend WithEvents lblVisitLogsListHeader As Label
 
     Friend WithEvents pnlFinalGrade As Panel
@@ -1368,5 +1431,12 @@ Partial Class frmStudentDashboard
     Friend WithEvents lblEvaluatedByCaption As Label
     Friend WithEvents lblGradedAtCaption As Label
     Friend WithEvents lblFinalReportCaption As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtConfirmPassword As TextBox
+    Friend WithEvents lblPassword As Label
+    Friend WithEvents txtPassword As TextBox
+    Friend WithEvents chkShowPassword As CheckBox
+    Friend WithEvents cboSelectInternship As ComboBox
+    Friend WithEvents lblSelectInternship As Label
 
 End Class

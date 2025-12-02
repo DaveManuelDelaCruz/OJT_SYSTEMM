@@ -3,6 +3,9 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmStudentRegister
 
+    ' ============================================================
+    ' FORM LOAD
+    ' ============================================================
     Private Sub frmStudentRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitializeUi()
         LoadGender()
@@ -10,15 +13,15 @@ Public Class frmStudentRegister
     End Sub
 
     Private Sub InitializeUi()
-        lblError.Text = String.Empty
-
-        ' Reasonable defaults for birthdate (prevent future dates)
-        dtpBirthDate.MaxDate = DateTime.Today
-        dtpBirthDate.Value = New DateTime(DateTime.Today.Year - 20, 1, 1) ' around 20 yrs old default
-
+        lblError.Text = ""
+        dtpBirthDate.MaxDate = Date.Today
+        dtpBirthDate.Value = New Date(Date.Today.Year - 20, 1, 1)
         txtDepartment.ReadOnly = True
     End Sub
 
+    ' ============================================================
+    ' GENDER LIST
+    ' ============================================================
     Private Sub LoadGender()
         cboGender.Items.Clear()
         cboGender.Items.Add("Male")
@@ -27,54 +30,48 @@ Public Class frmStudentRegister
         cboGender.SelectedIndex = -1
     End Sub
 
+    ' ============================================================
+    ' COURSES
+    ' ============================================================
     Private Sub LoadCourses()
         cboCourse.DataSource = Nothing
-        cboCourse.Items.Clear()
         cboSection.DataSource = Nothing
-        cboSection.Items.Clear()
         txtDepartment.Text = ""
 
         Try
             Using conn As MySqlConnection = GetConnection()
                 Using cmd As New MySqlCommand("
-                    SELECT c.CourseID,
-                           c.CourseName,
-                           d.DepartmentName
+                    SELECT c.CourseID, c.CourseName, d.DepartmentName
                     FROM course c
                     INNER JOIN department d ON d.DepartmentID = c.DepartmentID
                     WHERE c.IsActive = 1
                     ORDER BY c.CourseName;", conn)
 
                     conn.Open()
+                    Dim dt As New DataTable()
                     Using da As New MySqlDataAdapter(cmd)
-                        Dim dt As New DataTable()
                         da.Fill(dt)
-
-                        cboCourse.DisplayMember = "CourseName"
-                        cboCourse.ValueMember = "CourseID"
-                        cboCourse.DataSource = dt
                     End Using
+
+                    cboCourse.DisplayMember = "CourseName"
+                    cboCourse.ValueMember = "CourseID"
+                    cboCourse.DataSource = dt
                 End Using
             End Using
-
             cboCourse.SelectedIndex = -1
-        Catch ex As MySqlException
-            ShowError("Database error loading courses.")
-        Catch ex As Exception
-            ShowError("Unexpected error loading courses.")
+        Catch
+            ShowError("Error loading courses.")
         End Try
     End Sub
 
     Private Sub cboCourse_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCourse.SelectedIndexChanged
-        txtDepartment.Text = ""
         cboSection.DataSource = Nothing
-        cboSection.Items.Clear()
+        txtDepartment.Text = ""
 
         Dim drv As DataRowView = TryCast(cboCourse.SelectedItem, DataRowView)
         If drv IsNot Nothing Then
             txtDepartment.Text = drv("DepartmentName").ToString()
-            Dim courseId As Integer = CInt(drv("CourseID"))
-            LoadSectionsForCourse(courseId)
+            LoadSectionsForCourse(CInt(drv("CourseID")))
         End If
     End Sub
 
@@ -82,56 +79,34 @@ Public Class frmStudentRegister
         Try
             Using conn As MySqlConnection = GetConnection()
                 Using cmd As New MySqlCommand("
-                    SELECT SectionID,
-                           SectionName,
-                           MaxCapacity
+                    SELECT SectionID, SectionName, MaxCapacity
                     FROM section
-                    WHERE CourseID = @CourseID
-                      AND IsActive = 1
+                    WHERE CourseID = @cid AND IsActive = 1
                     ORDER BY YearLevel, SectionName;", conn)
 
-                    cmd.Parameters.AddWithValue("@CourseID", courseId)
+                    cmd.Parameters.AddWithValue("@cid", courseId)
                     conn.Open()
 
+                    Dim dt As New DataTable()
                     Using da As New MySqlDataAdapter(cmd)
-                        Dim dt As New DataTable()
                         da.Fill(dt)
-
-                        cboSection.DisplayMember = "SectionName"
-                        cboSection.ValueMember = "SectionID"
-                        cboSection.DataSource = dt
                     End Using
+
+                    cboSection.DisplayMember = "SectionName"
+                    cboSection.ValueMember = "SectionID"
+                    cboSection.DataSource = dt
                 End Using
             End Using
-
             cboSection.SelectedIndex = -1
-        Catch ex As MySqlException
-            ShowError("Database error loading sections.")
-        Catch ex As Exception
-            ShowError("Unexpected error loading sections.")
+
+        Catch
+            ShowError("Error loading sections.")
         End Try
     End Sub
 
-    Private Sub cboSection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSection.SelectedIndexChanged
-        If cboSection.SelectedIndex < 0 OrElse cboSection.SelectedValue Is Nothing Then
-            Return
-        End If
-
-        Dim sectionId As Integer
-        If Not Integer.TryParse(cboSection.SelectedValue.ToString(), sectionId) Then
-            Return
-        End If
-
-        If IsSectionFull(sectionId) Then
-            MessageBox.Show(Me,
-                            "This section is already at maximum capacity. Please choose another section.",
-                            "Section Full",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information)
-            cboSection.SelectedIndex = -1
-        End If
-    End Sub
-
+    ' ============================================================
+    ' CAPACITY CHECK
+    ' ============================================================
     Private Function IsSectionFull(sectionId As Integer) As Boolean
         Try
             Using conn As MySqlConnection = GetConnection()
@@ -139,334 +114,229 @@ Public Class frmStudentRegister
 
                 Dim capacity As Integer = 0
 
-                ' Get section capacity
                 Using cmdCap As New MySqlCommand("
-                    SELECT MaxCapacity
-                    FROM section
-                    WHERE SectionID = @SectionID;", conn)
+                    SELECT MaxCapacity FROM section WHERE SectionID = @sid", conn)
 
-                    cmdCap.Parameters.AddWithValue("@SectionID", sectionId)
-                    Dim obj = cmdCap.ExecuteScalar()
-                    If obj Is Nothing OrElse obj Is DBNull.Value Then
-                        Return False ' no capacity info, don't block
+                    cmdCap.Parameters.AddWithValue("@sid", sectionId)
+                    If cmdCap.ExecuteScalar() IsNot Nothing Then
+                        capacity = Convert.ToInt32(cmdCap.ExecuteScalar())
                     End If
-                    capacity = Convert.ToInt32(obj)
                 End Using
 
-                ' Count students in that section (exclude Rejected)
-                Using cmdCount As New MySqlCommand("
-                    SELECT COUNT(*)
-                    FROM student
-                    WHERE SectionID = @SectionID
-                      AND Status IN ('Pending','Active','OnLeave','Graduated','Dropped');", conn)
+                Using cmdCnt As New MySqlCommand("
+                    SELECT COUNT(*) FROM student WHERE SectionID = @sid", conn)
 
-                    cmdCount.Parameters.AddWithValue("@SectionID", sectionId)
-                    Dim count = Convert.ToInt32(cmdCount.ExecuteScalar())
+                    cmdCnt.Parameters.AddWithValue("@sid", sectionId)
+                    Dim count = Convert.ToInt32(cmdCnt.ExecuteScalar())
                     Return count >= capacity
                 End Using
             End Using
         Catch
-            ' On any error, don't block registration by accident
             Return False
         End Try
     End Function
 
-    Private Sub chkShowPassword_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPassword.CheckedChanged
-        Dim visible As Boolean = chkShowPassword.Checked
-        txtPassword.UseSystemPasswordChar = Not visible
-        txtConfirmPassword.UseSystemPasswordChar = Not visible
+    ' ============================================================
+    ' PROPER CASE + VALIDATION HELPERS
+    ' ============================================================
+    Private Function ToProperName(value As String) As String
+        If String.IsNullOrWhiteSpace(value) Then Return value
+        Dim parts = value.ToLower().Split(" "c)
+        For i = 0 To parts.Length - 1
+            If parts(i).Length > 0 Then
+                parts(i) = Char.ToUpper(parts(i)(0)) & parts(i).Substring(1)
+            End If
+        Next
+        Return String.Join(" ", parts)
+    End Function
+
+    Private Function IsValidNameField(value As String) As Boolean
+        For Each ch In value
+            If Not (Char.IsLetter(ch) Or ch = " "c Or ch = "'"c Or ch = "-"c) Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
+
+    Private Sub txtLastName_Leave(sender As Object, e As EventArgs) Handles txtLastName.Leave
+        txtLastName.Text = ToProperName(txtLastName.Text.Trim())
+    End Sub
+    Private Sub txtFirstName_Leave(sender As Object, e As EventArgs) Handles txtFirstName.Leave
+        txtFirstName.Text = ToProperName(txtFirstName.Text.Trim())
+    End Sub
+    Private Sub txtMiddleName_Leave(sender As Object, e As EventArgs) Handles txtMiddleName.Leave
+        txtMiddleName.Text = ToProperName(txtMiddleName.Text.Trim())
     End Sub
 
+    ' ============================================================
+    ' REGISTER BUTTON
+    ' ============================================================
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-        lblError.Text = String.Empty
+        lblError.Text = ""
 
-        ' ---- Gather inputs ----
-        Dim studentNumber As String = txtStudentNumber.Text.Trim()
-        Dim lastName As String = txtLastName.Text.Trim()
-        Dim firstName As String = txtFirstName.Text.Trim()
-        Dim middleName As String = txtMiddleName.Text.Trim()
-        Dim birthDate As Date = dtpBirthDate.Value
+        ' -------------------------------------
+        ' COLLECT INPUTS
+        ' -------------------------------------
+        Dim studentNumber = txtStudentNumber.Text.Trim()
+        Dim lastName = txtLastName.Text.Trim()
+        Dim firstName = txtFirstName.Text.Trim()
+        Dim middleName = txtMiddleName.Text.Trim()
+        Dim gender As String = Nothing
+        Dim birthDate = dtpBirthDate.Value
+        Dim email = txtEmail.Text.Trim()
+        Dim password = txtPassword.Text
+        Dim confirmPassword = txtConfirmPassword.Text
 
-        Dim genderValue As String = Nothing
         If cboGender.SelectedIndex >= 0 Then
             Select Case cboGender.SelectedItem.ToString()
-                Case "Male"
-                    genderValue = "M"
-                Case "Female"
-                    genderValue = "F"
-                Case Else
-                    genderValue = "Other"
+                Case "Male" : gender = "M"
+                Case "Female" : gender = "F"
+                Case Else : gender = "Other"
             End Select
         End If
 
-        Dim email As String = txtEmail.Text.Trim()
-        Dim password As String = txtPassword.Text
-        Dim confirmPassword As String = txtConfirmPassword.Text
+        Dim sectionId As Integer = If(cboSection.SelectedIndex >= 0, CInt(cboSection.SelectedValue), -1)
 
-        Dim sectionId As Integer = -1
-        If cboSection.SelectedIndex >= 0 AndAlso cboSection.SelectedValue IsNot Nothing Then
-            Integer.TryParse(cboSection.SelectedValue.ToString(), sectionId)
-        End If
+        ' -------------------------------------
+        ' VALIDATION (FIXED WITH Exit Sub)
+        ' -------------------------------------
+        If studentNumber = "" Then ShowError("Student Number required.") : Exit Sub
+        If lastName = "" Or Not IsValidNameField(lastName) Then ShowError("Invalid Last Name.") : Exit Sub
+        If firstName = "" Or Not IsValidNameField(firstName) Then ShowError("Invalid First Name.") : Exit Sub
+        If cboGender.SelectedIndex < 0 Then ShowError("Select Gender.") : Exit Sub
+        If cboCourse.SelectedIndex < 0 Then ShowError("Select Course.") : Exit Sub
+        If sectionId <= 0 Then ShowError("Select Section.") : Exit Sub
+        If birthDate > Date.Today Then ShowError("Birth date cannot be future.") : Exit Sub
+        If Not IsValidEmail(email) Then ShowError("Invalid email.") : Exit Sub
+        If password.Length < 6 Then ShowError("Password must be at least 6 characters.") : Exit Sub
+        If password <> confirmPassword Then ShowError("Passwords do not match.") : Exit Sub
 
-        ' ---- Validation ----
-        ' Required fields
-        If String.IsNullOrWhiteSpace(studentNumber) Then
-            ShowError("Student Number is required.")
-            txtStudentNumber.Focus()
-            Return
-        End If
-
-        If String.IsNullOrWhiteSpace(lastName) Then
-            ShowError("Last Name is required.")
-            txtLastName.Focus()
-            Return
-        End If
-
-        If String.IsNullOrWhiteSpace(firstName) Then
-            ShowError("First Name is required.")
-            txtFirstName.Focus()
-            Return
-        End If
-
-        If cboGender.SelectedIndex < 0 Then
-            ShowError("Please select a gender.")
-            cboGender.Focus()
-            Return
-        End If
-
-        If cboCourse.SelectedIndex < 0 Then
-            ShowError("Please select a course.")
-            cboCourse.Focus()
-            Return
-        End If
-
-        If sectionId <= 0 Then
-            ShowError("Please select a section.")
-            cboSection.Focus()
-            Return
-        End If
-
-        If birthDate > Date.Today Then
-            ShowError("Birth date cannot be in the future.")
-            dtpBirthDate.Focus()
-            Return
-        End If
-
-        If String.IsNullOrWhiteSpace(email) Then
-            ShowError("Email is required.")
-            txtEmail.Focus()
-            Return
-        End If
-
-        If Not IsValidEmail(email) Then
-            ShowError("Please enter a valid email address.")
-            txtEmail.Focus()
-            Return
-        End If
-
-        If String.IsNullOrWhiteSpace(password) Then
-            ShowError("Password is required.")
-            txtPassword.Focus()
-            Return
-        End If
-
-        If password.Length < 6 Then
-            ShowError("Password must be at least 6 characters.")
-            txtPassword.Focus()
-            Return
-        End If
-
-        If password <> confirmPassword Then
-            ShowError("Password and Confirm Password do not match.")
-            txtConfirmPassword.Focus()
-            Return
-        End If
-
-        ' Check capacity again at registration time (race safety)
         If IsSectionFull(sectionId) Then
-            ShowError("Selected section is already full. Please choose another section.")
-            cboSection.Focus()
-            Return
+            ShowError("Section is already full.")
+            Exit Sub
         End If
 
-        ' ---- Hash password ----
-        Dim passwordHash As String = HashPassword(password)
-
-        ' ---- Insert into DB ----
+        ' ============================================================
+        ' DATABASE CHECKS
+        ' ============================================================
         Try
             Using conn As MySqlConnection = GetConnection()
                 conn.Open()
 
-                ' First ensure StudentNumber + Email are unique
-                Using cmdCheck As New MySqlCommand("
-                    SELECT 
-                        SUM(CASE WHEN StudentNumber = @StudentNumber THEN 1 ELSE 0 END) AS NumberExists,
-                        SUM(CASE WHEN Email = @Email THEN 1 ELSE 0 END) AS EmailExists
-                    FROM student;", conn)
+                ' Must exist in official list
+                Using cmdOff As New MySqlCommand("
+                    SELECT COUNT(*) FROM official_student_list WHERE StudentNumber=@sn", conn)
 
-                    cmdCheck.Parameters.AddWithValue("@StudentNumber", studentNumber)
-                    cmdCheck.Parameters.AddWithValue("@Email", email)
-
-                    Using dr As MySqlDataReader = cmdCheck.ExecuteReader()
-                        If dr.Read() Then
-                            Dim numExists As Integer = Convert.ToInt32(If(dr("NumberExists"), 0))
-                            Dim emailExists As Integer = Convert.ToInt32(If(dr("EmailExists"), 0))
-
-                            If numExists > 0 Then
-                                ShowError("That Student Number is already registered.")
-                                txtStudentNumber.Focus()
-                                Return
-                            End If
-
-                            If emailExists > 0 Then
-                                ShowError("That email address is already registered.")
-                                txtEmail.Focus()
-                                Return
-                            End If
-                        End If
-                    End Using
-                End Using
-
-                ' Insert student as Pending
-                Using cmdInsert As New MySqlCommand("
-                    INSERT INTO student
-                        (StudentNumber,
-                         FirstName,
-                         LastName,
-                         MiddleName,
-                         Gender,
-                         BirthDate,
-                         PasswordHash,
-                         Email,
-                         ContactNumber,
-                         Address,
-                         City,
-                         SectionID,
-                         Status,
-                         ApprovedByFacultyID,
-                         ApprovalDate,
-                         CreatedAt,
-                         UpdatedAt)
-                    VALUES
-                        (@StudentNumber,
-                         @FirstName,
-                         @LastName,
-                         @MiddleName,
-                         @Gender,
-                         @BirthDate,
-                         @PasswordHash,
-                         @Email,
-                         @ContactNumber,
-                         @Address,
-                         @City,
-                         @SectionID,
-                         'Pending',
-                         NULL,
-                         NULL,
-                         NOW(),
-                         NOW());", conn)
-
-                    cmdInsert.Parameters.AddWithValue("@StudentNumber", studentNumber)
-                    cmdInsert.Parameters.AddWithValue("@FirstName", firstName)
-                    cmdInsert.Parameters.AddWithValue("@LastName", lastName)
-                    cmdInsert.Parameters.AddWithValue("@MiddleName", If(String.IsNullOrWhiteSpace(middleName), DBNull.Value, middleName))
-                    cmdInsert.Parameters.AddWithValue("@Gender", If(String.IsNullOrWhiteSpace(genderValue), DBNull.Value, genderValue))
-                    cmdInsert.Parameters.AddWithValue("@BirthDate", birthDate.Date)
-                    cmdInsert.Parameters.AddWithValue("@PasswordHash", passwordHash)
-                    cmdInsert.Parameters.AddWithValue("@Email", email)
-                    cmdInsert.Parameters.AddWithValue("@ContactNumber", DBNull.Value)
-                    cmdInsert.Parameters.AddWithValue("@Address", DBNull.Value)
-                    cmdInsert.Parameters.AddWithValue("@City", DBNull.Value)
-                    cmdInsert.Parameters.AddWithValue("@SectionID", sectionId)
-
-                    Dim rows As Integer = cmdInsert.ExecuteNonQuery()
-                    If rows > 0 Then
-                        MessageBox.Show(Me,
-                                        "Your account has been submitted for approval." & Environment.NewLine &
-                                        "You will be able to login once it has been activated.",
-                                        "Registration Submitted",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information)
-
-                        ' After successful registration, go back to Student Login
-                        Try
-                            Dim login As New frmLoginStudent()
-                            login.Show()
-                        Catch
-                            ' ignore if form not available for some reason
-                        End Try
-
-                        Me.Close()
-                    Else
-                        ShowError("Registration failed. Please try again.")
+                    cmdOff.Parameters.AddWithValue("@sn", studentNumber)
+                    If Convert.ToInt32(cmdOff.ExecuteScalar()) = 0 Then
+                        ShowError("Student Number not found in official list.")
+                        Exit Sub
                     End If
                 End Using
+
+                ' Check previous registration
+                Using cmdPrev As New MySqlCommand("
+                    SELECT AccountStatus 
+                    FROM student 
+                    WHERE StudentNumber=@sn 
+                    ORDER BY StudentID DESC 
+                    LIMIT 1;", conn)
+
+                    cmdPrev.Parameters.AddWithValue("@sn", studentNumber)
+                    Dim statusObj = cmdPrev.ExecuteScalar()
+
+                    If statusObj IsNot Nothing Then
+                        Dim status = statusObj.ToString()
+
+                        Select Case status
+                            Case "Pending"
+                                ShowError("Your registration is still pending.")
+                                Exit Sub
+
+                            Case "Active"
+                                ShowError("You already have an active student account.")
+                                Exit Sub
+
+                            Case "Inactive"
+                                ShowError("Your previous account is inactive. Contact Registrar.")
+                                Exit Sub
+
+                            Case "Graduated"
+                                ShowError("This student number is already graduated.")
+                                Exit Sub
+
+                            Case "Rejected"
+                                ' ALLOWED TO REGISTER AGAIN
+                        End Select
+                    End If
+                End Using
+
+                ' ============================================================
+                ' INSERT NEW REGISTRATION
+                ' ============================================================
+                Using cmd As New MySqlCommand("
+                    INSERT INTO student
+                        (StudentNumber, FirstName, LastName, MiddleName,
+                         Gender, BirthDate, Email, Password,
+                         SectionID, AccountStatus, CreatedAt, UpdatedAt)
+                    VALUES
+                        (@sn, @fn, @ln, @mn,
+                         @g, @bd, @em, @pw,
+                         @sid, 'Pending', NOW(), NOW());", conn)
+
+                    cmd.Parameters.AddWithValue("@sn", studentNumber)
+                    cmd.Parameters.AddWithValue("@fn", firstName)
+                    cmd.Parameters.AddWithValue("@ln", lastName)
+                    cmd.Parameters.AddWithValue("@mn", If(middleName = "", DBNull.Value, middleName))
+                    cmd.Parameters.AddWithValue("@g", gender)
+                    cmd.Parameters.AddWithValue("@bd", birthDate)
+                    cmd.Parameters.AddWithValue("@em", email)
+                    cmd.Parameters.AddWithValue("@pw", password)
+                    cmd.Parameters.AddWithValue("@sid", sectionId)
+
+                    cmd.ExecuteNonQuery()
+                End Using
+
             End Using
 
-        Catch ex As MySqlException
-            ShowError("Database error while saving your registration.")
+            MessageBox.Show("Registration submitted. Please wait for approval.",
+                            "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            Dim login As New frmLoginStudent()
+            login.Show()
+            Me.Close()
+
         Catch ex As Exception
-            ShowError("Unexpected error during registration.")
+            ShowError("Registration failed. Please try again.")
         End Try
     End Sub
 
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        txtStudentNumber.Clear()
-        txtLastName.Clear()
-        txtFirstName.Clear()
-        txtMiddleName.Clear()
-        dtpBirthDate.Value = New DateTime(DateTime.Today.Year - 20, 1, 1)
-        cboGender.SelectedIndex = -1
-
-        cboCourse.SelectedIndex = -1
-        txtDepartment.Text = ""
-        cboSection.DataSource = Nothing
-        cboSection.Items.Clear()
-
-        txtEmail.Clear()
-        txtPassword.Clear()
-        txtConfirmPassword.Clear()
-        chkShowPassword.Checked = False
-
-        lblError.Text = ""
-        txtStudentNumber.Focus()
-    End Sub
-
-    Private Sub lnkLogin_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkLogin.LinkClicked
-        Try
-            Dim login As New frmLoginStudent()
-            login.Show()
-        Catch
-            ' ignore
-        End Try
-
-        Me.Close()
-    End Sub
-
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        ' Back to Student Login
-        Try
-            Dim login As New frmLoginStudent()
-            login.Show()
-        Catch
-            ' ignore
-        End Try
-
-        Me.Close()
-    End Sub
-
+    ' ============================================================
+    ' HELPERS
+    ' ============================================================
     Private Sub ShowError(message As String)
         lblError.Text = message
     End Sub
 
     Private Function IsValidEmail(email As String) As Boolean
-        If String.IsNullOrWhiteSpace(email) Then Return False
         Try
-            Dim addr = New System.Net.Mail.MailAddress(email)
-            Return addr.Address = email
+            Dim a = New System.Net.Mail.MailAddress(email)
+            Return a.Address = email
         Catch
             Return False
         End Try
     End Function
 
+    Private Sub chkShowPassword_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPassword.CheckedChanged
+        Dim v = chkShowPassword.Checked
+        txtPassword.UseSystemPasswordChar = Not v
+        txtConfirmPassword.UseSystemPasswordChar = Not v
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Dim login As New frmLoginStudent()
+        login.Show()
+        Me.Close()
+    End Sub
 End Class

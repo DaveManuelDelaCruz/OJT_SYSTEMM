@@ -1,12 +1,12 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class frmLoginFaculty
+Public Class frmLoginRegistrar
 
-    Private Sub frmLoginFaculty_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmLoginRegistrar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtEmail.Select()
         lblLoginMessage.Text = ""
 
-        ' Fade-in animation
+        ' Fade In Effect
         Me.Opacity = 0
         Dim t As New Timer With {.Interval = 10}
         AddHandler t.Tick,
@@ -33,7 +33,7 @@ Public Class frmLoginFaculty
         lblLoginMessage.Text = ""
 
         Dim email As String = txtEmail.Text.Trim()
-        Dim pw As String = txtPassword.Text.Trim()
+        Dim password As String = txtPassword.Text.Trim()
 
         If email = "" Then
             lblLoginMessage.Text = "Please enter your email."
@@ -41,7 +41,7 @@ Public Class frmLoginFaculty
             Return
         End If
 
-        If pw = "" Then
+        If password = "" Then
             lblLoginMessage.Text = "Please enter your password."
             txtPassword.Focus()
             Return
@@ -50,11 +50,10 @@ Public Class frmLoginFaculty
         Try
             Using conn As MySqlConnection = GetConnection()
                 Using cmd As New MySqlCommand("
-                    SELECT FacultyID, FirstName, LastName, Password, Status, PositionTitle
-                    FROM faculty
-                    WHERE Email = @em
-                    LIMIT 1;
-                ", conn)
+                SELECT RegistrarID, FullName, Email, Password, Status
+                FROM registrar
+                WHERE Email = @em
+                LIMIT 1;", conn)
 
                     cmd.Parameters.AddWithValue("@em", email)
                     conn.Open()
@@ -63,39 +62,33 @@ Public Class frmLoginFaculty
                         If dr.Read() Then
 
                             Dim status As String = dr("Status").ToString().Trim()
-                            Dim role As String = dr("PositionTitle").ToString().Trim()
 
-                            ' Status validation
-                            Select Case status
-                                Case "Active"
-                                    ' allow login
-                                Case "Pending"
-                                    lblLoginMessage.Text = "Your account is still pending approval."
-                                    Return
-                                Case "Rejected"
-                                    lblLoginMessage.Text = "Your account was rejected."
-                                    Return
-                                Case Else
-                                    lblLoginMessage.Text = "Your account is inactive."
-                                    Return
-                            End Select
+                            ' --- Status check ---
+                            If status <> "Active" Then
+                                lblLoginMessage.Text = "This registrar account is inactive."
+                                Return
+                            End If
 
-                            ' Password validation
+                            ' --- Password check (plain) ---
                             Dim storedPw As String = dr("Password").ToString()
-                            If storedPw <> pw Then
+                            If storedPw <> password Then
                                 lblLoginMessage.Text = "Incorrect password."
                                 Return
                             End If
 
-                            ' Save session
-                            CurrentUser.FacultyID = CInt(dr("FacultyID"))
-                            CurrentUser.StudentID = Nothing
-                            CurrentUser.Name = $"{dr("FirstName")} {dr("LastName")}"
-                            CurrentUser.Username = email
+                            ' --- NEW: Get RegistrarID ---
+                            Dim registrarID As Integer = CInt(dr("RegistrarID"))
+                            CurrentUser.RegistrarID = registrarID   ' store in session
 
-                            ' Only professors enter here now
-                            Dim dash As New frmProfessorDashboard()
-                            dash.CurrentFacultyID = CurrentUser.FacultyID
+                            ' --- Save session name/email ---
+                            CurrentUser.FacultyID = Nothing
+                            CurrentUser.StudentID = Nothing
+                            CurrentUser.Name = dr("FullName").ToString()
+                            CurrentUser.Username = dr("Email").ToString()
+
+                            ' --- Open Dashboard ---
+                            Dim dash As New frmRegistrarDashboard()
+                            dash.CurrentRegistrarID = registrarID     ' <<< FIXED
                             dash.Show()
                             Me.Hide()
 
@@ -109,12 +102,6 @@ Public Class frmLoginFaculty
         Catch ex As Exception
             lblLoginMessage.Text = "Database error: " & ex.Message
         End Try
-    End Sub
-
-    Private Sub lnkRegisterFaculty_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkRegisterFaculty.LinkClicked
-        Dim reg As New frmFacultyRegister()
-        reg.Show()
-        Me.Hide()
     End Sub
 
 End Class

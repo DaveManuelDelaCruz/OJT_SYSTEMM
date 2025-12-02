@@ -53,6 +53,8 @@ Partial Class frmFacultyRegister
         btnRegister = New Button()
         btnClear = New Button()
         lnkLogin = New LinkLabel()
+        lblEmployeeNumber = New Label()
+        txtEmployeeNumber = New TextBox()
         pnlHeader.SuspendLayout()
         pnlRegisterCard.SuspendLayout()
         SuspendLayout()
@@ -73,7 +75,7 @@ Partial Class frmFacultyRegister
         ' 
         btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        btnBack.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnBack.ForeColor = Color.White
         btnBack.Location = New Point(18, 24)
         btnBack.Name = "btnBack"
@@ -86,7 +88,7 @@ Partial Class frmFacultyRegister
         ' 
         lblHeaderTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblHeaderTitle.AutoSize = True
-        lblHeaderTitle.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        lblHeaderTitle.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         lblHeaderTitle.ForeColor = Color.FromArgb(CByte(255), CByte(241), CByte(118))
         lblHeaderTitle.Location = New Point(836, 32)
         lblHeaderTitle.Name = "lblHeaderTitle"
@@ -97,7 +99,7 @@ Partial Class frmFacultyRegister
         ' lblAppName
         ' 
         lblAppName.AutoSize = True
-        lblAppName.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
+        lblAppName.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
         lblAppName.ForeColor = Color.White
         lblAppName.Location = New Point(146, 29)
         lblAppName.Name = "lblAppName"
@@ -110,6 +112,8 @@ Partial Class frmFacultyRegister
         pnlRegisterCard.Anchor = AnchorStyles.None
         pnlRegisterCard.BackColor = Color.White
         pnlRegisterCard.BorderStyle = BorderStyle.FixedSingle
+        pnlRegisterCard.Controls.Add(lblEmployeeNumber)
+        pnlRegisterCard.Controls.Add(txtEmployeeNumber)
         pnlRegisterCard.Controls.Add(lblRegisterTitle)
         pnlRegisterCard.Controls.Add(lblPersonalHeader)
         pnlRegisterCard.Controls.Add(lblLastName)
@@ -150,7 +154,7 @@ Partial Class frmFacultyRegister
         ' lblRegisterTitle
         ' 
         lblRegisterTitle.AutoSize = True
-        lblRegisterTitle.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
+        lblRegisterTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
         lblRegisterTitle.ForeColor = Color.FromArgb(CByte(251), CByte(192), CByte(45))
         lblRegisterTitle.Location = New Point(27, 16)
         lblRegisterTitle.Name = "lblRegisterTitle"
@@ -161,7 +165,7 @@ Partial Class frmFacultyRegister
         ' lblPersonalHeader
         ' 
         lblPersonalHeader.AutoSize = True
-        lblPersonalHeader.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lblPersonalHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblPersonalHeader.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblPersonalHeader.Location = New Point(27, 56)
         lblPersonalHeader.Name = "lblPersonalHeader"
@@ -174,7 +178,7 @@ Partial Class frmFacultyRegister
         lblLastName.AutoSize = True
         lblLastName.Font = New Font("Segoe UI", 9.5F)
         lblLastName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblLastName.Location = New Point(31, 84)
+        lblLastName.Location = New Point(214, 92)
         lblLastName.Name = "lblLastName"
         lblLastName.Size = New Size(84, 21)
         lblLastName.TabIndex = 2
@@ -182,10 +186,10 @@ Partial Class frmFacultyRegister
         ' 
         ' txtLastName
         ' 
-        txtLastName.Font = New Font("Segoe UI", 10.0F)
-        txtLastName.Location = New Point(31, 108)
+        txtLastName.Font = New Font("Segoe UI", 10F)
+        txtLastName.Location = New Point(207, 116)
         txtLastName.Name = "txtLastName"
-        txtLastName.Size = New Size(170, 30)
+        txtLastName.Size = New Size(160, 30)
         txtLastName.TabIndex = 3
         ' 
         ' lblFirstName
@@ -193,7 +197,7 @@ Partial Class frmFacultyRegister
         lblFirstName.AutoSize = True
         lblFirstName.Font = New Font("Segoe UI", 9.5F)
         lblFirstName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblFirstName.Location = New Point(207, 84)
+        lblFirstName.Location = New Point(390, 92)
         lblFirstName.Name = "lblFirstName"
         lblFirstName.Size = New Size(86, 21)
         lblFirstName.TabIndex = 4
@@ -201,10 +205,10 @@ Partial Class frmFacultyRegister
         ' 
         ' txtFirstName
         ' 
-        txtFirstName.Font = New Font("Segoe UI", 10.0F)
-        txtFirstName.Location = New Point(207, 108)
+        txtFirstName.Font = New Font("Segoe UI", 10F)
+        txtFirstName.Location = New Point(389, 116)
         txtFirstName.Name = "txtFirstName"
-        txtFirstName.Size = New Size(200, 30)
+        txtFirstName.Size = New Size(184, 30)
         txtFirstName.TabIndex = 5
         ' 
         ' lblMiddleName
@@ -212,7 +216,7 @@ Partial Class frmFacultyRegister
         lblMiddleName.AutoSize = True
         lblMiddleName.Font = New Font("Segoe UI", 9.5F)
         lblMiddleName.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblMiddleName.Location = New Point(413, 84)
+        lblMiddleName.Location = New Point(31, 149)
         lblMiddleName.Name = "lblMiddleName"
         lblMiddleName.Size = New Size(104, 21)
         lblMiddleName.TabIndex = 6
@@ -220,8 +224,8 @@ Partial Class frmFacultyRegister
         ' 
         ' txtMiddleName
         ' 
-        txtMiddleName.Font = New Font("Segoe UI", 10.0F)
-        txtMiddleName.Location = New Point(413, 108)
+        txtMiddleName.Font = New Font("Segoe UI", 10F)
+        txtMiddleName.Location = New Point(31, 173)
         txtMiddleName.Name = "txtMiddleName"
         txtMiddleName.Size = New Size(160, 30)
         txtMiddleName.TabIndex = 7
@@ -231,7 +235,7 @@ Partial Class frmFacultyRegister
         lblBirthDate.AutoSize = True
         lblBirthDate.Font = New Font("Segoe UI", 9.5F)
         lblBirthDate.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblBirthDate.Location = New Point(31, 148)
+        lblBirthDate.Location = New Point(207, 149)
         lblBirthDate.Name = "lblBirthDate"
         lblBirthDate.Size = New Size(79, 21)
         lblBirthDate.TabIndex = 8
@@ -239,9 +243,9 @@ Partial Class frmFacultyRegister
         ' 
         ' dtpBirthDate
         ' 
-        dtpBirthDate.Font = New Font("Segoe UI", 10.0F)
+        dtpBirthDate.Font = New Font("Segoe UI", 10F)
         dtpBirthDate.Format = DateTimePickerFormat.Short
-        dtpBirthDate.Location = New Point(31, 172)
+        dtpBirthDate.Location = New Point(207, 173)
         dtpBirthDate.Name = "dtpBirthDate"
         dtpBirthDate.Size = New Size(140, 30)
         dtpBirthDate.TabIndex = 9
@@ -251,7 +255,7 @@ Partial Class frmFacultyRegister
         lblGender.AutoSize = True
         lblGender.Font = New Font("Segoe UI", 9.5F)
         lblGender.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblGender.Location = New Point(187, 148)
+        lblGender.Location = New Point(393, 149)
         lblGender.Name = "lblGender"
         lblGender.Size = New Size(61, 21)
         lblGender.TabIndex = 10
@@ -260,8 +264,8 @@ Partial Class frmFacultyRegister
         ' cboGender
         ' 
         cboGender.DropDownStyle = ComboBoxStyle.DropDownList
-        cboGender.Font = New Font("Segoe UI", 10.0F)
-        cboGender.Location = New Point(187, 172)
+        cboGender.Font = New Font("Segoe UI", 10F)
+        cboGender.Location = New Point(393, 173)
         cboGender.Name = "cboGender"
         cboGender.Size = New Size(130, 31)
         cboGender.TabIndex = 11
@@ -269,7 +273,7 @@ Partial Class frmFacultyRegister
         ' lblDepartmentHeader
         ' 
         lblDepartmentHeader.AutoSize = True
-        lblDepartmentHeader.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lblDepartmentHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblDepartmentHeader.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblDepartmentHeader.Location = New Point(27, 212)
         lblDepartmentHeader.Name = "lblDepartmentHeader"
@@ -291,7 +295,7 @@ Partial Class frmFacultyRegister
         ' cboDepartment
         ' 
         cboDepartment.DropDownStyle = ComboBoxStyle.DropDownList
-        cboDepartment.Font = New Font("Segoe UI", 10.0F)
+        cboDepartment.Font = New Font("Segoe UI", 10F)
         cboDepartment.Location = New Point(31, 263)
         cboDepartment.Name = "cboDepartment"
         cboDepartment.Size = New Size(350, 31)
@@ -310,7 +314,7 @@ Partial Class frmFacultyRegister
         ' 
         ' txtPosition
         ' 
-        txtPosition.Font = New Font("Segoe UI", 10.0F)
+        txtPosition.Font = New Font("Segoe UI", 10F)
         txtPosition.Location = New Point(393, 263)
         txtPosition.Name = "txtPosition"
         txtPosition.ReadOnly = True
@@ -320,7 +324,7 @@ Partial Class frmFacultyRegister
         ' lblContactHeader
         ' 
         lblContactHeader.AutoSize = True
-        lblContactHeader.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lblContactHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblContactHeader.ForeColor = Color.FromArgb(CByte(97), CByte(97), CByte(97))
         lblContactHeader.Location = New Point(27, 301)
         lblContactHeader.Name = "lblContactHeader"
@@ -341,7 +345,7 @@ Partial Class frmFacultyRegister
         ' 
         ' txtEmail
         ' 
-        txtEmail.Font = New Font("Segoe UI", 10.0F)
+        txtEmail.Font = New Font("Segoe UI", 10F)
         txtEmail.Location = New Point(31, 353)
         txtEmail.Name = "txtEmail"
         txtEmail.Size = New Size(542, 30)
@@ -360,7 +364,7 @@ Partial Class frmFacultyRegister
         ' 
         ' txtContactNumber
         ' 
-        txtContactNumber.Font = New Font("Segoe UI", 10.0F)
+        txtContactNumber.Font = New Font("Segoe UI", 10F)
         txtContactNumber.Location = New Point(31, 413)
         txtContactNumber.Name = "txtContactNumber"
         txtContactNumber.Size = New Size(250, 30)
@@ -379,7 +383,7 @@ Partial Class frmFacultyRegister
         ' 
         ' txtPassword
         ' 
-        txtPassword.Font = New Font("Segoe UI", 10.0F)
+        txtPassword.Font = New Font("Segoe UI", 10F)
         txtPassword.Location = New Point(289, 413)
         txtPassword.Name = "txtPassword"
         txtPassword.Size = New Size(284, 30)
@@ -399,7 +403,7 @@ Partial Class frmFacultyRegister
         ' 
         ' txtConfirmPassword
         ' 
-        txtConfirmPassword.Font = New Font("Segoe UI", 10.0F)
+        txtConfirmPassword.Font = New Font("Segoe UI", 10F)
         txtConfirmPassword.Location = New Point(289, 470)
         txtConfirmPassword.Name = "txtConfirmPassword"
         txtConfirmPassword.Size = New Size(284, 30)
@@ -420,7 +424,7 @@ Partial Class frmFacultyRegister
         ' lblError
         ' 
         lblError.AutoSize = True
-        lblError.Font = New Font("Segoe UI", 9.0F)
+        lblError.Font = New Font("Segoe UI", 9F)
         lblError.ForeColor = Color.FromArgb(CByte(211), CByte(47), CByte(47))
         lblError.Location = New Point(31, 504)
         lblError.Name = "lblError"
@@ -432,7 +436,7 @@ Partial Class frmFacultyRegister
         btnRegister.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         btnRegister.FlatAppearance.BorderSize = 0
         btnRegister.FlatStyle = FlatStyle.Flat
-        btnRegister.Font = New Font("Segoe UI Semibold", 10.0F)
+        btnRegister.Font = New Font("Segoe UI Semibold", 10F)
         btnRegister.ForeColor = Color.White
         btnRegister.Location = New Point(389, 504)
         btnRegister.Name = "btnRegister"
@@ -459,7 +463,7 @@ Partial Class frmFacultyRegister
         ' 
         lnkLogin.ActiveLinkColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
         lnkLogin.AutoSize = True
-        lnkLogin.Font = New Font("Segoe UI", 9.0F)
+        lnkLogin.Font = New Font("Segoe UI", 9F)
         lnkLogin.LinkColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         lnkLogin.Location = New Point(31, 531)
         lnkLogin.Name = "lnkLogin"
@@ -468,16 +472,36 @@ Partial Class frmFacultyRegister
         lnkLogin.TabStop = True
         lnkLogin.Text = "Already have an account? Login here"
         ' 
+        ' lblEmployeeNumber
+        ' 
+        lblEmployeeNumber.AutoSize = True
+        lblEmployeeNumber.Font = New Font("Segoe UI", 9.5F)
+        lblEmployeeNumber.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblEmployeeNumber.Location = New Point(31, 92)
+        lblEmployeeNumber.Name = "lblEmployeeNumber"
+        lblEmployeeNumber.Size = New Size(140, 21)
+        lblEmployeeNumber.TabIndex = 31
+        lblEmployeeNumber.Text = "Employee Number"
+        ' 
+        ' txtEmployeeNumber
+        ' 
+        txtEmployeeNumber.Font = New Font("Segoe UI", 10F)
+        txtEmployeeNumber.Location = New Point(31, 116)
+        txtEmployeeNumber.MaxLength = 20
+        txtEmployeeNumber.Name = "txtEmployeeNumber"
+        txtEmployeeNumber.Size = New Size(160, 30)
+        txtEmployeeNumber.TabIndex = 32
+        ' 
         ' frmFacultyRegister
         ' 
         AcceptButton = btnRegister
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(245))
         ClientSize = New Size(1097, 720)
         Controls.Add(pnlRegisterCard)
         Controls.Add(pnlHeader)
-        Font = New Font("Segoe UI", 9.0F)
+        Font = New Font("Segoe UI", 9F)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MinimumSize = New Size(1113, 756)
@@ -527,5 +551,7 @@ Partial Class frmFacultyRegister
     Friend WithEvents lblLastName As Label
     Friend WithEvents lblPersonalHeader As Label
     Friend WithEvents lblRegisterTitle As Label
+    Friend WithEvents lblEmployeeNumber As Label
+    Friend WithEvents txtEmployeeNumber As TextBox
 
 End Class

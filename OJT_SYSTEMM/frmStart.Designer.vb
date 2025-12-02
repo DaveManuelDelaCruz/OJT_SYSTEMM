@@ -2,190 +2,203 @@
 Partial Class frmStart
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
-            End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
-
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         pnlMain = New Panel()
-        pnlContent = New Panel()
-        pnlButtons = New Panel()
+        pnlRight = New Panel()
+        pnlLoginCard = New Panel()
+        btnRegistrar = New Button()
         btnFaculty = New Button()
         btnStudent = New Button()
-        lblSelectType = New Label()
-        pnlHeader = New Panel()
-        lblSubtitle = New Label()
-        lblTitle = New Label()
+        lblLoginAs = New Label()
+        pnlLeft = New Panel()
+        lblOJT = New Label()
+        lblSchool = New Label()
+        picLogo = New PictureBox()
         pnlMain.SuspendLayout()
-        pnlContent.SuspendLayout()
-        pnlButtons.SuspendLayout()
-        pnlHeader.SuspendLayout()
+        pnlRight.SuspendLayout()
+        pnlLoginCard.SuspendLayout()
+        pnlLeft.SuspendLayout()
+        CType(picLogo, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' pnlMain
         ' 
-        pnlMain.BackColor = Color.FromArgb(CByte(248), CByte(250), CByte(245))
-        pnlMain.Controls.Add(pnlContent)
-        pnlMain.Controls.Add(pnlHeader)
+        pnlMain.Controls.Add(pnlRight)
+        pnlMain.Controls.Add(pnlLeft)
         pnlMain.Dock = DockStyle.Fill
         pnlMain.Location = New Point(0, 0)
         pnlMain.Name = "pnlMain"
-        pnlMain.Padding = New Padding(48)
-        pnlMain.Size = New Size(1000, 750)
+        pnlMain.Size = New Size(1180, 760)
         pnlMain.TabIndex = 0
         ' 
-        ' pnlContent
+        ' pnlRight
         ' 
-        pnlContent.BackColor = Color.White
-        pnlContent.Controls.Add(pnlButtons)
-        pnlContent.Controls.Add(lblSelectType)
-        pnlContent.Dock = DockStyle.Fill
-        pnlContent.Location = New Point(48, 208)
-        pnlContent.Name = "pnlContent"
-        pnlContent.Padding = New Padding(64, 56, 64, 64)
-        pnlContent.Size = New Size(904, 494)
-        pnlContent.TabIndex = 1
+        pnlRight.BackColor = Color.FromArgb(CByte(27), CByte(94), CByte(32))
+        pnlRight.Controls.Add(pnlLoginCard)
+        pnlRight.Dock = DockStyle.Fill
+        pnlRight.Location = New Point(450, 0)
+        pnlRight.Name = "pnlRight"
+        pnlRight.Padding = New Padding(50)
+        pnlRight.Size = New Size(730, 760)
+        pnlRight.TabIndex = 0
         ' 
-        ' pnlButtons
+        ' pnlLoginCard
         ' 
-        pnlButtons.Controls.Add(btnFaculty)
-        pnlButtons.Controls.Add(btnStudent)
-        pnlButtons.Dock = DockStyle.Fill
-        pnlButtons.Location = New Point(64, 112)
-        pnlButtons.Name = "pnlButtons"
-        pnlButtons.Padding = New Padding(80, 0, 80, 0)
-        pnlButtons.Size = New Size(776, 318)
-        pnlButtons.TabIndex = 1
+        pnlLoginCard.Anchor = AnchorStyles.None
+        pnlLoginCard.BackColor = Color.White
+        pnlLoginCard.BorderStyle = BorderStyle.FixedSingle
+        pnlLoginCard.Controls.Add(btnRegistrar)
+        pnlLoginCard.Controls.Add(btnFaculty)
+        pnlLoginCard.Controls.Add(btnStudent)
+        pnlLoginCard.Controls.Add(lblLoginAs)
+        pnlLoginCard.Location = New Point(163, 198)
+        pnlLoginCard.Name = "pnlLoginCard"
+        pnlLoginCard.Padding = New Padding(30)
+        pnlLoginCard.Size = New Size(450, 380)
+        pnlLoginCard.TabIndex = 0
+        ' 
+        ' btnRegistrar
+        ' 
+        btnRegistrar.BackColor = Color.FromArgb(CByte(0), CByte(77), CByte(0))
+        btnRegistrar.Dock = DockStyle.Top
+        btnRegistrar.FlatAppearance.BorderSize = 0
+        btnRegistrar.FlatStyle = FlatStyle.Flat
+        btnRegistrar.Font = New Font("Segoe UI Semibold", 16.0F)
+        btnRegistrar.ForeColor = Color.White
+        btnRegistrar.Location = New Point(30, 220)
+        btnRegistrar.Margin = New Padding(0, 20, 0, 0)
+        btnRegistrar.Name = "btnRegistrar"
+        btnRegistrar.Size = New Size(388, 65)
+        btnRegistrar.TabIndex = 0
+        btnRegistrar.Text = "REGISTRAR"
+        btnRegistrar.UseVisualStyleBackColor = False
         ' 
         ' btnFaculty
         ' 
-        btnFaculty.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
-        btnFaculty.Cursor = Cursors.Hand
+        btnFaculty.BackColor = Color.FromArgb(CByte(46), CByte(125), CByte(50))
         btnFaculty.Dock = DockStyle.Top
         btnFaculty.FlatAppearance.BorderSize = 0
-        btnFaculty.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
-        btnFaculty.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(66), CByte(160), CByte(70))
         btnFaculty.FlatStyle = FlatStyle.Flat
-        btnFaculty.Font = New Font("Segoe UI Semibold", 13.8F, FontStyle.Bold)
+        btnFaculty.Font = New Font("Segoe UI Semibold", 16.0F)
         btnFaculty.ForeColor = Color.White
-        btnFaculty.Location = New Point(80, 80)
-        btnFaculty.Margin = New Padding(0)
+        btnFaculty.Location = New Point(30, 155)
+        btnFaculty.Margin = New Padding(0, 20, 0, 0)
         btnFaculty.Name = "btnFaculty"
-        btnFaculty.Size = New Size(616, 80)
+        btnFaculty.Size = New Size(388, 65)
         btnFaculty.TabIndex = 1
-        btnFaculty.Text = "LOGIN AS FACULTY"
+        btnFaculty.Text = "FACULTY"
         btnFaculty.UseVisualStyleBackColor = False
         ' 
         ' btnStudent
         ' 
         btnStudent.BackColor = Color.FromArgb(CByte(255), CByte(193), CByte(7))
-        btnStudent.Cursor = Cursors.Hand
         btnStudent.Dock = DockStyle.Top
         btnStudent.FlatAppearance.BorderSize = 0
-        btnStudent.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(255), CByte(160), CByte(0))
-        btnStudent.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(179), CByte(0))
         btnStudent.FlatStyle = FlatStyle.Flat
-        btnStudent.Font = New Font("Segoe UI Semibold", 13.8F, FontStyle.Bold)
-        btnStudent.ForeColor = Color.FromArgb(CByte(33), CByte(33), CByte(33))
-        btnStudent.Location = New Point(80, 0)
-        btnStudent.Margin = New Padding(0, 0, 0, 16)
+        btnStudent.Font = New Font("Segoe UI Semibold", 16.0F)
+        btnStudent.ForeColor = Color.Black
+        btnStudent.Location = New Point(30, 90)
+        btnStudent.Margin = New Padding(0, 20, 0, 0)
         btnStudent.Name = "btnStudent"
-        btnStudent.Size = New Size(616, 80)
-        btnStudent.TabIndex = 0
-        btnStudent.Text = "LOGIN AS STUDENT"
+        btnStudent.Size = New Size(388, 65)
+        btnStudent.TabIndex = 2
+        btnStudent.Text = "STUDENT"
         btnStudent.UseVisualStyleBackColor = False
         ' 
-        ' lblSelectType
+        ' lblLoginAs
         ' 
-        lblSelectType.Dock = DockStyle.Top
-        lblSelectType.Font = New Font("Segoe UI", 12F)
-        lblSelectType.ForeColor = Color.FromArgb(CByte(117), CByte(117), CByte(117))
-        lblSelectType.Location = New Point(64, 56)
-        lblSelectType.Name = "lblSelectType"
-        lblSelectType.Size = New Size(776, 56)
-        lblSelectType.TabIndex = 0
-        lblSelectType.Text = "Select Your Login Type"
-        lblSelectType.TextAlign = ContentAlignment.MiddleCenter
+        lblLoginAs.Dock = DockStyle.Top
+        lblLoginAs.Font = New Font("Segoe UI Semibold", 22.0F)
+        lblLoginAs.ForeColor = Color.FromArgb(CByte(40), CByte(40), CByte(40))
+        lblLoginAs.Location = New Point(30, 30)
+        lblLoginAs.Name = "lblLoginAs"
+        lblLoginAs.Size = New Size(388, 60)
+        lblLoginAs.TabIndex = 3
+        lblLoginAs.Text = "Login As"
+        lblLoginAs.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' pnlHeader
+        ' pnlLeft
         ' 
-        pnlHeader.BackColor = Color.FromArgb(CByte(255), CByte(193), CByte(7))
-        pnlHeader.Controls.Add(lblSubtitle)
-        pnlHeader.Controls.Add(lblTitle)
-        pnlHeader.Dock = DockStyle.Top
-        pnlHeader.Location = New Point(48, 48)
-        pnlHeader.Name = "pnlHeader"
-        pnlHeader.Padding = New Padding(48, 40, 48, 40)
-        pnlHeader.Size = New Size(904, 160)
-        pnlHeader.TabIndex = 0
+        pnlLeft.BackColor = Color.FromArgb(CByte(255), CByte(193), CByte(7))
+        pnlLeft.Controls.Add(lblOJT)
+        pnlLeft.Controls.Add(lblSchool)
+        pnlLeft.Controls.Add(picLogo)
+        pnlLeft.Dock = DockStyle.Left
+        pnlLeft.Location = New Point(0, 0)
+        pnlLeft.Name = "pnlLeft"
+        pnlLeft.Padding = New Padding(50)
+        pnlLeft.Size = New Size(450, 760)
+        pnlLeft.TabIndex = 1
         ' 
-        ' lblSubtitle
+        ' lblOJT
         ' 
-        lblSubtitle.Dock = DockStyle.Top
-        lblSubtitle.Font = New Font("Segoe UI", 11F)
-        lblSubtitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSubtitle.Location = New Point(48, 88)
-        lblSubtitle.Name = "lblSubtitle"
-        lblSubtitle.Size = New Size(808, 32)
-        lblSubtitle.TabIndex = 1
-        lblSubtitle.Text = "Monitoring and Tracking System"
-        lblSubtitle.TextAlign = ContentAlignment.TopCenter
+        lblOJT.AutoSize = True
+        lblOJT.Font = New Font("Segoe UI Black", 30.0F, FontStyle.Bold)
+        lblOJT.ForeColor = Color.FromArgb(CByte(0), CByte(90), CByte(0))
+        lblOJT.Location = New Point(84, 375)
+        lblOJT.Name = "lblOJT"
+        lblOJT.Size = New Size(338, 67)
+        lblOJT.TabIndex = 1
+        lblOJT.Text = "OJT SYSTEM"
+        lblOJT.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' lblTitle
+        ' lblSchool
         ' 
-        lblTitle.Dock = DockStyle.Top
-        lblTitle.Font = New Font("Segoe UI", 22.2F, FontStyle.Bold)
-        lblTitle.ForeColor = Color.FromArgb(CByte(33), CByte(33), CByte(33))
-        lblTitle.Location = New Point(48, 40)
-        lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(808, 48)
-        lblTitle.TabIndex = 0
-        lblTitle.Text = "OJT MANAGEMENT SYSTEM"
-        lblTitle.TextAlign = ContentAlignment.TopCenter
+        lblSchool.Font = New Font("Segoe UI Black", 26.0F, FontStyle.Bold)
+        lblSchool.ForeColor = Color.FromArgb(CByte(20), CByte(50), CByte(20))
+        lblSchool.Location = New Point(30, 213)
+        lblSchool.Name = "lblSchool"
+        lblSchool.Padding = New Padding(0, 20, 0, 0)
+        lblSchool.Size = New Size(388, 162)
+        lblSchool.TabIndex = 2
+        lblSchool.Text = "GREEN ARCHERS COLLEGES" & vbCrLf
+        lblSchool.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' picLogo
+        ' 
+        picLogo.Dock = DockStyle.Top
+        picLogo.Location = New Point(50, 50)
+        picLogo.Name = "picLogo"
+        picLogo.Size = New Size(350, 160)
+        picLogo.SizeMode = PictureBoxSizeMode.Zoom
+        picLogo.TabIndex = 3
+        picLogo.TabStop = False
         ' 
         ' frmStart
         ' 
-        AutoScaleDimensions = New SizeF(120F, 120F)
-        AutoScaleMode = AutoScaleMode.Dpi
-        ClientSize = New Size(1000, 750)
+        ClientSize = New Size(1180, 760)
         Controls.Add(pnlMain)
-        Font = New Font("Segoe UI", 9F)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
-        MinimumSize = New Size(1000, 750)
         Name = "frmStart"
         StartPosition = FormStartPosition.CenterScreen
         Text = "OJT Management System - Welcome"
         pnlMain.ResumeLayout(False)
-        pnlContent.ResumeLayout(False)
-        pnlButtons.ResumeLayout(False)
-        pnlHeader.ResumeLayout(False)
+        pnlRight.ResumeLayout(False)
+        pnlLoginCard.ResumeLayout(False)
+        pnlLeft.ResumeLayout(False)
+        pnlLeft.PerformLayout()
+        CType(picLogo, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
 
     End Sub
 
+
     Friend WithEvents pnlMain As Panel
-    Friend WithEvents pnlHeader As Panel
-    Friend WithEvents lblTitle As Label
-    Friend WithEvents lblSubtitle As Label
-    Friend WithEvents pnlContent As Panel
-    Friend WithEvents lblSelectType As Label
-    Friend WithEvents pnlButtons As Panel
+    Friend WithEvents pnlLeft As Panel
+    Friend WithEvents pnlRight As Panel
+    Friend WithEvents pnlLoginCard As Panel
+
+    Friend WithEvents picLogo As PictureBox
+    Friend WithEvents lblSchool As Label
+    Friend WithEvents lblOJT As Label
+
+    Friend WithEvents lblLoginAs As Label
     Friend WithEvents btnStudent As Button
     Friend WithEvents btnFaculty As Button
+    Friend WithEvents btnRegistrar As Button
+
 End Class

@@ -50,12 +50,12 @@ Public Class frmLoginStudent
             Return
         End If
 
-        Dim hashedPassword As String = password ' TEMP until hashing enabled
+        Dim hashedPassword As String = password
 
         Try
             Using conn As MySqlConnection = GetConnection()
                 Using cmd As New MySqlCommand("
-                    SELECT StudentID, FirstName, LastName, PasswordHash, Status, RejectionReason
+                    SELECT StudentID, FirstName, LastName, Password, AccountStatus, RejectionReason
                     FROM student
                     WHERE Email = @Email
                     LIMIT 1;", conn)
@@ -66,7 +66,7 @@ Public Class frmLoginStudent
                     Using dr As MySqlDataReader = cmd.ExecuteReader()
                         If dr.Read() Then
 
-                            Dim status As String = dr("Status").ToString().Trim()
+                            Dim status As String = dr("AccountStatus").ToString().Trim()
 
                             '==================================
                             ' HANDLE STATUS BEFORE PASSWORD
@@ -95,9 +95,9 @@ Public Class frmLoginStudent
                             '==================================
                             ' PASSWORD CHECK
                             '==================================
-                            Dim storedHash As String = dr("PasswordHash").ToString()
+                            Dim storedHash As String = dr("Password").ToString()
 
-                            If storedHash <> hashedPassword Then
+                            If storedHash <> password Then
                                 ShowError("Incorrect password.")
                                 Return
                             End If
@@ -145,13 +145,6 @@ Public Class frmLoginStudent
     '====================================================
     ' OPEN REGISTRATION FORM
     '====================================================
-    Private Sub btnCreateAccount_Click(sender As Object, e As EventArgs) _
-         Handles lnkRegister.LinkClicked
-
-        Dim reg As New frmStudentRegister()
-        reg.Show()
-        Me.Hide()
-    End Sub
 
     Private Sub lnkRegister_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkRegister.LinkClicked
         Dim reg As New frmStudentRegister()
