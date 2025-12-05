@@ -11,10 +11,19 @@
   <ItemGroup>
     <Compile Remove="Form1.Designer.vb" />
     <Compile Remove="Form1.vb" />
+    <Compile Remove="frmCompanyContactEntry.Designer.vb" />
+    <Compile Remove="frmCompanyContactEntry.vb" />
+    <Compile Remove="frmCompanyEntry.Designer.vb" />
+    <Compile Remove="frmCompanyEntry.vb" />
+    <Compile Remove="frmStudentDetailsPopup.Designer.vb" />
+    <Compile Remove="frmStudentDetailsPopup.vb" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Form1.resx" />
+    <EmbeddedResource Remove="frmCompanyContactEntry.resx" />
+    <EmbeddedResource Remove="frmCompanyEntry.resx" />
+    <EmbeddedResource Remove="frmStudentDetailsPopup.resx" />
   </ItemGroup>
 
   <ItemGroup>

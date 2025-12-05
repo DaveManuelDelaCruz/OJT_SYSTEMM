@@ -9,7 +9,6 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmProfessorDashboard
 
-    ' Adjust if needed, but this should match DbModule / your settings
     Private ReadOnly connectionString As String =
         "server=localhost;database=ojtdb_group8;uid=root;pwd=;"
 
@@ -53,7 +52,6 @@ Public Class frmProfessorDashboard
         Try
             ShowPanel(pnlHome)
 
-            ' Make sure visit type values match enum in visitlog table
             cboVLVisitType.Items.Clear()
             cboVLVisitType.Items.Add("Initial")
             cboVLVisitType.Items.Add("Midterm")
@@ -260,7 +258,7 @@ Public Class frmProfessorDashboard
                         contact = If(IsDBNull(rdr("ContactNumber")), "", rdr("ContactNumber").ToString())
                     End If
                 End Using
-            End Using    ' 🎉 Reader is now CLOSED!
+            End Using
 
             ' --------------------------
             ' SECOND QUERY (SAFE NOW)
@@ -343,7 +341,7 @@ Public Class frmProfessorDashboard
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@Email", txtPFEmail.Text.Trim())
                 cmd.Parameters.AddWithValue("@ContactNumber", txtPFContact.Text.Trim())
-                cmd.Parameters.AddWithValue("@Password", txtPFPassword.Text.Trim())  ' no hashing as you said
+                cmd.Parameters.AddWithValue("@Password", txtPFPassword.Text.Trim())
                 cmd.Parameters.AddWithValue("@FacultyID", CurrentFacultyID)
                 cmd.ExecuteNonQuery()
             End Using
@@ -473,7 +471,7 @@ Public Class frmProfessorDashboard
     End Sub
 
     Private Sub LoadRecentActivity()
-        ' Uses system_logs (adjust if your schema is different)
+        ' Uses system_logs 
         Using conn As MySqlConnection = GetConnection()
             conn.Open()
 
@@ -501,7 +499,7 @@ Public Class frmProfessorDashboard
     '  STUDENTS (MY SECTIONS)
     ' ------------------------------------------------------
 
-    '  LOAD FILTERS  (Call this in ProfessorDashboard_Load)
+    '  LOAD FILTERS 
     Private Sub LoadStudentFilters()
         Using conn As MySqlConnection = GetConnection()
             conn.Open()
@@ -512,13 +510,13 @@ Public Class frmProfessorDashboard
             Dim dtSections As New DataTable()
 
             Dim sql As String =
-"SELECT s.SectionID, s.SectionName
-   FROM section s
-   INNER JOIN faculty_section fs
-           ON s.SectionID = fs.SectionID
-  WHERE fs.FacultyID = @FacultyID
-    AND s.IsActive = 1
-  ORDER BY s.SectionName;"
+            "SELECT s.SectionID, s.SectionName
+               FROM section s
+               INNER JOIN faculty_section fs
+                       ON s.SectionID = fs.SectionID
+              WHERE fs.FacultyID = @FacultyID
+                AND s.IsActive = 1
+              ORDER BY s.SectionName;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@FacultyID", CurrentFacultyID)
@@ -643,40 +641,40 @@ Public Class frmProfessorDashboard
             '=============================================================
 
             Dim sql As String =
-"SELECT 
-      s.StudentID,
-      s.StudentNumber,
-      CONCAT(s.LastName, ', ', s.FirstName,
-             CASE WHEN s.MiddleName IS NULL OR s.MiddleName = '' 
-                  THEN '' ELSE CONCAT(' ', LEFT(s.MiddleName,1),'.') END
-      ) AS StudentName,
+            "SELECT 
+                  s.StudentID,
+                  s.StudentNumber,
+                  CONCAT(s.LastName, ', ', s.FirstName,
+                         CASE WHEN s.MiddleName IS NULL OR s.MiddleName = '' 
+                              THEN '' ELSE CONCAT(' ', LEFT(s.MiddleName,1),'.') END
+                  ) AS StudentName,
 
-      sec.SectionName,
-      crs.CourseCode,
+                  sec.SectionName,
+                  crs.CourseCode,
 
-      s.Status        AS StudentStatus,      -- academic status
-      s.AccountStatus AS AccountStatus,      -- login account status
+                  s.Status        AS StudentStatus,      -- academic status
+                  s.AccountStatus AS AccountStatus,      -- login account status
 
-      IFNULL(
-          (
-             SELECT i2.Status
-               FROM internship i2
-              WHERE i2.StudentID = s.StudentID
-                AND i2.IsDeleted = 0
-           ORDER BY i2.StartDate DESC, i2.InternshipID DESC
-              LIMIT 1
-          ),
-          'No Internship'
-      ) AS LatestInternshipStatus
+                  IFNULL(
+                      (
+                         SELECT i2.Status
+                           FROM internship i2
+                          WHERE i2.StudentID = s.StudentID
+                            AND i2.IsDeleted = 0
+                       ORDER BY i2.StartDate DESC, i2.InternshipID DESC
+                          LIMIT 1
+                      ),
+                      'No Internship'
+                  ) AS LatestInternshipStatus
 
- FROM student s
- INNER JOIN section sec ON s.SectionID = sec.SectionID
- INNER JOIN course  crs ON sec.CourseID = crs.CourseID
+             FROM student s
+             INNER JOIN section sec ON s.SectionID = sec.SectionID
+             INNER JOIN course  crs ON sec.CourseID = crs.CourseID
 
- WHERE s.SectionID = @SectionID
-   AND (@StudentStatus = '(All)' OR s.Status = @StudentStatus)
+             WHERE s.SectionID = @SectionID
+               AND (@StudentStatus = '(All)' OR s.Status = @StudentStatus)
 
- ORDER BY s.LastName, s.FirstName;"
+             ORDER BY s.LastName, s.FirstName;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@SectionID", CInt(cboStudentSection.SelectedValue))
@@ -712,64 +710,64 @@ Public Class frmProfessorDashboard
             '=========================================================
 
             Dim sql As String =
-"SELECT
-     i.InternshipID,
-     i.Status,
+                "SELECT
+                     i.InternshipID,
+                     i.Status,
 
-     c.CompanyName,
-     CONCAT(cc.LastName, ', ', cc.FirstName,
-            CASE WHEN cc.MiddleName IS NULL OR cc.MiddleName = ''
-                 THEN '' ELSE CONCAT(' ', LEFT(cc.MiddleName,1),'.') END
-     ) AS SupervisorName,
+                     c.CompanyName,
+                     CONCAT(cc.LastName, ', ', cc.FirstName,
+                            CASE WHEN cc.MiddleName IS NULL OR cc.MiddleName = ''
+                                 THEN '' ELSE CONCAT(' ', LEFT(cc.MiddleName,1),'.') END
+                     ) AS SupervisorName,
 
-     i.StartDate,
-     i.EndDate,
-     i.WorkDays,
-     i.DailyStartTime,
-     i.DailyEndTime,
-     i.RequiredHours,
-     i.HoursCompleted,
+                     i.StartDate,
+                     i.EndDate,
+                     i.WorkDays,
+                     i.DailyStartTime,
+                     i.DailyEndTime,
+                     i.RequiredHours,
+                     i.HoursCompleted,
 
-     -- latest Initial visit score (0 if none)
-     IFNULL((
-        SELECT v.Score
-          FROM visitlog v
-         WHERE v.InternshipID = i.InternshipID
-           AND v.VisitType = 'Initial'
-      ORDER BY v.VisitDate DESC, v.VisitID DESC
-         LIMIT 1
-     ),0) AS InitialScore,
+                     -- latest Initial visit score (0 if none)
+                     IFNULL((
+                        SELECT v.Score
+                          FROM visitlog v
+                         WHERE v.InternshipID = i.InternshipID
+                           AND v.VisitType = 'Initial'
+                      ORDER BY v.VisitDate DESC, v.VisitID DESC
+                         LIMIT 1
+                     ),0) AS InitialScore,
 
-     -- latest Midterm visit score (0 if none)
-     IFNULL((
-        SELECT v.Score
-          FROM visitlog v
-         WHERE v.InternshipID = i.InternshipID
-           AND v.VisitType = 'Midterm'
-      ORDER BY v.VisitDate DESC, v.VisitID DESC
-         LIMIT 1
-     ),0) AS MidtermScore,
+                     -- latest Midterm visit score (0 if none)
+                     IFNULL((
+                        SELECT v.Score
+                          FROM visitlog v
+                         WHERE v.InternshipID = i.InternshipID
+                           AND v.VisitType = 'Midterm'
+                      ORDER BY v.VisitDate DESC, v.VisitID DESC
+                         LIMIT 1
+                     ),0) AS MidtermScore,
 
-     -- latest Final visit score (0 if none)
-     IFNULL((
-        SELECT v.Score
-          FROM visitlog v
-         WHERE v.InternshipID = i.InternshipID
-           AND v.VisitType = 'Final'
-      ORDER BY v.VisitDate DESC, v.VisitID DESC
-         LIMIT 1
-     ),0) AS FinalScore,
+                     -- latest Final visit score (0 if none)
+                     IFNULL((
+                        SELECT v.Score
+                          FROM visitlog v
+                         WHERE v.InternshipID = i.InternshipID
+                           AND v.VisitType = 'Final'
+                      ORDER BY v.VisitDate DESC, v.VisitID DESC
+                         LIMIT 1
+                 ),0) AS FinalScore,
 
-     IFNULL(i.FinalGrade,0) AS FinalGrade
+                 IFNULL(i.FinalGrade,0) AS FinalGrade
 
- FROM internship i
- LEFT JOIN company        c  ON i.CompanyID          = c.CompanyID
- LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
+                 FROM internship i
+                 LEFT JOIN company        c  ON i.CompanyID          = c.CompanyID
+                 LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
 
-WHERE i.StudentID = @StudentID
-  AND i.IsDeleted = 0
+                WHERE i.StudentID = @StudentID
+                  AND i.IsDeleted = 0
 
-ORDER BY i.StartDate DESC, i.InternshipID DESC;"
+                ORDER BY i.StartDate DESC, i.InternshipID DESC;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@StudentID", studentId)
@@ -897,10 +895,10 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
 
                 ' A) Any internship at all?
                 Dim sqlTotal As String =
-"SELECT COUNT(*) 
-   FROM internship 
-  WHERE StudentID = @SID 
-    AND IsDeleted = 0;"
+                "SELECT COUNT(*) 
+                   FROM internship 
+                  WHERE StudentID = @SID 
+                    AND IsDeleted = 0;"
 
                 Dim totalIntern As Integer
                 Using cmd As New MySqlCommand(sqlTotal, conn)
@@ -917,11 +915,11 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
 
                 ' B) Are there any non-completed internships?
                 Dim sqlNotCompleted As String =
-"SELECT COUNT(*)
-   FROM internship
-  WHERE StudentID = @SID
-    AND IsDeleted = 0
-    AND Status <> 'Completed';"
+                "SELECT COUNT(*)
+                   FROM internship
+                  WHERE StudentID = @SID
+                    AND IsDeleted = 0
+                    AND Status <> 'Completed';"
 
                 Dim notCompleted As Integer
                 Using cmd As New MySqlCommand(sqlNotCompleted, conn)
@@ -938,12 +936,12 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
 
                 ' C) Completed internships must all have FinalGrade
                 Dim sqlMissingGrade As String =
-"SELECT COUNT(*)
-   FROM internship
-  WHERE StudentID = @SID
-    AND IsDeleted = 0
-    AND Status = 'Completed'
-    AND FinalGrade IS NULL;"
+                "SELECT COUNT(*)
+                   FROM internship
+                  WHERE StudentID = @SID
+                    AND IsDeleted = 0
+                    AND Status = 'Completed'
+                    AND FinalGrade IS NULL;"
 
                 Dim missingGrade As Integer
                 Using cmd As New MySqlCommand(sqlMissingGrade, conn)
@@ -967,10 +965,10 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
             conn.Open()
 
             Dim sql As String =
-"UPDATE student
-    SET Status   = @Status,
-        UpdatedAt = NOW()
-  WHERE StudentID = @ID;"
+            "UPDATE student
+                SET Status   = @Status,
+                    UpdatedAt = NOW()
+              WHERE StudentID = @ID;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@Status", newStatus)
@@ -1008,15 +1006,6 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
         pnlStudentEditStatus.Visible = False
         SelectedStudentID = 0
     End Sub
-
-    ' ------------------------------------------------------
-    '  INTERNSHIP ASSIGNMENT
-    ' ------------------------------------------------------
-    ' ================================================================
-    '  INTERNSHIP ASSIGNMENT PANEL  (FINAL SPEC)
-    '  Filters: Section + Status (Pending / Active / Dropped)
-    '  Modes  : Normal vs Edit
-    ' ================================================================
 
     ' =====================================================================
     '  INTERNSHIP ASSIGNMENT PANEL — FINAL CODE
@@ -1111,12 +1100,12 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
             ' Gets only sections assigned to the logged-in professor.
             Dim dtSections As New DataTable()
             Dim sqlSections As String =
-"SELECT s.SectionID, s.SectionName
- FROM section s
- INNER JOIN faculty_section fs ON s.SectionID = fs.SectionID
- WHERE fs.FacultyID = @FacultyID
-   AND s.IsActive = 1
- ORDER BY s.SectionName;"
+            "SELECT s.SectionID, s.SectionName
+             FROM section s
+             INNER JOIN faculty_section fs ON s.SectionID = fs.SectionID
+             WHERE fs.FacultyID = @FacultyID
+               AND s.IsActive = 1
+             ORDER BY s.SectionName;"
 
             Using cmd As New MySqlCommand(sqlSections, conn)
                 cmd.Parameters.AddWithValue("@FacultyID", CurrentFacultyID)
@@ -1134,10 +1123,10 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
             ' Company masterlist, only active entries shown.
             Dim dtCompanies As New DataTable()
             Dim sqlCompanies As String =
-"SELECT CompanyID, CompanyName
- FROM company
- WHERE IsActive = 1
- ORDER BY CompanyName;"
+            "SELECT CompanyID, CompanyName
+             FROM company
+             WHERE IsActive = 1
+             ORDER BY CompanyName;"
 
             Using da As New MySqlDataAdapter(sqlCompanies, conn)
                 da.Fill(dtCompanies)
@@ -1215,15 +1204,15 @@ ORDER BY i.StartDate DESC, i.InternshipID DESC;"
                     '  in the selected section, with the chosen Status.
                     ' ==========================================================
                     sql =
-"SELECT i.InternshipID,
-        CONCAT(s.StudentNumber, ' - ', s.LastName, ', ', s.FirstName) AS DisplayName
- FROM internship i
- INNER JOIN student s ON s.StudentID = i.StudentID
- WHERE i.Status = @Status
-   AND i.EvaluatingFacultyID = @FacultyID
-   AND i.IsDeleted = 0
-   AND s.SectionID = @SectionID
- ORDER BY s.LastName, s.FirstName;"
+                    "SELECT i.InternshipID,
+                            CONCAT(s.StudentNumber, ' - ', s.LastName, ', ', s.FirstName) AS DisplayName
+                     FROM internship i
+                     INNER JOIN student s ON s.StudentID = i.StudentID
+                     WHERE i.Status = @Status
+                       AND i.EvaluatingFacultyID = @FacultyID
+                       AND i.IsDeleted = 0
+                       AND s.SectionID = @SectionID
+                     ORDER BY s.LastName, s.FirstName;"
 
                 Case Else
                     dt.Clear()
@@ -1324,18 +1313,18 @@ Handles cboIAStudent.SelectedIndexChanged
                 Dim studentId As Integer = CInt(cboIAStudent.SelectedValue)
 
                 Dim sql As String =
-"SELECT s.StudentNumber,
-        CONCAT(s.LastName, ', ', s.FirstName,
-               CASE WHEN s.MiddleName IS NULL OR s.MiddleName = ''
-                    THEN '' ELSE CONCAT(' ', LEFT(s.MiddleName,1),'.') END
-        ) AS StudentName,
-        c.CourseCode,
-        sec.SectionName,
-        c.RequiredOJTHours
- FROM student s
- INNER JOIN section sec ON s.SectionID = sec.SectionID
- INNER JOIN course c ON sec.CourseID = c.CourseID
- WHERE s.StudentID = @StudentID;"
+                "SELECT s.StudentNumber,
+                        CONCAT(s.LastName, ', ', s.FirstName,
+                               CASE WHEN s.MiddleName IS NULL OR s.MiddleName = ''
+                                    THEN '' ELSE CONCAT(' ', LEFT(s.MiddleName,1),'.') END
+                        ) AS StudentName,
+                        c.CourseCode,
+                        sec.SectionName,
+                        c.RequiredOJTHours
+                 FROM student s
+                 INNER JOIN section sec ON s.SectionID = sec.SectionID
+                 INNER JOIN course c ON sec.CourseID = c.CourseID
+                 WHERE s.StudentID = @StudentID;"
 
                 Using cmd As New MySqlCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@StudentID", studentId)
@@ -1366,26 +1355,26 @@ Handles cboIAStudent.SelectedIndexChanged
                 Dim internshipId As Integer = CInt(cboIAStudent.SelectedValue)
 
                 Dim sql As String =
-"SELECT i.StudentID,
-        i.Status,
-        i.WorkDays,
-        i.DailyStartTime,
-        i.DailyEndTime,
-        i.CompanyID,
-        i.SupervisorContactID,
-        s.StudentNumber,
-        CONCAT(s.LastName, ', ', s.FirstName,
-               CASE WHEN s.MiddleName IS NULL OR s.MiddleName = ''
-                    THEN '' ELSE CONCAT(' ', LEFT(s.MiddleName,1),'.') END
-        ) AS StudentName,
-        c.CourseCode,
-        sec.SectionName,
-        c.RequiredOJTHours
- FROM internship i
- INNER JOIN student s ON s.StudentID = i.StudentID
- INNER JOIN section sec ON s.SectionID = sec.SectionID
- INNER JOIN course c ON sec.CourseID = c.CourseID
- WHERE i.InternshipID = @InternshipID;"
+                "SELECT i.StudentID,
+                        i.Status,
+                        i.WorkDays,
+                        i.DailyStartTime,
+                        i.DailyEndTime,
+                        i.CompanyID,
+                        i.SupervisorContactID,
+                        s.StudentNumber,
+                        CONCAT(s.LastName, ', ', s.FirstName,
+                               CASE WHEN s.MiddleName IS NULL OR s.MiddleName = ''
+                                    THEN '' ELSE CONCAT(' ', LEFT(s.MiddleName,1),'.') END
+                        ) AS StudentName,
+                        c.CourseCode,
+                        sec.SectionName,
+                        c.RequiredOJTHours
+                 FROM internship i
+                 INNER JOIN student s ON s.StudentID = i.StudentID
+                 INNER JOIN section sec ON s.SectionID = sec.SectionID
+                 INNER JOIN course c ON sec.CourseID = c.CourseID
+                 WHERE i.InternshipID = @InternshipID;"
 
                 Using cmd As New MySqlCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@InternshipID", internshipId)
@@ -1432,9 +1421,9 @@ Handles cboIAStudent.SelectedIndexChanged
 
                 ' Re-select supervisor
                 Dim sqlSup As String =
-"SELECT SupervisorContactID
- FROM internship
- WHERE InternshipID = @ID;"
+                "SELECT SupervisorContactID
+                 FROM internship
+                 WHERE InternshipID = @ID;"
 
                 Using cmdSup As New MySqlCommand(sqlSup, conn)
                     cmdSup.Parameters.AddWithValue("@ID", internshipId)
@@ -1477,15 +1466,15 @@ Handles cboIACompany.SelectedIndexChanged
             ' Supervisors restricted to chosen company (and active only).
             Dim dtSup As New DataTable()
             Dim sql As String =
-"SELECT ContactID,
-        CONCAT(LastName, ', ', FirstName,
-               CASE WHEN MiddleName IS NULL OR MiddleName = ''
-                    THEN '' ELSE CONCAT(' ', LEFT(MiddleName,1),'.') END
-        ) AS ContactName
- FROM companycontact
- WHERE CompanyID = @CompanyID
-   AND IsActive = 1
- ORDER BY LastName, FirstName;"
+            "SELECT ContactID,
+                    CONCAT(LastName, ', ', FirstName,
+                           CASE WHEN MiddleName IS NULL OR MiddleName = ''
+                                THEN '' ELSE CONCAT(' ', LEFT(MiddleName,1),'.') END
+                    ) AS ContactName
+             FROM companycontact
+             WHERE CompanyID = @CompanyID
+               AND IsActive = 1
+             ORDER BY LastName, FirstName;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@CompanyID", CInt(cboIACompany.SelectedValue))
@@ -1511,11 +1500,11 @@ Handles cboIACompany.SelectedIndexChanged
                 conn.Open()
 
                 Dim sql As String =
-"SELECT COUNT(*)
- FROM internship
- WHERE StudentID = @StudentID
-   AND Status = 'Active'
-   AND (IsDeleted = 0 OR IsDeleted IS NULL);"
+                "SELECT COUNT(*)
+                 FROM internship
+                 WHERE StudentID = @StudentID
+                   AND Status = 'Active'
+                   AND (IsDeleted = 0 OR IsDeleted IS NULL);"
 
                 Using cmd As New MySqlCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@StudentID", studentId)
@@ -1538,12 +1527,12 @@ Handles cboIACompany.SelectedIndexChanged
             conn.Open()
 
             Dim sql As String =
-"SELECT COUNT(*)
- FROM internship
- WHERE StudentID = @StudentID
-   AND Status = 'Active'
-   AND (IsDeleted = 0 OR IsDeleted IS NULL)
-   AND InternshipID <> @ExcludeID;"
+            "SELECT COUNT(*)
+             FROM internship
+             WHERE StudentID = @StudentID
+               AND Status = 'Active'
+               AND (IsDeleted = 0 OR IsDeleted IS NULL)
+               AND InternshipID <> @ExcludeID;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@StudentID", studentId)
@@ -1640,14 +1629,14 @@ Handles cboIACompany.SelectedIndexChanged
 
             ' Insert NEW Active internship row for the student.
             Dim sql As String =
-"INSERT INTO internship
- ( StudentID, CompanyID, SupervisorContactID, EvaluatingFacultyID,
-   StartDate, Status, WorkDays, DailyStartTime, DailyEndTime,
-   RequiredHours, HoursCompleted, CreatedAt, UpdatedAt, IsDeleted )
- VALUES
- (@StudentID, @CompanyID, @SupervisorContactID, @FacultyID,
-  @StartDate, 'Active', @WorkDays, @DailyStartTime, @DailyEndTime,
-  @RequiredHours, 0, NOW(), NOW(), 0);"
+            "INSERT INTO internship
+             ( StudentID, CompanyID, SupervisorContactID, EvaluatingFacultyID,
+               StartDate, Status, WorkDays, DailyStartTime, DailyEndTime,
+               RequiredHours, HoursCompleted, CreatedAt, UpdatedAt, IsDeleted )
+             VALUES
+             (@StudentID, @CompanyID, @SupervisorContactID, @FacultyID,
+              @StartDate, 'Active', @WorkDays, @DailyStartTime, @DailyEndTime,
+              @RequiredHours, 0, NOW(), NOW(), 0);"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@StudentID", selectedStudentId)
@@ -1731,9 +1720,9 @@ Handles cboIACompany.SelectedIndexChanged
             conn.Open()
 
             Dim sqlGetStudent As String =
-"SELECT StudentID
- FROM internship
- WHERE InternshipID = @ID;"
+            "SELECT StudentID
+             FROM internship
+             WHERE InternshipID = @ID;"
 
             Using cmdGet As New MySqlCommand(sqlGetStudent, conn)
                 cmdGet.Parameters.AddWithValue("@ID", IA_EditingInternshipID)
@@ -1780,52 +1769,52 @@ Handles cboIACompany.SelectedIndexChanged
             conn.Open()
 
             Dim sql As String =
-"UPDATE internship
- SET
-    CompanyID = @CompanyID,
-    SupervisorContactID = @SupervisorContactID,
-    WorkDays = @WorkDays,
-    DailyStartTime = @StartTime,
-    DailyEndTime = @EndTime,
-    Status = @Status,
+            "UPDATE internship
+             SET
+                CompanyID = @CompanyID,
+                SupervisorContactID = @SupervisorContactID,
+                WorkDays = @WorkDays,
+                DailyStartTime = @StartTime,
+                DailyEndTime = @EndTime,
+                Status = @Status,
 
-    -- When reactivating from Dropped, reset StartDate to today.
-    StartDate = CASE 
-                    WHEN @OriginalStatus = 'Dropped' 
-                    THEN NOW() 
-                    ELSE StartDate 
-                END,
+                -- When reactivating from Dropped, reset StartDate to today.
+                StartDate = CASE 
+                                WHEN @OriginalStatus = 'Dropped' 
+                                THEN NOW() 
+                                ELSE StartDate 
+                            END,
 
-    -- If we go back to Active, EndDate is cleared.
-    EndDate = CASE 
-                  WHEN @Status = 'Active' 
-                  THEN NULL 
-                  ELSE EndDate 
-              END,
+                -- If we go back to Active, EndDate is cleared.
+                EndDate = CASE 
+                              WHEN @Status = 'Active' 
+                              THEN NULL 
+                              ELSE EndDate 
+                          END,
 
-    -- Reactivation resets progress and grading.
-    HoursCompleted = CASE 
-                        WHEN @OriginalStatus = 'Dropped' 
-                        THEN 0 
-                        ELSE HoursCompleted 
-                     END,
-    FinalGrade = CASE 
-                    WHEN @OriginalStatus = 'Dropped' 
-                    THEN NULL 
-                    ELSE FinalGrade 
-                 END,
-    EvaluationReportPath = CASE 
-                               WHEN @OriginalStatus = 'Dropped' 
-                               THEN NULL 
-                               ELSE EvaluationReportPath 
-                           END,
-    GradeDate = CASE 
-                    WHEN @OriginalStatus = 'Dropped' 
-                    THEN NULL 
-                    ELSE GradeDate 
-                END,
-    UpdatedAt = NOW()
- WHERE InternshipID = @ID;"
+                -- Reactivation resets progress and grading.
+                HoursCompleted = CASE 
+                                    WHEN @OriginalStatus = 'Dropped' 
+                                    THEN 0 
+                                    ELSE HoursCompleted 
+                                 END,
+                FinalGrade = CASE 
+                                WHEN @OriginalStatus = 'Dropped' 
+                                THEN NULL 
+                                ELSE FinalGrade 
+                             END,
+                EvaluationReportPath = CASE 
+                                           WHEN @OriginalStatus = 'Dropped' 
+                                           THEN NULL 
+                                           ELSE EvaluationReportPath 
+                                       END,
+                GradeDate = CASE 
+                                WHEN @OriginalStatus = 'Dropped' 
+                                THEN NULL 
+                                ELSE GradeDate 
+                            END,
+                UpdatedAt = NOW()
+             WHERE InternshipID = @ID;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@CompanyID", CInt(cboIACompany.SelectedValue))
@@ -1948,15 +1937,15 @@ Handles cboIACompany.SelectedIndexChanged
 
             ' Mark internship as Dropped and clear any grading/progress.
             Dim sql As String =
-"UPDATE internship SET
-    Status = 'Dropped',
-    HoursCompleted = 0,
-    FinalGrade = NULL,
-    EvaluationReportPath = NULL,
-    GradeDate = NULL,
-    EndDate = NULL,
-    UpdatedAt = NOW()
- WHERE InternshipID = @ID;"
+            "UPDATE internship SET
+                Status = 'Dropped',
+                HoursCompleted = 0,
+                FinalGrade = NULL,
+                EvaluationReportPath = NULL,
+                GradeDate = NULL,
+                EndDate = NULL,
+                UpdatedAt = NOW()
+             WHERE InternshipID = @ID;"
 
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@ID", internshipId)
@@ -1993,10 +1982,6 @@ Handles cboIACompany.SelectedIndexChanged
 
         SetIA_ModeNormal()
     End Sub
-
-
-
-
 
     ' ------------------------------------------------------
     '  VISIT LOGS
@@ -2747,9 +2732,10 @@ Handles cboIACompany.SelectedIndexChanged
                     CONCAT(s.StudentNumber, ' - ', s.LastName, ', ', s.FirstName) AS DisplayName
              FROM internship i
              INNER JOIN student s ON s.StudentID = i.StudentID
-             WHERE i.EvaluatingFacultyID = @FacultyID
-               AND i.Status = 'Active'
+             INNER JOIN faculty_section fs ON fs.SectionID = s.SectionID
+             WHERE i.Status = 'Active'
                AND i.IsDeleted = 0
+               AND fs.FacultyID = @FacultyID
              ORDER BY s.LastName, s.FirstName;"
 
             Using cmd As New MySqlCommand(sql, conn)
@@ -3706,17 +3692,18 @@ Handles cboGRStudent.SelectedIndexChanged
             Dim dt As New DataTable()
 
             Dim sql As String =
-            "SELECT 
-                 CompanyID, 
-                 CONCAT(CompanyNumber, ' - ', CompanyName) AS DisplayName
-             FROM company
-             WHERE IsActive = 1
-             ORDER BY CompanyName;"
+        "SELECT 
+             CompanyID, 
+             CONCAT(CompanyNumber, ' - ', CompanyName) AS DisplayName
+         FROM company
+         WHERE IsActive = 1
+         ORDER BY CompanyName;"
 
             Using da As New MySqlDataAdapter(sql, conn)
                 da.Fill(dt)
             End Using
 
+            ' 🔥 FIX: Clear and properly bind the combo box
             cboCCCompany.DataSource = Nothing
             cboCCCompany.Items.Clear()
 
@@ -3724,7 +3711,7 @@ Handles cboGRStudent.SelectedIndexChanged
                 cboCCCompany.DataSource = dt
                 cboCCCompany.DisplayMember = "DisplayName"
                 cboCCCompany.ValueMember = "CompanyID"
-                cboCCCompany.SelectedIndex = -1
+                cboCCCompany.SelectedIndex = -1  ' 🔥 This is important!
             End If
         End Using
     End Sub

@@ -4,7 +4,6 @@ Public Class frmViewFacultyPending
 
     Private _facultyId As Integer
 
-    '✔ Constructor required by your main form
     Public Sub New(facultyId As Integer)
         InitializeComponent()
         _facultyId = facultyId
@@ -27,7 +26,7 @@ Public Class frmViewFacultyPending
                            Email,
                            ContactNumber,
                            DepartmentID,
-                           Position
+                           PositionTitle
                     FROM faculty
                     WHERE FacultyID = @fid;", conn)
 
@@ -35,18 +34,52 @@ Public Class frmViewFacultyPending
 
                     Using dr = cmd.ExecuteReader()
                         If dr.Read() Then
-                            lblEmployeeNo.Text = dr("EmployeeNumber").ToString()
-                            lblFullName.Text = dr("FullName").ToString()
-                            lblGender.Text = dr("Gender").ToString()
-                            lblBirthdate.Text = CDate(dr("Birthdate")).ToShortDateString()
-                            lblEmail.Text = dr("Email").ToString()
-                            lblContact.Text = dr("ContactNumber").ToString()
-                            lblDepartment.Text = dr("DepartmentID").ToString()
-                            lblPosition.Text = dr("Position").ToString()
+
+                            lblEmployeeNoValue.Text = dr("EmployeeNumber").ToString()
+                            lblFullNameValue.Text = dr("FullName").ToString()
+
+                            ' Gender (safe)
+                            lblGenderValue.Text =
+                                If(IsDBNull(dr("Gender")),
+                                   "N/A",
+                                   dr("Gender").ToString())
+
+                            ' Birthdate (safe)
+                            If IsDBNull(dr("Birthdate")) Then
+                                lblBirthdateValue.Text = "N/A"
+                            Else
+                                lblBirthdateValue.Text = CDate(dr("Birthdate")).ToShortDateString()
+                            End If
+
+                            ' Email
+                            lblEmailValue.Text =
+                                If(IsDBNull(dr("Email")),
+                                   "N/A",
+                                   dr("Email").ToString())
+
+                            ' Contact
+                            lblContactValue.Text =
+                                If(IsDBNull(dr("ContactNumber")),
+                                   "N/A",
+                                   dr("ContactNumber").ToString())
+
+                            ' Department
+                            lblDepartmentValue.Text =
+                                If(IsDBNull(dr("DepartmentID")),
+                                   "N/A",
+                                   dr("DepartmentID").ToString())
+
+                            ' Position
+                            lblPositionValue.Text =
+                                If(IsDBNull(dr("PositionTitle")),
+                                   "N/A",
+                                   dr("PositionTitle").ToString())
+
                         End If
                     End Using
                 End Using
             End Using
+
         Catch ex As Exception
             MessageBox.Show("Error loading faculty info: " & ex.Message)
         End Try

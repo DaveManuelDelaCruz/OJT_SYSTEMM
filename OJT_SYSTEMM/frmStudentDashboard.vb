@@ -38,7 +38,7 @@ Public Class frmStudentDashboard
 
         LoadStudentProfile()
 
-        ' 🔥 Only this — because this will load all internship details automatically
+        '  Only this — because this will load all internship details automatically
         LoadStudentInternshipList()
     End Sub
 
@@ -512,18 +512,18 @@ Public Class frmStudentDashboard
     Private Sub LoadStudentInternshipList()
         InternshipsTable = New DataTable()
         Dim sql As String =
-"SELECT 
-    i.InternshipID,
-    CONCAT(
-        DATE_FORMAT(i.StartDate, '%b %Y'), ' • ',
-        COALESCE(c.CompanyName, 'No Company'), ' • ',
-        i.Status
-    ) AS DisplayText
- FROM internship i
- LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
- LEFT JOIN company c        ON cc.CompanyID = c.CompanyID
- WHERE i.StudentID = @sid
- ORDER BY i.StartDate DESC, i.InternshipID DESC;"
+        "SELECT 
+            i.InternshipID,
+            CONCAT(
+                DATE_FORMAT(i.StartDate, '%b %Y'), ' • ',
+                COALESCE(c.CompanyName, 'No Company'), ' • ',
+                i.Status
+            ) AS DisplayText
+         FROM internship i
+         LEFT JOIN companycontact cc ON i.SupervisorContactID = cc.ContactID
+         LEFT JOIN company c        ON cc.CompanyID = c.CompanyID
+         WHERE i.StudentID = @sid
+         ORDER BY i.StartDate DESC, i.InternshipID DESC;"
 
         Try
             Using conn = GetConnection()

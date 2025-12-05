@@ -1,8 +1,7 @@
 ﻿Imports System.Drawing
 Imports MySql.Data.MySqlClient
 
-Public Class frmRegistrarDashboard   ' You can later rename this form to frmRegistrarDashboard
-    ' This now represents the logged-in Registrar (from registrar table)
+Public Class frmRegistrarDashboard
     Public Property CurrentRegistrarID As Integer
 
     '========================
@@ -2695,37 +2694,35 @@ Public Class frmRegistrarDashboard   ' You can later rename this form to frmRegi
                 conn.Open()
 
                 Dim query As String =
-"
-SELECT 
-    al.LogDate,
+                "
+                SELECT 
+                    al.LogDate,
 
-    -- Clean action text
-    CASE 
-        WHEN al.Action LIKE '% by %'
-            THEN SUBSTRING_INDEX(al.Action, ' by ', 1)
-        ELSE al.Action
-    END AS Action,
+                    -- Clean action text
+                    CASE 
+                        WHEN al.Action LIKE '% by %'
+                            THEN SUBSTRING_INDEX(al.Action, ' by ', 1)
+                        ELSE al.Action
+                    END AS Action,
 
-    -- Resolve who performed the action
-    CASE 
-        WHEN al.UserType = 'Registrar' AND r.RegistrarID IS NOT NULL
-            THEN r.FullName
-        ELSE 'System'
-    END AS DoneBy
+                    -- Resolve who performed the action
+                    CASE 
+                        WHEN al.UserType = 'Registrar' AND r.RegistrarID IS NOT NULL
+                            THEN r.FullName
+                        ELSE 'System'
+                    END AS DoneBy
 
-FROM account_logs al
+                FROM account_logs al
 
-LEFT JOIN registrar r
-    ON al.UserType = 'Registrar'
-    AND al.UserID = r.RegistrarID
+                LEFT JOIN registrar r
+                    ON al.UserType = 'Registrar'
+                    AND al.UserID = r.RegistrarID
 
--- Search filter
-WHERE (@search = '' OR al.Action LIKE CONCAT('%', @search, '%'))
+                -- Search filter
+                WHERE (@search = '' OR al.Action LIKE CONCAT('%', @search, '%'))
 
-ORDER BY al.LogDate DESC;
-"
-
-
+                ORDER BY al.LogDate DESC;
+                "
 
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@search", search)

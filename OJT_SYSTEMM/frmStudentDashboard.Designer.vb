@@ -38,42 +38,6 @@ Partial Class frmStudentDashboard
         btnStudentProfile = New Button()
         lblSidebarTitle = New Label()
         pnlContent = New Panel()
-        pnlInternshipDetails = New Panel()
-        cboSelectInternship = New ComboBox()
-        lblSelectInternship = New Label()
-        lblHoursProgress = New Label()
-        lblCompletedHoursCaption = New Label()
-        lblRequiredHoursCaption = New Label()
-        lblOjtHoursHeader = New Label()
-        lblEndTimeCaption = New Label()
-        lblStartTimeCaption = New Label()
-        lblWorkDaysCaption = New Label()
-        lblWorkScheduleHeader = New Label()
-        lblSupervisorContactCaption = New Label()
-        lblSupervisorPositionCaption = New Label()
-        lblSupervisorNameCaption = New Label()
-        lblSupervisorInfoHeader = New Label()
-        lblIndustryCaption = New Label()
-        lblCompanyCityCaption = New Label()
-        lblCompanyAddressCaption = New Label()
-        lblCompanyNameCaption = New Label()
-        lblCompanyInfoHeader = New Label()
-        lblInternshipStatusCaption = New Label()
-        progressHours = New ProgressBar()
-        txtCompletedHours = New TextBox()
-        txtRequiredHours = New TextBox()
-        txtEndTime = New TextBox()
-        txtStartTime = New TextBox()
-        txtWorkDays = New TextBox()
-        txtSupervisorContact = New TextBox()
-        txtSupervisorPosition = New TextBox()
-        txtSupervisorName = New TextBox()
-        txtIndustry = New TextBox()
-        txtCompanyCity = New TextBox()
-        txtCompanyAddress = New TextBox()
-        txtCompanyName = New TextBox()
-        txtInternshipStatus = New TextBox()
-        lblInternshipTitle = New Label()
         pnlFinalGrade = New Panel()
         lblFinalGradeTitle = New Label()
         txtFinalInternshipStatus = New TextBox()
@@ -122,14 +86,50 @@ Partial Class frmStudentDashboard
         txtFullName = New TextBox()
         txtStudentNumber = New TextBox()
         lblProfileTitle = New Label()
+        pnlInternshipDetails = New Panel()
+        cboSelectInternship = New ComboBox()
+        lblSelectInternship = New Label()
+        lblHoursProgress = New Label()
+        lblCompletedHoursCaption = New Label()
+        lblRequiredHoursCaption = New Label()
+        lblOjtHoursHeader = New Label()
+        lblEndTimeCaption = New Label()
+        lblStartTimeCaption = New Label()
+        lblWorkDaysCaption = New Label()
+        lblWorkScheduleHeader = New Label()
+        lblSupervisorContactCaption = New Label()
+        lblSupervisorPositionCaption = New Label()
+        lblSupervisorNameCaption = New Label()
+        lblSupervisorInfoHeader = New Label()
+        lblIndustryCaption = New Label()
+        lblCompanyCityCaption = New Label()
+        lblCompanyAddressCaption = New Label()
+        lblCompanyNameCaption = New Label()
+        lblCompanyInfoHeader = New Label()
+        lblInternshipStatusCaption = New Label()
+        progressHours = New ProgressBar()
+        txtCompletedHours = New TextBox()
+        txtRequiredHours = New TextBox()
+        txtEndTime = New TextBox()
+        txtStartTime = New TextBox()
+        txtWorkDays = New TextBox()
+        txtSupervisorContact = New TextBox()
+        txtSupervisorPosition = New TextBox()
+        txtSupervisorName = New TextBox()
+        txtIndustry = New TextBox()
+        txtCompanyCity = New TextBox()
+        txtCompanyAddress = New TextBox()
+        txtCompanyName = New TextBox()
+        txtInternshipStatus = New TextBox()
+        lblInternshipTitle = New Label()
         pnlHeader.SuspendLayout()
         pnlVisitLogs.SuspendLayout()
         CType(dgvVisitLogs, ComponentModel.ISupportInitialize).BeginInit()
         pnlSidebar.SuspendLayout()
         pnlContent.SuspendLayout()
-        pnlInternshipDetails.SuspendLayout()
         pnlFinalGrade.SuspendLayout()
         pnlStudentProfile.SuspendLayout()
+        pnlInternshipDetails.SuspendLayout()
         SuspendLayout()
         ' 
         ' pnlHeader
@@ -338,416 +338,16 @@ Partial Class frmStudentDashboard
         ' pnlContent
         ' 
         pnlContent.BackColor = Color.FromArgb(CByte(245), CByte(245), CByte(245))
-        pnlContent.Controls.Add(pnlFinalGrade)
         pnlContent.Controls.Add(pnlStudentProfile)
         pnlContent.Controls.Add(pnlInternshipDetails)
         pnlContent.Controls.Add(pnlVisitLogs)
+        pnlContent.Controls.Add(pnlFinalGrade)
         pnlContent.Dock = DockStyle.Fill
         pnlContent.Location = New Point(251, 93)
         pnlContent.Margin = New Padding(3, 4, 3, 4)
         pnlContent.Name = "pnlContent"
         pnlContent.Size = New Size(1120, 867)
         pnlContent.TabIndex = 2
-        ' 
-        ' pnlInternshipDetails
-        ' 
-        pnlInternshipDetails.BackColor = Color.White
-        pnlInternshipDetails.Controls.Add(cboSelectInternship)
-        pnlInternshipDetails.Controls.Add(lblSelectInternship)
-        pnlInternshipDetails.Controls.Add(lblHoursProgress)
-        pnlInternshipDetails.Controls.Add(lblCompletedHoursCaption)
-        pnlInternshipDetails.Controls.Add(lblRequiredHoursCaption)
-        pnlInternshipDetails.Controls.Add(lblOjtHoursHeader)
-        pnlInternshipDetails.Controls.Add(lblEndTimeCaption)
-        pnlInternshipDetails.Controls.Add(lblStartTimeCaption)
-        pnlInternshipDetails.Controls.Add(lblWorkDaysCaption)
-        pnlInternshipDetails.Controls.Add(lblWorkScheduleHeader)
-        pnlInternshipDetails.Controls.Add(lblSupervisorContactCaption)
-        pnlInternshipDetails.Controls.Add(lblSupervisorPositionCaption)
-        pnlInternshipDetails.Controls.Add(lblSupervisorNameCaption)
-        pnlInternshipDetails.Controls.Add(lblSupervisorInfoHeader)
-        pnlInternshipDetails.Controls.Add(lblIndustryCaption)
-        pnlInternshipDetails.Controls.Add(lblCompanyCityCaption)
-        pnlInternshipDetails.Controls.Add(lblCompanyAddressCaption)
-        pnlInternshipDetails.Controls.Add(lblCompanyNameCaption)
-        pnlInternshipDetails.Controls.Add(lblCompanyInfoHeader)
-        pnlInternshipDetails.Controls.Add(lblInternshipStatusCaption)
-        pnlInternshipDetails.Controls.Add(progressHours)
-        pnlInternshipDetails.Controls.Add(txtCompletedHours)
-        pnlInternshipDetails.Controls.Add(txtRequiredHours)
-        pnlInternshipDetails.Controls.Add(txtEndTime)
-        pnlInternshipDetails.Controls.Add(txtStartTime)
-        pnlInternshipDetails.Controls.Add(txtWorkDays)
-        pnlInternshipDetails.Controls.Add(txtSupervisorContact)
-        pnlInternshipDetails.Controls.Add(txtSupervisorPosition)
-        pnlInternshipDetails.Controls.Add(txtSupervisorName)
-        pnlInternshipDetails.Controls.Add(txtIndustry)
-        pnlInternshipDetails.Controls.Add(txtCompanyCity)
-        pnlInternshipDetails.Controls.Add(txtCompanyAddress)
-        pnlInternshipDetails.Controls.Add(txtCompanyName)
-        pnlInternshipDetails.Controls.Add(txtInternshipStatus)
-        pnlInternshipDetails.Controls.Add(lblInternshipTitle)
-        pnlInternshipDetails.Dock = DockStyle.Fill
-        pnlInternshipDetails.Location = New Point(0, 0)
-        pnlInternshipDetails.Margin = New Padding(3, 4, 3, 4)
-        pnlInternshipDetails.Name = "pnlInternshipDetails"
-        pnlInternshipDetails.Size = New Size(1120, 867)
-        pnlInternshipDetails.TabIndex = 1
-        pnlInternshipDetails.Visible = False
-        ' 
-        ' cboSelectInternship
-        ' 
-        cboSelectInternship.DropDownStyle = ComboBoxStyle.DropDownList
-        cboSelectInternship.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        cboSelectInternship.FormattingEnabled = True
-        cboSelectInternship.Location = New Point(208, 79)
-        cboSelectInternship.Name = "cboSelectInternship"
-        cboSelectInternship.Size = New Size(350, 31)
-        cboSelectInternship.TabIndex = 35
-        ' 
-        ' lblSelectInternship
-        ' 
-        lblSelectInternship.AutoSize = True
-        lblSelectInternship.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblSelectInternship.Location = New Point(38, 80)
-        lblSelectInternship.Name = "lblSelectInternship"
-        lblSelectInternship.Size = New Size(146, 25)
-        lblSelectInternship.TabIndex = 34
-        lblSelectInternship.Text = "Select Internship:"
-        ' 
-        ' lblHoursProgress
-        ' 
-        lblHoursProgress.AutoSize = True
-        lblHoursProgress.Font = New Font("Segoe UI", 9F)
-        lblHoursProgress.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblHoursProgress.Location = New Point(737, 266)
-        lblHoursProgress.Name = "lblHoursProgress"
-        lblHoursProgress.Size = New Size(68, 20)
-        lblHoursProgress.TabIndex = 33
-        lblHoursProgress.Text = "Progress:"
-        ' 
-        ' lblCompletedHoursCaption
-        ' 
-        lblCompletedHoursCaption.AutoSize = True
-        lblCompletedHoursCaption.Font = New Font("Segoe UI", 9F)
-        lblCompletedHoursCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompletedHoursCaption.Location = New Point(737, 238)
-        lblCompletedHoursCaption.Name = "lblCompletedHoursCaption"
-        lblCompletedHoursCaption.Size = New Size(129, 20)
-        lblCompletedHoursCaption.TabIndex = 32
-        lblCompletedHoursCaption.Text = "Completed Hours:"
-        ' 
-        ' lblRequiredHoursCaption
-        ' 
-        lblRequiredHoursCaption.AutoSize = True
-        lblRequiredHoursCaption.Font = New Font("Segoe UI", 9F)
-        lblRequiredHoursCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblRequiredHoursCaption.Location = New Point(737, 184)
-        lblRequiredHoursCaption.Name = "lblRequiredHoursCaption"
-        lblRequiredHoursCaption.Size = New Size(115, 20)
-        lblRequiredHoursCaption.TabIndex = 31
-        lblRequiredHoursCaption.Text = "Required Hours:"
-        ' 
-        ' lblOjtHoursHeader
-        ' 
-        lblOjtHoursHeader.AutoSize = True
-        lblOjtHoursHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        lblOjtHoursHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblOjtHoursHeader.Location = New Point(737, 146)
-        lblOjtHoursHeader.Name = "lblOjtHoursHeader"
-        lblOjtHoursHeader.Size = New Size(126, 23)
-        lblOjtHoursHeader.TabIndex = 30
-        lblOjtHoursHeader.Text = "OJT Hours Info"
-        ' 
-        ' lblEndTimeCaption
-        ' 
-        lblEndTimeCaption.AutoSize = True
-        lblEndTimeCaption.Font = New Font("Segoe UI", 9F)
-        lblEndTimeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblEndTimeCaption.Location = New Point(412, 798)
-        lblEndTimeCaption.Name = "lblEndTimeCaption"
-        lblEndTimeCaption.Size = New Size(74, 20)
-        lblEndTimeCaption.TabIndex = 29
-        lblEndTimeCaption.Text = "End Time:"
-        ' 
-        ' lblStartTimeCaption
-        ' 
-        lblStartTimeCaption.AutoSize = True
-        lblStartTimeCaption.Font = New Font("Segoe UI", 9F)
-        lblStartTimeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblStartTimeCaption.Location = New Point(46, 798)
-        lblStartTimeCaption.Name = "lblStartTimeCaption"
-        lblStartTimeCaption.Size = New Size(80, 20)
-        lblStartTimeCaption.TabIndex = 28
-        lblStartTimeCaption.Text = "Start Time:"
-        ' 
-        ' lblWorkDaysCaption
-        ' 
-        lblWorkDaysCaption.AutoSize = True
-        lblWorkDaysCaption.Font = New Font("Segoe UI", 9F)
-        lblWorkDaysCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblWorkDaysCaption.Location = New Point(46, 744)
-        lblWorkDaysCaption.Name = "lblWorkDaysCaption"
-        lblWorkDaysCaption.Size = New Size(82, 20)
-        lblWorkDaysCaption.TabIndex = 27
-        lblWorkDaysCaption.Text = "Work Days:"
-        ' 
-        ' lblWorkScheduleHeader
-        ' 
-        lblWorkScheduleHeader.AutoSize = True
-        lblWorkScheduleHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        lblWorkScheduleHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblWorkScheduleHeader.Location = New Point(37, 706)
-        lblWorkScheduleHeader.Name = "lblWorkScheduleHeader"
-        lblWorkScheduleHeader.Size = New Size(125, 23)
-        lblWorkScheduleHeader.TabIndex = 26
-        lblWorkScheduleHeader.Text = "Work Schedule"
-        ' 
-        ' lblSupervisorContactCaption
-        ' 
-        lblSupervisorContactCaption.AutoSize = True
-        lblSupervisorContactCaption.Font = New Font("Segoe UI", 9F)
-        lblSupervisorContactCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorContactCaption.Location = New Point(46, 624)
-        lblSupervisorContactCaption.Name = "lblSupervisorContactCaption"
-        lblSupervisorContactCaption.Size = New Size(121, 20)
-        lblSupervisorContactCaption.TabIndex = 25
-        lblSupervisorContactCaption.Text = "Contact Number:"
-        ' 
-        ' lblSupervisorPositionCaption
-        ' 
-        lblSupervisorPositionCaption.AutoSize = True
-        lblSupervisorPositionCaption.Font = New Font("Segoe UI", 9F)
-        lblSupervisorPositionCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorPositionCaption.Location = New Point(46, 571)
-        lblSupervisorPositionCaption.Name = "lblSupervisorPositionCaption"
-        lblSupervisorPositionCaption.Size = New Size(97, 20)
-        lblSupervisorPositionCaption.TabIndex = 24
-        lblSupervisorPositionCaption.Text = "Position Title:"
-        ' 
-        ' lblSupervisorNameCaption
-        ' 
-        lblSupervisorNameCaption.AutoSize = True
-        lblSupervisorNameCaption.Font = New Font("Segoe UI", 9F)
-        lblSupervisorNameCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorNameCaption.Location = New Point(46, 518)
-        lblSupervisorNameCaption.Name = "lblSupervisorNameCaption"
-        lblSupervisorNameCaption.Size = New Size(125, 20)
-        lblSupervisorNameCaption.TabIndex = 23
-        lblSupervisorNameCaption.Text = "Supervisor Name:"
-        ' 
-        ' lblSupervisorInfoHeader
-        ' 
-        lblSupervisorInfoHeader.AutoSize = True
-        lblSupervisorInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        lblSupervisorInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblSupervisorInfoHeader.Location = New Point(37, 467)
-        lblSupervisorInfoHeader.Name = "lblSupervisorInfoHeader"
-        lblSupervisorInfoHeader.Size = New Size(187, 23)
-        lblSupervisorInfoHeader.TabIndex = 22
-        lblSupervisorInfoHeader.Text = "Supervisor Information"
-        ' 
-        ' lblIndustryCaption
-        ' 
-        lblIndustryCaption.AutoSize = True
-        lblIndustryCaption.Font = New Font("Segoe UI", 9F)
-        lblIndustryCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblIndustryCaption.Location = New Point(46, 398)
-        lblIndustryCaption.Name = "lblIndustryCaption"
-        lblIndustryCaption.Size = New Size(64, 20)
-        lblIndustryCaption.TabIndex = 21
-        lblIndustryCaption.Text = "Industry:"
-        ' 
-        ' lblCompanyCityCaption
-        ' 
-        lblCompanyCityCaption.AutoSize = True
-        lblCompanyCityCaption.Font = New Font("Segoe UI", 9F)
-        lblCompanyCityCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyCityCaption.Location = New Point(46, 344)
-        lblCompanyCityCaption.Name = "lblCompanyCityCaption"
-        lblCompanyCityCaption.Size = New Size(37, 20)
-        lblCompanyCityCaption.TabIndex = 20
-        lblCompanyCityCaption.Text = "City:"
-        ' 
-        ' lblCompanyAddressCaption
-        ' 
-        lblCompanyAddressCaption.AutoSize = True
-        lblCompanyAddressCaption.Font = New Font("Segoe UI", 9F)
-        lblCompanyAddressCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyAddressCaption.Location = New Point(46, 291)
-        lblCompanyAddressCaption.Name = "lblCompanyAddressCaption"
-        lblCompanyAddressCaption.Size = New Size(65, 20)
-        lblCompanyAddressCaption.TabIndex = 19
-        lblCompanyAddressCaption.Text = "Address:"
-        ' 
-        ' lblCompanyNameCaption
-        ' 
-        lblCompanyNameCaption.AutoSize = True
-        lblCompanyNameCaption.Font = New Font("Segoe UI", 9F)
-        lblCompanyNameCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyNameCaption.Location = New Point(46, 238)
-        lblCompanyNameCaption.Name = "lblCompanyNameCaption"
-        lblCompanyNameCaption.Size = New Size(119, 20)
-        lblCompanyNameCaption.TabIndex = 18
-        lblCompanyNameCaption.Text = "Company Name:"
-        ' 
-        ' lblCompanyInfoHeader
-        ' 
-        lblCompanyInfoHeader.AutoSize = True
-        lblCompanyInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        lblCompanyInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblCompanyInfoHeader.Location = New Point(37, 200)
-        lblCompanyInfoHeader.Name = "lblCompanyInfoHeader"
-        lblCompanyInfoHeader.Size = New Size(180, 23)
-        lblCompanyInfoHeader.TabIndex = 17
-        lblCompanyInfoHeader.Text = "Company Information"
-        ' 
-        ' lblInternshipStatusCaption
-        ' 
-        lblInternshipStatusCaption.AutoSize = True
-        lblInternshipStatusCaption.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        lblInternshipStatusCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblInternshipStatusCaption.Location = New Point(37, 137)
-        lblInternshipStatusCaption.Name = "lblInternshipStatusCaption"
-        lblInternshipStatusCaption.Size = New Size(143, 23)
-        lblInternshipStatusCaption.TabIndex = 16
-        lblInternshipStatusCaption.Text = "Internship Status:"
-        ' 
-        ' progressHours
-        ' 
-        progressHours.Location = New Point(737, 290)
-        progressHours.Margin = New Padding(3, 4, 3, 4)
-        progressHours.Name = "progressHours"
-        progressHours.Size = New Size(331, 31)
-        progressHours.TabIndex = 14
-        ' 
-        ' txtCompletedHours
-        ' 
-        txtCompletedHours.Location = New Point(888, 234)
-        txtCompletedHours.Margin = New Padding(3, 4, 3, 4)
-        txtCompletedHours.Name = "txtCompletedHours"
-        txtCompletedHours.ReadOnly = True
-        txtCompletedHours.Size = New Size(180, 27)
-        txtCompletedHours.TabIndex = 13
-        ' 
-        ' txtRequiredHours
-        ' 
-        txtRequiredHours.Location = New Point(888, 180)
-        txtRequiredHours.Margin = New Padding(3, 4, 3, 4)
-        txtRequiredHours.Name = "txtRequiredHours"
-        txtRequiredHours.ReadOnly = True
-        txtRequiredHours.Size = New Size(180, 27)
-        txtRequiredHours.TabIndex = 12
-        ' 
-        ' txtEndTime
-        ' 
-        txtEndTime.Location = New Point(494, 794)
-        txtEndTime.Margin = New Padding(3, 4, 3, 4)
-        txtEndTime.Name = "txtEndTime"
-        txtEndTime.ReadOnly = True
-        txtEndTime.Size = New Size(166, 27)
-        txtEndTime.TabIndex = 11
-        ' 
-        ' txtStartTime
-        ' 
-        txtStartTime.Location = New Point(208, 794)
-        txtStartTime.Margin = New Padding(3, 4, 3, 4)
-        txtStartTime.Name = "txtStartTime"
-        txtStartTime.ReadOnly = True
-        txtStartTime.Size = New Size(182, 27)
-        txtStartTime.TabIndex = 10
-        ' 
-        ' txtWorkDays
-        ' 
-        txtWorkDays.Location = New Point(208, 740)
-        txtWorkDays.Margin = New Padding(3, 4, 3, 4)
-        txtWorkDays.Name = "txtWorkDays"
-        txtWorkDays.ReadOnly = True
-        txtWorkDays.Size = New Size(297, 27)
-        txtWorkDays.TabIndex = 9
-        ' 
-        ' txtSupervisorContact
-        ' 
-        txtSupervisorContact.Location = New Point(208, 620)
-        txtSupervisorContact.Margin = New Padding(3, 4, 3, 4)
-        txtSupervisorContact.Name = "txtSupervisorContact"
-        txtSupervisorContact.ReadOnly = True
-        txtSupervisorContact.Size = New Size(297, 27)
-        txtSupervisorContact.TabIndex = 8
-        ' 
-        ' txtSupervisorPosition
-        ' 
-        txtSupervisorPosition.Location = New Point(208, 567)
-        txtSupervisorPosition.Margin = New Padding(3, 4, 3, 4)
-        txtSupervisorPosition.Name = "txtSupervisorPosition"
-        txtSupervisorPosition.ReadOnly = True
-        txtSupervisorPosition.Size = New Size(342, 27)
-        txtSupervisorPosition.TabIndex = 7
-        ' 
-        ' txtSupervisorName
-        ' 
-        txtSupervisorName.Location = New Point(208, 514)
-        txtSupervisorName.Margin = New Padding(3, 4, 3, 4)
-        txtSupervisorName.Name = "txtSupervisorName"
-        txtSupervisorName.ReadOnly = True
-        txtSupervisorName.Size = New Size(342, 27)
-        txtSupervisorName.TabIndex = 6
-        ' 
-        ' txtIndustry
-        ' 
-        txtIndustry.Location = New Point(208, 394)
-        txtIndustry.Margin = New Padding(3, 4, 3, 4)
-        txtIndustry.Name = "txtIndustry"
-        txtIndustry.ReadOnly = True
-        txtIndustry.Size = New Size(454, 27)
-        txtIndustry.TabIndex = 5
-        ' 
-        ' txtCompanyCity
-        ' 
-        txtCompanyCity.Location = New Point(208, 340)
-        txtCompanyCity.Margin = New Padding(3, 4, 3, 4)
-        txtCompanyCity.Name = "txtCompanyCity"
-        txtCompanyCity.ReadOnly = True
-        txtCompanyCity.Size = New Size(297, 27)
-        txtCompanyCity.TabIndex = 4
-        ' 
-        ' txtCompanyAddress
-        ' 
-        txtCompanyAddress.Location = New Point(208, 287)
-        txtCompanyAddress.Margin = New Padding(3, 4, 3, 4)
-        txtCompanyAddress.Name = "txtCompanyAddress"
-        txtCompanyAddress.ReadOnly = True
-        txtCompanyAddress.Size = New Size(454, 27)
-        txtCompanyAddress.TabIndex = 3
-        ' 
-        ' txtCompanyName
-        ' 
-        txtCompanyName.Location = New Point(208, 234)
-        txtCompanyName.Margin = New Padding(3, 4, 3, 4)
-        txtCompanyName.Name = "txtCompanyName"
-        txtCompanyName.ReadOnly = True
-        txtCompanyName.Size = New Size(454, 27)
-        txtCompanyName.TabIndex = 2
-        ' 
-        ' txtInternshipStatus
-        ' 
-        txtInternshipStatus.Location = New Point(208, 134)
-        txtInternshipStatus.Margin = New Padding(3, 4, 3, 4)
-        txtInternshipStatus.Name = "txtInternshipStatus"
-        txtInternshipStatus.ReadOnly = True
-        txtInternshipStatus.Size = New Size(297, 27)
-        txtInternshipStatus.TabIndex = 1
-        ' 
-        ' lblInternshipTitle
-        ' 
-        lblInternshipTitle.AutoSize = True
-        lblInternshipTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
-        lblInternshipTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
-        lblInternshipTitle.Location = New Point(37, 32)
-        lblInternshipTitle.Name = "lblInternshipTitle"
-        lblInternshipTitle.Size = New Size(279, 37)
-        lblInternshipTitle.TabIndex = 0
-        lblInternshipTitle.Text = "INTERNSHIP DETAILS"
         ' 
         ' pnlFinalGrade
         ' 
@@ -1153,6 +753,7 @@ Partial Class frmStudentDashboard
         btnCancelEditProfile.TabIndex = 15
         btnCancelEditProfile.Text = "Cancel"
         btnCancelEditProfile.UseVisualStyleBackColor = False
+        btnCancelEditProfile.Visible = False
         ' 
         ' btnSaveProfile
         ' 
@@ -1168,6 +769,7 @@ Partial Class frmStudentDashboard
         btnSaveProfile.TabIndex = 14
         btnSaveProfile.Text = "Save"
         btnSaveProfile.UseVisualStyleBackColor = False
+        btnSaveProfile.Visible = False
         ' 
         ' btnEditProfile
         ' 
@@ -1303,6 +905,406 @@ Partial Class frmStudentDashboard
         lblProfileTitle.TabIndex = 0
         lblProfileTitle.Text = "STUDENT PROFILE"
         ' 
+        ' pnlInternshipDetails
+        ' 
+        pnlInternshipDetails.BackColor = Color.White
+        pnlInternshipDetails.Controls.Add(cboSelectInternship)
+        pnlInternshipDetails.Controls.Add(lblSelectInternship)
+        pnlInternshipDetails.Controls.Add(lblHoursProgress)
+        pnlInternshipDetails.Controls.Add(lblCompletedHoursCaption)
+        pnlInternshipDetails.Controls.Add(lblRequiredHoursCaption)
+        pnlInternshipDetails.Controls.Add(lblOjtHoursHeader)
+        pnlInternshipDetails.Controls.Add(lblEndTimeCaption)
+        pnlInternshipDetails.Controls.Add(lblStartTimeCaption)
+        pnlInternshipDetails.Controls.Add(lblWorkDaysCaption)
+        pnlInternshipDetails.Controls.Add(lblWorkScheduleHeader)
+        pnlInternshipDetails.Controls.Add(lblSupervisorContactCaption)
+        pnlInternshipDetails.Controls.Add(lblSupervisorPositionCaption)
+        pnlInternshipDetails.Controls.Add(lblSupervisorNameCaption)
+        pnlInternshipDetails.Controls.Add(lblSupervisorInfoHeader)
+        pnlInternshipDetails.Controls.Add(lblIndustryCaption)
+        pnlInternshipDetails.Controls.Add(lblCompanyCityCaption)
+        pnlInternshipDetails.Controls.Add(lblCompanyAddressCaption)
+        pnlInternshipDetails.Controls.Add(lblCompanyNameCaption)
+        pnlInternshipDetails.Controls.Add(lblCompanyInfoHeader)
+        pnlInternshipDetails.Controls.Add(lblInternshipStatusCaption)
+        pnlInternshipDetails.Controls.Add(progressHours)
+        pnlInternshipDetails.Controls.Add(txtCompletedHours)
+        pnlInternshipDetails.Controls.Add(txtRequiredHours)
+        pnlInternshipDetails.Controls.Add(txtEndTime)
+        pnlInternshipDetails.Controls.Add(txtStartTime)
+        pnlInternshipDetails.Controls.Add(txtWorkDays)
+        pnlInternshipDetails.Controls.Add(txtSupervisorContact)
+        pnlInternshipDetails.Controls.Add(txtSupervisorPosition)
+        pnlInternshipDetails.Controls.Add(txtSupervisorName)
+        pnlInternshipDetails.Controls.Add(txtIndustry)
+        pnlInternshipDetails.Controls.Add(txtCompanyCity)
+        pnlInternshipDetails.Controls.Add(txtCompanyAddress)
+        pnlInternshipDetails.Controls.Add(txtCompanyName)
+        pnlInternshipDetails.Controls.Add(txtInternshipStatus)
+        pnlInternshipDetails.Controls.Add(lblInternshipTitle)
+        pnlInternshipDetails.Dock = DockStyle.Fill
+        pnlInternshipDetails.Location = New Point(0, 0)
+        pnlInternshipDetails.Margin = New Padding(3, 4, 3, 4)
+        pnlInternshipDetails.Name = "pnlInternshipDetails"
+        pnlInternshipDetails.Size = New Size(1120, 867)
+        pnlInternshipDetails.TabIndex = 1
+        pnlInternshipDetails.Visible = False
+        ' 
+        ' cboSelectInternship
+        ' 
+        cboSelectInternship.DropDownStyle = ComboBoxStyle.DropDownList
+        cboSelectInternship.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cboSelectInternship.FormattingEnabled = True
+        cboSelectInternship.Location = New Point(208, 79)
+        cboSelectInternship.Name = "cboSelectInternship"
+        cboSelectInternship.Size = New Size(350, 31)
+        cboSelectInternship.TabIndex = 35
+        ' 
+        ' lblSelectInternship
+        ' 
+        lblSelectInternship.AutoSize = True
+        lblSelectInternship.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblSelectInternship.Location = New Point(38, 80)
+        lblSelectInternship.Name = "lblSelectInternship"
+        lblSelectInternship.Size = New Size(146, 25)
+        lblSelectInternship.TabIndex = 34
+        lblSelectInternship.Text = "Select Internship:"
+        ' 
+        ' lblHoursProgress
+        ' 
+        lblHoursProgress.AutoSize = True
+        lblHoursProgress.Font = New Font("Segoe UI", 9F)
+        lblHoursProgress.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblHoursProgress.Location = New Point(737, 266)
+        lblHoursProgress.Name = "lblHoursProgress"
+        lblHoursProgress.Size = New Size(68, 20)
+        lblHoursProgress.TabIndex = 33
+        lblHoursProgress.Text = "Progress:"
+        ' 
+        ' lblCompletedHoursCaption
+        ' 
+        lblCompletedHoursCaption.AutoSize = True
+        lblCompletedHoursCaption.Font = New Font("Segoe UI", 9F)
+        lblCompletedHoursCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblCompletedHoursCaption.Location = New Point(737, 238)
+        lblCompletedHoursCaption.Name = "lblCompletedHoursCaption"
+        lblCompletedHoursCaption.Size = New Size(129, 20)
+        lblCompletedHoursCaption.TabIndex = 32
+        lblCompletedHoursCaption.Text = "Completed Hours:"
+        ' 
+        ' lblRequiredHoursCaption
+        ' 
+        lblRequiredHoursCaption.AutoSize = True
+        lblRequiredHoursCaption.Font = New Font("Segoe UI", 9F)
+        lblRequiredHoursCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblRequiredHoursCaption.Location = New Point(737, 184)
+        lblRequiredHoursCaption.Name = "lblRequiredHoursCaption"
+        lblRequiredHoursCaption.Size = New Size(115, 20)
+        lblRequiredHoursCaption.TabIndex = 31
+        lblRequiredHoursCaption.Text = "Required Hours:"
+        ' 
+        ' lblOjtHoursHeader
+        ' 
+        lblOjtHoursHeader.AutoSize = True
+        lblOjtHoursHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        lblOjtHoursHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblOjtHoursHeader.Location = New Point(737, 146)
+        lblOjtHoursHeader.Name = "lblOjtHoursHeader"
+        lblOjtHoursHeader.Size = New Size(126, 23)
+        lblOjtHoursHeader.TabIndex = 30
+        lblOjtHoursHeader.Text = "OJT Hours Info"
+        ' 
+        ' lblEndTimeCaption
+        ' 
+        lblEndTimeCaption.AutoSize = True
+        lblEndTimeCaption.Font = New Font("Segoe UI", 9F)
+        lblEndTimeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblEndTimeCaption.Location = New Point(412, 798)
+        lblEndTimeCaption.Name = "lblEndTimeCaption"
+        lblEndTimeCaption.Size = New Size(74, 20)
+        lblEndTimeCaption.TabIndex = 29
+        lblEndTimeCaption.Text = "End Time:"
+        ' 
+        ' lblStartTimeCaption
+        ' 
+        lblStartTimeCaption.AutoSize = True
+        lblStartTimeCaption.Font = New Font("Segoe UI", 9F)
+        lblStartTimeCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblStartTimeCaption.Location = New Point(46, 798)
+        lblStartTimeCaption.Name = "lblStartTimeCaption"
+        lblStartTimeCaption.Size = New Size(80, 20)
+        lblStartTimeCaption.TabIndex = 28
+        lblStartTimeCaption.Text = "Start Time:"
+        ' 
+        ' lblWorkDaysCaption
+        ' 
+        lblWorkDaysCaption.AutoSize = True
+        lblWorkDaysCaption.Font = New Font("Segoe UI", 9F)
+        lblWorkDaysCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblWorkDaysCaption.Location = New Point(46, 744)
+        lblWorkDaysCaption.Name = "lblWorkDaysCaption"
+        lblWorkDaysCaption.Size = New Size(82, 20)
+        lblWorkDaysCaption.TabIndex = 27
+        lblWorkDaysCaption.Text = "Work Days:"
+        ' 
+        ' lblWorkScheduleHeader
+        ' 
+        lblWorkScheduleHeader.AutoSize = True
+        lblWorkScheduleHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        lblWorkScheduleHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblWorkScheduleHeader.Location = New Point(37, 706)
+        lblWorkScheduleHeader.Name = "lblWorkScheduleHeader"
+        lblWorkScheduleHeader.Size = New Size(125, 23)
+        lblWorkScheduleHeader.TabIndex = 26
+        lblWorkScheduleHeader.Text = "Work Schedule"
+        ' 
+        ' lblSupervisorContactCaption
+        ' 
+        lblSupervisorContactCaption.AutoSize = True
+        lblSupervisorContactCaption.Font = New Font("Segoe UI", 9F)
+        lblSupervisorContactCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblSupervisorContactCaption.Location = New Point(46, 624)
+        lblSupervisorContactCaption.Name = "lblSupervisorContactCaption"
+        lblSupervisorContactCaption.Size = New Size(121, 20)
+        lblSupervisorContactCaption.TabIndex = 25
+        lblSupervisorContactCaption.Text = "Contact Number:"
+        ' 
+        ' lblSupervisorPositionCaption
+        ' 
+        lblSupervisorPositionCaption.AutoSize = True
+        lblSupervisorPositionCaption.Font = New Font("Segoe UI", 9F)
+        lblSupervisorPositionCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblSupervisorPositionCaption.Location = New Point(46, 571)
+        lblSupervisorPositionCaption.Name = "lblSupervisorPositionCaption"
+        lblSupervisorPositionCaption.Size = New Size(97, 20)
+        lblSupervisorPositionCaption.TabIndex = 24
+        lblSupervisorPositionCaption.Text = "Position Title:"
+        ' 
+        ' lblSupervisorNameCaption
+        ' 
+        lblSupervisorNameCaption.AutoSize = True
+        lblSupervisorNameCaption.Font = New Font("Segoe UI", 9F)
+        lblSupervisorNameCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblSupervisorNameCaption.Location = New Point(46, 518)
+        lblSupervisorNameCaption.Name = "lblSupervisorNameCaption"
+        lblSupervisorNameCaption.Size = New Size(125, 20)
+        lblSupervisorNameCaption.TabIndex = 23
+        lblSupervisorNameCaption.Text = "Supervisor Name:"
+        ' 
+        ' lblSupervisorInfoHeader
+        ' 
+        lblSupervisorInfoHeader.AutoSize = True
+        lblSupervisorInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        lblSupervisorInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblSupervisorInfoHeader.Location = New Point(37, 467)
+        lblSupervisorInfoHeader.Name = "lblSupervisorInfoHeader"
+        lblSupervisorInfoHeader.Size = New Size(187, 23)
+        lblSupervisorInfoHeader.TabIndex = 22
+        lblSupervisorInfoHeader.Text = "Supervisor Information"
+        ' 
+        ' lblIndustryCaption
+        ' 
+        lblIndustryCaption.AutoSize = True
+        lblIndustryCaption.Font = New Font("Segoe UI", 9F)
+        lblIndustryCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblIndustryCaption.Location = New Point(46, 398)
+        lblIndustryCaption.Name = "lblIndustryCaption"
+        lblIndustryCaption.Size = New Size(64, 20)
+        lblIndustryCaption.TabIndex = 21
+        lblIndustryCaption.Text = "Industry:"
+        ' 
+        ' lblCompanyCityCaption
+        ' 
+        lblCompanyCityCaption.AutoSize = True
+        lblCompanyCityCaption.Font = New Font("Segoe UI", 9F)
+        lblCompanyCityCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblCompanyCityCaption.Location = New Point(46, 344)
+        lblCompanyCityCaption.Name = "lblCompanyCityCaption"
+        lblCompanyCityCaption.Size = New Size(37, 20)
+        lblCompanyCityCaption.TabIndex = 20
+        lblCompanyCityCaption.Text = "City:"
+        ' 
+        ' lblCompanyAddressCaption
+        ' 
+        lblCompanyAddressCaption.AutoSize = True
+        lblCompanyAddressCaption.Font = New Font("Segoe UI", 9F)
+        lblCompanyAddressCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblCompanyAddressCaption.Location = New Point(46, 291)
+        lblCompanyAddressCaption.Name = "lblCompanyAddressCaption"
+        lblCompanyAddressCaption.Size = New Size(65, 20)
+        lblCompanyAddressCaption.TabIndex = 19
+        lblCompanyAddressCaption.Text = "Address:"
+        ' 
+        ' lblCompanyNameCaption
+        ' 
+        lblCompanyNameCaption.AutoSize = True
+        lblCompanyNameCaption.Font = New Font("Segoe UI", 9F)
+        lblCompanyNameCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblCompanyNameCaption.Location = New Point(46, 238)
+        lblCompanyNameCaption.Name = "lblCompanyNameCaption"
+        lblCompanyNameCaption.Size = New Size(119, 20)
+        lblCompanyNameCaption.TabIndex = 18
+        lblCompanyNameCaption.Text = "Company Name:"
+        ' 
+        ' lblCompanyInfoHeader
+        ' 
+        lblCompanyInfoHeader.AutoSize = True
+        lblCompanyInfoHeader.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        lblCompanyInfoHeader.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblCompanyInfoHeader.Location = New Point(37, 200)
+        lblCompanyInfoHeader.Name = "lblCompanyInfoHeader"
+        lblCompanyInfoHeader.Size = New Size(180, 23)
+        lblCompanyInfoHeader.TabIndex = 17
+        lblCompanyInfoHeader.Text = "Company Information"
+        ' 
+        ' lblInternshipStatusCaption
+        ' 
+        lblInternshipStatusCaption.AutoSize = True
+        lblInternshipStatusCaption.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        lblInternshipStatusCaption.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblInternshipStatusCaption.Location = New Point(37, 137)
+        lblInternshipStatusCaption.Name = "lblInternshipStatusCaption"
+        lblInternshipStatusCaption.Size = New Size(143, 23)
+        lblInternshipStatusCaption.TabIndex = 16
+        lblInternshipStatusCaption.Text = "Internship Status:"
+        ' 
+        ' progressHours
+        ' 
+        progressHours.Location = New Point(737, 290)
+        progressHours.Margin = New Padding(3, 4, 3, 4)
+        progressHours.Name = "progressHours"
+        progressHours.Size = New Size(331, 31)
+        progressHours.TabIndex = 14
+        ' 
+        ' txtCompletedHours
+        ' 
+        txtCompletedHours.Location = New Point(888, 234)
+        txtCompletedHours.Margin = New Padding(3, 4, 3, 4)
+        txtCompletedHours.Name = "txtCompletedHours"
+        txtCompletedHours.ReadOnly = True
+        txtCompletedHours.Size = New Size(180, 27)
+        txtCompletedHours.TabIndex = 13
+        ' 
+        ' txtRequiredHours
+        ' 
+        txtRequiredHours.Location = New Point(888, 180)
+        txtRequiredHours.Margin = New Padding(3, 4, 3, 4)
+        txtRequiredHours.Name = "txtRequiredHours"
+        txtRequiredHours.ReadOnly = True
+        txtRequiredHours.Size = New Size(180, 27)
+        txtRequiredHours.TabIndex = 12
+        ' 
+        ' txtEndTime
+        ' 
+        txtEndTime.Location = New Point(494, 794)
+        txtEndTime.Margin = New Padding(3, 4, 3, 4)
+        txtEndTime.Name = "txtEndTime"
+        txtEndTime.ReadOnly = True
+        txtEndTime.Size = New Size(166, 27)
+        txtEndTime.TabIndex = 11
+        ' 
+        ' txtStartTime
+        ' 
+        txtStartTime.Location = New Point(208, 794)
+        txtStartTime.Margin = New Padding(3, 4, 3, 4)
+        txtStartTime.Name = "txtStartTime"
+        txtStartTime.ReadOnly = True
+        txtStartTime.Size = New Size(182, 27)
+        txtStartTime.TabIndex = 10
+        ' 
+        ' txtWorkDays
+        ' 
+        txtWorkDays.Location = New Point(208, 740)
+        txtWorkDays.Margin = New Padding(3, 4, 3, 4)
+        txtWorkDays.Name = "txtWorkDays"
+        txtWorkDays.ReadOnly = True
+        txtWorkDays.Size = New Size(297, 27)
+        txtWorkDays.TabIndex = 9
+        ' 
+        ' txtSupervisorContact
+        ' 
+        txtSupervisorContact.Location = New Point(208, 620)
+        txtSupervisorContact.Margin = New Padding(3, 4, 3, 4)
+        txtSupervisorContact.Name = "txtSupervisorContact"
+        txtSupervisorContact.ReadOnly = True
+        txtSupervisorContact.Size = New Size(297, 27)
+        txtSupervisorContact.TabIndex = 8
+        ' 
+        ' txtSupervisorPosition
+        ' 
+        txtSupervisorPosition.Location = New Point(208, 567)
+        txtSupervisorPosition.Margin = New Padding(3, 4, 3, 4)
+        txtSupervisorPosition.Name = "txtSupervisorPosition"
+        txtSupervisorPosition.ReadOnly = True
+        txtSupervisorPosition.Size = New Size(342, 27)
+        txtSupervisorPosition.TabIndex = 7
+        ' 
+        ' txtSupervisorName
+        ' 
+        txtSupervisorName.Location = New Point(208, 514)
+        txtSupervisorName.Margin = New Padding(3, 4, 3, 4)
+        txtSupervisorName.Name = "txtSupervisorName"
+        txtSupervisorName.ReadOnly = True
+        txtSupervisorName.Size = New Size(342, 27)
+        txtSupervisorName.TabIndex = 6
+        ' 
+        ' txtIndustry
+        ' 
+        txtIndustry.Location = New Point(208, 394)
+        txtIndustry.Margin = New Padding(3, 4, 3, 4)
+        txtIndustry.Name = "txtIndustry"
+        txtIndustry.ReadOnly = True
+        txtIndustry.Size = New Size(454, 27)
+        txtIndustry.TabIndex = 5
+        ' 
+        ' txtCompanyCity
+        ' 
+        txtCompanyCity.Location = New Point(208, 340)
+        txtCompanyCity.Margin = New Padding(3, 4, 3, 4)
+        txtCompanyCity.Name = "txtCompanyCity"
+        txtCompanyCity.ReadOnly = True
+        txtCompanyCity.Size = New Size(297, 27)
+        txtCompanyCity.TabIndex = 4
+        ' 
+        ' txtCompanyAddress
+        ' 
+        txtCompanyAddress.Location = New Point(208, 287)
+        txtCompanyAddress.Margin = New Padding(3, 4, 3, 4)
+        txtCompanyAddress.Name = "txtCompanyAddress"
+        txtCompanyAddress.ReadOnly = True
+        txtCompanyAddress.Size = New Size(454, 27)
+        txtCompanyAddress.TabIndex = 3
+        ' 
+        ' txtCompanyName
+        ' 
+        txtCompanyName.Location = New Point(208, 234)
+        txtCompanyName.Margin = New Padding(3, 4, 3, 4)
+        txtCompanyName.Name = "txtCompanyName"
+        txtCompanyName.ReadOnly = True
+        txtCompanyName.Size = New Size(454, 27)
+        txtCompanyName.TabIndex = 2
+        ' 
+        ' txtInternshipStatus
+        ' 
+        txtInternshipStatus.Location = New Point(208, 134)
+        txtInternshipStatus.Margin = New Padding(3, 4, 3, 4)
+        txtInternshipStatus.Name = "txtInternshipStatus"
+        txtInternshipStatus.ReadOnly = True
+        txtInternshipStatus.Size = New Size(297, 27)
+        txtInternshipStatus.TabIndex = 1
+        ' 
+        ' lblInternshipTitle
+        ' 
+        lblInternshipTitle.AutoSize = True
+        lblInternshipTitle.Font = New Font("Segoe UI Semibold", 16F, FontStyle.Bold)
+        lblInternshipTitle.ForeColor = Color.FromArgb(CByte(66), CByte(66), CByte(66))
+        lblInternshipTitle.Location = New Point(37, 32)
+        lblInternshipTitle.Name = "lblInternshipTitle"
+        lblInternshipTitle.Size = New Size(279, 37)
+        lblInternshipTitle.TabIndex = 0
+        lblInternshipTitle.Text = "INTERNSHIP DETAILS"
+        ' 
         ' frmStudentDashboard
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -1324,12 +1326,12 @@ Partial Class frmStudentDashboard
         pnlSidebar.ResumeLayout(False)
         pnlSidebar.PerformLayout()
         pnlContent.ResumeLayout(False)
-        pnlInternshipDetails.ResumeLayout(False)
-        pnlInternshipDetails.PerformLayout()
         pnlFinalGrade.ResumeLayout(False)
         pnlFinalGrade.PerformLayout()
         pnlStudentProfile.ResumeLayout(False)
         pnlStudentProfile.PerformLayout()
+        pnlInternshipDetails.ResumeLayout(False)
+        pnlInternshipDetails.PerformLayout()
         ResumeLayout(False)
 
     End Sub

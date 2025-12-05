@@ -33,69 +33,6 @@ Partial Class frmProfessorDashboard
         btnStudents = New Button()
         btnHome = New Button()
         pnlContent = New Panel()
-        pnlInternshipAssignment = New Panel()
-        cboIAStatus = New ComboBox()
-        lblIAStatusFilter = New Label()
-        btnIADrop = New Button()
-        btnIACancelEdit = New Button()
-        btnIAEdit = New Button()
-        btnIAClear = New Button()
-        btnIAAssign = New Button()
-        dtpIAEndTime = New DateTimePicker()
-        dtpIAStartTime = New DateTimePicker()
-        txtIAWorkDays = New TextBox()
-        LabelIAEndTime = New Label()
-        LabelIAStartTime = New Label()
-        LabelIAWorkDays = New Label()
-        lblIAFacultyEvaluator = New Label()
-        LabelIAFacultyEvaluator = New Label()
-        cboIASupervisor = New ComboBox()
-        LabelIASupervisor = New Label()
-        cboIACompany = New ComboBox()
-        LabelIACompany = New Label()
-        lblIAStatus = New Label()
-        lblIARequiredHours = New Label()
-        lblIASection = New Label()
-        lblIACourse = New Label()
-        lblIAStudentName = New Label()
-        lblIAStudentNo = New Label()
-        LabelIAStatus = New Label()
-        LabelIARequiredHours = New Label()
-        LabelIASection = New Label()
-        LabelIACourse = New Label()
-        LabelIAStudentName = New Label()
-        LabelIAStudentNo = New Label()
-        LabelIAStudentSelected = New Label()
-        btnIASearch = New Button()
-        txtIASearch = New TextBox()
-        LabelIASearch = New Label()
-        cboIAStudent = New ComboBox()
-        LabelIAStudentFilter = New Label()
-        cboIASection = New ComboBox()
-        LabelIASectionFilter = New Label()
-        lblIAFilters = New Label()
-        lblInternshipTitle = New Label()
-        pnlStudents = New Panel()
-        dgvMyStudentsHistory = New DataGridView()
-        pnlStudentEditStatus = New Panel()
-        btnStudentEditCancel = New Button()
-        btnStudentEditSave = New Button()
-        lblStudentEditStatus = New Label()
-        lblStudentName = New Label()
-        lblStudentEditTitle = New Label()
-        cboStudentEditStatus = New ComboBox()
-        lblStudentNameTitle = New Label()
-        btnStudentEdit = New Button()
-        dgvMyStudents = New DataGridView()
-        btnStudentSearch = New Button()
-        txtStudentSearch = New TextBox()
-        LabelStudentSearch = New Label()
-        cboStudentStatus = New ComboBox()
-        LabelStudentStatusFilter = New Label()
-        cboStudentSection = New ComboBox()
-        LabelStudentSectionFilter = New Label()
-        lblStudentFilters = New Label()
-        lblStudentsTitle = New Label()
         pnlHome = New Panel()
         dgvRecentActivity = New DataGridView()
         lblRecentActivity = New Label()
@@ -270,8 +207,82 @@ Partial Class frmProfessorDashboard
         btnVLGenerateVisitLog = New Button()
         btnVLCancel = New Button()
         dgvVisitLogs = New DataGridView()
+        VisitID = New DataGridViewTextBoxColumn()
+        VisitDate = New DataGridViewTextBoxColumn()
+        VisitType = New DataGridViewTextBoxColumn()
+        HoursAdded = New DataGridViewTextBoxColumn()
+        Score = New DataGridViewTextBoxColumn()
+        MaxScore = New DataGridViewTextBoxColumn()
+        Remarks = New DataGridViewTextBoxColumn()
+        AttachmentPath = New DataGridViewTextBoxColumn()
+        colDownload = New DataGridViewButtonColumn()
+        colEdit = New DataGridViewButtonColumn()
+        colDelete = New DataGridViewButtonColumn()
         lblVLStatus = New Label()
         cboVLStatusFilter = New ComboBox()
+        pnlInternshipAssignment = New Panel()
+        cboIAStatus = New ComboBox()
+        lblIAStatusFilter = New Label()
+        btnIADrop = New Button()
+        btnIACancelEdit = New Button()
+        btnIAEdit = New Button()
+        btnIAClear = New Button()
+        btnIAAssign = New Button()
+        dtpIAEndTime = New DateTimePicker()
+        dtpIAStartTime = New DateTimePicker()
+        txtIAWorkDays = New TextBox()
+        LabelIAEndTime = New Label()
+        LabelIAStartTime = New Label()
+        LabelIAWorkDays = New Label()
+        lblIAFacultyEvaluator = New Label()
+        LabelIAFacultyEvaluator = New Label()
+        cboIASupervisor = New ComboBox()
+        LabelIASupervisor = New Label()
+        cboIACompany = New ComboBox()
+        LabelIACompany = New Label()
+        lblIAStatus = New Label()
+        lblIARequiredHours = New Label()
+        lblIASection = New Label()
+        lblIACourse = New Label()
+        lblIAStudentName = New Label()
+        lblIAStudentNo = New Label()
+        LabelIAStatus = New Label()
+        LabelIARequiredHours = New Label()
+        LabelIASection = New Label()
+        LabelIACourse = New Label()
+        LabelIAStudentName = New Label()
+        LabelIAStudentNo = New Label()
+        LabelIAStudentSelected = New Label()
+        btnIASearch = New Button()
+        txtIASearch = New TextBox()
+        LabelIASearch = New Label()
+        cboIAStudent = New ComboBox()
+        LabelIAStudentFilter = New Label()
+        cboIASection = New ComboBox()
+        LabelIASectionFilter = New Label()
+        lblIAFilters = New Label()
+        lblInternshipTitle = New Label()
+        pnlStudents = New Panel()
+        dgvMyStudentsHistory = New DataGridView()
+        pnlStudentEditStatus = New Panel()
+        btnStudentEditCancel = New Button()
+        btnStudentEditSave = New Button()
+        lblStudentEditStatus = New Label()
+        lblStudentName = New Label()
+        lblStudentEditTitle = New Label()
+        cboStudentEditStatus = New ComboBox()
+        lblStudentNameTitle = New Label()
+        btnStudentEdit = New Button()
+        dgvMyStudents = New DataGridView()
+        btnStudentSearch = New Button()
+        txtStudentSearch = New TextBox()
+        LabelStudentSearch = New Label()
+        cboStudentStatus = New ComboBox()
+        LabelStudentStatusFilter = New Label()
+        cboStudentSection = New ComboBox()
+        LabelStudentSectionFilter = New Label()
+        lblStudentFilters = New Label()
+        lblStudentsTitle = New Label()
         lbl1 = New Label()
         lbl2 = New Label()
         lbl3 = New Label()
@@ -303,25 +314,9 @@ Partial Class frmProfessorDashboard
         lblWeb = New Label()
         lblAccStat = New Label()
         lblAccDate = New Label()
-        VisitID = New DataGridViewTextBoxColumn()
-        VisitDate = New DataGridViewTextBoxColumn()
-        VisitType = New DataGridViewTextBoxColumn()
-        HoursAdded = New DataGridViewTextBoxColumn()
-        Score = New DataGridViewTextBoxColumn()
-        MaxScore = New DataGridViewTextBoxColumn()
-        Remarks = New DataGridViewTextBoxColumn()
-        AttachmentPath = New DataGridViewTextBoxColumn()
-        colDownload = New DataGridViewButtonColumn()
-        colEdit = New DataGridViewButtonColumn()
-        colDelete = New DataGridViewButtonColumn()
         pnlHeader.SuspendLayout()
         pnlSidebar.SuspendLayout()
         pnlContent.SuspendLayout()
-        pnlInternshipAssignment.SuspendLayout()
-        pnlStudents.SuspendLayout()
-        CType(dgvMyStudentsHistory, ComponentModel.ISupportInitialize).BeginInit()
-        pnlStudentEditStatus.SuspendLayout()
-        CType(dgvMyStudents, ComponentModel.ISupportInitialize).BeginInit()
         pnlHome.SuspendLayout()
         CType(dgvRecentActivity, ComponentModel.ISupportInitialize).BeginInit()
         pnlCardCompletedInternships.SuspendLayout()
@@ -341,6 +336,11 @@ Partial Class frmProfessorDashboard
         grpGRFinal.SuspendLayout()
         pnlVisitLogs.SuspendLayout()
         CType(dgvVisitLogs, ComponentModel.ISupportInitialize).BeginInit()
+        pnlInternshipAssignment.SuspendLayout()
+        pnlStudents.SuspendLayout()
+        CType(dgvMyStudentsHistory, ComponentModel.ISupportInitialize).BeginInit()
+        pnlStudentEditStatus.SuspendLayout()
+        CType(dgvMyStudents, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' pnlHeader
@@ -558,7 +558,6 @@ Partial Class frmProfessorDashboard
         ' 
         ' pnlContent
         ' 
-        pnlContent.Controls.Add(pnlHome)
         pnlContent.Controls.Add(pnlProfile)
         pnlContent.Controls.Add(pnlCompanyContacts)
         pnlContent.Controls.Add(pnlCompanies)
@@ -566,765 +565,13 @@ Partial Class frmProfessorDashboard
         pnlContent.Controls.Add(pnlVisitLogs)
         pnlContent.Controls.Add(pnlInternshipAssignment)
         pnlContent.Controls.Add(pnlStudents)
+        pnlContent.Controls.Add(pnlHome)
         pnlContent.Dock = DockStyle.Fill
         pnlContent.Location = New Point(230, 100)
         pnlContent.Margin = New Padding(3, 4, 3, 4)
         pnlContent.Name = "pnlContent"
         pnlContent.Size = New Size(1321, 1002)
         pnlContent.TabIndex = 2
-        ' 
-        ' pnlInternshipAssignment
-        ' 
-        pnlInternshipAssignment.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
-        pnlInternshipAssignment.Controls.Add(cboIAStatus)
-        pnlInternshipAssignment.Controls.Add(lblIAStatusFilter)
-        pnlInternshipAssignment.Controls.Add(btnIADrop)
-        pnlInternshipAssignment.Controls.Add(btnIACancelEdit)
-        pnlInternshipAssignment.Controls.Add(btnIAEdit)
-        pnlInternshipAssignment.Controls.Add(btnIAClear)
-        pnlInternshipAssignment.Controls.Add(btnIAAssign)
-        pnlInternshipAssignment.Controls.Add(dtpIAEndTime)
-        pnlInternshipAssignment.Controls.Add(dtpIAStartTime)
-        pnlInternshipAssignment.Controls.Add(txtIAWorkDays)
-        pnlInternshipAssignment.Controls.Add(LabelIAEndTime)
-        pnlInternshipAssignment.Controls.Add(LabelIAStartTime)
-        pnlInternshipAssignment.Controls.Add(LabelIAWorkDays)
-        pnlInternshipAssignment.Controls.Add(lblIAFacultyEvaluator)
-        pnlInternshipAssignment.Controls.Add(LabelIAFacultyEvaluator)
-        pnlInternshipAssignment.Controls.Add(cboIASupervisor)
-        pnlInternshipAssignment.Controls.Add(LabelIASupervisor)
-        pnlInternshipAssignment.Controls.Add(cboIACompany)
-        pnlInternshipAssignment.Controls.Add(LabelIACompany)
-        pnlInternshipAssignment.Controls.Add(lblIAStatus)
-        pnlInternshipAssignment.Controls.Add(lblIARequiredHours)
-        pnlInternshipAssignment.Controls.Add(lblIASection)
-        pnlInternshipAssignment.Controls.Add(lblIACourse)
-        pnlInternshipAssignment.Controls.Add(lblIAStudentName)
-        pnlInternshipAssignment.Controls.Add(lblIAStudentNo)
-        pnlInternshipAssignment.Controls.Add(LabelIAStatus)
-        pnlInternshipAssignment.Controls.Add(LabelIARequiredHours)
-        pnlInternshipAssignment.Controls.Add(LabelIASection)
-        pnlInternshipAssignment.Controls.Add(LabelIACourse)
-        pnlInternshipAssignment.Controls.Add(LabelIAStudentName)
-        pnlInternshipAssignment.Controls.Add(LabelIAStudentNo)
-        pnlInternshipAssignment.Controls.Add(LabelIAStudentSelected)
-        pnlInternshipAssignment.Controls.Add(btnIASearch)
-        pnlInternshipAssignment.Controls.Add(txtIASearch)
-        pnlInternshipAssignment.Controls.Add(LabelIASearch)
-        pnlInternshipAssignment.Controls.Add(cboIAStudent)
-        pnlInternshipAssignment.Controls.Add(LabelIAStudentFilter)
-        pnlInternshipAssignment.Controls.Add(cboIASection)
-        pnlInternshipAssignment.Controls.Add(LabelIASectionFilter)
-        pnlInternshipAssignment.Controls.Add(lblIAFilters)
-        pnlInternshipAssignment.Controls.Add(lblInternshipTitle)
-        pnlInternshipAssignment.Dock = DockStyle.Fill
-        pnlInternshipAssignment.Location = New Point(0, 0)
-        pnlInternshipAssignment.Margin = New Padding(3, 4, 3, 4)
-        pnlInternshipAssignment.Name = "pnlInternshipAssignment"
-        pnlInternshipAssignment.Size = New Size(1321, 1002)
-        pnlInternshipAssignment.TabIndex = 2
-        pnlInternshipAssignment.Visible = False
-        ' 
-        ' cboIAStatus
-        ' 
-        cboIAStatus.DropDownStyle = ComboBoxStyle.DropDownList
-        cboIAStatus.Font = New Font("Segoe UI", 10F)
-        cboIAStatus.FormattingEnabled = True
-        cboIAStatus.Location = New Point(262, 39)
-        cboIAStatus.Margin = New Padding(3, 4, 3, 4)
-        cboIAStatus.Name = "cboIAStatus"
-        cboIAStatus.Size = New Size(80, 31)
-        cboIAStatus.TabIndex = 46
-        ' 
-        ' lblIAStatusFilter
-        ' 
-        lblIAStatusFilter.AutoSize = True
-        lblIAStatusFilter.Font = New Font("Segoe UI", 10F)
-        lblIAStatusFilter.Location = New Point(196, 42)
-        lblIAStatusFilter.Name = "lblIAStatusFilter"
-        lblIAStatusFilter.Size = New Size(60, 23)
-        lblIAStatusFilter.TabIndex = 45
-        lblIAStatusFilter.Text = "Status:"
-        ' 
-        ' btnIADrop
-        ' 
-        btnIADrop.BackColor = Color.Red
-        btnIADrop.FlatAppearance.BorderSize = 0
-        btnIADrop.FlatStyle = FlatStyle.Flat
-        btnIADrop.Font = New Font("Segoe UI", 10F)
-        btnIADrop.ForeColor = Color.Black
-        btnIADrop.Location = New Point(380, 734)
-        btnIADrop.Margin = New Padding(3, 4, 3, 4)
-        btnIADrop.Name = "btnIADrop"
-        btnIADrop.Size = New Size(100, 40)
-        btnIADrop.TabIndex = 44
-        btnIADrop.Text = "Drop"
-        btnIADrop.UseVisualStyleBackColor = False
-        ' 
-        ' btnIACancelEdit
-        ' 
-        btnIACancelEdit.BackColor = Color.FromArgb(CByte(189), CByte(189), CByte(189))
-        btnIACancelEdit.FlatAppearance.BorderSize = 0
-        btnIACancelEdit.FlatStyle = FlatStyle.Flat
-        btnIACancelEdit.Font = New Font("Segoe UI", 10F)
-        btnIACancelEdit.ForeColor = Color.Black
-        btnIACancelEdit.Location = New Point(592, 735)
-        btnIACancelEdit.Margin = New Padding(3, 4, 3, 4)
-        btnIACancelEdit.Name = "btnIACancelEdit"
-        btnIACancelEdit.Size = New Size(100, 40)
-        btnIACancelEdit.TabIndex = 43
-        btnIACancelEdit.Text = "Cancel"
-        btnIACancelEdit.UseVisualStyleBackColor = False
-        ' 
-        ' btnIAEdit
-        ' 
-        btnIAEdit.BackColor = Color.Cyan
-        btnIAEdit.FlatAppearance.BorderSize = 0
-        btnIAEdit.FlatStyle = FlatStyle.Flat
-        btnIAEdit.Font = New Font("Segoe UI", 10F)
-        btnIAEdit.ForeColor = Color.Black
-        btnIAEdit.Location = New Point(25, 734)
-        btnIAEdit.Margin = New Padding(3, 4, 3, 4)
-        btnIAEdit.Name = "btnIAEdit"
-        btnIAEdit.Size = New Size(231, 40)
-        btnIAEdit.TabIndex = 42
-        btnIAEdit.Text = "Edit Trainee Assignment"
-        btnIAEdit.UseVisualStyleBackColor = False
-        ' 
-        ' btnIAClear
-        ' 
-        btnIAClear.BackColor = Color.FromArgb(CByte(189), CByte(189), CByte(189))
-        btnIAClear.FlatAppearance.BorderSize = 0
-        btnIAClear.FlatStyle = FlatStyle.Flat
-        btnIAClear.Font = New Font("Segoe UI", 10F)
-        btnIAClear.ForeColor = Color.Black
-        btnIAClear.Location = New Point(486, 735)
-        btnIAClear.Margin = New Padding(3, 4, 3, 4)
-        btnIAClear.Name = "btnIAClear"
-        btnIAClear.Size = New Size(100, 40)
-        btnIAClear.TabIndex = 41
-        btnIAClear.Text = "Clear"
-        btnIAClear.UseVisualStyleBackColor = False
-        ' 
-        ' btnIAAssign
-        ' 
-        btnIAAssign.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
-        btnIAAssign.FlatAppearance.BorderSize = 0
-        btnIAAssign.FlatStyle = FlatStyle.Flat
-        btnIAAssign.Font = New Font("Segoe UI", 10F)
-        btnIAAssign.ForeColor = Color.White
-        btnIAAssign.Location = New Point(262, 734)
-        btnIAAssign.Margin = New Padding(3, 4, 3, 4)
-        btnIAAssign.Name = "btnIAAssign"
-        btnIAAssign.Size = New Size(110, 40)
-        btnIAAssign.TabIndex = 40
-        btnIAAssign.Text = "Assign"
-        btnIAAssign.UseVisualStyleBackColor = False
-        ' 
-        ' dtpIAEndTime
-        ' 
-        dtpIAEndTime.Font = New Font("Segoe UI", 10F)
-        dtpIAEndTime.Format = DateTimePickerFormat.Time
-        dtpIAEndTime.Location = New Point(179, 671)
-        dtpIAEndTime.Margin = New Padding(3, 4, 3, 4)
-        dtpIAEndTime.Name = "dtpIAEndTime"
-        dtpIAEndTime.ShowUpDown = True
-        dtpIAEndTime.Size = New Size(140, 30)
-        dtpIAEndTime.TabIndex = 39
-        ' 
-        ' dtpIAStartTime
-        ' 
-        dtpIAStartTime.Font = New Font("Segoe UI", 10F)
-        dtpIAStartTime.Format = DateTimePickerFormat.Time
-        dtpIAStartTime.Location = New Point(179, 621)
-        dtpIAStartTime.Margin = New Padding(3, 4, 3, 4)
-        dtpIAStartTime.Name = "dtpIAStartTime"
-        dtpIAStartTime.ShowUpDown = True
-        dtpIAStartTime.Size = New Size(140, 30)
-        dtpIAStartTime.TabIndex = 38
-        ' 
-        ' txtIAWorkDays
-        ' 
-        txtIAWorkDays.Font = New Font("Segoe UI", 10F)
-        txtIAWorkDays.Location = New Point(179, 571)
-        txtIAWorkDays.Margin = New Padding(3, 4, 3, 4)
-        txtIAWorkDays.Name = "txtIAWorkDays"
-        txtIAWorkDays.Size = New Size(200, 30)
-        txtIAWorkDays.TabIndex = 37
-        ' 
-        ' LabelIAEndTime
-        ' 
-        LabelIAEndTime.AutoSize = True
-        LabelIAEndTime.Font = New Font("Segoe UI", 10F)
-        LabelIAEndTime.Location = New Point(23, 674)
-        LabelIAEndTime.Name = "LabelIAEndTime"
-        LabelIAEndTime.Size = New Size(85, 23)
-        LabelIAEndTime.TabIndex = 36
-        LabelIAEndTime.Text = "End Time:"
-        ' 
-        ' LabelIAStartTime
-        ' 
-        LabelIAStartTime.AutoSize = True
-        LabelIAStartTime.Font = New Font("Segoe UI", 10F)
-        LabelIAStartTime.Location = New Point(23, 624)
-        LabelIAStartTime.Name = "LabelIAStartTime"
-        LabelIAStartTime.Size = New Size(91, 23)
-        LabelIAStartTime.TabIndex = 35
-        LabelIAStartTime.Text = "Start Time:"
-        ' 
-        ' LabelIAWorkDays
-        ' 
-        LabelIAWorkDays.AutoSize = True
-        LabelIAWorkDays.Font = New Font("Segoe UI", 10F)
-        LabelIAWorkDays.Location = New Point(23, 574)
-        LabelIAWorkDays.Name = "LabelIAWorkDays"
-        LabelIAWorkDays.Size = New Size(94, 23)
-        LabelIAWorkDays.TabIndex = 34
-        LabelIAWorkDays.Text = "Work Days:"
-        ' 
-        ' lblIAFacultyEvaluator
-        ' 
-        lblIAFacultyEvaluator.AutoSize = True
-        lblIAFacultyEvaluator.Font = New Font("Segoe UI", 10F)
-        lblIAFacultyEvaluator.Location = New Point(179, 534)
-        lblIAFacultyEvaluator.Name = "lblIAFacultyEvaluator"
-        lblIAFacultyEvaluator.Size = New Size(0, 23)
-        lblIAFacultyEvaluator.TabIndex = 33
-        ' 
-        ' LabelIAFacultyEvaluator
-        ' 
-        LabelIAFacultyEvaluator.AutoSize = True
-        LabelIAFacultyEvaluator.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
-        LabelIAFacultyEvaluator.Location = New Point(23, 534)
-        LabelIAFacultyEvaluator.Name = "LabelIAFacultyEvaluator"
-        LabelIAFacultyEvaluator.Size = New Size(152, 23)
-        LabelIAFacultyEvaluator.TabIndex = 32
-        LabelIAFacultyEvaluator.Text = "Faculty Evaluator:"
-        ' 
-        ' cboIASupervisor
-        ' 
-        cboIASupervisor.DropDownStyle = ComboBoxStyle.DropDownList
-        cboIASupervisor.Font = New Font("Segoe UI", 10F)
-        cboIASupervisor.FormattingEnabled = True
-        cboIASupervisor.Location = New Point(179, 484)
-        cboIASupervisor.Margin = New Padding(3, 4, 3, 4)
-        cboIASupervisor.Name = "cboIASupervisor"
-        cboIASupervisor.Size = New Size(260, 31)
-        cboIASupervisor.TabIndex = 31
-        ' 
-        ' LabelIASupervisor
-        ' 
-        LabelIASupervisor.AutoSize = True
-        LabelIASupervisor.Font = New Font("Segoe UI", 10F)
-        LabelIASupervisor.Location = New Point(23, 486)
-        LabelIASupervisor.Name = "LabelIASupervisor"
-        LabelIASupervisor.Size = New Size(93, 23)
-        LabelIASupervisor.TabIndex = 30
-        LabelIASupervisor.Text = "Supervisor:"
-        ' 
-        ' cboIACompany
-        ' 
-        cboIACompany.DropDownStyle = ComboBoxStyle.DropDownList
-        cboIACompany.Font = New Font("Segoe UI", 10F)
-        cboIACompany.FormattingEnabled = True
-        cboIACompany.Location = New Point(179, 434)
-        cboIACompany.Margin = New Padding(3, 4, 3, 4)
-        cboIACompany.Name = "cboIACompany"
-        cboIACompany.Size = New Size(260, 31)
-        cboIACompany.TabIndex = 29
-        ' 
-        ' LabelIACompany
-        ' 
-        LabelIACompany.AutoSize = True
-        LabelIACompany.Font = New Font("Segoe UI", 10F)
-        LabelIACompany.Location = New Point(23, 436)
-        LabelIACompany.Name = "LabelIACompany"
-        LabelIACompany.Size = New Size(87, 23)
-        LabelIACompany.TabIndex = 28
-        LabelIACompany.Text = "Company:"
-        ' 
-        ' lblIAStatus
-        ' 
-        lblIAStatus.AutoSize = True
-        lblIAStatus.Font = New Font("Segoe UI", 10F)
-        lblIAStatus.Location = New Point(179, 384)
-        lblIAStatus.Name = "lblIAStatus"
-        lblIAStatus.Size = New Size(0, 23)
-        lblIAStatus.TabIndex = 27
-        ' 
-        ' lblIARequiredHours
-        ' 
-        lblIARequiredHours.AutoSize = True
-        lblIARequiredHours.Font = New Font("Segoe UI", 10F)
-        lblIARequiredHours.Location = New Point(179, 346)
-        lblIARequiredHours.Name = "lblIARequiredHours"
-        lblIARequiredHours.Size = New Size(0, 23)
-        lblIARequiredHours.TabIndex = 26
-        ' 
-        ' lblIASection
-        ' 
-        lblIASection.AutoSize = True
-        lblIASection.Font = New Font("Segoe UI", 10F)
-        lblIASection.Location = New Point(179, 308)
-        lblIASection.Name = "lblIASection"
-        lblIASection.Size = New Size(0, 23)
-        lblIASection.TabIndex = 25
-        ' 
-        ' lblIACourse
-        ' 
-        lblIACourse.AutoSize = True
-        lblIACourse.Font = New Font("Segoe UI", 10F)
-        lblIACourse.Location = New Point(179, 271)
-        lblIACourse.Name = "lblIACourse"
-        lblIACourse.Size = New Size(0, 23)
-        lblIACourse.TabIndex = 24
-        ' 
-        ' lblIAStudentName
-        ' 
-        lblIAStudentName.AutoSize = True
-        lblIAStudentName.Font = New Font("Segoe UI", 10F)
-        lblIAStudentName.Location = New Point(179, 234)
-        lblIAStudentName.Name = "lblIAStudentName"
-        lblIAStudentName.Size = New Size(0, 23)
-        lblIAStudentName.TabIndex = 23
-        ' 
-        ' lblIAStudentNo
-        ' 
-        lblIAStudentNo.AutoSize = True
-        lblIAStudentNo.Font = New Font("Segoe UI", 10F)
-        lblIAStudentNo.Location = New Point(179, 196)
-        lblIAStudentNo.Name = "lblIAStudentNo"
-        lblIAStudentNo.Size = New Size(0, 23)
-        lblIAStudentNo.TabIndex = 22
-        ' 
-        ' LabelIAStatus
-        ' 
-        LabelIAStatus.AutoSize = True
-        LabelIAStatus.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        LabelIAStatus.Location = New Point(23, 384)
-        LabelIAStatus.Name = "LabelIAStatus"
-        LabelIAStatus.Size = New Size(61, 23)
-        LabelIAStatus.TabIndex = 21
-        LabelIAStatus.Text = "Status:"
-        ' 
-        ' LabelIARequiredHours
-        ' 
-        LabelIARequiredHours.AutoSize = True
-        LabelIARequiredHours.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        LabelIARequiredHours.Location = New Point(23, 346)
-        LabelIARequiredHours.Name = "LabelIARequiredHours"
-        LabelIARequiredHours.Size = New Size(134, 23)
-        LabelIARequiredHours.TabIndex = 20
-        LabelIARequiredHours.Text = "Required Hours:"
-        ' 
-        ' LabelIASection
-        ' 
-        LabelIASection.AutoSize = True
-        LabelIASection.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        LabelIASection.Location = New Point(23, 308)
-        LabelIASection.Name = "LabelIASection"
-        LabelIASection.Size = New Size(70, 23)
-        LabelIASection.TabIndex = 19
-        LabelIASection.Text = "Section:"
-        ' 
-        ' LabelIACourse
-        ' 
-        LabelIACourse.AutoSize = True
-        LabelIACourse.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        LabelIACourse.Location = New Point(23, 271)
-        LabelIACourse.Name = "LabelIACourse"
-        LabelIACourse.Size = New Size(67, 23)
-        LabelIACourse.TabIndex = 18
-        LabelIACourse.Text = "Course:"
-        ' 
-        ' LabelIAStudentName
-        ' 
-        LabelIAStudentName.AutoSize = True
-        LabelIAStudentName.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        LabelIAStudentName.Location = New Point(23, 234)
-        LabelIAStudentName.Name = "LabelIAStudentName"
-        LabelIAStudentName.Size = New Size(125, 23)
-        LabelIAStudentName.TabIndex = 17
-        LabelIAStudentName.Text = "Student Name:"
-        ' 
-        ' LabelIAStudentNo
-        ' 
-        LabelIAStudentNo.AutoSize = True
-        LabelIAStudentNo.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        LabelIAStudentNo.Location = New Point(23, 196)
-        LabelIAStudentNo.Name = "LabelIAStudentNo"
-        LabelIAStudentNo.Size = New Size(102, 23)
-        LabelIAStudentNo.TabIndex = 16
-        LabelIAStudentNo.Text = "Student No:"
-        ' 
-        ' LabelIAStudentSelected
-        ' 
-        LabelIAStudentSelected.AutoSize = True
-        LabelIAStudentSelected.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
-        LabelIAStudentSelected.Location = New Point(23, 158)
-        LabelIAStudentSelected.Name = "LabelIAStudentSelected"
-        LabelIAStudentSelected.Size = New Size(152, 23)
-        LabelIAStudentSelected.TabIndex = 15
-        LabelIAStudentSelected.Text = "Selected Student:"
-        ' 
-        ' btnIASearch
-        ' 
-        btnIASearch.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
-        btnIASearch.FlatAppearance.BorderSize = 0
-        btnIASearch.FlatStyle = FlatStyle.Flat
-        btnIASearch.Font = New Font("Segoe UI", 10F)
-        btnIASearch.ForeColor = Color.White
-        btnIASearch.Location = New Point(984, 39)
-        btnIASearch.Margin = New Padding(3, 4, 3, 4)
-        btnIASearch.Name = "btnIASearch"
-        btnIASearch.Size = New Size(100, 31)
-        btnIASearch.TabIndex = 14
-        btnIASearch.Text = "Search"
-        btnIASearch.UseVisualStyleBackColor = False
-        ' 
-        ' txtIASearch
-        ' 
-        txtIASearch.Font = New Font("Segoe UI", 10F)
-        txtIASearch.Location = New Point(807, 39)
-        txtIASearch.Margin = New Padding(3, 4, 3, 4)
-        txtIASearch.Name = "txtIASearch"
-        txtIASearch.Size = New Size(150, 30)
-        txtIASearch.TabIndex = 13
-        ' 
-        ' LabelIASearch
-        ' 
-        LabelIASearch.AutoSize = True
-        LabelIASearch.Font = New Font("Segoe UI", 10F)
-        LabelIASearch.Location = New Point(736, 42)
-        LabelIASearch.Name = "LabelIASearch"
-        LabelIASearch.Size = New Size(65, 23)
-        LabelIASearch.TabIndex = 12
-        LabelIASearch.Text = "Search:"
-        ' 
-        ' cboIAStudent
-        ' 
-        cboIAStudent.DropDownStyle = ComboBoxStyle.DropDownList
-        cboIAStudent.Font = New Font("Segoe UI", 10F)
-        cboIAStudent.FormattingEnabled = True
-        cboIAStudent.Location = New Point(451, 39)
-        cboIAStudent.Margin = New Padding(3, 4, 3, 4)
-        cboIAStudent.Name = "cboIAStudent"
-        cboIAStudent.Size = New Size(260, 31)
-        cboIAStudent.TabIndex = 11
-        ' 
-        ' LabelIAStudentFilter
-        ' 
-        LabelIAStudentFilter.AutoSize = True
-        LabelIAStudentFilter.Font = New Font("Segoe UI", 10F)
-        LabelIAStudentFilter.Location = New Point(371, 42)
-        LabelIAStudentFilter.Name = "LabelIAStudentFilter"
-        LabelIAStudentFilter.Size = New Size(73, 23)
-        LabelIAStudentFilter.TabIndex = 10
-        LabelIAStudentFilter.Text = "Student:"
-        ' 
-        ' cboIASection
-        ' 
-        cboIASection.DropDownStyle = ComboBoxStyle.DropDownList
-        cboIASection.Font = New Font("Segoe UI", 10F)
-        cboIASection.FormattingEnabled = True
-        cboIASection.Location = New Point(90, 39)
-        cboIASection.Margin = New Padding(3, 4, 3, 4)
-        cboIASection.Name = "cboIASection"
-        cboIASection.Size = New Size(80, 31)
-        cboIASection.TabIndex = 9
-        ' 
-        ' LabelIASectionFilter
-        ' 
-        LabelIASectionFilter.AutoSize = True
-        LabelIASectionFilter.Font = New Font("Segoe UI", 10F)
-        LabelIASectionFilter.Location = New Point(24, 42)
-        LabelIASectionFilter.Name = "LabelIASectionFilter"
-        LabelIASectionFilter.Size = New Size(70, 23)
-        LabelIASectionFilter.TabIndex = 8
-        LabelIASectionFilter.Text = "Section:"
-        ' 
-        ' lblIAFilters
-        ' 
-        lblIAFilters.AutoSize = True
-        lblIAFilters.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
-        lblIAFilters.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
-        lblIAFilters.Location = New Point(24, 7)
-        lblIAFilters.Name = "lblIAFilters"
-        lblIAFilters.Size = New Size(66, 28)
-        lblIAFilters.TabIndex = 7
-        lblIAFilters.Text = "Filters"
-        ' 
-        ' lblInternshipTitle
-        ' 
-        lblInternshipTitle.AutoSize = True
-        lblInternshipTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
-        lblInternshipTitle.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
-        lblInternshipTitle.Location = New Point(24, 91)
-        lblInternshipTitle.Name = "lblInternshipTitle"
-        lblInternshipTitle.Size = New Size(227, 32)
-        lblInternshipTitle.TabIndex = 0
-        lblInternshipTitle.Text = "Trainee Assignment"
-        ' 
-        ' pnlStudents
-        ' 
-        pnlStudents.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
-        pnlStudents.Controls.Add(dgvMyStudentsHistory)
-        pnlStudents.Controls.Add(pnlStudentEditStatus)
-        pnlStudents.Controls.Add(btnStudentEdit)
-        pnlStudents.Controls.Add(dgvMyStudents)
-        pnlStudents.Controls.Add(btnStudentSearch)
-        pnlStudents.Controls.Add(txtStudentSearch)
-        pnlStudents.Controls.Add(LabelStudentSearch)
-        pnlStudents.Controls.Add(cboStudentStatus)
-        pnlStudents.Controls.Add(LabelStudentStatusFilter)
-        pnlStudents.Controls.Add(cboStudentSection)
-        pnlStudents.Controls.Add(LabelStudentSectionFilter)
-        pnlStudents.Controls.Add(lblStudentFilters)
-        pnlStudents.Controls.Add(lblStudentsTitle)
-        pnlStudents.Dock = DockStyle.Fill
-        pnlStudents.Location = New Point(0, 0)
-        pnlStudents.Margin = New Padding(3, 4, 3, 4)
-        pnlStudents.Name = "pnlStudents"
-        pnlStudents.Size = New Size(1321, 1002)
-        pnlStudents.TabIndex = 1
-        pnlStudents.Visible = False
-        ' 
-        ' dgvMyStudentsHistory
-        ' 
-        dgvMyStudentsHistory.AllowUserToAddRows = False
-        dgvMyStudentsHistory.AllowUserToDeleteRows = False
-        dgvMyStudentsHistory.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
-        dgvMyStudentsHistory.BackgroundColor = Color.White
-        dgvMyStudentsHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvMyStudentsHistory.Location = New Point(24, 651)
-        dgvMyStudentsHistory.Margin = New Padding(3, 4, 3, 4)
-        dgvMyStudentsHistory.MultiSelect = False
-        dgvMyStudentsHistory.Name = "dgvMyStudentsHistory"
-        dgvMyStudentsHistory.ReadOnly = True
-        dgvMyStudentsHistory.RowHeadersVisible = False
-        dgvMyStudentsHistory.RowHeadersWidth = 51
-        dgvMyStudentsHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvMyStudentsHistory.Size = New Size(1271, 329)
-        dgvMyStudentsHistory.TabIndex = 12
-        ' 
-        ' pnlStudentEditStatus
-        ' 
-        pnlStudentEditStatus.BorderStyle = BorderStyle.FixedSingle
-        pnlStudentEditStatus.Controls.Add(btnStudentEditCancel)
-        pnlStudentEditStatus.Controls.Add(btnStudentEditSave)
-        pnlStudentEditStatus.Controls.Add(lblStudentEditStatus)
-        pnlStudentEditStatus.Controls.Add(lblStudentName)
-        pnlStudentEditStatus.Controls.Add(lblStudentEditTitle)
-        pnlStudentEditStatus.Controls.Add(cboStudentEditStatus)
-        pnlStudentEditStatus.Controls.Add(lblStudentNameTitle)
-        pnlStudentEditStatus.Location = New Point(220, 110)
-        pnlStudentEditStatus.Name = "pnlStudentEditStatus"
-        pnlStudentEditStatus.Size = New Size(427, 278)
-        pnlStudentEditStatus.TabIndex = 11
-        pnlStudentEditStatus.Visible = False
-        ' 
-        ' btnStudentEditCancel
-        ' 
-        btnStudentEditCancel.BackColor = Color.LightGray
-        btnStudentEditCancel.FlatStyle = FlatStyle.Flat
-        btnStudentEditCancel.Location = New Point(230, 125)
-        btnStudentEditCancel.Name = "btnStudentEditCancel"
-        btnStudentEditCancel.Size = New Size(100, 32)
-        btnStudentEditCancel.TabIndex = 6
-        btnStudentEditCancel.Text = "Cancel"
-        btnStudentEditCancel.UseVisualStyleBackColor = False
-        ' 
-        ' btnStudentEditSave
-        ' 
-        btnStudentEditSave.BackColor = Color.Lime
-        btnStudentEditSave.FlatStyle = FlatStyle.Flat
-        btnStudentEditSave.Location = New Point(110, 125)
-        btnStudentEditSave.Name = "btnStudentEditSave"
-        btnStudentEditSave.Size = New Size(100, 32)
-        btnStudentEditSave.TabIndex = 5
-        btnStudentEditSave.Text = "Save"
-        btnStudentEditSave.UseVisualStyleBackColor = False
-        ' 
-        ' lblStudentEditStatus
-        ' 
-        lblStudentEditStatus.AutoSize = True
-        lblStudentEditStatus.Location = New Point(20, 85)
-        lblStudentEditStatus.Name = "lblStudentEditStatus"
-        lblStudentEditStatus.Size = New Size(86, 20)
-        lblStudentEditStatus.TabIndex = 4
-        lblStudentEditStatus.Text = "New Status:"
-        ' 
-        ' lblStudentName
-        ' 
-        lblStudentName.AutoSize = True
-        lblStudentName.Location = New Point(20, 45)
-        lblStudentName.Name = "lblStudentName"
-        lblStudentName.Size = New Size(63, 20)
-        lblStudentName.TabIndex = 3
-        lblStudentName.Text = "Student:"
-        ' 
-        ' lblStudentEditTitle
-        ' 
-        lblStudentEditTitle.AutoSize = True
-        lblStudentEditTitle.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblStudentEditTitle.Location = New Point(20, 10)
-        lblStudentEditTitle.Name = "lblStudentEditTitle"
-        lblStudentEditTitle.Size = New Size(231, 28)
-        lblStudentEditTitle.TabIndex = 2
-        lblStudentEditTitle.Text = "EDIT STUDENT STATUS"
-        ' 
-        ' cboStudentEditStatus
-        ' 
-        cboStudentEditStatus.DropDownStyle = ComboBoxStyle.DropDownList
-        cboStudentEditStatus.FormattingEnabled = True
-        cboStudentEditStatus.Items.AddRange(New Object() {"Active", "OnLeave", "Dropped", "Graduated"})
-        cboStudentEditStatus.Location = New Point(110, 82)
-        cboStudentEditStatus.Name = "cboStudentEditStatus"
-        cboStudentEditStatus.Size = New Size(180, 28)
-        cboStudentEditStatus.TabIndex = 1
-        ' 
-        ' lblStudentNameTitle
-        ' 
-        lblStudentNameTitle.AutoSize = True
-        lblStudentNameTitle.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblStudentNameTitle.Location = New Point(110, 45)
-        lblStudentNameTitle.Name = "lblStudentNameTitle"
-        lblStudentNameTitle.Size = New Size(17, 23)
-        lblStudentNameTitle.TabIndex = 0
-        lblStudentNameTitle.Text = "-"
-        ' 
-        ' btnStudentEdit
-        ' 
-        btnStudentEdit.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
-        btnStudentEdit.FlatAppearance.BorderSize = 0
-        btnStudentEdit.FlatStyle = FlatStyle.Flat
-        btnStudentEdit.Font = New Font("Segoe UI", 10F)
-        btnStudentEdit.ForeColor = Color.White
-        btnStudentEdit.Location = New Point(580, 134)
-        btnStudentEdit.Margin = New Padding(3, 4, 3, 4)
-        btnStudentEdit.Name = "btnStudentEdit"
-        btnStudentEdit.Size = New Size(100, 40)
-        btnStudentEdit.TabIndex = 10
-        btnStudentEdit.Text = "Edit"
-        btnStudentEdit.UseVisualStyleBackColor = False
-        ' 
-        ' dgvMyStudents
-        ' 
-        dgvMyStudents.AllowUserToAddRows = False
-        dgvMyStudents.AllowUserToDeleteRows = False
-        dgvMyStudents.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        dgvMyStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        dgvMyStudents.BackgroundColor = Color.White
-        dgvMyStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvMyStudents.Location = New Point(24, 188)
-        dgvMyStudents.Margin = New Padding(3, 4, 3, 4)
-        dgvMyStudents.MultiSelect = False
-        dgvMyStudents.Name = "dgvMyStudents"
-        dgvMyStudents.ReadOnly = True
-        dgvMyStudents.RowHeadersVisible = False
-        dgvMyStudents.RowHeadersWidth = 51
-        dgvMyStudents.RowTemplate.Height = 28
-        dgvMyStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvMyStudents.Size = New Size(1271, 389)
-        dgvMyStudents.TabIndex = 9
-        ' 
-        ' btnStudentSearch
-        ' 
-        btnStudentSearch.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
-        btnStudentSearch.FlatAppearance.BorderSize = 0
-        btnStudentSearch.FlatStyle = FlatStyle.Flat
-        btnStudentSearch.Font = New Font("Segoe UI", 10F)
-        btnStudentSearch.ForeColor = Color.White
-        btnStudentSearch.Location = New Point(450, 134)
-        btnStudentSearch.Margin = New Padding(3, 4, 3, 4)
-        btnStudentSearch.Name = "btnStudentSearch"
-        btnStudentSearch.Size = New Size(100, 40)
-        btnStudentSearch.TabIndex = 8
-        btnStudentSearch.Text = "Search"
-        btnStudentSearch.UseVisualStyleBackColor = False
-        ' 
-        ' txtStudentSearch
-        ' 
-        txtStudentSearch.Font = New Font("Segoe UI", 10F)
-        txtStudentSearch.Location = New Point(320, 136)
-        txtStudentSearch.Margin = New Padding(3, 4, 3, 4)
-        txtStudentSearch.Name = "txtStudentSearch"
-        txtStudentSearch.Size = New Size(120, 30)
-        txtStudentSearch.TabIndex = 7
-        ' 
-        ' LabelStudentSearch
-        ' 
-        LabelStudentSearch.AutoSize = True
-        LabelStudentSearch.Font = New Font("Segoe UI", 10F)
-        LabelStudentSearch.Location = New Point(250, 139)
-        LabelStudentSearch.Name = "LabelStudentSearch"
-        LabelStudentSearch.Size = New Size(65, 23)
-        LabelStudentSearch.TabIndex = 6
-        LabelStudentSearch.Text = "Search:"
-        ' 
-        ' cboStudentStatus
-        ' 
-        cboStudentStatus.DropDownStyle = ComboBoxStyle.DropDownList
-        cboStudentStatus.Font = New Font("Segoe UI", 10F)
-        cboStudentStatus.FormattingEnabled = True
-        cboStudentStatus.Location = New Point(120, 136)
-        cboStudentStatus.Margin = New Padding(3, 4, 3, 4)
-        cboStudentStatus.Name = "cboStudentStatus"
-        cboStudentStatus.Size = New Size(120, 31)
-        cboStudentStatus.TabIndex = 5
-        ' 
-        ' LabelStudentStatusFilter
-        ' 
-        LabelStudentStatusFilter.AutoSize = True
-        LabelStudentStatusFilter.Font = New Font("Segoe UI", 10F)
-        LabelStudentStatusFilter.Location = New Point(24, 139)
-        LabelStudentStatusFilter.Name = "LabelStudentStatusFilter"
-        LabelStudentStatusFilter.Size = New Size(60, 23)
-        LabelStudentStatusFilter.TabIndex = 4
-        LabelStudentStatusFilter.Text = "Status:"
-        ' 
-        ' cboStudentSection
-        ' 
-        cboStudentSection.DropDownStyle = ComboBoxStyle.DropDownList
-        cboStudentSection.Font = New Font("Segoe UI", 10F)
-        cboStudentSection.FormattingEnabled = True
-        cboStudentSection.Location = New Point(120, 89)
-        cboStudentSection.Margin = New Padding(3, 4, 3, 4)
-        cboStudentSection.Name = "cboStudentSection"
-        cboStudentSection.Size = New Size(120, 31)
-        cboStudentSection.TabIndex = 3
-        ' 
-        ' LabelStudentSectionFilter
-        ' 
-        LabelStudentSectionFilter.AutoSize = True
-        LabelStudentSectionFilter.Font = New Font("Segoe UI", 10F)
-        LabelStudentSectionFilter.Location = New Point(24, 92)
-        LabelStudentSectionFilter.Name = "LabelStudentSectionFilter"
-        LabelStudentSectionFilter.Size = New Size(70, 23)
-        LabelStudentSectionFilter.TabIndex = 2
-        LabelStudentSectionFilter.Text = "Section:"
-        ' 
-        ' lblStudentFilters
-        ' 
-        lblStudentFilters.AutoSize = True
-        lblStudentFilters.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
-        lblStudentFilters.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
-        lblStudentFilters.Location = New Point(24, 44)
-        lblStudentFilters.Name = "lblStudentFilters"
-        lblStudentFilters.Size = New Size(66, 28)
-        lblStudentFilters.TabIndex = 1
-        lblStudentFilters.Text = "Filters"
-        ' 
-        ' lblStudentsTitle
-        ' 
-        lblStudentsTitle.AutoSize = True
-        lblStudentsTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
-        lblStudentsTitle.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
-        lblStudentsTitle.Location = New Point(23, 5)
-        lblStudentsTitle.Name = "lblStudentsTitle"
-        lblStudentsTitle.Size = New Size(150, 32)
-        lblStudentsTitle.TabIndex = 0
-        lblStudentsTitle.Text = "My Students"
         ' 
         ' pnlHome
         ' 
@@ -1562,6 +809,7 @@ Partial Class frmProfessorDashboard
         btnPFCancel.TabIndex = 19
         btnPFCancel.Text = "Cancel"
         btnPFCancel.UseVisualStyleBackColor = False
+        btnPFCancel.Visible = False
         ' 
         ' btnPFSave
         ' 
@@ -3314,6 +2562,102 @@ Partial Class frmProfessorDashboard
         dgvVisitLogs.Size = New Size(1271, 366)
         dgvVisitLogs.TabIndex = 39
         ' 
+        ' VisitID
+        ' 
+        VisitID.DataPropertyName = "VisitID"
+        VisitID.HeaderText = "VisitID"
+        VisitID.MinimumWidth = 6
+        VisitID.Name = "VisitID"
+        VisitID.ReadOnly = True
+        VisitID.Visible = False
+        ' 
+        ' VisitDate
+        ' 
+        VisitDate.DataPropertyName = "VisitDate"
+        VisitDate.HeaderText = "Date"
+        VisitDate.MinimumWidth = 100
+        VisitDate.Name = "VisitDate"
+        VisitDate.ReadOnly = True
+        ' 
+        ' VisitType
+        ' 
+        VisitType.DataPropertyName = "VisitType"
+        VisitType.HeaderText = "Type"
+        VisitType.MinimumWidth = 120
+        VisitType.Name = "VisitType"
+        VisitType.ReadOnly = True
+        ' 
+        ' HoursAdded
+        ' 
+        HoursAdded.DataPropertyName = "HoursAdded"
+        HoursAdded.HeaderText = "Hours"
+        HoursAdded.MinimumWidth = 80
+        HoursAdded.Name = "HoursAdded"
+        HoursAdded.ReadOnly = True
+        ' 
+        ' Score
+        ' 
+        Score.DataPropertyName = "Score"
+        Score.HeaderText = "Grade"
+        Score.MinimumWidth = 70
+        Score.Name = "Score"
+        Score.ReadOnly = True
+        ' 
+        ' MaxScore
+        ' 
+        MaxScore.DataPropertyName = "MaxScore"
+        MaxScore.HeaderText = "Max Grade"
+        MaxScore.MinimumWidth = 80
+        MaxScore.Name = "MaxScore"
+        MaxScore.ReadOnly = True
+        ' 
+        ' Remarks
+        ' 
+        Remarks.DataPropertyName = "Remarks"
+        Remarks.HeaderText = "Remarks"
+        Remarks.MinimumWidth = 180
+        Remarks.Name = "Remarks"
+        Remarks.ReadOnly = True
+        ' 
+        ' AttachmentPath
+        ' 
+        AttachmentPath.DataPropertyName = "AttachmentPath"
+        AttachmentPath.HeaderText = "File"
+        AttachmentPath.MinimumWidth = 6
+        AttachmentPath.Name = "AttachmentPath"
+        AttachmentPath.ReadOnly = True
+        AttachmentPath.Visible = False
+        ' 
+        ' colDownload
+        ' 
+        colDownload.HeaderText = "Download"
+        colDownload.MinimumWidth = 40
+        colDownload.Name = "colDownload"
+        colDownload.ReadOnly = True
+        colDownload.Text = "⬇"
+        colDownload.UseColumnTextForButtonValue = True
+        ' 
+        ' colEdit
+        ' 
+        colEdit.HeaderText = "Edit"
+        colEdit.MinimumWidth = 50
+        colEdit.Name = "colEdit"
+        colEdit.ReadOnly = True
+        colEdit.Text = "✎"
+        colEdit.UseColumnTextForButtonValue = True
+        ' 
+        ' colDelete
+        ' 
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.ForeColor = Color.Red
+        colDelete.DefaultCellStyle = DataGridViewCellStyle1
+        colDelete.HeaderText = "Delete"
+        colDelete.MinimumWidth = 50
+        colDelete.Name = "colDelete"
+        colDelete.ReadOnly = True
+        colDelete.Text = "✖"
+        colDelete.UseColumnTextForButtonValue = True
+        ' 
         ' lblVLStatus
         ' 
         lblVLStatus.AutoSize = True
@@ -3333,6 +2677,759 @@ Partial Class frmProfessorDashboard
         cboVLStatusFilter.Name = "cboVLStatusFilter"
         cboVLStatusFilter.Size = New Size(237, 31)
         cboVLStatusFilter.TabIndex = 43
+        ' 
+        ' pnlInternshipAssignment
+        ' 
+        pnlInternshipAssignment.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
+        pnlInternshipAssignment.Controls.Add(cboIAStatus)
+        pnlInternshipAssignment.Controls.Add(lblIAStatusFilter)
+        pnlInternshipAssignment.Controls.Add(btnIADrop)
+        pnlInternshipAssignment.Controls.Add(btnIACancelEdit)
+        pnlInternshipAssignment.Controls.Add(btnIAEdit)
+        pnlInternshipAssignment.Controls.Add(btnIAClear)
+        pnlInternshipAssignment.Controls.Add(btnIAAssign)
+        pnlInternshipAssignment.Controls.Add(dtpIAEndTime)
+        pnlInternshipAssignment.Controls.Add(dtpIAStartTime)
+        pnlInternshipAssignment.Controls.Add(txtIAWorkDays)
+        pnlInternshipAssignment.Controls.Add(LabelIAEndTime)
+        pnlInternshipAssignment.Controls.Add(LabelIAStartTime)
+        pnlInternshipAssignment.Controls.Add(LabelIAWorkDays)
+        pnlInternshipAssignment.Controls.Add(lblIAFacultyEvaluator)
+        pnlInternshipAssignment.Controls.Add(LabelIAFacultyEvaluator)
+        pnlInternshipAssignment.Controls.Add(cboIASupervisor)
+        pnlInternshipAssignment.Controls.Add(LabelIASupervisor)
+        pnlInternshipAssignment.Controls.Add(cboIACompany)
+        pnlInternshipAssignment.Controls.Add(LabelIACompany)
+        pnlInternshipAssignment.Controls.Add(lblIAStatus)
+        pnlInternshipAssignment.Controls.Add(lblIARequiredHours)
+        pnlInternshipAssignment.Controls.Add(lblIASection)
+        pnlInternshipAssignment.Controls.Add(lblIACourse)
+        pnlInternshipAssignment.Controls.Add(lblIAStudentName)
+        pnlInternshipAssignment.Controls.Add(lblIAStudentNo)
+        pnlInternshipAssignment.Controls.Add(LabelIAStatus)
+        pnlInternshipAssignment.Controls.Add(LabelIARequiredHours)
+        pnlInternshipAssignment.Controls.Add(LabelIASection)
+        pnlInternshipAssignment.Controls.Add(LabelIACourse)
+        pnlInternshipAssignment.Controls.Add(LabelIAStudentName)
+        pnlInternshipAssignment.Controls.Add(LabelIAStudentNo)
+        pnlInternshipAssignment.Controls.Add(LabelIAStudentSelected)
+        pnlInternshipAssignment.Controls.Add(btnIASearch)
+        pnlInternshipAssignment.Controls.Add(txtIASearch)
+        pnlInternshipAssignment.Controls.Add(LabelIASearch)
+        pnlInternshipAssignment.Controls.Add(cboIAStudent)
+        pnlInternshipAssignment.Controls.Add(LabelIAStudentFilter)
+        pnlInternshipAssignment.Controls.Add(cboIASection)
+        pnlInternshipAssignment.Controls.Add(LabelIASectionFilter)
+        pnlInternshipAssignment.Controls.Add(lblIAFilters)
+        pnlInternshipAssignment.Controls.Add(lblInternshipTitle)
+        pnlInternshipAssignment.Dock = DockStyle.Fill
+        pnlInternshipAssignment.Location = New Point(0, 0)
+        pnlInternshipAssignment.Margin = New Padding(3, 4, 3, 4)
+        pnlInternshipAssignment.Name = "pnlInternshipAssignment"
+        pnlInternshipAssignment.Size = New Size(1321, 1002)
+        pnlInternshipAssignment.TabIndex = 2
+        pnlInternshipAssignment.Visible = False
+        ' 
+        ' cboIAStatus
+        ' 
+        cboIAStatus.DropDownStyle = ComboBoxStyle.DropDownList
+        cboIAStatus.Font = New Font("Segoe UI", 10F)
+        cboIAStatus.FormattingEnabled = True
+        cboIAStatus.Location = New Point(262, 39)
+        cboIAStatus.Margin = New Padding(3, 4, 3, 4)
+        cboIAStatus.Name = "cboIAStatus"
+        cboIAStatus.Size = New Size(80, 31)
+        cboIAStatus.TabIndex = 46
+        ' 
+        ' lblIAStatusFilter
+        ' 
+        lblIAStatusFilter.AutoSize = True
+        lblIAStatusFilter.Font = New Font("Segoe UI", 10F)
+        lblIAStatusFilter.Location = New Point(196, 42)
+        lblIAStatusFilter.Name = "lblIAStatusFilter"
+        lblIAStatusFilter.Size = New Size(60, 23)
+        lblIAStatusFilter.TabIndex = 45
+        lblIAStatusFilter.Text = "Status:"
+        ' 
+        ' btnIADrop
+        ' 
+        btnIADrop.BackColor = Color.Red
+        btnIADrop.FlatAppearance.BorderSize = 0
+        btnIADrop.FlatStyle = FlatStyle.Flat
+        btnIADrop.Font = New Font("Segoe UI", 10F)
+        btnIADrop.ForeColor = Color.Black
+        btnIADrop.Location = New Point(380, 734)
+        btnIADrop.Margin = New Padding(3, 4, 3, 4)
+        btnIADrop.Name = "btnIADrop"
+        btnIADrop.Size = New Size(100, 40)
+        btnIADrop.TabIndex = 44
+        btnIADrop.Text = "Drop"
+        btnIADrop.UseVisualStyleBackColor = False
+        ' 
+        ' btnIACancelEdit
+        ' 
+        btnIACancelEdit.BackColor = Color.FromArgb(CByte(189), CByte(189), CByte(189))
+        btnIACancelEdit.FlatAppearance.BorderSize = 0
+        btnIACancelEdit.FlatStyle = FlatStyle.Flat
+        btnIACancelEdit.Font = New Font("Segoe UI", 10F)
+        btnIACancelEdit.ForeColor = Color.Black
+        btnIACancelEdit.Location = New Point(592, 735)
+        btnIACancelEdit.Margin = New Padding(3, 4, 3, 4)
+        btnIACancelEdit.Name = "btnIACancelEdit"
+        btnIACancelEdit.Size = New Size(100, 40)
+        btnIACancelEdit.TabIndex = 43
+        btnIACancelEdit.Text = "Cancel"
+        btnIACancelEdit.UseVisualStyleBackColor = False
+        ' 
+        ' btnIAEdit
+        ' 
+        btnIAEdit.BackColor = Color.Cyan
+        btnIAEdit.FlatAppearance.BorderSize = 0
+        btnIAEdit.FlatStyle = FlatStyle.Flat
+        btnIAEdit.Font = New Font("Segoe UI", 10F)
+        btnIAEdit.ForeColor = Color.Black
+        btnIAEdit.Location = New Point(25, 734)
+        btnIAEdit.Margin = New Padding(3, 4, 3, 4)
+        btnIAEdit.Name = "btnIAEdit"
+        btnIAEdit.Size = New Size(231, 40)
+        btnIAEdit.TabIndex = 42
+        btnIAEdit.Text = "Edit Trainee Assignment"
+        btnIAEdit.UseVisualStyleBackColor = False
+        ' 
+        ' btnIAClear
+        ' 
+        btnIAClear.BackColor = Color.FromArgb(CByte(189), CByte(189), CByte(189))
+        btnIAClear.FlatAppearance.BorderSize = 0
+        btnIAClear.FlatStyle = FlatStyle.Flat
+        btnIAClear.Font = New Font("Segoe UI", 10F)
+        btnIAClear.ForeColor = Color.Black
+        btnIAClear.Location = New Point(486, 735)
+        btnIAClear.Margin = New Padding(3, 4, 3, 4)
+        btnIAClear.Name = "btnIAClear"
+        btnIAClear.Size = New Size(100, 40)
+        btnIAClear.TabIndex = 41
+        btnIAClear.Text = "Clear"
+        btnIAClear.UseVisualStyleBackColor = False
+        ' 
+        ' btnIAAssign
+        ' 
+        btnIAAssign.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
+        btnIAAssign.FlatAppearance.BorderSize = 0
+        btnIAAssign.FlatStyle = FlatStyle.Flat
+        btnIAAssign.Font = New Font("Segoe UI", 10F)
+        btnIAAssign.ForeColor = Color.White
+        btnIAAssign.Location = New Point(262, 734)
+        btnIAAssign.Margin = New Padding(3, 4, 3, 4)
+        btnIAAssign.Name = "btnIAAssign"
+        btnIAAssign.Size = New Size(110, 40)
+        btnIAAssign.TabIndex = 40
+        btnIAAssign.Text = "Assign"
+        btnIAAssign.UseVisualStyleBackColor = False
+        ' 
+        ' dtpIAEndTime
+        ' 
+        dtpIAEndTime.Font = New Font("Segoe UI", 10F)
+        dtpIAEndTime.Format = DateTimePickerFormat.Time
+        dtpIAEndTime.Location = New Point(179, 671)
+        dtpIAEndTime.Margin = New Padding(3, 4, 3, 4)
+        dtpIAEndTime.Name = "dtpIAEndTime"
+        dtpIAEndTime.ShowUpDown = True
+        dtpIAEndTime.Size = New Size(140, 30)
+        dtpIAEndTime.TabIndex = 39
+        ' 
+        ' dtpIAStartTime
+        ' 
+        dtpIAStartTime.Font = New Font("Segoe UI", 10F)
+        dtpIAStartTime.Format = DateTimePickerFormat.Time
+        dtpIAStartTime.Location = New Point(179, 621)
+        dtpIAStartTime.Margin = New Padding(3, 4, 3, 4)
+        dtpIAStartTime.Name = "dtpIAStartTime"
+        dtpIAStartTime.ShowUpDown = True
+        dtpIAStartTime.Size = New Size(140, 30)
+        dtpIAStartTime.TabIndex = 38
+        ' 
+        ' txtIAWorkDays
+        ' 
+        txtIAWorkDays.Font = New Font("Segoe UI", 10F)
+        txtIAWorkDays.Location = New Point(179, 571)
+        txtIAWorkDays.Margin = New Padding(3, 4, 3, 4)
+        txtIAWorkDays.Name = "txtIAWorkDays"
+        txtIAWorkDays.Size = New Size(200, 30)
+        txtIAWorkDays.TabIndex = 37
+        ' 
+        ' LabelIAEndTime
+        ' 
+        LabelIAEndTime.AutoSize = True
+        LabelIAEndTime.Font = New Font("Segoe UI", 10F)
+        LabelIAEndTime.Location = New Point(23, 674)
+        LabelIAEndTime.Name = "LabelIAEndTime"
+        LabelIAEndTime.Size = New Size(85, 23)
+        LabelIAEndTime.TabIndex = 36
+        LabelIAEndTime.Text = "End Time:"
+        ' 
+        ' LabelIAStartTime
+        ' 
+        LabelIAStartTime.AutoSize = True
+        LabelIAStartTime.Font = New Font("Segoe UI", 10F)
+        LabelIAStartTime.Location = New Point(23, 624)
+        LabelIAStartTime.Name = "LabelIAStartTime"
+        LabelIAStartTime.Size = New Size(91, 23)
+        LabelIAStartTime.TabIndex = 35
+        LabelIAStartTime.Text = "Start Time:"
+        ' 
+        ' LabelIAWorkDays
+        ' 
+        LabelIAWorkDays.AutoSize = True
+        LabelIAWorkDays.Font = New Font("Segoe UI", 10F)
+        LabelIAWorkDays.Location = New Point(23, 574)
+        LabelIAWorkDays.Name = "LabelIAWorkDays"
+        LabelIAWorkDays.Size = New Size(94, 23)
+        LabelIAWorkDays.TabIndex = 34
+        LabelIAWorkDays.Text = "Work Days:"
+        ' 
+        ' lblIAFacultyEvaluator
+        ' 
+        lblIAFacultyEvaluator.AutoSize = True
+        lblIAFacultyEvaluator.Font = New Font("Segoe UI", 10F)
+        lblIAFacultyEvaluator.Location = New Point(179, 534)
+        lblIAFacultyEvaluator.Name = "lblIAFacultyEvaluator"
+        lblIAFacultyEvaluator.Size = New Size(0, 23)
+        lblIAFacultyEvaluator.TabIndex = 33
+        ' 
+        ' LabelIAFacultyEvaluator
+        ' 
+        LabelIAFacultyEvaluator.AutoSize = True
+        LabelIAFacultyEvaluator.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        LabelIAFacultyEvaluator.Location = New Point(23, 534)
+        LabelIAFacultyEvaluator.Name = "LabelIAFacultyEvaluator"
+        LabelIAFacultyEvaluator.Size = New Size(152, 23)
+        LabelIAFacultyEvaluator.TabIndex = 32
+        LabelIAFacultyEvaluator.Text = "Faculty Evaluator:"
+        ' 
+        ' cboIASupervisor
+        ' 
+        cboIASupervisor.DropDownStyle = ComboBoxStyle.DropDownList
+        cboIASupervisor.Font = New Font("Segoe UI", 10F)
+        cboIASupervisor.FormattingEnabled = True
+        cboIASupervisor.Location = New Point(179, 484)
+        cboIASupervisor.Margin = New Padding(3, 4, 3, 4)
+        cboIASupervisor.Name = "cboIASupervisor"
+        cboIASupervisor.Size = New Size(260, 31)
+        cboIASupervisor.TabIndex = 31
+        ' 
+        ' LabelIASupervisor
+        ' 
+        LabelIASupervisor.AutoSize = True
+        LabelIASupervisor.Font = New Font("Segoe UI", 10F)
+        LabelIASupervisor.Location = New Point(23, 486)
+        LabelIASupervisor.Name = "LabelIASupervisor"
+        LabelIASupervisor.Size = New Size(93, 23)
+        LabelIASupervisor.TabIndex = 30
+        LabelIASupervisor.Text = "Supervisor:"
+        ' 
+        ' cboIACompany
+        ' 
+        cboIACompany.DropDownStyle = ComboBoxStyle.DropDownList
+        cboIACompany.Font = New Font("Segoe UI", 10F)
+        cboIACompany.FormattingEnabled = True
+        cboIACompany.Location = New Point(179, 434)
+        cboIACompany.Margin = New Padding(3, 4, 3, 4)
+        cboIACompany.Name = "cboIACompany"
+        cboIACompany.Size = New Size(260, 31)
+        cboIACompany.TabIndex = 29
+        ' 
+        ' LabelIACompany
+        ' 
+        LabelIACompany.AutoSize = True
+        LabelIACompany.Font = New Font("Segoe UI", 10F)
+        LabelIACompany.Location = New Point(23, 436)
+        LabelIACompany.Name = "LabelIACompany"
+        LabelIACompany.Size = New Size(87, 23)
+        LabelIACompany.TabIndex = 28
+        LabelIACompany.Text = "Company:"
+        ' 
+        ' lblIAStatus
+        ' 
+        lblIAStatus.AutoSize = True
+        lblIAStatus.Font = New Font("Segoe UI", 10F)
+        lblIAStatus.Location = New Point(179, 384)
+        lblIAStatus.Name = "lblIAStatus"
+        lblIAStatus.Size = New Size(0, 23)
+        lblIAStatus.TabIndex = 27
+        ' 
+        ' lblIARequiredHours
+        ' 
+        lblIARequiredHours.AutoSize = True
+        lblIARequiredHours.Font = New Font("Segoe UI", 10F)
+        lblIARequiredHours.Location = New Point(179, 346)
+        lblIARequiredHours.Name = "lblIARequiredHours"
+        lblIARequiredHours.Size = New Size(0, 23)
+        lblIARequiredHours.TabIndex = 26
+        ' 
+        ' lblIASection
+        ' 
+        lblIASection.AutoSize = True
+        lblIASection.Font = New Font("Segoe UI", 10F)
+        lblIASection.Location = New Point(179, 308)
+        lblIASection.Name = "lblIASection"
+        lblIASection.Size = New Size(0, 23)
+        lblIASection.TabIndex = 25
+        ' 
+        ' lblIACourse
+        ' 
+        lblIACourse.AutoSize = True
+        lblIACourse.Font = New Font("Segoe UI", 10F)
+        lblIACourse.Location = New Point(179, 271)
+        lblIACourse.Name = "lblIACourse"
+        lblIACourse.Size = New Size(0, 23)
+        lblIACourse.TabIndex = 24
+        ' 
+        ' lblIAStudentName
+        ' 
+        lblIAStudentName.AutoSize = True
+        lblIAStudentName.Font = New Font("Segoe UI", 10F)
+        lblIAStudentName.Location = New Point(179, 234)
+        lblIAStudentName.Name = "lblIAStudentName"
+        lblIAStudentName.Size = New Size(0, 23)
+        lblIAStudentName.TabIndex = 23
+        ' 
+        ' lblIAStudentNo
+        ' 
+        lblIAStudentNo.AutoSize = True
+        lblIAStudentNo.Font = New Font("Segoe UI", 10F)
+        lblIAStudentNo.Location = New Point(179, 196)
+        lblIAStudentNo.Name = "lblIAStudentNo"
+        lblIAStudentNo.Size = New Size(0, 23)
+        lblIAStudentNo.TabIndex = 22
+        ' 
+        ' LabelIAStatus
+        ' 
+        LabelIAStatus.AutoSize = True
+        LabelIAStatus.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
+        LabelIAStatus.Location = New Point(23, 384)
+        LabelIAStatus.Name = "LabelIAStatus"
+        LabelIAStatus.Size = New Size(61, 23)
+        LabelIAStatus.TabIndex = 21
+        LabelIAStatus.Text = "Status:"
+        ' 
+        ' LabelIARequiredHours
+        ' 
+        LabelIARequiredHours.AutoSize = True
+        LabelIARequiredHours.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
+        LabelIARequiredHours.Location = New Point(23, 346)
+        LabelIARequiredHours.Name = "LabelIARequiredHours"
+        LabelIARequiredHours.Size = New Size(134, 23)
+        LabelIARequiredHours.TabIndex = 20
+        LabelIARequiredHours.Text = "Required Hours:"
+        ' 
+        ' LabelIASection
+        ' 
+        LabelIASection.AutoSize = True
+        LabelIASection.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
+        LabelIASection.Location = New Point(23, 308)
+        LabelIASection.Name = "LabelIASection"
+        LabelIASection.Size = New Size(70, 23)
+        LabelIASection.TabIndex = 19
+        LabelIASection.Text = "Section:"
+        ' 
+        ' LabelIACourse
+        ' 
+        LabelIACourse.AutoSize = True
+        LabelIACourse.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
+        LabelIACourse.Location = New Point(23, 271)
+        LabelIACourse.Name = "LabelIACourse"
+        LabelIACourse.Size = New Size(67, 23)
+        LabelIACourse.TabIndex = 18
+        LabelIACourse.Text = "Course:"
+        ' 
+        ' LabelIAStudentName
+        ' 
+        LabelIAStudentName.AutoSize = True
+        LabelIAStudentName.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
+        LabelIAStudentName.Location = New Point(23, 234)
+        LabelIAStudentName.Name = "LabelIAStudentName"
+        LabelIAStudentName.Size = New Size(125, 23)
+        LabelIAStudentName.TabIndex = 17
+        LabelIAStudentName.Text = "Student Name:"
+        ' 
+        ' LabelIAStudentNo
+        ' 
+        LabelIAStudentNo.AutoSize = True
+        LabelIAStudentNo.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
+        LabelIAStudentNo.Location = New Point(23, 196)
+        LabelIAStudentNo.Name = "LabelIAStudentNo"
+        LabelIAStudentNo.Size = New Size(102, 23)
+        LabelIAStudentNo.TabIndex = 16
+        LabelIAStudentNo.Text = "Student No:"
+        ' 
+        ' LabelIAStudentSelected
+        ' 
+        LabelIAStudentSelected.AutoSize = True
+        LabelIAStudentSelected.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        LabelIAStudentSelected.Location = New Point(23, 158)
+        LabelIAStudentSelected.Name = "LabelIAStudentSelected"
+        LabelIAStudentSelected.Size = New Size(152, 23)
+        LabelIAStudentSelected.TabIndex = 15
+        LabelIAStudentSelected.Text = "Selected Student:"
+        ' 
+        ' btnIASearch
+        ' 
+        btnIASearch.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
+        btnIASearch.FlatAppearance.BorderSize = 0
+        btnIASearch.FlatStyle = FlatStyle.Flat
+        btnIASearch.Font = New Font("Segoe UI", 10F)
+        btnIASearch.ForeColor = Color.White
+        btnIASearch.Location = New Point(984, 39)
+        btnIASearch.Margin = New Padding(3, 4, 3, 4)
+        btnIASearch.Name = "btnIASearch"
+        btnIASearch.Size = New Size(100, 31)
+        btnIASearch.TabIndex = 14
+        btnIASearch.Text = "Search"
+        btnIASearch.UseVisualStyleBackColor = False
+        ' 
+        ' txtIASearch
+        ' 
+        txtIASearch.Font = New Font("Segoe UI", 10F)
+        txtIASearch.Location = New Point(807, 39)
+        txtIASearch.Margin = New Padding(3, 4, 3, 4)
+        txtIASearch.Name = "txtIASearch"
+        txtIASearch.Size = New Size(150, 30)
+        txtIASearch.TabIndex = 13
+        ' 
+        ' LabelIASearch
+        ' 
+        LabelIASearch.AutoSize = True
+        LabelIASearch.Font = New Font("Segoe UI", 10F)
+        LabelIASearch.Location = New Point(736, 42)
+        LabelIASearch.Name = "LabelIASearch"
+        LabelIASearch.Size = New Size(65, 23)
+        LabelIASearch.TabIndex = 12
+        LabelIASearch.Text = "Search:"
+        ' 
+        ' cboIAStudent
+        ' 
+        cboIAStudent.DropDownStyle = ComboBoxStyle.DropDownList
+        cboIAStudent.Font = New Font("Segoe UI", 10F)
+        cboIAStudent.FormattingEnabled = True
+        cboIAStudent.Location = New Point(451, 39)
+        cboIAStudent.Margin = New Padding(3, 4, 3, 4)
+        cboIAStudent.Name = "cboIAStudent"
+        cboIAStudent.Size = New Size(260, 31)
+        cboIAStudent.TabIndex = 11
+        ' 
+        ' LabelIAStudentFilter
+        ' 
+        LabelIAStudentFilter.AutoSize = True
+        LabelIAStudentFilter.Font = New Font("Segoe UI", 10F)
+        LabelIAStudentFilter.Location = New Point(371, 42)
+        LabelIAStudentFilter.Name = "LabelIAStudentFilter"
+        LabelIAStudentFilter.Size = New Size(73, 23)
+        LabelIAStudentFilter.TabIndex = 10
+        LabelIAStudentFilter.Text = "Student:"
+        ' 
+        ' cboIASection
+        ' 
+        cboIASection.DropDownStyle = ComboBoxStyle.DropDownList
+        cboIASection.Font = New Font("Segoe UI", 10F)
+        cboIASection.FormattingEnabled = True
+        cboIASection.Location = New Point(90, 39)
+        cboIASection.Margin = New Padding(3, 4, 3, 4)
+        cboIASection.Name = "cboIASection"
+        cboIASection.Size = New Size(80, 31)
+        cboIASection.TabIndex = 9
+        ' 
+        ' LabelIASectionFilter
+        ' 
+        LabelIASectionFilter.AutoSize = True
+        LabelIASectionFilter.Font = New Font("Segoe UI", 10F)
+        LabelIASectionFilter.Location = New Point(24, 42)
+        LabelIASectionFilter.Name = "LabelIASectionFilter"
+        LabelIASectionFilter.Size = New Size(70, 23)
+        LabelIASectionFilter.TabIndex = 8
+        LabelIASectionFilter.Text = "Section:"
+        ' 
+        ' lblIAFilters
+        ' 
+        lblIAFilters.AutoSize = True
+        lblIAFilters.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblIAFilters.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
+        lblIAFilters.Location = New Point(24, 7)
+        lblIAFilters.Name = "lblIAFilters"
+        lblIAFilters.Size = New Size(66, 28)
+        lblIAFilters.TabIndex = 7
+        lblIAFilters.Text = "Filters"
+        ' 
+        ' lblInternshipTitle
+        ' 
+        lblInternshipTitle.AutoSize = True
+        lblInternshipTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblInternshipTitle.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
+        lblInternshipTitle.Location = New Point(24, 91)
+        lblInternshipTitle.Name = "lblInternshipTitle"
+        lblInternshipTitle.Size = New Size(227, 32)
+        lblInternshipTitle.TabIndex = 0
+        lblInternshipTitle.Text = "Trainee Assignment"
+        ' 
+        ' pnlStudents
+        ' 
+        pnlStudents.BackColor = Color.FromArgb(CByte(250), CByte(250), CByte(250))
+        pnlStudents.Controls.Add(dgvMyStudentsHistory)
+        pnlStudents.Controls.Add(pnlStudentEditStatus)
+        pnlStudents.Controls.Add(btnStudentEdit)
+        pnlStudents.Controls.Add(dgvMyStudents)
+        pnlStudents.Controls.Add(btnStudentSearch)
+        pnlStudents.Controls.Add(txtStudentSearch)
+        pnlStudents.Controls.Add(LabelStudentSearch)
+        pnlStudents.Controls.Add(cboStudentStatus)
+        pnlStudents.Controls.Add(LabelStudentStatusFilter)
+        pnlStudents.Controls.Add(cboStudentSection)
+        pnlStudents.Controls.Add(LabelStudentSectionFilter)
+        pnlStudents.Controls.Add(lblStudentFilters)
+        pnlStudents.Controls.Add(lblStudentsTitle)
+        pnlStudents.Dock = DockStyle.Fill
+        pnlStudents.Location = New Point(0, 0)
+        pnlStudents.Margin = New Padding(3, 4, 3, 4)
+        pnlStudents.Name = "pnlStudents"
+        pnlStudents.Size = New Size(1321, 1002)
+        pnlStudents.TabIndex = 1
+        pnlStudents.Visible = False
+        ' 
+        ' dgvMyStudentsHistory
+        ' 
+        dgvMyStudentsHistory.AllowUserToAddRows = False
+        dgvMyStudentsHistory.AllowUserToDeleteRows = False
+        dgvMyStudentsHistory.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
+        dgvMyStudentsHistory.BackgroundColor = Color.White
+        dgvMyStudentsHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvMyStudentsHistory.Location = New Point(24, 651)
+        dgvMyStudentsHistory.Margin = New Padding(3, 4, 3, 4)
+        dgvMyStudentsHistory.MultiSelect = False
+        dgvMyStudentsHistory.Name = "dgvMyStudentsHistory"
+        dgvMyStudentsHistory.ReadOnly = True
+        dgvMyStudentsHistory.RowHeadersVisible = False
+        dgvMyStudentsHistory.RowHeadersWidth = 51
+        dgvMyStudentsHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvMyStudentsHistory.Size = New Size(1271, 329)
+        dgvMyStudentsHistory.TabIndex = 12
+        ' 
+        ' pnlStudentEditStatus
+        ' 
+        pnlStudentEditStatus.BorderStyle = BorderStyle.FixedSingle
+        pnlStudentEditStatus.Controls.Add(btnStudentEditCancel)
+        pnlStudentEditStatus.Controls.Add(btnStudentEditSave)
+        pnlStudentEditStatus.Controls.Add(lblStudentEditStatus)
+        pnlStudentEditStatus.Controls.Add(lblStudentName)
+        pnlStudentEditStatus.Controls.Add(lblStudentEditTitle)
+        pnlStudentEditStatus.Controls.Add(cboStudentEditStatus)
+        pnlStudentEditStatus.Controls.Add(lblStudentNameTitle)
+        pnlStudentEditStatus.Location = New Point(220, 110)
+        pnlStudentEditStatus.Name = "pnlStudentEditStatus"
+        pnlStudentEditStatus.Size = New Size(427, 278)
+        pnlStudentEditStatus.TabIndex = 11
+        pnlStudentEditStatus.Visible = False
+        ' 
+        ' btnStudentEditCancel
+        ' 
+        btnStudentEditCancel.BackColor = Color.LightGray
+        btnStudentEditCancel.FlatStyle = FlatStyle.Flat
+        btnStudentEditCancel.Location = New Point(230, 125)
+        btnStudentEditCancel.Name = "btnStudentEditCancel"
+        btnStudentEditCancel.Size = New Size(100, 32)
+        btnStudentEditCancel.TabIndex = 6
+        btnStudentEditCancel.Text = "Cancel"
+        btnStudentEditCancel.UseVisualStyleBackColor = False
+        ' 
+        ' btnStudentEditSave
+        ' 
+        btnStudentEditSave.BackColor = Color.Lime
+        btnStudentEditSave.FlatStyle = FlatStyle.Flat
+        btnStudentEditSave.Location = New Point(110, 125)
+        btnStudentEditSave.Name = "btnStudentEditSave"
+        btnStudentEditSave.Size = New Size(100, 32)
+        btnStudentEditSave.TabIndex = 5
+        btnStudentEditSave.Text = "Save"
+        btnStudentEditSave.UseVisualStyleBackColor = False
+        ' 
+        ' lblStudentEditStatus
+        ' 
+        lblStudentEditStatus.AutoSize = True
+        lblStudentEditStatus.Location = New Point(20, 85)
+        lblStudentEditStatus.Name = "lblStudentEditStatus"
+        lblStudentEditStatus.Size = New Size(86, 20)
+        lblStudentEditStatus.TabIndex = 4
+        lblStudentEditStatus.Text = "New Status:"
+        ' 
+        ' lblStudentName
+        ' 
+        lblStudentName.AutoSize = True
+        lblStudentName.Location = New Point(20, 45)
+        lblStudentName.Name = "lblStudentName"
+        lblStudentName.Size = New Size(63, 20)
+        lblStudentName.TabIndex = 3
+        lblStudentName.Text = "Student:"
+        ' 
+        ' lblStudentEditTitle
+        ' 
+        lblStudentEditTitle.AutoSize = True
+        lblStudentEditTitle.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblStudentEditTitle.Location = New Point(20, 10)
+        lblStudentEditTitle.Name = "lblStudentEditTitle"
+        lblStudentEditTitle.Size = New Size(231, 28)
+        lblStudentEditTitle.TabIndex = 2
+        lblStudentEditTitle.Text = "EDIT STUDENT STATUS"
+        ' 
+        ' cboStudentEditStatus
+        ' 
+        cboStudentEditStatus.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStudentEditStatus.FormattingEnabled = True
+        cboStudentEditStatus.Items.AddRange(New Object() {"Active", "OnLeave", "Dropped", "Graduated"})
+        cboStudentEditStatus.Location = New Point(110, 82)
+        cboStudentEditStatus.Name = "cboStudentEditStatus"
+        cboStudentEditStatus.Size = New Size(180, 28)
+        cboStudentEditStatus.TabIndex = 1
+        ' 
+        ' lblStudentNameTitle
+        ' 
+        lblStudentNameTitle.AutoSize = True
+        lblStudentNameTitle.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblStudentNameTitle.Location = New Point(110, 45)
+        lblStudentNameTitle.Name = "lblStudentNameTitle"
+        lblStudentNameTitle.Size = New Size(17, 23)
+        lblStudentNameTitle.TabIndex = 0
+        lblStudentNameTitle.Text = "-"
+        ' 
+        ' btnStudentEdit
+        ' 
+        btnStudentEdit.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
+        btnStudentEdit.FlatAppearance.BorderSize = 0
+        btnStudentEdit.FlatStyle = FlatStyle.Flat
+        btnStudentEdit.Font = New Font("Segoe UI", 10F)
+        btnStudentEdit.ForeColor = Color.White
+        btnStudentEdit.Location = New Point(580, 134)
+        btnStudentEdit.Margin = New Padding(3, 4, 3, 4)
+        btnStudentEdit.Name = "btnStudentEdit"
+        btnStudentEdit.Size = New Size(100, 40)
+        btnStudentEdit.TabIndex = 10
+        btnStudentEdit.Text = "Edit"
+        btnStudentEdit.UseVisualStyleBackColor = False
+        ' 
+        ' dgvMyStudents
+        ' 
+        dgvMyStudents.AllowUserToAddRows = False
+        dgvMyStudents.AllowUserToDeleteRows = False
+        dgvMyStudents.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        dgvMyStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvMyStudents.BackgroundColor = Color.White
+        dgvMyStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvMyStudents.Location = New Point(24, 188)
+        dgvMyStudents.Margin = New Padding(3, 4, 3, 4)
+        dgvMyStudents.MultiSelect = False
+        dgvMyStudents.Name = "dgvMyStudents"
+        dgvMyStudents.ReadOnly = True
+        dgvMyStudents.RowHeadersVisible = False
+        dgvMyStudents.RowHeadersWidth = 51
+        dgvMyStudents.RowTemplate.Height = 28
+        dgvMyStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvMyStudents.Size = New Size(1271, 389)
+        dgvMyStudents.TabIndex = 9
+        ' 
+        ' btnStudentSearch
+        ' 
+        btnStudentSearch.BackColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
+        btnStudentSearch.FlatAppearance.BorderSize = 0
+        btnStudentSearch.FlatStyle = FlatStyle.Flat
+        btnStudentSearch.Font = New Font("Segoe UI", 10F)
+        btnStudentSearch.ForeColor = Color.White
+        btnStudentSearch.Location = New Point(450, 134)
+        btnStudentSearch.Margin = New Padding(3, 4, 3, 4)
+        btnStudentSearch.Name = "btnStudentSearch"
+        btnStudentSearch.Size = New Size(100, 40)
+        btnStudentSearch.TabIndex = 8
+        btnStudentSearch.Text = "Search"
+        btnStudentSearch.UseVisualStyleBackColor = False
+        ' 
+        ' txtStudentSearch
+        ' 
+        txtStudentSearch.Font = New Font("Segoe UI", 10F)
+        txtStudentSearch.Location = New Point(320, 136)
+        txtStudentSearch.Margin = New Padding(3, 4, 3, 4)
+        txtStudentSearch.Name = "txtStudentSearch"
+        txtStudentSearch.Size = New Size(120, 30)
+        txtStudentSearch.TabIndex = 7
+        ' 
+        ' LabelStudentSearch
+        ' 
+        LabelStudentSearch.AutoSize = True
+        LabelStudentSearch.Font = New Font("Segoe UI", 10F)
+        LabelStudentSearch.Location = New Point(250, 139)
+        LabelStudentSearch.Name = "LabelStudentSearch"
+        LabelStudentSearch.Size = New Size(65, 23)
+        LabelStudentSearch.TabIndex = 6
+        LabelStudentSearch.Text = "Search:"
+        ' 
+        ' cboStudentStatus
+        ' 
+        cboStudentStatus.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStudentStatus.Font = New Font("Segoe UI", 10F)
+        cboStudentStatus.FormattingEnabled = True
+        cboStudentStatus.Location = New Point(120, 136)
+        cboStudentStatus.Margin = New Padding(3, 4, 3, 4)
+        cboStudentStatus.Name = "cboStudentStatus"
+        cboStudentStatus.Size = New Size(120, 31)
+        cboStudentStatus.TabIndex = 5
+        ' 
+        ' LabelStudentStatusFilter
+        ' 
+        LabelStudentStatusFilter.AutoSize = True
+        LabelStudentStatusFilter.Font = New Font("Segoe UI", 10F)
+        LabelStudentStatusFilter.Location = New Point(24, 139)
+        LabelStudentStatusFilter.Name = "LabelStudentStatusFilter"
+        LabelStudentStatusFilter.Size = New Size(60, 23)
+        LabelStudentStatusFilter.TabIndex = 4
+        LabelStudentStatusFilter.Text = "Status:"
+        ' 
+        ' cboStudentSection
+        ' 
+        cboStudentSection.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStudentSection.Font = New Font("Segoe UI", 10F)
+        cboStudentSection.FormattingEnabled = True
+        cboStudentSection.Location = New Point(120, 89)
+        cboStudentSection.Margin = New Padding(3, 4, 3, 4)
+        cboStudentSection.Name = "cboStudentSection"
+        cboStudentSection.Size = New Size(120, 31)
+        cboStudentSection.TabIndex = 3
+        ' 
+        ' LabelStudentSectionFilter
+        ' 
+        LabelStudentSectionFilter.AutoSize = True
+        LabelStudentSectionFilter.Font = New Font("Segoe UI", 10F)
+        LabelStudentSectionFilter.Location = New Point(24, 92)
+        LabelStudentSectionFilter.Name = "LabelStudentSectionFilter"
+        LabelStudentSectionFilter.Size = New Size(70, 23)
+        LabelStudentSectionFilter.TabIndex = 2
+        LabelStudentSectionFilter.Text = "Section:"
+        ' 
+        ' lblStudentFilters
+        ' 
+        lblStudentFilters.AutoSize = True
+        lblStudentFilters.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblStudentFilters.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
+        lblStudentFilters.Location = New Point(24, 44)
+        lblStudentFilters.Name = "lblStudentFilters"
+        lblStudentFilters.Size = New Size(66, 28)
+        lblStudentFilters.TabIndex = 1
+        lblStudentFilters.Text = "Filters"
+        ' 
+        ' lblStudentsTitle
+        ' 
+        lblStudentsTitle.AutoSize = True
+        lblStudentsTitle.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
+        lblStudentsTitle.ForeColor = Color.FromArgb(CByte(56), CByte(142), CByte(60))
+        lblStudentsTitle.Location = New Point(23, 5)
+        lblStudentsTitle.Name = "lblStudentsTitle"
+        lblStudentsTitle.Size = New Size(150, 32)
+        lblStudentsTitle.TabIndex = 0
+        lblStudentsTitle.Text = "My Students"
         ' 
         ' lbl1
         ' 
@@ -3578,102 +3675,6 @@ Partial Class frmProfessorDashboard
         lblAccDate.TabIndex = 0
         lblAccDate.Text = "Accreditation Date:"
         ' 
-        ' VisitID
-        ' 
-        VisitID.DataPropertyName = "VisitID"
-        VisitID.HeaderText = "VisitID"
-        VisitID.MinimumWidth = 6
-        VisitID.Name = "VisitID"
-        VisitID.ReadOnly = True
-        VisitID.Visible = False
-        ' 
-        ' VisitDate
-        ' 
-        VisitDate.DataPropertyName = "VisitDate"
-        VisitDate.HeaderText = "Date"
-        VisitDate.MinimumWidth = 100
-        VisitDate.Name = "VisitDate"
-        VisitDate.ReadOnly = True
-        ' 
-        ' VisitType
-        ' 
-        VisitType.DataPropertyName = "VisitType"
-        VisitType.HeaderText = "Type"
-        VisitType.MinimumWidth = 120
-        VisitType.Name = "VisitType"
-        VisitType.ReadOnly = True
-        ' 
-        ' HoursAdded
-        ' 
-        HoursAdded.DataPropertyName = "HoursAdded"
-        HoursAdded.HeaderText = "Hours"
-        HoursAdded.MinimumWidth = 80
-        HoursAdded.Name = "HoursAdded"
-        HoursAdded.ReadOnly = True
-        ' 
-        ' Score
-        ' 
-        Score.DataPropertyName = "Score"
-        Score.HeaderText = "Grade"
-        Score.MinimumWidth = 70
-        Score.Name = "Score"
-        Score.ReadOnly = True
-        ' 
-        ' MaxScore
-        ' 
-        MaxScore.DataPropertyName = "MaxScore"
-        MaxScore.HeaderText = "Max Grade"
-        MaxScore.MinimumWidth = 80
-        MaxScore.Name = "MaxScore"
-        MaxScore.ReadOnly = True
-        ' 
-        ' Remarks
-        ' 
-        Remarks.DataPropertyName = "Remarks"
-        Remarks.HeaderText = "Remarks"
-        Remarks.MinimumWidth = 180
-        Remarks.Name = "Remarks"
-        Remarks.ReadOnly = True
-        ' 
-        ' AttachmentPath
-        ' 
-        AttachmentPath.DataPropertyName = "AttachmentPath"
-        AttachmentPath.HeaderText = "File"
-        AttachmentPath.MinimumWidth = 6
-        AttachmentPath.Name = "AttachmentPath"
-        AttachmentPath.ReadOnly = True
-        AttachmentPath.Visible = False
-        ' 
-        ' colDownload
-        ' 
-        colDownload.HeaderText = "Download"
-        colDownload.MinimumWidth = 40
-        colDownload.Name = "colDownload"
-        colDownload.ReadOnly = True
-        colDownload.Text = "⬇"
-        colDownload.UseColumnTextForButtonValue = True
-        ' 
-        ' colEdit
-        ' 
-        colEdit.HeaderText = "Edit"
-        colEdit.MinimumWidth = 50
-        colEdit.Name = "colEdit"
-        colEdit.ReadOnly = True
-        colEdit.Text = "✎"
-        colEdit.UseColumnTextForButtonValue = True
-        ' 
-        ' colDelete
-        ' 
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.ForeColor = Color.Red
-        colDelete.DefaultCellStyle = DataGridViewCellStyle1
-        colDelete.HeaderText = "Delete"
-        colDelete.MinimumWidth = 50
-        colDelete.Name = "colDelete"
-        colDelete.ReadOnly = True
-        colDelete.Text = "✖"
-        colDelete.UseColumnTextForButtonValue = True
-        ' 
         ' frmProfessorDashboard
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -3692,14 +3693,6 @@ Partial Class frmProfessorDashboard
         pnlHeader.PerformLayout()
         pnlSidebar.ResumeLayout(False)
         pnlContent.ResumeLayout(False)
-        pnlInternshipAssignment.ResumeLayout(False)
-        pnlInternshipAssignment.PerformLayout()
-        pnlStudents.ResumeLayout(False)
-        pnlStudents.PerformLayout()
-        CType(dgvMyStudentsHistory, ComponentModel.ISupportInitialize).EndInit()
-        pnlStudentEditStatus.ResumeLayout(False)
-        pnlStudentEditStatus.PerformLayout()
-        CType(dgvMyStudents, ComponentModel.ISupportInitialize).EndInit()
         pnlHome.ResumeLayout(False)
         pnlHome.PerformLayout()
         CType(dgvRecentActivity, ComponentModel.ISupportInitialize).EndInit()
@@ -3734,6 +3727,14 @@ Partial Class frmProfessorDashboard
         pnlVisitLogs.ResumeLayout(False)
         pnlVisitLogs.PerformLayout()
         CType(dgvVisitLogs, ComponentModel.ISupportInitialize).EndInit()
+        pnlInternshipAssignment.ResumeLayout(False)
+        pnlInternshipAssignment.PerformLayout()
+        pnlStudents.ResumeLayout(False)
+        pnlStudents.PerformLayout()
+        CType(dgvMyStudentsHistory, ComponentModel.ISupportInitialize).EndInit()
+        pnlStudentEditStatus.ResumeLayout(False)
+        pnlStudentEditStatus.PerformLayout()
+        CType(dgvMyStudents, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
